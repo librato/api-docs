@@ -456,7 +456,6 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
@@ -464,8 +463,9 @@ html, body {
   }
 
   pre>code {
-    background-color: transparent;
-    padding: 0;
+    border-radius: 5px;
+    padding: $code-annotation-padding;
+    color: #ccc;
   }
 
   aside {
@@ -527,7 +527,7 @@ html, body {
     color: #fff;
 
     padding: 2em $main-padding;
-    margin: 0;
+    margin: 1rem 0;
     width: $examples-width;
 
     float:right;
@@ -549,16 +549,25 @@ html, body {
 
   pre {
     @extend %code-font;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    background-color: $code-bg;
+    overflow: auto;
+    padding: 10px;
+    margin: 1rem 3%;
+    width: 44%;
+    overflow: scroll;
+    float: right;
+    clear: right;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   blockquote {
     &>p {
-      background-color: $code-annotation-bg;
-      border-radius: 5px;
-      padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      background-color: transparent;
+      padding: 0;
     }
   }
 }
