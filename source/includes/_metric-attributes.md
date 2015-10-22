@@ -31,7 +31,7 @@ The formula is run on each measurement by substituting x with a given measuremen
 >min: `2`
 >max: `10`
 
->The following example demonstrates how to set the metric attribute display_max on the metric temperature.
+>The following example demonstrates how to set the metric attribute `display_max` on the metric temperature.
 
 ```shell
 curl \

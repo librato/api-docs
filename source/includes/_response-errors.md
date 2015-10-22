@@ -18,11 +18,9 @@ Error Code | Meaning
 
 ## Error Messages
 
-The API reports errors in a the JSON format which makes it easier to parse and evaluate them. As of now, there are two kinds of errors: `params` and `request`.
+>**Structure**:
 
-### Structure
-
-Errors related to parameters are reported based on the attribute the error occurred on.
+>Errors related to parameters are reported based on the attribute the error occurred on.
 
 ```json
 {
@@ -35,7 +33,7 @@ Errors related to parameters are reported based on the attribute the error occur
 }
 ```
 
-Errors related to the request itself are reported in an array structure with the key `request`.
+>Errors related to the request itself are reported in an array structure with the key `request`.
 
 ```json
 {
@@ -48,7 +46,7 @@ Errors related to the request itself are reported in an array structure with the
 }
 ```
 
-Service errors due to maintenance periods, for example, are reported in an array structure with the key `system`:
+>Service errors due to maintenance periods, for example, are reported in an array structure with the key `system`:
 
 ```json
 {
@@ -59,3 +57,5 @@ Service errors due to maintenance periods, for example, are reported in an array
   }
 }
 ```
+
+The API reports errors in a the JSON format which makes it easier to parse and evaluate them. As of now, there are two kinds of errors: `params` and `request`.

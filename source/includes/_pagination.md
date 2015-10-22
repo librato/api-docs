@@ -4,9 +4,7 @@ Many of the resources accessible through the Metrics REST APIs can contain large
 
 ## Request Parameters
 
->Returns the 2nd 10 metrics (would equal to page 2 where each page displays 10 metrics):
-
->Request:
+>Example: Request which returns the 2nd 10 metrics (would equal to page 2 where each page displays 10 metrics):
 
 ```shell
 curl \
@@ -15,6 +13,7 @@ curl \
 ```
 
 >Response Code:
+
 ```
 Code: 200
 Headers: not applicable
@@ -48,9 +47,7 @@ Request Parameter | Definition
 
 ## Response Parameters
 
->Get the third page for the query "api" where each page has a length of 10 metrics.
-
->Request:
+>Example: Request to get the third page for the query "api" where each page has a length of 10 metrics.
 
 ```shell
 curl \
