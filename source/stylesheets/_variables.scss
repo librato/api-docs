@@ -20,35 +20,32 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // Use these settings to help adjust the appearance of Slate
 
+// TEXT COLORS
+////////////////////
+$main-text: #333; // main content text color
+$nav-text: #444A4E;
+$nav-active-text: #0F8ECE;
+$lang-select-text: #F2F2F2; // color of unselected language tab text
+$lang-select-active-text: #fff; // color of selected language tab text
+$lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #393939;
+$nav-bg: #FBFBFB;
 $examples-bg: #393939;
 $code-bg: #292929;
 $code-annotation-bg: #1c1c1c;
-$nav-subitem-bg: #262626;
+$nav-subitem-bg: #e6e9ea;
 $nav-active-bg: #2467af;
 $lang-select-border: #000;
 $lang-select-bg: #222;
-$lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
-$lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
-$main-bg: #eaf2f6;
+$lang-select-active-bg: $nav-active-text; // feel free to change this to blue or something
+$main-bg: #fff;
+$lang-select-pressed-bg: $main-bg; // color of language tab bg when mouse is pressed
 $aside-notice-bg: #8fbcd4;
 $aside-warning-bg: #c97a7e;
 $aside-success-bg: #6ac174;
 $search-notice-bg: #c97a7e;
-
-
-// TEXT COLORS
-////////////////////
-$main-text: #333; // main content text color
-$nav-text: #fff;
-$nav-active-text: #fff;
-$lang-select-text: #fff; // color of unselected language tab text
-$lang-select-active-text: #fff; // color of selected language tab text
-$lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
-
 
 // SIZES
 ////////////////////
@@ -67,8 +64,8 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 
 // FONTS
 ////////////////////
-%default-font {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+%default-font { 
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
   font-size: 13px;
 }
 
@@ -91,8 +88,9 @@ $nav-footer-border-color: #666;
 $nav-embossed-border-top: #000;
 $nav-embossed-border-bottom: #939393;
 $main-embossed-text-shadow: 0px 1px 0px #fff;
-$search-box-border-color: #666;
-
+$search-box-border-color: #E6E9EA;
+$side-bar-border-color: #E6E9EA;
+$side-bar-border: 1px solid #E6E9EA;
 
 ////////////////////////////////////////////////////////////////////////////////
 // INTERNAL

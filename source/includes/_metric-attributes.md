@@ -23,7 +23,7 @@ The formula is run on each measurement by substituting x with a given measuremen
 
 ## Gauge-only attributes
 
->For `summarize_funtion, if the values of the measurements to be rolled up are: `2`, `10`, `5`:
+>For `summarize_funtion`, if the values of the measurements to be rolled up are: `2`, `10`, `5`:
 
 >average: `5.67`
 >sum: `17`
