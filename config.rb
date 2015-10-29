@@ -15,6 +15,9 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 set :fonts_dir, 'fonts'
 
+# Activate middleman-livereload
+# activate :livereload, apply_css_live: true, apply_js_live: false
+
 # Activate the syntax highlighter
 activate :syntax
 

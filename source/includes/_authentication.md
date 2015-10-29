@@ -21,7 +21,7 @@ for every request. All requests must be sent over HTTPS.
 Authentication is accomplished with a *user* and *token*
 pair. *User* is the email address that you used to create your
 Librato Metrics account and *token* is the API token that can be
-found (on your account page)[https://metrics.librato.com/account/api_tokens].
+found [on your account page](https://metrics.librato.com/account/api_tokens).
 
 ## URL Encoding
 
