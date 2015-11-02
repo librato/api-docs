@@ -1,6 +1,6 @@
 # Authentication
 
->Example: A user with an email address 'example@librato.com' and an API token of '75AFDB82' will use the following curl command:
+>Example: A user with an email address `example@librato.com` and an API token of `75AFDB82` will use the following curl command:
 
 ```shell
 curl -u example@librato.com:75AFDB82 https://#{api}

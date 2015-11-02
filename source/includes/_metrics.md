@@ -45,9 +45,9 @@ Internally all floating point values are stored in double-precision format. Howe
 
 ## Retrieve Metrics
 
->Example Request
+>Definition
 
-```shell
+```
 GET https://metrics-api.librato.com/v1/metrics
 ```
 
@@ -245,6 +245,12 @@ This route will also execute a [composite metric query](http://support.metrics.l
 **NOTE**: `start_time` and `resolution` are required. The `end_time` parameter is optional. The `count` parameter is currently ignored. When specified, the response is a composite metric query response.
 
 ## Retrieve Metric Details
+
+>Definition
+
+```
+GET https://metrics-api.librato.com/v1/metrics/:name
+```
 
 >Return metadata for the metric `cpu_temp`:
 
@@ -503,8 +509,6 @@ curl \
 
 Returns information for a specific metric. If time interval search parameters are specified will also include a set of metric measurements for the given time span.
 
-`GET https://metrics-api.librato.com/v1/metrics/:name`
-
 ### Measurement Search Parameters
 
 If optional [time interval search parameters](http://dev.librato.com/v1/time-intervals) are specified, the response includes the set of metric measurements covered by the time interval. Measurements are listed by their originating source name if one was specified when the measurement was created. All measurements that were created without an explicit source name are listed with the source name `unassigned`.
@@ -519,6 +523,12 @@ breakout_sources | When `summarize_sources` is specified with multiple sources (
 group_by | When querying a gauge and specifying multiple sources with the `sources` parameter the `group_by` parameter optionally specifies a statistical function used to generate an aggregated time series across sources identifed in the response with the special source name `all`. The acceptable values for `group_by` are: `min`, `max`, `mean`, `sum`, `count`. <br><br>Each entry in the `all` series contains a set of summary statistics, each of which represents the result of applying the `group_by` function across that summary statistic in the corresponding entry in each the individual sources. For example when `group_by` is set to `max`, each entry in the `all` series specifies the minimum of the maximums as `min`, the maximum of the maxiums as `max`, the maximum of the sums as `sum`, etc. <br><br>Regardless of the function specified for `group_by` each entry in `all` also includes a field named `summarized` that communicates how many individual source series were grouped at that point in time and a field named `count` that contains the total number of samples aggregated across all sources at that point in time. <br><br>Setting the `group_by` option implies both `summarize_sources=true` (required) and `breakout_sources=false` (can be optionally overridden).
 
 ## Submit Metrics
+
+>Definition
+
+```
+POST https://metrics-api.librato.com/v1/metrics
+```
 
 >Measurement Formats
 
@@ -626,7 +636,6 @@ For each counter and gauge measurement in the request, a new measurement is crea
 
 For truly large numbers of measurements (e.g. 20 metrics x 500 sources) we suggest batching into multiple concurrent requests. Currently a POST with ~300 distinct measurements takes roughly 600ms, so we recommend this as an initial guideline for a cap on request size. As we continue to tune the system this suggested cap will be updated.
 
-`POST https://metrics-api.librato.com/v1/metrics`
 
 ### Headers
 
@@ -666,9 +675,273 @@ min | If `count` was set, `min` can be used to report the smallest individual me
 sum_squares | If `count` was set, `sum_squares` report the summation of the squared individual measurements. If `sum_squares` is set, a standard deviation can be calculated for the recorded metric measurement.
 
 
-
 ## Update Metric
 
+>Definition
 
+```
+PUT https://metrics-api.librato.com/v1/metrics
+```
+
+>Set the `period` and `display_min` for metrics `cpu`, `servers` and `reqs`:
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'names%5B%5D=cpu&names%5B%5D=servers&names%5B%5D=reqs&period=60&display_min=0' \
+  -X PUT \
+  'https://metrics-api.librato.com/v1/metrics'
+```
+
+>Set the `display_units_short` for all metrics that end with `.time`:
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'names=*.time&display_units_short=ms' \
+  -X PUT \
+  'https://metrics-api.librato.com/v1/metrics'
+```
+
+>Response Code
+
+```
+204 No Content OR 202 Accepted
+```
+
+>Response Headers
+
+```
+Location: <job-checking URI>  # issued only for 202
+```
+
+>Response Body
+
+```
+** NOT APPLICABLE **
+```
+
+Update the [properties](http://dev.librato.com/v1/metrics#metric_properties) and/or [attributes](http://dev.librato.com/v1/metric-attributes) of a set of metrics at the same time.
+
+This route accepts either a list of metric names OR a single pattern which includes wildcards (`*`).
+
+If attributes are included which are specific to gauge metrics and the set of metrics provided includes counter metrics, those attributes will be applied only to the gauge metrics in the set.
+
+There are two potential success states for this action, either a `204 No Content` (all changes are complete) or a `202 Accepted`.
+
+A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](http://dev.librato.com/v1/jobs) which can be monitored to determine when the operation is complete and if it has been successful.
+
+### Headers
+
+This specifies the format of the data sent to the API.
+
+For HTML (default):
+
+`Content-Type: application/x-www-form-urlencoded`
+
+For JSON:
+
+`Content-Type: application/json`
+
+## Update Metric by Name
+
+>Definition
+
+```
+PUT https://metrics-api.librato.com/v1/metrics/:name
+```
+
+>**Updating a metric**
+
+>Update the existing metric temp by setting the display_name and the minimum display attribute.
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'display_name=Temperature in Celsius&attributes[display_min]=0' \
+  -X PUT \
+  'https://metrics-api.librato.com/v1/metrics/temp'
+```
+
+>Response Code
+
+```
+204 No Content
+```
+
+>Response Body
+
+```
+** NOT APPLICABLE **
+```
+
+>Creating a metric
+
+>Creates the gauge metric named queue_len (assumes this metric does not exist).
+
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'type=gauge&description=Length of app queue&display_name=num. elements' \
+  -X PUT \
+  'https://metrics-api.librato.com/v1/metrics/queue_len'
+```
+
+>Response Code
+
+```
+201 Created
+```
+
+>Response Headers
+
+```
+Location: /v1/metrics/queue_len
+```
+
+>Response Body
+
+```json
+{
+  "name": "queue_len",
+  "description": "Length of app queue",
+  "display_name": "num. elements",
+  "type": "gauge",
+  "period": null,
+  "attributes": {
+    "created_by_ua": "curl/7.24.0 (x86_64-redhat-linux-gnu) libcurl/7.24.0 NSS/3.13.5.0 zlib/1.2.5 libidn/1.24 libssh2/1.4.1"
+  }
+}
+```
+
+Updates or creates the metric identified by `name`. If the metric already exists, it performs an update of the metric's properties.
+
+If the metric name does not exist, then the metric will be created with the associated properties. Normally metrics are created the first time a measurement is sent to the [collated POST route](http://dev.librato.com/v1/post/metrics), after which their properties can be updated with this route. However, sometimes it is useful to set the metric properties before the metric has received any measurements so this will create the metric if it does not exist. The property `type` must be set if the metric is to be created.
+
+Creating Persisted Composite Metrics
+
+With this route you can also create and update persisted [composite metrics](http://support.metrics.librato.com/knowledgebase/articles/337431-composite-metrics-language-specification). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
+
+### Headers
+
+This specifies the format of the data sent to the API.
+
+For HTML (default):
+
+`Content-Type: application/x-www-form-urlencoded`
+
+For JSON:
+
+`Content-Type: application/json`
+
+Create Parameters
+
+Parameter | Definition
+--------- | ----------
+type | Type of metric to create (gauge, counter, or composite).
+display_name | (optional) Name which will be used for the metric when viewing the Metrics website.
+description | (optional) Text that can be used to explain precisely what the gauge is measuring.
+period | (optional) Number of seconds that is the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics. For gauge metrics that have service-side aggregation enabled, this option will define the period that aggregation occurs on.
+attributes | (optional) The attributes hash configures specific components of a metric's visualization.
+composite | (optional) The composite definition. Only used when type is composite.
 
 ## Delete Metric
+
+>Definition
+
+```
+DELETE https://metrics-api.librato.com/v1/metrics
+```
+
+> Delete the metrics `cpu`, `servers` and `reqs`:
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'names%5B%5D=cpu&names%5B%5D=servers&names%5B%5D=reqs' \
+  -X DELETE \
+  'https://metrics-api.librato.com/v1/metrics'
+```
+
+>Delete all metrics that start with cpu and end with .90:
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'names=cpu*.90' \
+  -X DELETE \
+  'https://metrics-api.librato.com/v1/metrics'
+```
+
+>Response Code
+
+```
+204 No Content OR 202 Accepted
+```
+
+>Response Headers
+
+```
+Location: <job-checking URI>  # issued only for 202
+```
+
+>Response Body
+
+```
+** NOT APPLICABLE **
+```
+
+Batch-delete a set of metrics. Both the metrics and all of their measurements will be removed. All data deleted will be unrecoverable, so use this with care.
+
+This route accepts either a list of metric names OR a single pattern which includes wilcards (`*`).
+
+If you post measurements to a metric name after deleting the metric, that metric will be re-created as a new metric with measurements starting from that point.
+
+There are two potential success states for this action, either a `204 No Content` (all changes are complete) or a `202 Accepted`.
+
+A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](http://dev.librato.com/v1/jobs) which can be monitored to determine when the operation is complete and if it has been successful.
+
+**NOTE**: If you have attempted to DELETE a metric but it is still in your metric list, ensure that you are not continuing to submit measurements to the metric you are trying to delete.
+
+## Delete Metric by Name
+
+>Definition
+
+```
+DELETE https://metrics-api.librato.com/v1/metrics/:name
+```
+
+>Delete the metric named app_requests.
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X DELETE \
+  'https://metrics-api.librato.com/v1/metrics/app_requests'
+```
+
+>Response Code
+
+```
+204 No Content
+```
+
+>Response Headers
+
+```
+** NOT APPLICABLE **
+```
+
+>Response Body
+
+```
+** NOT APPLICABLE **
+```
+
+Delete the metric identified by :name. This will delete both the metric and all of its measurements.
+
+If you post measurements to a metric name after deleting the metric, that metric will be re-created as a new metric with measurements starting from that point.
+
+If you have attempted to DELETE a metric but it is still in your metric list, ensure that you are not continuing to submit measurements to the metric you are trying to delete.

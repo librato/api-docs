@@ -2,7 +2,6 @@
 title: API Reference
 
 language_tabs:
-  - shell
 
 toc_footers:
   - <a href='http://support.metrics.librato.com/knowledgebase'>Knowledge Base</a>
