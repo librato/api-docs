@@ -14,7 +14,18 @@ includes:
   - time-intervals
   - metric-attributes
   - metrics
-
+  - annotations
+  - alerts
+  - api-tokens
+  - chart-tokens
+  - dashboards
+  - instruments
+  - jobs
+  - services
+  - sources
+  - spaces
+  - users
+  
 search: true
 ---
 

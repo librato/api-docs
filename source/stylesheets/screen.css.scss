@@ -535,7 +535,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #0099e5;
+      color: $nav-link;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
@@ -566,8 +566,12 @@ html, body {
   }
 
   a {
-    color: #0099e5;
+    color: $nav-link;
     text-decoration: none;
+
+    &:hover {
+      color: $nav-link-hover;
+    }
   }
 }
 
