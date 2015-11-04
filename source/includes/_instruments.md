@@ -15,7 +15,7 @@ attributes | The attributes hash configures specific components of an instrument
 
 ### Stream Properties
 
-Instrument streams have the following properties. Many of the stream properties are the same attributes that can be set on individual metrics and they will override the specific metric attributes. See the [metric attributes documentation](http://dev.librato.com/v1/metric-attributes) for more info on what the attributes mean.
+Instrument streams have the following properties. Many of the stream properties are the same attributes that can be set on individual metrics and they will override the specific metric attributes. See the [metric attributes documentation](#metric-attributes) for more info on what the attributes mean.
 
 Property | Definition
 -------- | ----------
@@ -90,7 +90,7 @@ Returns instruments created by the user.
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to instruments, the default value of the `orderby` pagination parameter is `updated_at`, and the permissible values of the `orderby` pagination parameter are: `updated_at`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to instruments, the default value of the `orderby` pagination parameter is `updated_at`, and the permissible values of the `orderby` pagination parameter are: `updated_at`.
 
 ## Retrieve Instrument Details
 

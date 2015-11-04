@@ -59,7 +59,7 @@ Returns all dashboards created by the user.
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to dashboards, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter is `name`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to dashboards, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter is `name`.
 
 Parameter | Definition
 --------- | ----------

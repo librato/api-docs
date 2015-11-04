@@ -8,7 +8,7 @@ The `users` API enables third party IaaS and PaaS vendors to create and manage u
 
 If you are a third-party partner that has the ability to manage your users, then it is easy to access the API as a particular user. Access is provided by swapping the user context of the authentication credentials for each request.
 
-In the API, to operate in the context of one of your users, simply select the email address of the user you would like to access as the user field of the [authentication](http://dev.librato.com/v1/metrics-authentication) credentials. For the token credential, use the API token of your assigned partner admin user account.
+In the API, to operate in the context of one of your users, simply select the email address of the user you would like to access as the user field of the [authentication](#authentication) credentials. For the token credential, use the API token of your assigned partner admin user account.
 
 ### User Properties
 
@@ -96,7 +96,7 @@ Returns all users managed by the partner.
 
 ### Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`. 
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`. 
 
 Parameter | Definition
 ----------| ----------

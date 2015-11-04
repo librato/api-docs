@@ -2,7 +2,7 @@
 
 Each metric instance can be configured past the basic name and description through a set of key/values pairs called attributes. These display attributes are particularly useful for configuring the metric visualization. The attributes described below are supported across all metric types.
 
-Each metric supports a top-level parameter on [PUT operations](http://dev.librato.com/v1/put/metrics/:name) named attributes that comprises a set of key/value pairs.
+Each metric supports a top-level parameter on [PUT operations](#update-metric-by-name) named attributes that comprises a set of key/value pairs.
 
 The following sections list the available metric attributes.
 

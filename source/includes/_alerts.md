@@ -45,7 +45,7 @@ Additional properties for the above alert condition type:
 Alert Property | Definition
 -------------- | ----------
 threshold | float: measurements over this number will fire the alert. (Required)
-summary_function | string: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property summary_function](http://dev.librato.com/v1/instruments) for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
+summary_function | string: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property summary_function](#instruments) for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be above the threshold for before the condition is met. All data points within the given duration must be above the threshold to meet this condition. This avoids a single spike from triggering the condition. <br><br>If unset, a single sample above the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
 detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
 
@@ -158,7 +158,7 @@ curl \
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to alerts, the default value of the `orderby` pagination parameter is `updated_at`, and the permissible values of the `orderby` pagination parameter are: `updated_at`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to alerts, the default value of the `orderby` pagination parameter is `updated_at`, and the permissible values of the `orderby` pagination parameter are: `updated_at`.
 
 ### Other Parameters
 
@@ -312,7 +312,7 @@ Parameter | Definition
 name | A unique name used to identify the alert. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-'. Dotted decimal notation (e.g. *production.web.frontend.responsetime*) is recommended.
 version | Identifies the alert as v1 or v2. For v2 alerts this must be submitted as '2'.
 conditions | An array of conditions hashes (properties described in alert conditions).
-services | An array of [services](http://dev.librato.com/v1/services) to notify for this alert (sent as list of IDs).
+services | An array of [services](#services) to notify for this alert (sent as list of IDs).
 
 ### Optional Parameters
 
@@ -325,7 +325,7 @@ rearm_seconds | Specifies the minimum amount of time between sending alert notif
 
 ### Alert Conditions & Attributes
 
-See details in the [alert overview](http://dev.librato.com/v1/alerts).
+See details in the [alert overview](#alerts).
 
 ## Associate Service with an Alert
 
@@ -377,7 +377,7 @@ For JSON:
 
 ### Parameters
 
-This route excepts a single parameter `service` that should be set to the ID of the [service](http://dev.librato.com/v1/services) to associate with this alert.
+This route excepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
 ## Update Alert
 
@@ -449,7 +449,7 @@ rearm_seconds | Specifies the minimum amount of time between sending alert notif
 
 ### Alert Conditions & Attributes
 
-See details in the [alert overview](http://dev.librato.com/v1/alerts).
+See details in the [alert overview](#alerts).
 
 ## Delete Alert
 

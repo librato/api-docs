@@ -2,7 +2,7 @@
 
 ## Overview
 
-API Tokens are used for authenticating with the API. They are used in combination with your normal login as part of a standard HTTP Basic Auth payload. See [Authentication](http://dev.librato.com/v1/metrics-authentication) for more details on how to authenticate to the API with a token.
+API Tokens are used for authenticating with the API. They are used in combination with your normal login as part of a standard HTTP Basic Auth payload. See [Authentication](#authentication) for more details on how to authenticate to the API with a token.
 
 You may have as many API Tokens as you like to help limit your exposure to single compromised token. If you happen to accidentally lose control of a token by emailing it or pasting it on a website, it is convenient to deactivate or delete that token, rendering it inoperable for authentication, without interfering with the operation of other agents or clients using other tokens. We recommend having as many API Tokens as is convenient for each client or group of clients to have their own.
 

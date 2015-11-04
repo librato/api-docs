@@ -49,6 +49,6 @@ Example:
 curl -u <user email>:<partner admin token> https://metrics-api.librato.com/v1/metrics
 ```
 
-To administrate a user account created via the [partner API](/v1/users), select the user's email address and use your partner admin user's token as the API token. 
+To administrate a user account created via the [partner API](#users), select the user's email address and use your partner admin user's token as the API token. 
 
-See the [Managing Users section](/v1/users) of the partner API for more information.
+See the [Managing Users section](#users) of the partner API for more information.

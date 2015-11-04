@@ -22,7 +22,7 @@ name | Each metric has a name that is unique to its class of metrics e.g. a gaug
 period | The `period` of a metric is an integer value that describes (in seconds) the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics.
 description | The description of a metric is a string and may contain spaces. The description can be used to explain precisely what a metric is measuring, but is not required. This attribute is not currently exposed in the Librato UI.
 display_name | More descriptive name of the metric which will be used in views on the Metrics website. Allows more characters than the metric `name`, including spaces, parentheses, colons and more.
-attributes | The [attributes hash](http://dev.librato.com/v1/metric-attributes) configures specific components of a metric's visualization.
+attributes | The [attributes hash](#metric-attributes) configures specific components of a metric's visualization.
 
 ### Measurement Properties
 
@@ -232,7 +232,7 @@ curl \
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to metrics, the default and only permissible value of the `orderby` pagination parameter is `name`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to metrics, the default and only permissible value of the `orderby` pagination parameter is `name`.
 
 `name`: A search parameter that limits the results to metrics whose names contain a matching substring. The search is not case-sensitive.
 
@@ -240,7 +240,7 @@ The response is paginated, so the request supports our generic [Pagination Param
 
 This route will also execute a [composite metric query](http://support.metrics.librato.com/knowledgebase/articles/337431-composite-metrics-language-specification) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
 
-`compose`: A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](http://dev.librato.com/v1/time-intervals) parameters. 
+`compose`: A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters. 
 
 **NOTE**: `start_time` and `resolution` are required. The `end_time` parameter is optional. The `count` parameter is currently ignored. When specified, the response is a composite metric query response.
 
@@ -511,13 +511,13 @@ Returns information for a specific metric. If time interval search parameters ar
 
 ### Measurement Search Parameters
 
-If optional [time interval search parameters](http://dev.librato.com/v1/time-intervals) are specified, the response includes the set of metric measurements covered by the time interval. Measurements are listed by their originating source name if one was specified when the measurement was created. All measurements that were created without an explicit source name are listed with the source name `unassigned`.
+If optional [time interval search parameters](#time-intervals) are specified, the response includes the set of metric measurements covered by the time interval. Measurements are listed by their originating source name if one was specified when the measurement was created. All measurements that were created without an explicit source name are listed with the source name `unassigned`.
 
 Search Parameter | Definition
 ----------------- | ----------
 source | If `source` is specified, the response is limited to measurements from the given source name or pattern.
 sources | If `sources` is specified, the response is limited to measurements from those sources. The sources parameter should be specified as an array of source names. The response is limited to the set of sources specified in the array.
-summarize_time | If `summarize_time` is specified, then the individual measurements over the covered time period will be aggregated into a single summarized record for each source. In this case, the measurements array for each source will contain a single summarized record. <br><br>The `measure_time` in each of the summarized measurements will be set to the first `measure_time` in the period covered by the [time interval search parameters](http://dev.librato.com/v1/time-intervals). <br><br>If the metric is a counter, then the summarized record will be a gauge that represents the summarization of the deltas of the counter values for each source.
+summarize_time | If `summarize_time` is specified, then the individual measurements over the covered time period will be aggregated into a single summarized record for each source. In this case, the measurements array for each source will contain a single summarized record. <br><br>The `measure_time` in each of the summarized measurements will be set to the first `measure_time` in the period covered by the [time interval search parameters](#time-intervals). <br><br>If the metric is a counter, then the summarized record will be a gauge that represents the summarization of the deltas of the counter values for each source.
 summarize_sources | If `summarize_sources` is specified, a source name `all` is included in the list of measurements. This special source name will include all measurements summarized across all the sources for each point in time. For each unique point in time within the covered time interval search, there will be a single record in the `all` measurements list. <br><br>If multiple sources published a measurement at the same time, the record in the `all` list will be a summarized record of all the individual source measurements at that point in time. If combined with the `summarize_time` parameter, then the `all` list will be summarized across sources and across time, implying it will be a list with a single record. <br><br>If the metric is a counter, then the summarized record will be a gauge that represents the summarization of the deltas of the counter values for each source.
 breakout_sources | When `summarize_sources` is specified with multiple sources (and the `all` series is generated) by default the individual source series are also included in the response. Setting `breakout_sources` to `false` will reduce the response to only the `all` series. This reduces resource consumption when the individual series are not needed.
 group_by | When querying a gauge and specifying multiple sources with the `sources` parameter the `group_by` parameter optionally specifies a statistical function used to generate an aggregated time series across sources identifed in the response with the special source name `all`. The acceptable values for `group_by` are: `min`, `max`, `mean`, `sum`, `count`. <br><br>Each entry in the `all` series contains a set of summary statistics, each of which represents the result of applying the `group_by` function across that summary statistic in the corresponding entry in each the individual sources. For example when `group_by` is set to `max`, each entry in the `all` series specifies the minimum of the maximums as `min`, the maximum of the maxiums as `max`, the maximum of the sums as `sum`, etc. <br><br>Regardless of the function specified for `group_by` each entry in `all` also includes a field named `summarized` that communicates how many individual source series were grouped at that point in time and a field named `count` that contains the total number of samples aggregated across all sources at that point in time. <br><br>Setting the `group_by` option implies both `summarize_sources=true` (required) and `breakout_sources=false` (can be optionally overridden).
@@ -660,7 +660,7 @@ Parameter | Definition
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-_'. Depending on the submission format the location of the name parameter may vary, see examples below in "Measurement Formats". The metric namespace is case insensitive.
 value | The numeric value of a single measured sample.
 measure_time | (optional) The integer value of the [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) of the measurement. If not specified will default to time the measurement is received.
-source | (optional) A string which describes the originating source of a measurement when that measurement is tracked across multiple members of a population. Examples: foo.bar.com, user-123, 77025. <br><br>Sources must be composed of 'A-Za-z0-9.:-_' and can be up to 255 characters in length. The word all is reserved and cannot be used as user source. The source namespace is case insensitive. <br><br>`source` and `measure_time` can also be specified as a parameters outside of the `gauges` and `counters` measurement hashes. In this case the given `source` and `measure_time` values will be applied to all values submitted unless those measurements have another `source` or `measure_time` specified in their sub-hashes. <br><br>**NOTE**: The [optional parameters](http://dev.librato.com/v1/put/metrics/:name) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
+source | (optional) A string which describes the originating source of a measurement when that measurement is tracked across multiple members of a population. Examples: foo.bar.com, user-123, 77025. <br><br>Sources must be composed of 'A-Za-z0-9.:-_' and can be up to 255 characters in length. The word all is reserved and cannot be used as user source. The source namespace is case insensitive. <br><br>`source` and `measure_time` can also be specified as a parameters outside of the `gauges` and `counters` measurement hashes. In this case the given `source` and `measure_time` values will be applied to all values submitted unless those measurements have another `source` or `measure_time` specified in their sub-hashes. <br><br>**NOTE**: The [optional parameters](#update-metric-by-name) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
 
 ### Gauge Specific Parameters
 
@@ -721,7 +721,7 @@ Location: <job-checking URI>  # issued only for 202
 ** NOT APPLICABLE **
 ```
 
-Update the [properties](http://dev.librato.com/v1/metrics#metric_properties) and/or [attributes](http://dev.librato.com/v1/metric-attributes) of a set of metrics at the same time.
+Update the [properties](http://dev.librato.com/v1/metrics#metric_properties) and/or [attributes](#metric-attributes) of a set of metrics at the same time.
 
 This route accepts either a list of metric names OR a single pattern which includes wildcards (`*`).
 
@@ -729,7 +729,7 @@ If attributes are included which are specific to gauge metrics and the set of me
 
 There are two potential success states for this action, either a `204 No Content` (all changes are complete) or a `202 Accepted`.
 
-A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](http://dev.librato.com/v1/jobs) which can be monitored to determine when the operation is complete and if it has been successful.
+A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
 ### Headers
 
@@ -817,7 +817,7 @@ Location: /v1/metrics/queue_len
 
 Updates or creates the metric identified by `name`. If the metric already exists, it performs an update of the metric's properties.
 
-If the metric name does not exist, then the metric will be created with the associated properties. Normally metrics are created the first time a measurement is sent to the [collated POST route](http://dev.librato.com/v1/post/metrics), after which their properties can be updated with this route. However, sometimes it is useful to set the metric properties before the metric has received any measurements so this will create the metric if it does not exist. The property `type` must be set if the metric is to be created.
+If the metric name does not exist, then the metric will be created with the associated properties. Normally metrics are created the first time a measurement is sent to the [collated POST route](#submit-metrics), after which their properties can be updated with this route. However, sometimes it is useful to set the metric properties before the metric has received any measurements so this will create the metric if it does not exist. The property `type` must be set if the metric is to be created.
 
 Creating Persisted Composite Metrics
 
@@ -900,7 +900,7 @@ If you post measurements to a metric name after deleting the metric, that metric
 
 There are two potential success states for this action, either a `204 No Content` (all changes are complete) or a `202 Accepted`.
 
-A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](http://dev.librato.com/v1/jobs) which can be monitored to determine when the operation is complete and if it has been successful.
+A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
 **NOTE**: If you have attempted to DELETE a metric but it is still in your metric list, ensure that you are not continuing to submit measurements to the metric you are trying to delete.
 

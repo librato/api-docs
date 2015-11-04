@@ -30,7 +30,7 @@ id | Each annotation event has a unique numeric ID.
 title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. `v45 Deployment`. The title is a required parameter to create an annotation.
 source | A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
 description | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
-links | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation. See the [link documentation](http://dev.librato.com/v1/post/annotations/:name/:id/links) for details on available parameters.
+links | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation. See the [link documentation](#add-link-to-annotation-event) for details on available parameters.
 start_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
 end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
 
@@ -106,7 +106,7 @@ curl \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
 ```
 
->Specifying a set of [time interval search parameters](http://dev.librato.com/v1/time-intervals) will return a list of all annotation events for a stream. For example, to return the set of annotation events on the annotation stream blog-posts between two timestamps and limited to sources `db1.acme` and `db2.acme`:
+>Specifying a set of [time interval search parameters](#time-intervals) will return a list of all annotation events for a stream. For example, to return the set of annotation events on the annotation stream blog-posts between two timestamps and limited to sources `db1.acme` and `db2.acme`:
 
 ```shell
 curl \
@@ -191,13 +191,13 @@ curl \
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to annotation streams, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter are: `name`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to annotation streams, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter are: `name`.
 
 ### Return a list of annotations associated with given stream name.
 
 ### Annotation Search Parameters
 
-If optional [time interval search parameters](http://dev.librato.com/v1/time-intervals) are specified, the response includes the set of annotation events with start times that are covered by the time interval. Annotation events are always returned in order by their start times.
+If optional [time interval search parameters](#time-intervals) are specified, the response includes the set of annotation events with start times that are covered by the time interval. Annotation events are always returned in order by their start times.
 
 Annotation events are grouped by their originating source name if one was specified when the annotation event was created. All annotation events that were created without an explicit source name are listed with the source name `unassigned`.
 

@@ -72,7 +72,7 @@ Returns all sources created by the user.
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to sources, the default value of the `orderby` pagination parameter is name, and the permissible values of the `orderby` pagination parameter are: `name`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to sources, the default value of the `orderby` pagination parameter is name, and the permissible values of the `orderby` pagination parameter are: `name`.
 
 Parameter | Definition
 --------- | ----------
@@ -186,7 +186,7 @@ Location: /v1/sources/foo.bar.com
 
 Updates or creates the source identified by `:name`. If the source already exists, it performs an update of the source's properties.
 
-If the source name does not exist, then the source will be created with the associated properties. Typically sources are created the first time a measurement with that name set as the source value is sent to the [collated POST route](http://dev.librato.com/v1/post/metrics).
+If the source name does not exist, then the source will be created with the associated properties. Typically sources are created the first time a measurement with that name set as the source value is sent to the [collated POST route](#submit-metrics).
 
 
 ### Headers

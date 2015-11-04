@@ -81,8 +81,8 @@ Job which has completed successfully:
 }
 ```
 
-Returns information for a specific [job](http://dev.librato.com/v1/jobs). All jobs will return their `id` and `state`. Some jobs may also return one or more [optional properties](http://dev.librato.com/v1/jobs).
+Returns information for a specific [job](http://dev.librato.com/v1/jobs). All jobs will return their `id` and `state`. Some jobs may also return one or more [optional properties](#jobs).
 
 ### About Jobs
 
-Jobs are spawned by other resources in the Librato API when an operation will take longer to complete than is allowed by a single request-response cycle. [Read more...](http://dev.librato.com/v1/jobs)
+Jobs are spawned by other resources in the Librato API when an operation will take longer to complete than is allowed by a single request-response cycle.

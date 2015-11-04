@@ -86,7 +86,7 @@ Returns all services created by the user.
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to services, the default value of the `orderby` pagination parameter is `title`, and the permissible values of the `orderby` pagination parameter are: `title` and `updated_at`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to services, the default value of the `orderby` pagination parameter is `title`, and the permissible values of the `orderby` pagination parameter are: `title` and `updated_at`.
 
 ## Retrieve Specific Service
 

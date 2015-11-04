@@ -2,7 +2,7 @@
 
 ## Overview
 
-Chart tokens allow you to make graphs for selected resources viewable to the public. Accessing a graph resource via a chart token does not require [authentication](http://dev.librato.com/v1/metrics-authentication). You may create chart tokens for [Instruments](http://dev.librato.com/v1/instruments) and Dashboards.
+Chart tokens allow you to make graphs for selected resources viewable to the public. Accessing a graph resource via a chart token does not require [authentication](http://dev.librato.com/v1/metrics-authentication). You may create chart tokens for [Instruments](#instruments) and Dashboards.
 
 **NOTE**: Chart tokens do not apply to Spaces.
 
@@ -80,7 +80,7 @@ curl \
 
 ### Pagination Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](http://dev.librato.com/v1/pagination). Specific to chart tokens, the default and only permissible value of the `orderby` pagination parameter is `token`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to chart tokens, the default and only permissible value of the `orderby` pagination parameter is `token`.
 
 Parameter | Definition
 --------- | ----------

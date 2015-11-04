@@ -1,6 +1,6 @@
 # Time Intervals
 
-Librato tracks and stores several different types of measurements as time-series data. Each measurement corresponds to a particular point in time. Queries are typically made to request the values over some time interval that is a subset of the entire series e.g. the last hour, last Monday, etc. The search parameters described below may be used in different combinations to specify a time interval when making queries against [metrics](http://dev.librato.com/v1/metrics).
+Librato tracks and stores several different types of measurements as time-series data. Each measurement corresponds to a particular point in time. Queries are typically made to request the values over some time interval that is a subset of the entire series e.g. the last hour, last Monday, etc. The search parameters described below may be used in different combinations to specify a time interval when making queries against [metrics](#metrics).
 
 ## Request Parameters
 
