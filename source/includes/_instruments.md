@@ -164,7 +164,7 @@ POST https://metrics-api.librato.com/v1/instruments
 
 >Create an instrument named `Server Temperature` which will display the internal server temperature (metric=`server_temp`) for application server 1 (source=`app1`) in the same graph as the average external temperature in the datacenter for all sources (source=`*`) and a 'dynamic source' to be specified by the user after the graph has loaded, or on the URL. (source=`%`). The literal `%` needs to be % encoded for it to be handled properly, hence `%25`.
 
-```json
+```shell
 curl \
   -u <user>:<token> \
   -d 'name=Server Temperature' \
