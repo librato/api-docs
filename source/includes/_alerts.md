@@ -47,12 +47,21 @@ Alert Property | Definition
 threshold | float: measurements over this number will fire the alert. (Required)
 summary_function | string: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property summary_function](http://dev.librato.com/v1/instruments) for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be above the threshold for before the condition is met. All data points within the given duration must be above the threshold to meet this condition. This avoids a single spike from triggering the condition. <br><br>If unset, a single sample above the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
-detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative". <br><br>Additional properties for the absent alert condition type:
-duration | *integer*: How many seconds data for the specified metric/source combination must not be missing before the condition is met. This will only trigger for a given metric/source combination after a measurement has been seen at least once. Must be >= 60 seconds and <= 3600 seconds. (Required) <br><br>Additional properties for the below alert condition type:
+detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
+
+Additional properties for the absent alert condition type:
+
+Alert Property | Definition
+-------------- | ----------
+duration | *integer*: How many seconds data for the specified metric/source combination must not be missing before the condition is met. This will only trigger for a given metric/source combination after a measurement has been seen at least once. Must be >= 60 seconds and <= 3600 seconds. (Required)
+
+Additional properties for the below alert condition type:
+
+Alert Property | Definition
+-------------- | ----------
 threshold | *float*: measurements below this number will fire the alert. (Required)
 summary_function | *string*: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See Instrument Stream Property summary_function for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be below the threshold for before the condition is met. All data points within the given duration must be below the threshold to meet this condition. This avoids a single drop from triggering the condition. <br><br>If unset, a single sample below the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
-detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
 
 ### Alert Attributes
 
@@ -477,3 +486,43 @@ curl \
 ```
 
 Delete the specified alert.
+
+
+## Delete Alert from :alert_id
+
+
+>Definition
+
+```
+DELETE https://metrics-api.librato.com/v1/alerts/:alert_id/services/:id
+```
+
+>Remove service 209 from alert 123. From then on when alert 123 is triggered, the service 209 will no longer be triggered.
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X DELETE \
+  'https://metrics-api.librato.com/v1/alerts/123/services/209'
+```
+
+>Response Code
+
+```
+204 No Content
+```
+
+>Response Headers
+
+```
+not applicable
+```
+
+>Response Body
+
+```
+not applicable
+```
+
+Remove the service identified by `:id` from the alert identified by `:alert_id`.
