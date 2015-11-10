@@ -220,10 +220,10 @@ Parameter | Definition
 -------- | ----------
 email | A unique email address that identifies the user. It is recommended that you namespace user emails according to a partner associated domain name. For example: `user145@partner-domain.com`. This field is used as the credential for metric collectors, so changes to it should be made with caution as to not break existing collectors.
 reference | A string that can be used to store a reference ID to this user in your partner database. The contents can be any string, but it must be unique for each user created in your partner account. If you do not require a reference, you can simply set this to the unique email address.
-name | (optional) A full name for this user, e.g. `John Smith`.
-company | (optional) Company this user works for.
-country | (optional) Country this user is from. Defaults to `US`.
-time_zone | (optional) The time zone this user is from, e.g. `UTC`.
+name `optional` | A full name for this user, e.g. `John Smith`.
+company `optional` | Company this user works for.
+country `optional` | Country this user is from. Defaults to `US`.
+time_zone `optional` | The time zone this user is from, e.g. `UTC`.
 
 ## Update a User
 

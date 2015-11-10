@@ -14,9 +14,9 @@ Property | Definition
 -------- | ----------
 id | Each job has a unique numeric ID.
 state | Reflects the current status of the job, will be one of `queued`, `working`, `complete` `failed`, or `cancelled`.
-progress | (optional) a floating point number from `0.0-100.0` reflecting how close to completion the job is currently.
-output | (optional) if the job results in output it will be available in this field.
-errors | (optional) if the job results in any errors they will be available in this field.
+progress `optional` | a floating point number from `0.0-100.0` reflecting how close to completion the job is currently.
+output `optional` | if the job results in output it will be available in this field.
+errors `optional` | if the job results in any errors they will be available in this field.
 
 ## Retrieve Job Information
 

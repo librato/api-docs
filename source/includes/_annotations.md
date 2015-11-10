@@ -333,11 +333,11 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. v45 Deployment. The title is a required parameter to create an annotation.
-source | (optional) A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
-description | (optional) The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. Deployed 9b562b2: shipped new feature foo! A description is not required to create an annotation.
-links | (optional) An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation. See the link documentation for details on available parameters.
-start_time | (optional) The unix timestamp indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
-end_time | (optional) The unix timestamp indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
+source `optional` | A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
+description `optional` | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. Deployed 9b562b2: shipped new feature foo! A description is not required to create an annotation.
+links `optional` | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation. See the link documentation for details on available parameters.
+start_time `optional` | The unix timestamp indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
+end_time `optional` | The unix timestamp indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
 
 ## Add Link to Annotation Event
 
@@ -391,7 +391,7 @@ Parameter | Definition
 --------- | ----------
 rel | Defines the relationship of the link. A link's relationship must be unique within a single annotation event.
 href | The link URL.
-label | (optional) A display label for the link.
+label `optional` | A display label for the link.
 
 ## Update Attributes of an Annotation Stream
 
