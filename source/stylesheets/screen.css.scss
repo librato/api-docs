@@ -350,6 +350,10 @@ html, body {
     clear:both;
   }
 
+  &>p {
+    padding: 4px $main-padding;
+  }
+
   h1 {
     @extend %header-font;
     font-size: 30px;
