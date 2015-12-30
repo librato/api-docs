@@ -47,7 +47,7 @@ curl \
 ```
 
 >Response Body
-
+<br><br>
 >All chart tokens (when there are 3 total):
 
 ```json

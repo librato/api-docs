@@ -531,12 +531,14 @@ POST https://metrics-api.librato.com/v1/metrics
 ```
 
 >Measurement Formats
-
+<br><br>
 >The individual gauge and counter measurements can be specified in one of several formats:
-
+<br><br>
 >**Hashed by name**
 
->Each metric name is a hash to the measurement values. For example, for gauges:
+>Each metric name is a hash to the measurement values. 
+<br><br>
+>For example, for gauges:
 
 ```curl
 {
@@ -550,9 +552,9 @@ POST https://metrics-api.librato.com/v1/metrics
 ```
 
 >This example creates a gauge measurement for the gauge login-delay with a value 3.5.
-
->**Multiple measurements with the same name**
-
+<br><br>
+>Multiple measurements with the same name
+<br><br>
 >If you would like to specify two measurements for the same gauge (maybe to specify two different sources), you can specify a name parameter within the measurement that overrides the hash key name. For example:
 
 ```
@@ -573,9 +575,9 @@ POST https://metrics-api.librato.com/v1/metrics
 ```
 
 >This will create two measurements for the gauge login-delay: one with the source foo1.bar.com and a second with foo2.bar.com.
-
+<br><br>
 >Array format (JSON only)
-
+<br><br>
 >If the submission Content-Type is JSON, you can also specify the measurement parameters in an array format. This is only supported in JSON formats since the URL-encoded-form content type does not support an array format. For example, the following JSON message will create the same measurements as the previous example:
 
 ```json
@@ -596,9 +598,9 @@ POST https://metrics-api.librato.com/v1/metrics
 ```
 
 >This creates a total of three new measurements: two counter measurements (conn_servers and write_fails) and one gauge measurement (cpu_temp).
-
+<br><br>
 >The gauge measurement specifies an explicit measure_time and source that overrides the global ones while the counter measurements default to the global measure_time and source.
-
+<br><br>
 >Default measure_time and source:
 
 ```shell

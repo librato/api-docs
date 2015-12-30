@@ -1,6 +1,8 @@
 # Authentication
 
->Example: A user with an email address `example@librato.com` and an API token of `75AFDB82` will use the following curl command:
+>**Example**
+<br><br>
+>A user with an email address `example@librato.com` and an API token of `75AFDB82` will use the following curl command:
 
 ```shell
 curl -u example@librato.com:75AFDB82 https://metrics-api.librato.com/v1/metrics
@@ -41,11 +43,11 @@ https://example%40librato.com:apitoken@metrics-api.librato.com/v1/metrics
 
 You can also include your *user* and *token* credentials in the URL with most clients. 
 
-# Partner Admin Access
+## Partner Admin Access
 
-Example:
-
-```shell
+>**Example**
+<br><br>
+```
 curl -u <user email>:<partner admin token> https://metrics-api.librato.com/v1/metrics
 ```
 

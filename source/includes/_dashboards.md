@@ -157,9 +157,13 @@ For JSON:
 PUT https://metrics-api.librato.com/v1/dashboards/:id
 ```
 
->Example: If we have a dashboard with instruments [42, 7, 16], and we want to swap 42 and 7, remove 16, and add 99.
-
->Submit the instruments field with the new IDs, in the order you want them to appear (using Form-Encoded params)
+>**Example**
+<br><br>
+>If we have a dashboard with instruments [42, 7, 16], and we want to swap 42 and 7, remove 16, and add 99.
+<br><br>
+>Submit the instruments field with the new IDs, in the order you want them to appear
+<br><br>
+>Using Form-Encoded params
 
 ```shell
 curl \

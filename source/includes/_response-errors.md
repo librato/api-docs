@@ -18,8 +18,8 @@ Error Code | Meaning | Definition
 
 ## Error Messages
 
->**Structure**:
-
+>**Structure**
+<br><br>
 >Errors related to parameters are reported based on the attribute the error occurred on.
 
 ```json

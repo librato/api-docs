@@ -4,7 +4,9 @@ Many of the resources accessible through the Metrics REST APIs can contain large
 
 ## Request Parameters
 
->Example: Request which returns the 2nd 10 metrics (would equal to page 2 where each page displays 10 metrics):
+>**Example**
+<br><br>
+>Request which returns the 2nd 10 metrics (would equal to page 2 where each page displays 10 metrics):
 
 ```shell
 curl \
@@ -47,7 +49,9 @@ sort | The sort order in which the results should be ordered. Permissible values
 
 ## Response Parameters
 
->Example: Request to get the third page for the query "api" where each page has a length of 10 metrics.
+>**Example**
+<br><br>
+>Request to get the third page for the query "api" where each page has a length of 10 metrics.
 
 ```shell
 curl \

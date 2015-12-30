@@ -269,9 +269,9 @@ not applicable
 ```
 
 >Response Body
-
->If `password_reset` was not provided, a `204 No Content is returned and the body is empty.
-
+<br><br>
+>If `password_reset` was not provided, a `204 No Content` is returned and the body is empty.
+<br><br>
 >A successful `password_reset` will return a `200 OK` with the new password:
 
 ```curl

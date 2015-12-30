@@ -127,9 +127,9 @@ Returns the current representation of the source identifed by name.
 PUT https://metrics-api.librato.com/v1/sources/:name
 ```
 
->**Example: Updating a Source**
-
->Update the existing source i-d32d61af by setting the display_name to web-frontend-0.
+>**Example**
+<br><br>
+>Update an existing source i-d32d61af by setting the display_name to web-frontend-0.
 
 ```shell
 curl \
@@ -151,9 +151,9 @@ curl \
 ** NOT APPLICABLE **
 ```
 
->**Example: Creating a source***
-
->Creates the source name foo.bar.com (assumes this source does not exist).
+>**Example**
+<br><br>
+>Create a source name foo.bar.com (assumes this source does not exist).
 
 ```shell
 curl \
