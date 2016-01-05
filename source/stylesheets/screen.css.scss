@@ -623,6 +623,10 @@ html, body {
     margin-left: 0;
   }
 
+  .content {
+    color: $main-text;
+  }
+
   #nav-button {
     display: block;
     z-index: 1000;
