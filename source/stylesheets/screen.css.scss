@@ -134,7 +134,7 @@ html, body {
       text-decoration: none;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
       }
     }
   }
@@ -155,7 +155,8 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 2.5em;
+
   }
 
   li {
@@ -163,27 +164,35 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 230ms;
+    border-bottom: 1px solid #E6E6E6;
+    -webkit-font-smoothing: antialiased;
+
   }
 
   // This is the currently selected ToC entry
   .tocify-focus {
-    color: $nav-active-text;
+    color: $librato-yellow;
   }
+
+
 
   // Subheaders are the submenus that slide open
   // in the table of contents.
   .tocify-subheader {
     display: none; // tocify will override this when needed
+
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
       font-size: 13px;
+      font-weight: 100;
     }
   }
 
   .toc-footer {
-    padding: 1em 0;
-    margin-top: 1em;
+    padding: 1.5em 0;
+    margin-top: 1.5em;
     border-top: $side-bar-border;
+    border-bottom: none;
 
     li,a {
       color: $nav-text;
@@ -191,7 +200,7 @@ html, body {
     }
 
     a:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
 
     li {
@@ -217,9 +226,10 @@ html, body {
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
+  margin-top: 100px;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   color: #000;
   text-decoration: none;
   font-weight: bold;
@@ -354,11 +364,12 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 30px;
+    font-size: 2.5em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
+    font-weight: 100;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -612,8 +623,14 @@ html, body {
     margin-left: 0;
   }
 
+  .content {
+    color: $main-text;
+  }
+
+
   #nav-button {
     display: block;
+    z-index: 1000;
   }
 
   .tocify-wrapper .tocify-item > a {
@@ -625,6 +642,10 @@ html, body {
 @media (max-width: $phone-width) {
   .dark-box {
     display: none;
+  }
+
+  .content pre, .content blockquote{
+    color: $main-text;
   }
 
   %left-col {
