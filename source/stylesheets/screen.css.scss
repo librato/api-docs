@@ -226,9 +226,10 @@ html, body {
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
+  margin-top: 100px;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   color: #000;
   text-decoration: none;
   font-weight: bold;
@@ -624,6 +625,7 @@ html, body {
 
   #nav-button {
     display: block;
+    z-index: 1000;
   }
 
   .tocify-wrapper .tocify-item > a {
