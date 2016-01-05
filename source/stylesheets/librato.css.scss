@@ -1,3 +1,5 @@
+@import 'variables';
+
 @font-face {
   font-family: 'Proxima Nova';
   src:font-url('ProximaNova-Reg-webfont.eot');
@@ -16,7 +18,7 @@ header {
 
 a {
   background-color:transparent;
-  color:#337ab7;
+  color: $nav-link;
   text-decoration:none;
 }
 
@@ -68,7 +70,6 @@ a:hover {
 ul {
   margin-top:0;
   margin-bottom:10px;
-  font-family:proxima-nova, sans-serif;
   font-style:normal;
   font-weight:100;
 }
@@ -76,10 +77,10 @@ ul {
 .container {
   margin-right:auto;
   margin-left:auto;
-  padding-left:15px;
-  padding-right:15px;
-  width:970px;
+  padding-left:16px;
+  padding-right:35px;
   max-width:none!important;
+  -webkit-font-smoothing: antialiased;
 }
 
 .btn {
@@ -376,16 +377,27 @@ ul {
 }
 
 .tocify-focus {
-  background-color: rgba(103, 94, 94, 0.22);
+  background-color: $librato-yellow;
+
+  a{
+    color: white;
+  }
+
+
 }
+
+// This is the currently selected ToC entry
+
+
 
 .tocify-wrapper {
   margin-top: 85px;
 }
 
 .content {
-  h1, h2 {
-    display:inline-block;
-    padding-top: 100px;
-  }
+  padding-top:100px;
+  //h1, h2 {
+   // display:inline-block;
+  //  padding-top: 100px;
+ // }
 }
