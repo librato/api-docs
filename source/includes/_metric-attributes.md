@@ -39,6 +39,16 @@ curl \
   https://metrics-api.librato.com/v1/metrics/temperature
 ```
 
+>For `aggregate`, the following example demonstrates how to enable SSA for the metric speed.
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'attributes[aggregate]=true' \
+  -X PUT \
+  https://metrics-api.librato.com/v1/metrics/speed
+  ```
+
 Gauge Attribute | Definition
 --------------- | ----------
 summarize_function | Determines how to calculate values when rolling up from raw values to higher resolution intervals. Must be one of: 'average', 'sum', 'count', 'min', 'max'. If summarize_function is not set the behavior defaults to average.
