@@ -48,7 +48,7 @@ display_integral | Boolean indicating whether do display the integral of each se
 GET https://metrics-api.librato.com/v1/instruments
 ```
 
->Return all instruments owned by the user
+>Example Request: Return all instruments owned by the user
 
 ```shell
 curl \
@@ -100,7 +100,7 @@ The response is paginated, so the request supports our generic [Pagination Param
 GET https://metrics-api.librato.com/v1/instruments/:id
 ```
 
->Return instrument ID 123
+>Example Request: Return instrument ID 123
 
 ```shell
 curl \
@@ -162,7 +162,7 @@ Returns the details of a specific instrument.
 POST https://metrics-api.librato.com/v1/instruments
 ```
 
->Create an instrument named `Server Temperature` which will display the internal server temperature (metric=`server_temp`) for application server 1 (source=`app1`) in the same graph as the average external temperature in the datacenter for all sources (source=`*`) and a 'dynamic source' to be specified by the user after the graph has loaded, or on the URL. (source=`%`). The literal `%` needs to be % encoded for it to be handled properly, hence `%25`.
+>Example Request: Create an instrument named `Server Temperature` which will display the internal server temperature (metric=`server_temp`) for application server 1 (source=`app1`) in the same graph as the average external temperature in the datacenter for all sources (source=`*`) and a 'dynamic source' to be specified by the user after the graph has loaded, or on the URL. (source=`%`). The literal `%` needs to be % encoded for it to be handled properly, hence `%25`.
 
 ```shell
 curl \
@@ -267,7 +267,7 @@ Location: /v1/instruments/123
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -279,7 +279,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -320,7 +320,7 @@ display_integral | Boolean indicating whether do display the integral of each se
 PUT https://metrics-api.librato.com/v1/instruments/:id
 ```
 
->Add a new data stream (metric server_temp from source app3) to an instrument which currently displays server temp for app1 and the average environmental temperature. Instrument streams are always overwritten, so to add a stream you must the entire new list of streams.
+>Example Request: Add a new data stream (metric server_temp from source app3) to an instrument which currently displays server temp for app1 and the average environmental temperature. Instrument streams are always overwritten, so to add a stream you must the entire new list of streams.
 
 ```shell
 curl \
@@ -398,7 +398,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -410,7 +410,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -444,7 +444,7 @@ period | An integer value of seconds that defines the period this stream reports
 DELETE https://metrics-api.librato.com/v1/instruments/:id
 ```
 
->Delete the instrument ID 123
+>Example Request: Delete the instrument ID 123
 
 ```shell
 curl \

@@ -51,7 +51,7 @@ Internally all floating point values are stored in double-precision format. Howe
 GET https://metrics-api.librato.com/v1/metrics
 ```
 
->All metrics:
+>Example Request: All metrics:
 
 ```shell
 curl \
@@ -252,7 +252,7 @@ This route will also execute a [composite metric query](http://support.metrics.l
 GET https://metrics-api.librato.com/v1/metrics/:name
 ```
 
->Return metadata for the metric `cpu_temp`:
+>Example Request: Return metadata for the metric `cpu_temp`:
 
 ```shell
 curl \
@@ -295,7 +295,7 @@ curl \
 }
 ```
 
->Return the metric `cpu_temp` with up to four measurements at resolution 60:
+>Example Request: Return the metric `cpu_temp` with up to four measurements at resolution 60:
 
 ```shell
 curl \
@@ -351,7 +351,7 @@ curl \
 }
 ```
 
->Return the metric `cpu_temp` with measurements from the source `server*`:
+>Example Request: Return the metric `cpu_temp` with measurements from the source `server*`:
 
 ```shell
 curl \
@@ -429,7 +429,7 @@ curl \
 }
 ```
 
->Return the metric `cpu_temp` with measurements from an array of sources, including server1.acme.com or server2.acme.com:
+>Example Request: Return the metric `cpu_temp` with measurements from an array of sources, including server1.acme.com or server2.acme.com:
 
 ```shell
 curl \
@@ -530,77 +530,12 @@ group_by | When querying a gauge and specifying multiple sources with the `sourc
 POST https://metrics-api.librato.com/v1/metrics
 ```
 
->Measurement Formats
-<br><br>
->The individual gauge and counter measurements can be specified in one of several formats:
-<br><br>
->**Hashed by name**
-
->Each metric name is a hash to the measurement values. 
-<br><br>
->For example, for gauges:
-
-```curl
-{
-  "gauges": {
-    "login-delay": {
-      "value": 3.5,
-      "source": "foo.bar.com"
-    }
-  }
-}
-```
-
->This example creates a gauge measurement for the gauge login-delay with a value 3.5.
-<br><br>
->Multiple measurements with the same name
-<br><br>
->If you would like to specify two measurements for the same gauge (maybe to specify two different sources), you can specify a name parameter within the measurement that overrides the hash key name. For example:
-
-```
-{
-  "gauges": {
-    "0": {
-      "name": "login-delay",
-      "value": 3.5,
-      "source": "foo1.bar.com"
-    },
-    "1": {
-      "name": "login-delay",
-      "value": 2.6,
-      "source": "foo2.bar.com"
-    }
-  }
-}
-```
-
->This will create two measurements for the gauge login-delay: one with the source foo1.bar.com and a second with foo2.bar.com.
-<br><br>
->Array format (JSON only)
-<br><br>
->If the submission Content-Type is JSON, you can also specify the measurement parameters in an array format. This is only supported in JSON formats since the URL-encoded-form content type does not support an array format. For example, the following JSON message will create the same measurements as the previous example:
-
-```json
-{
-  "gauges": [
-    {
-      "name": "login-delay",
-      "value": 3.5,
-      "source": "foo1.bar.com"
-    },
-    {
-      "name": "login-delay",
-      "value": 2.6,
-      "source": "foo2.bar.com"
-    }
-  ]
-}
-```
+>Example Request
 
 >This creates a total of three new measurements: two counter measurements (conn_servers and write_fails) and one gauge measurement (cpu_temp).
-<br><br>
+
 >The gauge measurement specifies an explicit measure_time and source that overrides the global ones while the counter measurements default to the global measure_time and source.
-<br><br>
+
 >Default measure_time and source:
 
 ```shell
@@ -639,7 +574,7 @@ For each counter and gauge measurement in the request, a new measurement is crea
 For truly large numbers of measurements (e.g. 20 metrics x 500 sources) we suggest batching into multiple concurrent requests. Currently a POST with ~300 distinct measurements takes roughly 600ms, so we recommend this as an initial guideline for a cap on request size. As we continue to tune the system this suggested cap will be updated.
 
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -676,6 +611,76 @@ max | If `count` was set, `max` can be used to report the largest individual mea
 min | If `count` was set, `min` can be used to report the smallest individual measurement amongst the averaged set.
 sum_squares | If `count` was set, `sum_squares` report the summation of the squared individual measurements. If `sum_squares` is set, a standard deviation can be calculated for the recorded metric measurement.
 
+### Measurement Formats
+
+The individual gauge and counter measurements can be specified in one of several formats:
+
+### Hashed by name
+
+>Gauges Example:
+
+```curl
+{
+  "gauges": {
+    "login-delay": {
+      "value": 3.5,
+      "source": "foo.bar.com"
+    }
+  }
+}
+```
+
+Each metric name is a hash to the measurement values. 
+
+The example on the right creates a gauge measurement for the gauge login-delay with a value 3.5.
+
+### Multiple measurements with the same name
+
+>For example:
+
+```curl
+{
+  "gauges": {
+    "0": {
+      "name": "login-delay",
+      "value": 3.5,
+      "source": "foo1.bar.com"
+    },
+    "1": {
+      "name": "login-delay",
+      "value": 2.6,
+      "source": "foo2.bar.com"
+    }
+  }
+}
+```
+
+If you would like to specify two measurements for the same gauge (maybe to specify two different sources), you can specify a name parameter within the measurement that overrides the hash key name.
+
+### Array format (JSON only)
+
+>For example, the following JSON message will create the same measurements as the previous example:
+
+```json
+{
+  "gauges": [
+    {
+      "name": "login-delay",
+      "value": 3.5,
+      "source": "foo1.bar.com"
+    },
+    {
+      "name": "login-delay",
+      "value": 2.6,
+      "source": "foo2.bar.com"
+    }
+  ]
+}
+```
+
+If the submission Content-Type is JSON, you can also specify the measurement parameters in an array format. This is only supported in JSON formats since the URL-encoded-form content type does not support an array format.
+
+The example to the right will create two measurements for the gauge login-delay: one with the source foo1.bar.com and a second with foo2.bar.com.
 
 ## Update Metric
 
@@ -733,7 +738,7 @@ There are two potential success states for this action, either a `204 No Content
 
 A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -825,7 +830,7 @@ Creating Persisted Composite Metrics
 
 With this route you can also create and update persisted [composite metrics](http://support.metrics.librato.com/knowledgebase/articles/337431-composite-metrics-language-specification). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 

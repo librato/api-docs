@@ -15,13 +15,15 @@ token | A long random string of characters to be used as the "password" segment 
 active | A true/false value indicating the ability of a Token to be used for authentication. Attempting to authenticate using a token that has active set to false will result in a 401 response.
 role | The name of the role that encapsulates the permissions this token has. Must be one of: "admin", "recorder", or "viewer". See the [Knowledge Base Article](http://support.metrics.librato.com/knowledgebase/articles/174446-api-token-role-permissions) for more details.
 
-## Return API Tokens
+## Retrieve All API Tokens
 
 >Definition
 
 ```
 GET https://metrics-api.librato.com/v1/api_tokens
 ```
+
+>Example Request
 
 ```shell
 curl \
@@ -79,6 +81,52 @@ curl \
 }
 ```
 
+## Retrieve Specific API Token
+
+>Definition
+
+```
+GET https://metrics-api.librato.com/v1/api_tokens/:id
+```
+
+>Example Request
+
+```curl
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/api_tokens/28'
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Headers
+
+```
+** NOT APPLICABLE **
+```
+
+>Response Body
+
+```json
+{
+  "name": "My New Token",
+  "token": "24f9fb2134399595b91da1dcac39cb6eafc68a07fa08ad3d70892b7aad10e1cf",
+  "active": true,
+  "role": "admin",
+  "href": "http://api.librato.dev/v1/api_tokens/28",
+  "created_at": "2013-02-01 18:53:38 UTC",
+  "updated_at": "2013-02-01 18:53:38 UTC"
+}
+```
+
+Returns the details for a specific API Token
+
 ## Create Api Token
 
 >Definition
@@ -87,9 +135,7 @@ curl \
 POST https://metrics-api.librato.com/v1/api_tokens
 ```
 
->Create a new API Token
-
->Using Form-Encoded params
+>Example Request: Create a new API Token
 
 ```shell
 curl \
@@ -134,7 +180,7 @@ Location: /v1/api_tokens/28
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -154,7 +200,7 @@ For JSON:
 PUT https://metrics-api.librato.com/v1/api_tokens/:id
 ```
 
->Using Form-Encoded params
+>Example Request
 
 ```shell
 curl \
@@ -202,7 +248,7 @@ curl \
 
 Modify an API Token, such as changing the name, or flagging as active/inactive.
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -222,7 +268,7 @@ For JSON:
 DELETE https://metrics-api.librato.com/v1/api_tokens/:id
 ```
 
->Delete the API Token with ID 28
+>Example Request: Delete the API Token with ID 28
 
 ```shell
 curl \

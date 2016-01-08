@@ -21,14 +21,18 @@ display_transform | A linear formula that is run on each measurement prior to vi
 
 ## Gauge-only attributes
 
->For `summarize_funtion`, if the values of the measurements to be rolled up are: `2`, `10`, `5`:
-<br><br>
+>Example Request: For `summarize_funtion`, if the values of the measurements to be rolled up are: `2`, `10`, `5`:
+
 >average: `5.67`
+<br>
 >sum: `17`
+<br>
 >count: `3`
+<br>
 >min: `2`
+<br>
 >max: `10`
-<br><br>
+
 >The following example demonstrates how to set the metric attribute `display_max` on the metric temperature.
 
 ```shell

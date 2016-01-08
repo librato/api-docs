@@ -551,7 +551,7 @@ html, body {
   pre, blockquote {
     color: #fff;
     margin: 0;
-    padding: 2em $main-padding .2em 45px;
+    padding: 0 $main-padding .2em 45px;
     width: $examples-width;
 
     float:right;
@@ -590,7 +590,7 @@ html, body {
   blockquote {
     &>p {
       background-color: transparent;
-      padding: 1rem 0;
+      padding: .5rem 0;
     }
   }
 

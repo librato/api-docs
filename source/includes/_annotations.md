@@ -42,7 +42,7 @@ end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicati
 GET https://metrics-api.librato.com/v1/annotations
 ```
 
->All annotation streams:
+>Example Request: All annotation streams:
 
 ```shell
 curl \
@@ -94,9 +94,15 @@ curl \
 }
 ```
 
-### Return a list of annotation streams.
+Return a list of annotation streams.
 
->Return details of the annotation stream name api-deploys.
+### Pagination Parameters
+
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to annotation streams, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter are: `name`.
+
+## Retrieve Annotations by Name
+
+>Example Request: Return details of the annotation stream name api-deploys.
 
 ```shell
 curl \
@@ -189,11 +195,7 @@ curl \
 }
 ```
 
-### Pagination Parameters
-
-The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to annotation streams, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter are: `name`.
-
-### Return a list of annotations associated with given stream name.
+Return a list of annotations associated with given stream name.
 
 ### Annotation Search Parameters
 
@@ -207,7 +209,7 @@ Search Parameter | Definition
 ---------------- | ----------
 sources | An array of source names to limit the search to. Can include source name wildcards like `db-*` to show annotations from all db sources.
 
-### Lookup an annotation event.
+## Retrieve Annotation Event
 
 >Definition
 
@@ -215,7 +217,7 @@ sources | An array of source names to limit the search to. Can include source na
 GET https://metrics-api.librato.com/v1/annotations/:name/:id
 ```
 
->Lookup the annotation event 189 in the annotation stream api-deploys:
+>Example Request: Lookup the annotation event 189 in the annotation stream api-deploys
 
 ```shell
 curl \
@@ -270,7 +272,7 @@ curl \
 POST https://metrics-api.librato.com/v1/annotations/:name
 ```
 
->Create an annotation event in the app-deploys stream:
+>Example Request: Create an annotation event in the app-deploys stream
 
 ```shell
 curl \
@@ -318,7 +320,7 @@ Location: /v1/annotations/api-deploys/123
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -341,7 +343,7 @@ end_time `optional` | The unix timestamp indicating the the time at which the ev
 
 ## Add Link to Annotation Event
 
->Add a link to github to the annotation event 198 in the *app-deploys* stream:
+>Example Request: Add a link to github to the annotation event 198 in the *app-deploys* stream:
 
 ```shell
 curl \
@@ -373,7 +375,7 @@ Location: /v1/annotations/app-deploys/198/links/github
 }
 ```
 
-#### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -385,7 +387,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -401,7 +403,7 @@ label `optional` | A display label for the link.
 PUT https://metrics-api.librato.com/v1/annotations/:name
 ```
 
->Update the display name of the annotation stream api-deploys:
+>Example Request: Update the display name of the annotation stream api-deploys:
 
 ```shell
 curl \
@@ -429,7 +431,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-#### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -441,7 +443,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -455,7 +457,7 @@ display_name | Name used to display the annotation stream.
 PUT https://metrics-api.librato.com/v1/annotations/:name/:id
 ```
 
->Update the description of the annotation 143 in the stream `app-deploys`:
+>Example Request: Update the description of the annotation 143 in the stream `app-deploys`:
 
 ```shell
 curl \
@@ -483,7 +485,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-#### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -495,7 +497,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+#### parameters
 
 The following parameters can be updated:
 
@@ -514,7 +516,7 @@ links | An optional list of references to resources associated with the particul
 DELETE https://metrics-api.librato.com/v1/annotations/:name
 ```
 
->Delete the annotation stream api-deploys
+>Example Request: Delete the annotation stream api-deploys
 
 ```shell
 curl \
@@ -552,7 +554,7 @@ This will delete all annotation events associated with the stream.
 DELETE https://metrics-api.librato.com/v1/annotations/:name/:id
 ```
 
->Delete the annotation event 123 in the annotation stream app-deploys:
+>Example Request: Delete the annotation event 123 in the annotation stream app-deploys:
 
 ```shell
 curl \
@@ -588,7 +590,7 @@ curl \
 DELETE https://metrics-api.librato.com/v1/annotations/:name/:id/links/:link
 ```
 
->Delete the link with the relationship github from the annotation event 189 in the annotation stream app-deploys.
+>Example Request: Delete the link with the relationship github from the annotation event 189 in the annotation stream app-deploys.
 
 ```shell
 curl \

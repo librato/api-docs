@@ -26,7 +26,7 @@ errors `optional` | if the job results in any errors they will be available in t
 GET https://metrics-api.librato.com/v1/jobs/:id
 ```
 
->Check status for job `123456`:
+>Example Request: Check status for job `123456`:
 
 ```shell
 curl \

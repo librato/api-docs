@@ -372,9 +372,17 @@ ul {
   clear:both;
 }
 
-.content h4{
-  color: #B5B5B5;
-  font-size: 14px;
+.content {
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    color: #989898;
+    font-size: 14px;
+  }
 }
 
 .header .navbar-default .navbar-nav .active,.header .navbar-default .navbar-nav li > a:hover {

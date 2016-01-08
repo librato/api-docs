@@ -96,7 +96,7 @@ active | Boolean identifying whether the alert is active (can be triggered). Def
 GET https://metrics-api.librato.com/v1/alerts
 ```
 
-Return all alerts owned by the user with `production` in the name:
+>Example Request: Return all alerts owned by the user with `production` in the name:
 
 ```shell
 curl \
@@ -169,7 +169,7 @@ name | v2 only - A search parameter that limits the results to metrics whose nam
 
 ## Retrieve Specific Alert
 
->Return alert ID 123
+>Example Request: Return alert ID 123
 
 ```shell
 curl \
@@ -226,6 +226,8 @@ curl \
 ```
 POST https://metrics-api.librato.com/v1/alerts
 ```
+
+>Example Request
 
 >Create an alert named production.web.frontend.response_time with one condition which monitors the metric web.nginx.response_time and alerts whenever the value goes over 200.
 
@@ -293,7 +295,7 @@ Location: /v1/alerts/123
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -305,7 +307,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -334,7 +336,8 @@ See details in the [alert overview](#alerts).
 ```
 POST https://metrics-api.librato.com/v1/alerts/:id/services
 ```
->Add the service identified by ID 290 to the alert 45. When alert 45 is triggered, the service 290 will be notified.
+
+>Example Request: Add the service identified by ID 290 to the alert 45. When alert 45 is triggered, the service 290 will be notified.
 
 ```shell
 curl \
@@ -363,7 +366,7 @@ not applicable
 
 Associates a single service with the alert identified by `:alert_id`.
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -375,7 +378,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 This route excepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
@@ -387,7 +390,7 @@ This route excepts a single parameter `service` that should be set to the ID of 
 PUT https://metrics-api.librato.com/v1/alerts/:id
 ```
 
->Update the name of alert ID 123.
+>Example Request: Update the name of alert ID 123.
 
 ```shell
 curl \
@@ -417,7 +420,7 @@ curl \
 
 Update the specified alert.
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -429,7 +432,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -459,7 +462,7 @@ See details in the [alert overview](#alerts).
 DELETE https://metrics-api.librato.com/v1/alerts/:id
 ```
 
->Delete the alert ID 123
+>Example Request: Delete the alert ID 123
 
 ```shell
 curl \
@@ -488,7 +491,7 @@ curl \
 Delete the specified alert.
 
 
-## Delete Alert from :alert_id
+## Remove Service from Alert
 
 
 >Definition
@@ -497,7 +500,7 @@ Delete the specified alert.
 DELETE https://metrics-api.librato.com/v1/alerts/:alert_id/services/:id
 ```
 
->Remove service 209 from alert 123. From then on when alert 123 is triggered, the service 209 will no longer be triggered.
+>Example Request: Remove service 209 from alert 123. From then on when alert 123 is triggered, the service 209 will no longer be triggered.
 
 ```shell
 curl \

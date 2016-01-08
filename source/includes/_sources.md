@@ -127,7 +127,7 @@ Returns the current representation of the source identifed by name.
 PUT https://metrics-api.librato.com/v1/sources/:name
 ```
 
->**Example**
+>Example Request
 <br><br>
 >Update an existing source i-d32d61af by setting the display_name to web-frontend-0.
 
@@ -151,7 +151,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
->**Example**
+>Example Request
 <br><br>
 >Create a source name foo.bar.com (assumes this source does not exist).
 
@@ -189,7 +189,7 @@ Updates or creates the source identified by `:name`. If the source already exist
 If the source name does not exist, then the source will be created with the associated properties. Typically sources are created the first time a measurement with that name set as the source value is sent to the [collated POST route](#submit-metrics).
 
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 

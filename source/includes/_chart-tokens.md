@@ -16,7 +16,7 @@ token | The randomly generated string which is used to identify the chart token.
 entity_type | The type of resource the chart token refers to. This may be either instrument or dashboard.
 entity_id | The ID of the entity that the chart token refers to. This would either be the intrument's or dashboard's ID.
 
-## Return Available Chart Tokens
+## Retrieve Available Chart Tokens
 
 >Definition
 
@@ -24,7 +24,7 @@ entity_id | The ID of the entity that the chart token refers to. This would eith
 GET https://metrics-api.librato.com/v1/charts
 ```
 
->Retrieve all chart tokens
+>Example Request: Retrieve all chart tokens
 
 ```shell
 curl \
@@ -86,7 +86,7 @@ Parameter | Definition
 --------- | ----------
 token | A search parameter that limits the results to counters whose names contain a matching substring. The search is not case-sensitive.
 
-## Return Specific Chart Token
+## Retrieve Specific Chart Token
 
 >Definition
 
@@ -94,7 +94,7 @@ token | A search parameter that limits the results to counters whose names conta
 GET https://metrics-api.librato.com/v1/charts/:token
 ```
 
->Return the chart token with token irhjoz9f
+>Example Request: Return the chart token with token irhjoz9f
 
 ```shell
 curl \
@@ -134,7 +134,7 @@ curl \
 POST https://metrics-api.librato.com/v1/charts
 ```
 
->Create a chart token for the instrument with ID 1848
+>Example Request: Create a chart token for the instrument with ID 1848
 
 ```shell
 curl \
@@ -166,7 +166,7 @@ Location: /v1/charts/irhjoz9f
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -193,7 +193,7 @@ entity_id | The ID of the entity that the chart token refers to. This would eith
 DELETE https://metrics-api.librato.com/v1/charts/:token
 ```
 
->Delete the chart token conrhpsk.
+>Example Request: Delete the chart token conrhpsk.
 
 ```shell
 curl \

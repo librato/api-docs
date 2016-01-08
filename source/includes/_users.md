@@ -94,7 +94,7 @@ curl \
 
 Returns all users managed by the partner.
 
-### Parameters
+#### parameters
 
 The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`. 
 
@@ -202,7 +202,7 @@ Location: /v1/users/123
 
 Create a new Librato user account.
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -280,7 +280,7 @@ not applicable
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -292,7 +292,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------

@@ -176,7 +176,7 @@ Location: /v1/services/145
 }
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 
@@ -188,7 +188,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### parameters
 
 Parameter | Definition
 --------- | ----------
@@ -226,7 +226,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-### Headers
+#### headers
 
 This specifies the format of the data sent to the API.
 

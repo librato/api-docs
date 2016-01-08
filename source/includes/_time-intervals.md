@@ -17,7 +17,7 @@ resolution | A resolution for the response as measured in seconds. If the origin
 
 ## Pagination
 
->**Example**
+>Example Request
 <br><br>
 >If the response includes the following `query` section it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
 
