@@ -1,0 +1,7 @@
+{
+    "name": "librato/api-docs-rewrite",
+    "description": "Librato Docs",
+    "require": {
+        "php": ">=5.3.0",
+    }
+}
