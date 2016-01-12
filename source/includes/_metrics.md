@@ -33,7 +33,7 @@ Property | Definition
 measure_time | The epoch time at which an individual measurement occurred with a maximum resolution of seconds.
 value | The numeric value of an individual measurement. Multiple formats are supported (e.g. integer, floating point, etc) but the value must be numeric.
 source | Source is an optional property that can be used to subdivide a common gauge/counter amongst multiple members of a population. For example the number of requests/second serviced by an application could be broken up amongst a group of server instances in a scale-out tier by setting the hostname as the value of source.
-Source names can be up to 255 characters in length and must be composed of the following 'A-Za-z0-9.:-_'. The word all is a reserved word and cannot be used as a user source. The source namespace is case insensitive.
+Source names can be up to 255 characters in length and must be composed of the characters `A-Za-z0-9.:-_`. The word all is a reserved word and cannot be used as a user source. The source namespace is case insensitive.
 
 ### Measurement Restrictions
 
@@ -51,7 +51,9 @@ Internally all floating point values are stored in double-precision format. Howe
 GET https://metrics-api.librato.com/v1/metrics
 ```
 
->Example Request: All metrics:
+>Example Request
+
+>Retrieve all metrics:
 
 ```shell
 curl \
@@ -61,7 +63,7 @@ curl \
   'https://metrics-api.librato.com/v1/metrics'
 ```
 
->All metrics pertaining to requests:
+>Retrieve all metrics pertaining to a request:
 
 ```shell
 curl \
@@ -234,17 +236,21 @@ curl \
 
 The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to metrics, the default and only permissible value of the `orderby` pagination parameter is `name`.
 
-`name`: A search parameter that limits the results to metrics whose names contain a matching substring. The search is not case-sensitive.
+Parameter | Definition
+--------- | ----------
+name | A search parameter that limits the results to metrics whose names contain a matching substring. The search is not case-sensitive.
 
 ### Composite Metric Query Execution
 
-This route will also execute a [composite metric query](http://support.metrics.librato.com/knowledgebase/articles/337431-composite-metrics-language-specification) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
+This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
 
-`compose`: A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters. 
+Parameter | Definition
+--------- | ----------
+compose | A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters. 
 
 **NOTE**: `start_time` and `resolution` are required. The `end_time` parameter is optional. The `count` parameter is currently ignored. When specified, the response is a composite metric query response.
 
-## Retrieve Metric Details
+## Retrieve Metric by Name
 
 >Definition
 
@@ -295,7 +301,9 @@ curl \
 }
 ```
 
->Example Request: Return the metric `cpu_temp` with up to four measurements at resolution 60:
+>Example Request
+
+>Return the metric `cpu_temp` with up to four measurements at resolution 60:
 
 ```shell
 curl \
@@ -351,7 +359,9 @@ curl \
 }
 ```
 
->Example Request: Return the metric `cpu_temp` with measurements from the source `server*`:
+>Example Request
+
+>Return the metric `cpu_temp` with measurements from the source `server*`:
 
 ```shell
 curl \
@@ -574,7 +584,7 @@ For each counter and gauge measurement in the request, a new measurement is crea
 For truly large numbers of measurements (e.g. 20 metrics x 500 sources) we suggest batching into multiple concurrent requests. Currently a POST with ~300 distinct measurements takes roughly 600ms, so we recommend this as an initial guideline for a cap on request size. As we continue to tune the system this suggested cap will be updated.
 
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -690,6 +700,8 @@ The example to the right will create two measurements for the gauge login-delay:
 PUT https://metrics-api.librato.com/v1/metrics
 ```
 
+>Example Request
+
 >Set the `period` and `display_min` for metrics `cpu`, `servers` and `reqs`:
 
 ```shell
@@ -699,6 +711,8 @@ curl \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics'
 ```
+
+>Example Request
 
 >Set the `display_units_short` for all metrics that end with `.time`:
 
@@ -728,7 +742,7 @@ Location: <job-checking URI>  # issued only for 202
 ** NOT APPLICABLE **
 ```
 
-Update the [properties](http://dev.librato.com/v1/metrics#metric_properties) and/or [attributes](#metric-attributes) of a set of metrics at the same time.
+Update the [properties](#metrics) and/or [attributes](#metric-attributes) of a set of metrics at the same time.
 
 This route accepts either a list of metric names OR a single pattern which includes wildcards (`*`).
 
@@ -738,7 +752,7 @@ There are two potential success states for this action, either a `204 No Content
 
 A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -758,7 +772,7 @@ For JSON:
 PUT https://metrics-api.librato.com/v1/metrics/:name
 ```
 
->**Updating a metric**
+>Example Request
 
 >Update the existing metric temp by setting the display_name and the minimum display attribute.
 
@@ -782,10 +796,9 @@ curl \
 ** NOT APPLICABLE **
 ```
 
->Creating a metric
+>Example Request
 
->Creates the gauge metric named queue_len (assumes this metric does not exist).
-
+>Create a gauge metric named `queue_len` (this assumes the metric does not exist):
 
 ```shell
 curl \
@@ -828,9 +841,9 @@ If the metric name does not exist, then the metric will be created with the asso
 
 Creating Persisted Composite Metrics
 
-With this route you can also create and update persisted [composite metrics](http://support.metrics.librato.com/knowledgebase/articles/337431-composite-metrics-language-specification). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
+With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -861,6 +874,8 @@ composite `optional` | The composite definition. Only used when type is composit
 DELETE https://metrics-api.librato.com/v1/metrics
 ```
 
+>Example Request
+
 > Delete the metrics `cpu`, `servers` and `reqs`:
 
 ```shell
@@ -871,7 +886,7 @@ curl \
   'https://metrics-api.librato.com/v1/metrics'
 ```
 
->Delete all metrics that start with cpu and end with .90:
+>Delete all metrics that start with `cpu` and end with `.90`:
 
 ```shell
 curl \
@@ -909,7 +924,7 @@ There are two potential success states for this action, either a `204 No Content
 
 A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
-**NOTE**: If you have attempted to DELETE a metric but it is still in your metric list, ensure that you are not continuing to submit measurements to the metric you are trying to delete.
+<aside class="notice">If you have attempted to DELETE a metric but it is still in your metric list, ensure that you are not continuing to submit measurements to the metric you are trying to delete.</aside>
 
 ## Delete Metric by Name
 
@@ -919,7 +934,9 @@ A `202` will be issued when the metric set is large enough that it cannot be ope
 DELETE https://metrics-api.librato.com/v1/metrics/:name
 ```
 
->Delete the metric named app_requests.
+>Example Request
+
+>Delete the metric named `app_requests`.
 
 ```shell
 curl \

@@ -267,7 +267,7 @@ Location: /v1/instruments/123
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -398,7 +398,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

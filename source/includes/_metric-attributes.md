@@ -33,5 +33,5 @@ curl \
 
 Gauge Attribute | Definition
 --------------- | ----------
-summarize_function | Determines how to calculate values when rolling up from raw values to higher resolution intervals. Must be one of: 'average', 'sum', 'count', 'min', 'max'. If summarize_function is not set the behavior defaults to average.<br><br>If the values of the measurements to be rolled up are: `2`, `10`, `5`:<br><br>average: `5.67`<br>sum: `17`<br>count: `3`<br>min: `2`<br>max: `10`<br>
+summarize_function | Determines how to calculate values when rolling up from raw values to higher resolution intervals. Must be one of: 'average', 'sum', 'count', 'min', 'max'. If summarize_function is not set the behavior defaults to average.<br><br>If the values of the measurements to be rolled up are: `2`, `10`, `5`:<br><br>* average: `5.67`<br>* sum: `17`<br>* count: `3`<br>* min: `2`<br>* max: `10`<br>
 aggregate | Enable service-side aggregation for this gauge. When enabled, measurements sent using the same *source* name will be aggregated into single measurements on an interval defined by the period of the metric. If there is no period defined for the metric then all measurements will be aggregated on a 60-second interval.<br><br>This option takes a value of true or false. If this option is not set for a metric it will default to false.

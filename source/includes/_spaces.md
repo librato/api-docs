@@ -301,7 +301,7 @@ Location: /v1/spaces/129
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -387,7 +387,7 @@ Location: /v1/spaces/123
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -475,7 +475,7 @@ curl \
 
 Modifies a space by changing its name.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -525,7 +525,7 @@ curl \
 
 Updates attributes of a specific chart.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

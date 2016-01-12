@@ -192,7 +192,7 @@ Location: /v1/dashboards/129
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -261,7 +261,7 @@ curl \
 
 Modify a dashboard, such as changing the name, or adding, deleting or reordering instruments.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

@@ -176,7 +176,7 @@ Location: /v1/services/145
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -226,7 +226,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

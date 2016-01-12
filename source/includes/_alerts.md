@@ -295,7 +295,7 @@ Location: /v1/alerts/123
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -366,7 +366,7 @@ Location: /v1/alerts/45/services/209
 
 Associates a single service with the alert identified by `:alert_id`.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -420,7 +420,7 @@ curl \
 
 Update the specified alert.
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

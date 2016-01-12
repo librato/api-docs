@@ -166,7 +166,7 @@ Location: /v1/charts/irhjoz9f
 }
 ```
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

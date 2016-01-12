@@ -189,7 +189,7 @@ Updates or creates the source identified by `:name`. If the source already exist
 If the source name does not exist, then the source will be created with the associated properties. Typically sources are created the first time a measurement with that name set as the source value is sent to the [collated POST route](#submit-metrics).
 
 
-#### headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -201,8 +201,9 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Optional Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
-display_name | Human readable name to use in place of the actual source name. Maximum length 255 characters.
+name | Each metric has a name that is unique to its class of metrics e.g. a gauge name must be unique amongst gauges. The name identifies a metric in subsequent API calls to store/query individual measurements and can be up to 255 characters in length. Valid characters for metric names are ‘A-Za-z0-9.:-_’. The metric namespace is case insensitive.
+display_name `optional` | Human readable name to use in place of the actual source name. Maximum length 255 characters.
