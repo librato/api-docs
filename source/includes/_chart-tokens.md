@@ -2,11 +2,11 @@
 
 ## Overview
 
-Chart tokens allow you to make graphs for selected resources viewable to the public. Accessing a graph resource via a chart token does not require [authentication](http://dev.librato.com/v1/metrics-authentication). You may create chart tokens for [Instruments](#instruments) and Dashboards.
+Chart tokens allow you to make graphs for selected resources viewable to the public. Accessing a graph resource via a chart token does not require [authentication](#authentication). You may create chart tokens for [Instruments](#instruments) and Dashboards.
 
-**NOTE**: Chart tokens do not apply to Spaces.
+<aside class="notice">Note: Chart tokens do not apply to Spaces.</aside>
 
-Properties
+### Chart Token Properties
 
 All tokens have the following three properties:
 
@@ -16,7 +16,7 @@ token | The randomly generated string which is used to identify the chart token.
 entity_type | The type of resource the chart token refers to. This may be either instrument or dashboard.
 entity_id | The ID of the entity that the chart token refers to. This would either be the intrument's or dashboard's ID.
 
-## Retrieve Available Chart Tokens
+## Retrieve Chart Tokens
 
 >Definition
 
@@ -78,6 +78,8 @@ curl \
 }
 ```
 
+Returns a listing of available chart tokens.
+
 ### Pagination Parameters
 
 The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to chart tokens, the default and only permissible value of the `orderby` pagination parameter is `token`.
@@ -126,7 +128,9 @@ curl \
 }
 ```
 
-## Create New Chart Token
+Returns a specific chart token.
+
+## Create Chart Token
 
 >Definition
 
@@ -166,6 +170,8 @@ Location: /v1/charts/irhjoz9f
 }
 ```
 
+Creates a new chart token.
+
 #### Headers
 
 This specifies the format of the data sent to the API.
@@ -193,7 +199,9 @@ entity_id | The ID of the entity that the chart token refers to. This would eith
 DELETE https://metrics-api.librato.com/v1/charts/:token
 ```
 
->Example Request: Delete the chart token conrhpsk.
+>Example Request
+
+>Delete the chart token `conrhpsk`.
 
 ```shell
 curl \
