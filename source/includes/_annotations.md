@@ -30,7 +30,7 @@ id | Each annotation event has a unique numeric ID.
 title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. `v45 Deployment`. The title is a required parameter to create an annotation.
 source | A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
 description | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
-links | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation. See the [link documentation](#add-link-to-annotation-event) for details on available parameters.
+links | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link's relationship to the annotation. See the [link documentation](#add-link-to-annotation-event) for details on available parameters.
 start_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
 end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
 
@@ -42,7 +42,9 @@ end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicati
 GET https://metrics-api.librato.com/v1/annotations
 ```
 
->Example Request: All annotation streams:
+>Example Request
+
+>All annotation streams:
 
 ```shell
 curl \
@@ -50,8 +52,11 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/annotations'
-All annotation streams matching the name api:
+```
 
+>All annotation streams matching the name `api`:
+
+```shell
 curl \
   -i \
   -u <user>:<token> \
@@ -102,7 +107,15 @@ The response is paginated, so the request supports our generic [Pagination Param
 
 ## Retrieve Annotations by Name
 
->Example Request: Return details of the annotation stream name api-deploys.
+>Definition
+
+```
+GET https://metrics-api.librato.com/v1/annotations/:name
+```
+
+>Example Request
+
+>Return details of the annotation stream name api-deploys.
 
 ```shell
 curl \
@@ -217,7 +230,9 @@ sources | An array of source names to limit the search to. Can include source na
 GET https://metrics-api.librato.com/v1/annotations/:name/:id
 ```
 
->Example Request: Lookup the annotation event 189 in the annotation stream api-deploys
+>Example Request
+
+>Lookup the annotation event 189 in the annotation stream `api-deploys`:
 
 ```shell
 curl \
@@ -272,7 +287,9 @@ curl \
 POST https://metrics-api.librato.com/v1/annotations/:name
 ```
 
->Example Request: Create an annotation event in the app-deploys stream
+>Example Request
+
+>Create an annotation event in the app-deploys stream
 
 ```shell
 curl \
@@ -320,6 +337,8 @@ Location: /v1/annotations/api-deploys/123
 }
 ```
 
+Create an annotation event on the given annotation stream `:name`. If the annotation stream does not exist, it will be created automatically.
+
 #### Headers
 
 This specifies the format of the data sent to the API.
@@ -334,16 +353,24 @@ For JSON:
 
 Parameter | Definition
 --------- | ----------
-title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. v45 Deployment. The title is a required parameter to create an annotation.
+title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. `v45 Deployment`. The title is a required parameter to create an annotation.
 source `optional` | A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
-description `optional` | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. Deployed 9b562b2: shipped new feature foo! A description is not required to create an annotation.
-links `optional` | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation. See the link documentation for details on available parameters.
-start_time `optional` | The unix timestamp indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
-end_time `optional` | The unix timestamp indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
+description `optional` | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
+links `optional` | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link's relationship to the annotation. See the [link documentation](#add-link-to-annotation-event) for details on available parameters.
+start_time `optional` | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
+end_time `optional` | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
 
 ## Add Link to Annotation Event
 
->Example Request: Add a link to github to the annotation event 198 in the *app-deploys* stream:
+>Definition
+
+```
+POST https://metrics-api.librato.com/v1/annotations/:name/:id/links
+```
+
+>Example Request
+
+>Add a link to github to the annotation event 198 in the *app-deploys* stream:
 
 ```shell
 curl \
@@ -375,6 +402,8 @@ Location: /v1/annotations/app-deploys/198/links/github
 }
 ```
 
+Add a link to a specific annotation event.
+
 #### Headers
 
 This specifies the format of the data sent to the API.
@@ -395,7 +424,7 @@ rel | Defines the relationship of the link. A link's relationship must be unique
 href | The link URL.
 label `optional` | A display label for the link.
 
-## Update Attributes of an Annotation Stream
+## Update Attributes
 
 >Definition
 
@@ -403,7 +432,9 @@ label `optional` | A display label for the link.
 PUT https://metrics-api.librato.com/v1/annotations/:name
 ```
 
->Example Request: Update the display name of the annotation stream api-deploys:
+>Example Request
+
+>Update the display name of the annotation stream api-deploys:
 
 ```shell
 curl \
@@ -431,6 +462,8 @@ curl \
 ** NOT APPLICABLE **
 ```
 
+Update the attributes of an annotation stream.
+
 #### Headers
 
 This specifies the format of the data sent to the API.
@@ -449,7 +482,7 @@ Parameter | Definition
 --------- | ----------
 display_name | Name used to display the annotation stream.
 
-## Update Meta-Data of an Annotation Event
+## Update Meta-Data
 
 >Definition
 
@@ -457,7 +490,9 @@ display_name | Name used to display the annotation stream.
 PUT https://metrics-api.librato.com/v1/annotations/:name/:id
 ```
 
->Example Request: Update the description of the annotation 143 in the stream `app-deploys`:
+>Example Request
+
+>Update the description of the annotation 143 in the stream `app-deploys`:
 
 ```shell
 curl \
@@ -484,6 +519,8 @@ curl \
 ```
 ** NOT APPLICABLE **
 ```
+
+Update the meta-data of an annotation event.
 
 #### Headers
 
@@ -516,7 +553,9 @@ links | An optional list of references to resources associated with the particul
 DELETE https://metrics-api.librato.com/v1/annotations/:name
 ```
 
->Example Request: Delete the annotation stream api-deploys
+>Example Request
+
+>Delete the annotation stream api-deploys
 
 ```shell
 curl \
@@ -544,7 +583,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-This will delete all annotation events associated with the stream.
+Delete an annotation stream. This will delete all annotation events associated with the stream.
 
 ## Delete Annotation Event
 
@@ -554,7 +593,9 @@ This will delete all annotation events associated with the stream.
 DELETE https://metrics-api.librato.com/v1/annotations/:name/:id
 ```
 
->Example Request: Delete the annotation event 123 in the annotation stream app-deploys:
+>Example Request
+
+>Delete the annotation event 123 in the annotation stream app-deploys:
 
 ```shell
 curl \
@@ -582,6 +623,8 @@ curl \
 ** NOT APPLICABLE **
 ```
 
+Delete an annotation event.
+
 ## Delete Link From Annotation Event
 
 >Definition
@@ -590,7 +633,9 @@ curl \
 DELETE https://metrics-api.librato.com/v1/annotations/:name/:id/links/:link
 ```
 
->Example Request: Delete the link with the relationship github from the annotation event 189 in the annotation stream app-deploys.
+>Example Request
+
+>Delete the link with the relationship github from the annotation event 189 in the annotation stream app-deploys:
 
 ```shell
 curl \
@@ -617,3 +662,5 @@ curl \
 ```
 ** NOT APPLICABLE **
 ```
+
+Delete a link from an annotation event.
