@@ -39,7 +39,7 @@ s3_bucket: dev.librato.com
 #   aliases:
 #     quantity: 1
 #    items:
-#      CNAME: support.metrics.librato.com
+#      CNAME: dev.librato.com
 
 # cloudfront_invalidate_root: true
 
