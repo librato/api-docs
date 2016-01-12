@@ -18,7 +18,7 @@ Error Code | Meaning | Definition
 
 ## Error Messages
 
->Error Message Structure
+<h3 class="side">Error Message Structure</h3>
 
 >Errors related to parameters are reported based on the attribute the error occurred on.
 

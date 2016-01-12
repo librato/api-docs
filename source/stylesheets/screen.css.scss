@@ -601,6 +601,18 @@ html, body {
   }
 }
 
+h3.side {
+  color: #fff;
+  float: right;
+  clear: right;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0 40px;
+  padding: 0;
+  width: 44%;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // RESPONSIVE DESIGN
 ////////////////////////////////////////////////////////////////////////////////
