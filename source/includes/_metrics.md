@@ -615,9 +615,11 @@ sum_squares | If `count` was set, `sum_squares` report the summation of the squa
 
 The individual gauge and counter measurements can be specified in one of several formats:
 
-### Hashed by name
+### Hashed by Name
 
->Gauges Example:
+>Hashed by name Example:
+
+>The example below creates a gauge measurement for the gauge login-delay with a value 3.5.
 
 ```curl
 {
@@ -631,8 +633,6 @@ The individual gauge and counter measurements can be specified in one of several
 ```
 
 Each metric name is a hash to the measurement values. 
-
-The example on the right creates a gauge measurement for the gauge login-delay with a value 3.5.
 
 ### Multiple measurements with the same name
 

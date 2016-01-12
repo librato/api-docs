@@ -42,5 +42,5 @@ clients (web, command line, etc) are built upon these APIs.
 Detailed documentation for authentication and each individual API call can
 be accessed through the menu. We invite suggestions, feature
 requests or problem reports at
-[our support forum](http://support.metrics.librato.com).
+[our support forum](http://www.librato.com/docs/kb).
 

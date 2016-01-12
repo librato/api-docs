@@ -550,14 +550,13 @@ html, body {
 .content {
   pre, blockquote {
     color: #fff;
-    margin: 0;
-    padding: 0 $main-padding .2em 45px;
-    width: $examples-width;
-
     float:right;
     clear:right;
-
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0 40px;
+    width: 44%;
 
     @extend %right-col;
 
@@ -572,25 +571,23 @@ html, body {
 
   pre {
     @extend %code-font;
+    margin: 10px 40px 0 40px;
     margin-bottom: 20px;
     border-radius: 3px;
     background-color: $code-bg;
-    overflow: auto;
-    padding: 10px;
-    margin: 1rem 3%;
-    width: 44%;
     overflow: hidden;
-    float: right;
-    clear: right;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+    padding: 10px;
   }
 
   blockquote {
     &>p {
       background-color: transparent;
-      padding: .5rem 0;
+      padding-top: 1.8rem;
+
+      strong {
+        font-size: 18px;
+        font-weight: 100;
+      }
     }
   }
 

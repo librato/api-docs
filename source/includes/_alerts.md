@@ -361,7 +361,7 @@ Location: /v1/alerts/45/services/209
 >Response Body
 
 ```
-not applicable
+** NOT APPLICABLE **
 ```
 
 Associates a single service with the alert identified by `:alert_id`.
