@@ -399,7 +399,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -537,7 +537,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------

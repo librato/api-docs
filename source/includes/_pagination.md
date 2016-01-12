@@ -42,10 +42,10 @@ There are several request parameters that you can use to control the pagination 
 
 Request Parameter | Definition
 ----------------- | ----------
-offset | Specifies how many results to skip for the first returned result. Defaults to 0.
-length | Specifies how many resources should be returned. The maximum permissible (and the default) length is 100.
-orderby | Order by the specified attribute. Permissible set of orderby attributes and the default value varies with resource type.
-sort | The sort order in which the results should be ordered. Permissible values are asc (ascending) and desc (descending). Defaults to asc.
+offset<br>`optional` | Specifies how many results to skip for the first returned result. Defaults to 0.
+length<br>`optional` | Specifies how many resources should be returned. The maximum permissible (and the default) length is 100.
+orderby<br>`optional` | Order by the specified attribute. Permissible set of orderby attributes and the default value varies with resource type.
+sort<br>`optional` | The sort order in which the results should be ordered. Permissible values are asc (ascending) and desc (descending). Defaults to asc.
 
 ## Response Parameters
 

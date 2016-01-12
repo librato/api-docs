@@ -94,7 +94,7 @@ curl \
 
 Returns all users managed by the partner.
 
-#### parameters
+#### Parameters
 
 The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`. 
 
@@ -220,10 +220,10 @@ Parameter | Definition
 -------- | ----------
 email | A unique email address that identifies the user. It is recommended that you namespace user emails according to a partner associated domain name. For example: `user145@partner-domain.com`. This field is used as the credential for metric collectors, so changes to it should be made with caution as to not break existing collectors.
 reference | A string that can be used to store a reference ID to this user in your partner database. The contents can be any string, but it must be unique for each user created in your partner account. If you do not require a reference, you can simply set this to the unique email address.
-name `optional` | A full name for this user, e.g. `John Smith`.
-company `optional` | Company this user works for.
-country `optional` | Country this user is from. Defaults to `US`.
-time_zone `optional` | The time zone this user is from, e.g. `UTC`.
+name<br>`optional` | A full name for this user, e.g. `John Smith`.
+company<br>`optional` | Company this user works for.
+country<br>`optional` | Country this user is from. Defaults to `US`.
+time_zone<br>`optional` | The time zone this user is from, e.g. `UTC`.
 
 ## Update a User
 
@@ -292,7 +292,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------

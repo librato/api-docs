@@ -206,4 +206,4 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 name | Each metric has a name that is unique to its class of metrics e.g. a gauge name must be unique amongst gauges. The name identifies a metric in subsequent API calls to store/query individual measurements and can be up to 255 characters in length. Valid characters for metric names are ‘A-Za-z0-9.:-_’. The metric namespace is case insensitive.
-display_name `optional` | Human readable name to use in place of the actual source name. Maximum length 255 characters.
+display_name<br>`optional` | Human readable name to use in place of the actual source name. Maximum length 255 characters.

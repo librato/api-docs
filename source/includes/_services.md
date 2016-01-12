@@ -188,7 +188,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------
