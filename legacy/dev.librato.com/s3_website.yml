@@ -51,7 +51,7 @@ s3_bucket: dev.librato.com
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 redirects:
- v1: https://www.librato.com/docs/api/
+  v1: https://www.librato.com/docs/api/
   v1/metrics: https://www.librato.com/docs/api/#metrics
   v1/metrics-authentication: https://www.librato.com/docs/api/#authentication
   v1/responses-errors: https://www.librato.com/docs/api/#response-codes-amp-errors
@@ -76,19 +76,19 @@ redirects:
   v1/put/metrics/:name: https://www.librato.com/docs/api/#update-metric-by-name
   v1/get/annotations: https://www.librato.com/docs/api/#annotations
   v1/post/annotations/:name: https://www.librato.com/docs/api/#retrieve-annotations
-  v1/put/annotations/:name: https://www.librato.com/docs/api/#update-attributes-of-an-annotation-stream
+  v1/put/annotations/:name: https://www.librato.com/docs/api/#update-attributes
   v1/delete/annotations/:name: https://www.librato.com/docs/api/#delete-annotation-stream
   v1/post/annotations/:name/:id/links: https://www.librato.com/docs/api/#create-annotations
   v1/get/alerts: https://www.librato.com/docs/api/#retrieve-all-alerts
   v1/post/alerts: https://www.librato.com/docs/api/#create-an-alert
   v1/put/alerts/:id: https://www.librato.com/docs/api/#update-alert
   v1/delete/alerts/:id: https://www.librato.com/docs/api/#delete-alert
-  v1/get/api_tokens: https://www.librato.com/docs/api/#retrieve-all-api-tokens
-  v1/post/api_tokens: https://www.librato.com/docs/api/#create-api-token
+  v1/get/api_tokens: https://www.librato.com/docs/api/#retrieve-tokens
+  v1/post/api_tokens: https://www.librato.com/docs/api/#create-token
   v1/put/api_tokens/:id: https://www.librato.com/docs/api/#modify-api-token
   v1/delete/api_tokens/:id: https://www.librato.com/docs/api/#delete-api-token
-  v1/get/charts: https://www.librato.com/docs/api/#retrieve-available-chart-tokens
-  v1/post/charts: https://www.librato.com/docs/api/#create-new-chart-token
+  v1/get/charts: https://www.librato.com/docs/api/#retrieve-chart-tokens
+  v1/post/charts: https://www.librato.com/docs/api/#create-chart-token
   v1/delete/charts/:token: https://www.librato.com/docs/api/#delete-chart-token
   v1/get/dashboards: https://www.librato.com/docs/api/#retrieve-all-dashbboards
   v1/post/dashboards: https://www.librato.com/docs/api/#create-a-dashboard
@@ -104,7 +104,7 @@ redirects:
   v1/put/services/:id: https://www.librato.com/docs/api/#update-a-service
   v1/delete/services/:id: https://www.librato.com/docs/api/#delete-a-service
   v1/get/sources: https://www.librato.com/docs/api/#retrieve-all-sources
-  v1/put/sources/:name: https://www.librato.com/docs/api/#update-the-source
+  v1/put/sources/:name: https://www.librato.com/docs/api/#update-a-source
   v1/get/spaces: https://www.librato.com/docs/api/#retrieve-all-spaces
   v1/post/spaces: https://www.librato.com/docs/api/#create-a-space
   v1/put/spaces/:id: https://www.librato.com/docs/api/#modify-a-space
@@ -117,13 +117,13 @@ redirects:
   v1/delete/metrics/:name: https://www.librato.com/docs/api/#delete-metric-by-name
   v1/get/annotations/:name: https://www.librato.com/docs/api/#retrieve-annotations-by-name
   v1/get/annotations/:name/:id: https://www.librato.com/docs/api/#retrieve-annotation-event
-  v1/put/annotations/:name/:id: https://www.librato.com/docs/api/#update-meta-data-of-an-annotation-event
+  v1/put/annotations/:name/:id: https://www.librato.com/docs/api/#update-meta-data
   v1/delete/annotations/:name/:id: https://www.librato.com/docs/api/#delete-annotation-stream
   v1/delete/annotations/:name/:id/links/:link: https://www.librato.com/docs/api/#delete-link-from-annotation-event
-  v1/get/alerts/:id: https://www.librato.com/docs/api/#retrieve-specific-alert
-  v1/post/alerts/:id/services: https://www.librato.com/docs/api/#associate-service-with-an-alert
+  v1/get/alerts/:id: https://www.librato.com/docs/api/#retrieve-alert-by-id
+  v1/post/alerts/:id/services: https://www.librato.com/docs/api/#associate-service-with-alert
   v1/delete/alerts/:id/services/:id: https://www.librato.com/docs/api/#remove-service-from-alert
-  v1/get/api_tokens/:id: https://www.librato.com/docs/api/#retrieve-specific-api-token
+  v1/get/api_tokens/:id: https://www.librato.com/docs/api/#retrieve-specific-token
   v1/get/charts/:token: https://www.librato.com/docs/api/#retrieve-specific-chart-token
   v1/get/dashboards/:id: https://www.librato.com/docs/api/#retrieve-specific-dashboard
   v1/get/instruments/:id: https://www.librato.com/docs/api/#retrieve-instrument-details
