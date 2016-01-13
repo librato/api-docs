@@ -339,7 +339,7 @@ Location: /v1/annotations/api-deploys/123
 
 Create an annotation event on the given annotation stream `:name`. If the annotation stream does not exist, it will be created automatically.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -404,7 +404,7 @@ Location: /v1/annotations/app-deploys/198/links/github
 
 Add a link to a specific annotation event.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -416,7 +416,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -464,7 +464,7 @@ curl \
 
 Update the attributes of an annotation stream.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -476,7 +476,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -522,7 +522,7 @@ curl \
 
 Update the meta-data of an annotation event.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -534,7 +534,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 The following parameters can be updated:
 

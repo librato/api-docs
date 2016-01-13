@@ -248,7 +248,9 @@ Returns a specific chart by its id and space id.
 POST https://metrics-api.librato.com/v1/spaces
 ```
 
->Example Request: Create a space with name CPUs
+>Example Request
+
+>Create a space with name CPUs:
 
 ```shell
 curl \
@@ -301,7 +303,7 @@ Location: /v1/spaces/129
 }
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -387,7 +389,7 @@ Location: /v1/spaces/123
 }
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -399,7 +401,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -437,7 +439,9 @@ period | An integer value of seconds that defines the period this stream reports
 PUT https://metrics-api.librato.com/v1/spaces/:id
 ```
 
->Example Request: Change the name of the space to CPUs
+>Example Request
+
+>Change the name of the space to CPUs:
 
 ```shell
 curl \
@@ -475,7 +479,7 @@ curl \
 
 Modifies a space by changing its name.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -495,7 +499,9 @@ For JSON:
 PUT https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id
 ```
 
->Update a chart name to "Server Temperature"
+>Example Request
+
+>Update a chart name to `Server Temperature`:
 
 ```shell
 curl \
@@ -525,7 +531,7 @@ curl \
 
 Updates attributes of a specific chart.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -537,7 +543,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -575,7 +581,9 @@ period | An integer value of seconds that defines the period this stream reports
 DELETE https://metrics-api.librato.com/v1/spaces/:id
 ```
 
->Delete the space with ID 145.
+>Example Request
+
+>Delete the space with ID `145`:
 
 ```shell
 curl \

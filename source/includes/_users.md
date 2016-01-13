@@ -33,7 +33,9 @@ updated_at | When was the account last updated.
 GET https://metrics-api.librato.com/v1/users
 ```
 
->All users:
+>Example Request
+
+>Return all users:
 
 ```shell
 curl \
@@ -43,7 +45,7 @@ curl \
   'https://metrics-api.librato.com/v1/users'
 ```
 
->The user identified in the partner's application by '67523':
+>The user identified in the partner's application by `67523`:
 
 ```shell
 curl \
@@ -94,7 +96,7 @@ curl \
 
 Returns all users managed by the partner.
 
-#### Parameters
+### Parameters
 
 The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`. 
 
@@ -111,7 +113,9 @@ reference | A string that can be used to store a reference ID to this user in yo
 GET https://metrics-api.librato.com/v1/users/:id
 ```
 
->Return user ID 123.
+>Example Request
+
+>Return user ID 123:
 
 ```shell
 curl \
@@ -160,6 +164,8 @@ Return a specific user.
 POST https://metrics-api.librato.com/v1/users
 ```
 
+>Example Request
+
 >Create a new user:
 
 ```shell
@@ -202,7 +208,7 @@ Location: /v1/users/123
 
 Create a new Librato user account.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -214,7 +220,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Required Parameters
+### Parameters
 
 Parameter | Definition
 -------- | ----------
@@ -232,6 +238,8 @@ time_zone<br>`optional` | The time zone this user is from, e.g. `UTC`.
 ```
 PUT https://metrics-api.librato.com/v1/users/:id
 ```
+
+>Example Request
 
 >Update a user:
 
@@ -280,7 +288,7 @@ not applicable
 }
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -292,7 +300,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -320,7 +328,9 @@ password | Resets the user's password to this value. The new password must be at
 DELETE https://metrics-api.librato.com/v1/users/:id
 ```
 
->Delete the user 672.
+>Example Request
+
+>Delete the user `672`:
 
 ```shell
 curl \
@@ -339,5 +349,7 @@ curl \
 >Response Body
 
 ```
+
+Delete a user by ID.
 ** NOT APPLICABLE **
 ```

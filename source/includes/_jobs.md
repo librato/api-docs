@@ -26,7 +26,9 @@ errors<br>`optional` | if the job results in any errors they will be available i
 GET https://metrics-api.librato.com/v1/jobs/:id
 ```
 
->Example Request: Check status for job `123456`:
+>Example Request
+
+>Check status for job `123456`:
 
 ```shell
 curl \
@@ -37,7 +39,7 @@ curl \
 ```
 
 >Response Body Response Examples Response properties may vary depending on the state of the job. Some jobs may only report `id` and `state`, so you are encouraged to consider `state` authoritative rather than relying on the presence of other properties (`errors` or `progress` for example).
-<br><br>
+
 >Job in progress:
 
 ```
@@ -48,7 +50,7 @@ curl \
 }
 ```
 
-Job which has completed successfully:
+>Job which has completed successfully:
 
 ```json
 {
@@ -81,7 +83,7 @@ Job which has completed successfully:
 }
 ```
 
-Returns information for a specific [job](http://dev.librato.com/v1/jobs). All jobs will return their `id` and `state`. Some jobs may also return one or more [optional properties](#jobs).
+Returns information for a specific job. All jobs will return their `id` and `state`. Some jobs may also return one or more [optional properties](#jobs).
 
 ### About Jobs
 

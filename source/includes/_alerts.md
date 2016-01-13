@@ -301,7 +301,7 @@ Location: /v1/alerts/123
 }
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -313,7 +313,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -369,7 +369,7 @@ Location: /v1/alerts/45/services/209
 
 Associates a single service with the alert identified by `:alert_id`.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -381,7 +381,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 This route excepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
@@ -461,7 +461,7 @@ curl \
 
 Update the specified alert.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -473,7 +473,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------

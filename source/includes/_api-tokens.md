@@ -186,7 +186,7 @@ Location: /v1/api_tokens/28
 
 Creates a new API Token.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -254,7 +254,7 @@ curl \
 
 Modify an API Token, such as changing the name, or flagging as active/inactive.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 

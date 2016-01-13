@@ -20,7 +20,9 @@ instruments | Array of objects containing the IDs of the instruments to be inclu
 GET https://metrics-api.librato.com/v1/dashboards
 ```
 
->Example Request: Return all dashboards owned by the user with name matching ops
+>Example Request
+
+>Return all dashboards owned by the user with name matching ops:
 
 ```shell
 curl \
@@ -73,7 +75,9 @@ name | Search by name of the dashboard.
 GET https://metrics-api.librato.com/v1/dashboards/:id
 ```
 
->Example Request: Return the dashboard id 129.
+>Example Request
+
+>Return the dashboard id `129`.
 
 ```curl
 curl \
@@ -128,7 +132,9 @@ Returns the details of a specific dashboard.
 POST https://metrics-api.librato.com/v1/dashboards
 ```
 
->Example Request: Create a dashboard with name CPUs containing the instruments identified by IDs 4, 87, and 9, in that order.
+>Example Request
+
+>Create a dashboard with name CPUs containing the instruments identified by IDs 4, 87, and 9, in that order:
 
 ```shell
 curl \
@@ -192,7 +198,7 @@ Location: /v1/dashboards/129
 }
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -212,7 +218,9 @@ For JSON:
 PUT https://metrics-api.librato.com/v1/dashboards/:id
 ```
 
->Example Request: If we have a dashboard with instruments [42, 7, 16], and we want to swap 42 and 7, remove 16, and add 99. Submit the instruments field with the new IDs, in the order you want them to appear.
+>Example Request
+
+>If we have a dashboard with instruments [42, 7, 16], and we want to swap 42 and 7, remove 16, and add 99. Submit the instruments field with the new IDs, in the order you want them to appear.
 
 ```shell
 curl \
@@ -261,7 +269,7 @@ curl \
 
 Modify a dashboard, such as changing the name, or adding, deleting or reordering instruments.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -281,7 +289,9 @@ For JSON:
 DELETE https://metrics-api.librato.com/v1/dashboards/:id
 ```
 
->Example Request: Delete the dashboard with ID 145.
+>Example Request
+
+>Delete the dashboard with ID `145`:
 
 ```shell
 curl \

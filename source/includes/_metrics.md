@@ -584,7 +584,7 @@ For each counter and gauge measurement in the request, a new measurement is crea
 For truly large numbers of measurements (e.g. 20 metrics x 500 sources) we suggest batching into multiple concurrent requests. Currently a POST with ~300 distinct measurements takes roughly 600ms, so we recommend this as an initial guideline for a cap on request size. As we continue to tune the system this suggested cap will be updated.
 
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -752,7 +752,7 @@ There are two potential success states for this action, either a `204 No Content
 
 A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -843,7 +843,7 @@ Creating Persisted Composite Metrics
 
 With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 

@@ -13,7 +13,7 @@ Each service is chosen from a set of supported backend services. The supported s
 Property | Definition
 -------- | ----------
 id | Each service has a unique numeric ID.
-type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of services here.
+type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 title | Display title for the service.
 
@@ -25,7 +25,9 @@ title | Display title for the service.
 GET https://metrics-api.librato.com/v1/services
 ```
 
->Return all services
+>Example Request
+
+>Return all services:
 
 ```shell
 curl \
@@ -96,7 +98,9 @@ The response is paginated, so the request supports our generic [Pagination Param
 GET https://metrics-api.librato.com/v1/services/:id
 ```
 
->Return the service 156.
+>Example Request
+
+>Return the service `156`.
 
 ```shell
 curl \
@@ -130,6 +134,8 @@ curl \
   "title": "Email ops team"
 }
 ```
+
+Returns a specific service.
 
 ## Create a Service
 
@@ -176,7 +182,7 @@ Location: /v1/services/145
 }
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -188,17 +194,25 @@ For JSON:
 
 `Content-Type: application/json`
 
-#### Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
 title | Display title for the service.
-type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of services here.
+type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 
 ## Update a Service
 
->Update the title for service 145.
+>Definition
+
+```
+PUT https://metrics-api.librato.com/v1/services/:id
+```
+
+>Example Request
+
+>Update the title for service `145`:
 
 ```shell
 curl \
@@ -226,7 +240,7 @@ curl \
 ** NOT APPLICABLE **
 ```
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -241,7 +255,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 title | Display title for the service.
-type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of services here.
+type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 
 ## Delete a Service
@@ -252,7 +266,9 @@ settings | Hash of settings specific to the service type.
 DELETE https://metrics-api.librato.com/v1/services/:id
 ```
 
->Delete the service 145
+>Example Request
+
+>Delete the service `145`:
 
 ```shell
 curl \

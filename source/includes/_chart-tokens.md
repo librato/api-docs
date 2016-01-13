@@ -172,7 +172,7 @@ Location: /v1/charts/irhjoz9f
 
 Creates a new chart token.
 
-#### Headers
+### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -184,7 +184,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Required Parameters
+### Parameters
 
 Parameter | Definition
 --------- | ----------
