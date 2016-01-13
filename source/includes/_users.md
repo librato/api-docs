@@ -349,7 +349,7 @@ curl \
 >Response Body
 
 ```
-
-Delete a user by ID.
 ** NOT APPLICABLE **
 ```
+
+Delete a user by ID.
