@@ -4,8 +4,8 @@ title: API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='http://support.metrics.librato.com/knowledgebase'>Knowledge Base</a>
-  - <a href='https://www.librato.com'>Librato Home</a>
+  - <a href="http://www.librato.com/docs/kb">Knowledge Base</a>
+  - <a href="https://www.librato.com">Librato Home</a>
 
 includes:
   - authentication
