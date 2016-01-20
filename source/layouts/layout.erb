@@ -88,6 +88,11 @@ under the License.
             </div>
           </div>
       </div>
+      
+      <% if current_page.data.search %>
+        <ul class="search-results"></ul>
+      <% end %>
+     
     </header>
     <div class="tocify-wrapper">
       <% if language_tabs %>
@@ -101,9 +106,7 @@ under the License.
           <% end %>
         </div>
       <% end %>
-      <% if current_page.data.search %>
-             <ul class="search-results"></ul>
-      <% end %>
+
       <div id="toc">
       </div>
       <% if current_page.data.toc_footers %>
