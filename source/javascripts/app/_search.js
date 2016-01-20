@@ -37,6 +37,8 @@
   }
 
   function search(event) {
+    //ga('send', 'pageview', '/search_results.php?q=keyword');
+    
     unhighlight();
     searchResults.addClass('visible');
 
@@ -61,16 +63,22 @@
         $.each(results, function (index, result) {
           var elem = document.getElementById(result.ref);
           searchResults.append("<li><a href='#" + result.ref + "'>" + $(elem).text() + "</a></li>");
+          searchToGA.call(this);
         });
         highlight.call(this);
       } else {
         searchResults.html('<li></li>');
         $('.search-results li').text('No Results Found for "' + this.value + '"');
+        searchToGA.call(this);
       }
     } else {
       unhighlight();
       searchResults.removeClass('visible');
     }
+  }
+
+  function searchToGA(){
+     if (this.value) ga('send', 'pageview', '/search_results_api.php?q='+this.value );
   }
 
   function highlight() {
