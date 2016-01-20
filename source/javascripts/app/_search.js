@@ -33,6 +33,7 @@
     searchResults = $('.search-results');
 
     $('#input-search').on('keyup', search);
+
   }
 
   function search(event) {
@@ -42,6 +43,14 @@
     // ESC clears the field
     if (event.keyCode === 27) this.value = '';
 
+    // Keydown to search results. 
+    if (event.keyCode==40) {
+       console.log('keydown');
+      $('.search-results li a').focus();
+       console.log('keydown1');
+    }
+
+    
     if (this.value) {
       var results = index.search(this.value).filter(function(r) {
         return r.score > 0.0001;

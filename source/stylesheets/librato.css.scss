@@ -309,6 +309,7 @@ ul {
   background:#262626;
   min-width:980px;
   top:0;
+  height: 100px;
 }
 
 .header .logo {
@@ -424,6 +425,36 @@ ul {
   }
 }
 
+.search-results {
+  width: 240px;
+  height: 0px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
+  float: right;
+  position: relative;
+  top: -15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 10px;
+  margin-right: 20px;
+  transition-property: height, margin;
+  transition-duration: 180ms;
+  transition-timing-function: ease-in-out;
+  &.visible {
+      height: 170px;
+      margin-bottom: 1em;
+      padding-top: 0.2em;
+    }
+  li {
+    list-style-type: none;
+    line-height: 1.5;
+  }
+
+}
+
+   
+
 // End of subnav styles
 
 
@@ -484,7 +515,7 @@ ul {
 
 
 .tocify-wrapper {
-  margin-top: 145px;
+  margin-top: 149px;
 }
 
 .content {
