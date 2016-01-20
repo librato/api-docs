@@ -494,3 +494,8 @@ ul {
   //  padding-top: 100px;
  // }
 }
+
+//hide intercom popup bubble
+.intercom-launcher .intercom-launcher-hovercard {
+  display: none!important;
+}
