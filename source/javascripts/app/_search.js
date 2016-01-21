@@ -37,8 +37,7 @@
   }
 
   function search(event) {
-    //ga('send', 'pageview', '/search_results.php?q=keyword');
-    
+   
     unhighlight();
     searchResults.addClass('visible');
 
