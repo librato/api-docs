@@ -51,6 +51,7 @@ s3_bucket: support.metrics.librato.com
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 redirects:
+  /: https://www.librato.com/docs/kb/index.html
   index.html: https://www.librato.com/docs/kb/index.html
   knowledgebase/articles/18437: https://www.librato.com/docs/kb/faq/whats_a_gauge.html
   knowledgebase/articles/18439: https://www.librato.com/docs/kb/faq/whats_a_counter.html
