@@ -1,0 +1,139 @@
+s3_id: <%= ENV['S3_ID'] %>
+s3_secret: <%= ENV['S3_SECRET'] %>
+s3_bucket: dev.librato.com
+
+# Below are examples of all the available configurations.
+# See README for more detailed info on each of them.
+
+# site: path-to-your-website
+
+# index_document: index.html
+# error_document: error.html
+
+# max_age:
+#   "assets/*": 6000
+#   "*": 300
+
+# gzip:
+#   - .html
+#   - .css
+#   - .md
+# gzip_zopfli: true
+
+# See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for valid endpoints
+# s3_endpoint: ap-northeast-1
+
+# ignore_on_server: that_folder_of_stuff_i_dont_keep_locally
+
+# exclude_from_upload:
+#   - those_folders_of_stuff
+#   - i_wouldnt_want_to_upload
+
+# s3_reduced_redundancy: true
+
+# cloudfront_distribution_id: your-dist-id
+
+#cloudfront_distribution_config:
+#  default_cache_behavior:
+#     min_TTL: <%= 60 * 60 * 24 %>
+#   aliases:
+#     quantity: 1
+#    items:
+#      CNAME: dev.librato.com
+
+# cloudfront_invalidate_root: true
+
+# concurrency_level: 5
+
+# redirects:
+#   index.php: /
+#   about.php: about.html
+#   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+redirects:
+  /: https://www.librato.com/docs/api/
+  v1: https://www.librato.com/docs/api/
+  v1/metrics: https://www.librato.com/docs/api/#metrics
+  v1/metrics-authentication: https://www.librato.com/docs/api/#authentication
+  v1/responses-errors: https://www.librato.com/docs/api/#response-codes-amp-errors
+  v1/pagination: https://www.librato.com/docs/api/#pagination
+  v1/time-intervals: https://www.librato.com/docs/api/#time-intervals
+  v1/metric-attributes: https://www.librato.com/docs/api/#metric-attributes
+  v1/annotations: https://www.librato.com/docs/api/#annotations
+  v1/alerts: https://www.librato.com/docs/api/#alerts
+  v1/api_tokens: https://www.librato.com/docs/api/#api-tokens
+  v1/charts: https://www.librato.com/docs/api/#chart-tokens
+  v1/dashboards: https://www.librato.com/docs/api/#dashboards
+  v1/instruments: https://www.librato.com/docs/api/#instruments
+  v1/jobs: https://www.librato.com/docs/api/#jobs
+  v1/services: https://www.librato.com/docs/api/#services
+  v1/sources: https://www.librato.com/docs/api/#sources
+  v1/spaces: https://www.librato.com/docs/api/#spaces
+  v1/users: https://www.librato.com/docs/api/#users
+  v1/get/metrics: https://www.librato.com/docs/api/#retrieve-metrics
+  v1/post/metrics: https://www.librato.com/docs/api/#submit-metrics
+  v1/put/metrics: https://www.librato.com/docs/api/#update-metric
+  v1/delete/metrics: https://www.librato.com/docs/api/#delete-metric
+  v1/put/metrics/:name: https://www.librato.com/docs/api/#update-metric-by-name
+  v1/get/annotations: https://www.librato.com/docs/api/#annotations
+  v1/post/annotations/:name: https://www.librato.com/docs/api/#retrieve-annotations
+  v1/put/annotations/:name: https://www.librato.com/docs/api/#update-attributes
+  v1/delete/annotations/:name: https://www.librato.com/docs/api/#delete-annotation-stream
+  v1/post/annotations/:name/:id/links: https://www.librato.com/docs/api/#create-annotations
+  v1/get/alerts: https://www.librato.com/docs/api/#retrieve-all-alerts
+  v1/post/alerts: https://www.librato.com/docs/api/#create-an-alert
+  v1/put/alerts/:id: https://www.librato.com/docs/api/#update-alert
+  v1/delete/alerts/:id: https://www.librato.com/docs/api/#delete-alert
+  v1/get/api_tokens: https://www.librato.com/docs/api/#retrieve-tokens
+  v1/post/api_tokens: https://www.librato.com/docs/api/#create-token
+  v1/put/api_tokens/:id: https://www.librato.com/docs/api/#modify-api-token
+  v1/delete/api_tokens/:id: https://www.librato.com/docs/api/#delete-api-token
+  v1/get/charts: https://www.librato.com/docs/api/#retrieve-chart-tokens
+  v1/post/charts: https://www.librato.com/docs/api/#create-chart-token
+  v1/delete/charts/:token: https://www.librato.com/docs/api/#delete-chart-token
+  v1/get/dashboards: https://www.librato.com/docs/api/#retrieve-all-dashbboards
+  v1/post/dashboards: https://www.librato.com/docs/api/#create-a-dashboard
+  v1/put/dashboards/:id: https://www.librato.com/docs/api/#modify-a-dashboard
+  v1/delete/dashboards/:id: https://www.librato.com/docs/api/#delete-dashboard
+  v1/get/instruments: https://www.librato.com/docs/api/#retrieve-instruments
+  v1/post/instruments: https://www.librato.com/docs/api/#create-an-instrument
+  v1/put/instruments/:id: https://www.librato.com/docs/api/#update-an-instrument
+  v1/delete/instruments/:id: https://www.librato.com/docs/api/#delete-an-instrument
+  v1/get/jobs/:id: https://www.librato.com/docs/api/#retrieve-job-information
+  v1/get/services: https://www.librato.com/docs/api/#retrieve-all-services
+  v1/post/services: https://www.librato.com/docs/api/#create-a-service
+  v1/put/services/:id: https://www.librato.com/docs/api/#update-a-service
+  v1/delete/services/:id: https://www.librato.com/docs/api/#delete-a-service
+  v1/get/sources: https://www.librato.com/docs/api/#retrieve-all-sources
+  v1/put/sources/:name: https://www.librato.com/docs/api/#update-a-source
+  v1/get/spaces: https://www.librato.com/docs/api/#retrieve-all-spaces
+  v1/post/spaces: https://www.librato.com/docs/api/#create-a-space
+  v1/put/spaces/:id: https://www.librato.com/docs/api/#modify-a-space
+  v1/delete/spaces/:id: https://www.librato.com/docs/api/#delete-space
+  v1/get/users: https://www.librato.com/docs/api/#retrieve-all-users
+  v1/post/users: https://www.librato.com/docs/api/#create-user
+  v1/put/users/:id: https://www.librato.com/docs/api/#update-a-user
+  v1/delete/users/:id: https://www.librato.com/docs/api/#delete-user
+  v1/get/metrics/:name: https://www.librato.com/docs/api/#retrieve-metric-by-name
+  v1/delete/metrics/:name: https://www.librato.com/docs/api/#delete-metric-by-name
+  v1/get/annotations/:name: https://www.librato.com/docs/api/#retrieve-annotations-by-name
+  v1/get/annotations/:name/:id: https://www.librato.com/docs/api/#retrieve-annotation-event
+  v1/put/annotations/:name/:id: https://www.librato.com/docs/api/#update-meta-data
+  v1/delete/annotations/:name/:id: https://www.librato.com/docs/api/#delete-annotation-stream
+  v1/delete/annotations/:name/:id/links/:link: https://www.librato.com/docs/api/#delete-link-from-annotation-event
+  v1/get/alerts/:id: https://www.librato.com/docs/api/#retrieve-alert-by-id
+  v1/post/alerts/:id/services: https://www.librato.com/docs/api/#associate-service-with-alert
+  v1/delete/alerts/:id/services/:id: https://www.librato.com/docs/api/#remove-service-from-alert
+  v1/get/api_tokens/:id: https://www.librato.com/docs/api/#retrieve-specific-token
+  v1/get/charts/:token: https://www.librato.com/docs/api/#retrieve-specific-chart-token
+  v1/get/dashboards/:id: https://www.librato.com/docs/api/#retrieve-specific-dashboard
+  v1/get/instruments/:id: https://www.librato.com/docs/api/#retrieve-instrument-details
+  v1/get/services/:id: https://www.librato.com/docs/api/#retrieve-specific-service
+  v1/get/sources/:name: https://www.librato.com/docs/api/#retrieve-source-by-name
+  v1/get/spaces/:id: https://www.librato.com/docs/api/#retrieve-details-of-space
+  v1/get/spaces/:id/charts: https://www.librato.com/docs/api/#retrieve-chart-of-space
+  v1/get/spaces/:id/charts/:chart_id: https://www.librato.com/docs/api/#retrieve-chart-by-id
+  v1/post/spaces/:id/charts: https://www.librato.com/docs/api/#create-a-chart
+  v1/put/spaces/:id/charts/:id: https://www.librato.com/docs/api/#update-chart-attributes
+  v1/delete/spaces/:id/charts/:id: https://www.librato.com/docs/api/#delete-chart
+  v1/get/users/:id: https://www.librato.com/docs/api/#retrieve-user
