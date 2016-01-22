@@ -370,6 +370,7 @@ html, body {
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
     font-weight: 100;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -379,6 +380,7 @@ html, body {
 
   h2 {
     @extend %header-font;
+    -webkit-font-smoothing: antialiased;
     font-size: 20px;
     margin-top: 4em;
     margin-bottom: 0;
