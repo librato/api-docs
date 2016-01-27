@@ -40,20 +40,6 @@ H1 tags (`#` in Markdown) are automatically added to the sidebar, and H2 tags (`
 
 Learn more about [editing Slate markdown](https://github.com/tripit/slate/wiki/Markdown-Syntax), or [how to publish your docs](https://github.com/tripit/slate/wiki/Deploying-Slate).
 
-### Publishing to Github Pages
+### Deployment 
 
- 1. Commit your changes to the markdown source: `git commit -a -m "Update index.md"`
- 2. Push the *markdown source* changes to Github: `git push origin master`
- 3. Compile to HTML, and push the HTML to Github pages (which is hosted on the gh-pages branch): `rake publish`
-
-Done! Your changes should now be live on http://librato.github.io/api-docs-rewrite/, and the main branch should be updated with your edited markdown. It can sometimes take a few minutes before your content is available online.
-
-### Publishing Your Docs to Your Own Server
-
-Instead of using `rake publish`, use `rake build`. Middleman will build your website to the `build` directory of your project, and you can copy those static HTML files to the server of your choice.
-
-Another alternative is to use the [middleman-deploy](https://github.com/middleman-contrib/middleman-deploy) gem. 
-
-### Custom Domains with Github
-
-If you're hosting on Github Pages, just follow the instructions [in Github's help center](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/). Note that instead of putting the `CNAME` file in the root directory of your Slate, you should put it in the `source` folder. When Middleman publishes to the `gh-pages` branch, it will copy it to the root folder of that branch.
+This project is deployed via CircleCI each time a PR is merged into master. [Check Deploy status on CircleCI](https://circleci.com/gh/librato/api-docs/) 
