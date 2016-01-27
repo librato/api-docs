@@ -1,3 +1,5 @@
+Build Status: [![Circle CI](https://circleci.com/gh/librato/api-docs.svg?style=svg)](https://circleci.com/gh/librato/api-docs)
+
 Api Docs
 ========
 
