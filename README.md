@@ -1,7 +1,8 @@
-Api Docs Rewrite
+Api Docs
 ========
 
-This is a proposed replacement for the existing API Docs site. It runs on Slate which is much easier to edit. It can be viewed on Github Pages at http://librato.github.io/api-docs-rewrite/.
+This is our API Docs site. It runs on Slate which is very easy to edit. The pages are hosted at
+https://www.librato.com/docs/api
 
 ### Prerequisites
 
