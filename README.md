@@ -1,4 +1,4 @@
-Build Status: [![Circle CI](https://circleci.com/gh/librato/api-docs.svg?style=svg)](https://circleci.com/gh/librato/api-docs)
+Build Status: [![Circle CI](https://circleci.com/gh/librato/api-docs/tree/master.svg?style=svg&circle-token=0882275f1f2469a4c707398ad01289c5f99b1e6a)](https://circleci.com/gh/librato/api-docs/tree/master)
 
 Api Docs
 ========
