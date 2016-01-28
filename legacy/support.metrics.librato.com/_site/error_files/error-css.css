@@ -3068,7 +3068,7 @@ body.s-loading .loading-global {
 
 #error-pages .message {
     padding: 8rem 12rem;
-    background-image: url(../error_files/error-mask@2x.png);
+    background-image: url(https://s3.amazonaws.com/support.metrics.librato.com/error_files/error-mask@2x.png);
     background-position: center 1300px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -3079,4 +3079,20 @@ body.s-loading .loading-global {
     width: 500px;
     height: 200px;
     margin-top: 5.7rem
+}
+
+.404-img{
+    height: 20px; 
+    width: 40px;
+    position: absolute; 
+    opacity: 1;
+    z-index: 8675309;
+    display: none;
+    cursor: pointer; 
+    border: none; 
+    top: 250px; 
+    left: 310px;
+    background-image: url(https://s3.amazonaws.com/support.metrics.librato.com/error_files/404@2x.png); 
+    background-color: transparent;
+    background-size: 40px 20px;
 }
