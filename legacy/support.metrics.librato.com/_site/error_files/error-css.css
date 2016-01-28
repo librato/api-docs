@@ -3080,3 +3080,19 @@ body.s-loading .loading-global {
     height: 200px;
     margin-top: 5.7rem
 }
+
+.404-img{
+    height: 20px; 
+    width: 40px;
+    position: absolute; 
+    opacity: 1;
+    z-index: 8675309;
+    display: none;
+    cursor: pointer; 
+    border: none; 
+    top: 250px; 
+    left: 310px;
+    background-image: url(https://s3.amazonaws.com/support.metrics.librato.com/error_files/404@2x.png); 
+    background-color: transparent;
+    background-size: 40px 20px;
+}
