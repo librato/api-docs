@@ -265,6 +265,7 @@ redirects:
   knowledgebase/articles/73435-how-can-i-make-multiple-streams-share-a-y-axis: https://www.librato.com/docs/kb/faq/app_questions/y-axis.html
   knowledgebase/articles/73435-how-can-i-make-multiple-streams-share-a-y-axis-: https://www.librato.com/docs/kb/faq/app_questions/y-axis.html
   knowledgebase/articles/73435-how-can-i-split-or-share-the-y-axis: https://www.librato.com/docs/kb/faq/app_questions/y-axis.html
+  knowledgebase/articles/73494-live-chat-support: https://www.librato.com/docs/kb/faq/live_chat.html
   knowledgebase/articles/73494-live-chat-support-at-chat-librato-com: https://www.librato.com/docs/kb/faq/live_chat.html
   knowledgebase/articles/745476-rails-integration: https://www.librato.com/docs/kb/collect/integrations/rails.html
   knowledgebase/articles/748635-librato-for-aws-cloudwatch-elastic-beanstalk-enha: https://www.librato.com/docs/kb/collect/integrations/cloudwatch/cloudwatch_elastic_beanstalk.html
