@@ -3068,7 +3068,7 @@ body.s-loading .loading-global {
 
 #error-pages .message {
     padding: 8rem 12rem;
-    background-image: url(../error_files/error-mask@2x.png);
+    background-image: url(https://s3.amazonaws.com/support.metrics.librato.com/error_files/error-mask@2x.png);
     background-position: center 1300px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
