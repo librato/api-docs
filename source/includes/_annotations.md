@@ -279,6 +279,8 @@ curl \
 }
 ```
 
+Return annotation event details associated with given stream name.
+
 ## Create Annotations
 
 >Definition
