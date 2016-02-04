@@ -225,6 +225,91 @@ curl \
 
 Returns a specific alert.
 
+## Retrieve Status of Alerts
+
+>Definition
+
+```
+GET https://metrics-api.librato.com/v1/alerts/status
+```
+
+>Example Request
+
+```
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts/status'
+```
+
+>Response Body
+
+```json
+{
+    "cleared": [
+        {
+            "cleared_at": 1454108320,
+            "id": 127
+        }
+    ],
+    "firing": [
+        {
+            "id": 106,
+            "triggered_at": 1413328283
+        },
+        {
+            "id": 129,
+            "triggered_at": 1444934147
+        }
+    ]
+}
+```
+
+Returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
+
+## Retrieve Status of Specific Alert
+
+>Definition
+
+```
+GET https://metrics-api.librato.com/v1/alerts/:alert_id/status
+```
+
+>Example Request
+
+>Return the status for alert ID `120`:
+
+```
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts/120/status'
+```
+
+```json
+{
+    "alert": {
+        "id": 120
+    },
+    "status": "triggered"
+}
+```
+
+>Response for an alert that is not triggered:
+
+```json
+{
+    "alert": {
+        "id": 121
+    },
+    "status": "ok"
+}
+```
+
+Returns the status for a particular alert, specified by ID.
+
 ## Create an Alert
 
 >Definition
@@ -489,6 +574,34 @@ rearm_seconds<br>`optional` | Specifies the minimum amount of time between sendi
 ### Alert Conditions & Attributes
 
 See details in the [alert overview](#alerts).
+
+## Resolve an Alert
+
+>Definition
+
+```
+POST https://metrics-api-stg.librato.com/v1/alerts/:alert_id/clear
+```
+
+>Example Request
+
+>Resolve alert ID `120`:
+
+```
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api-stg.librato.com/v1/alerts/120/clear'
+```
+
+>Response Code
+
+```
+204 No Content
+```
+
+Clears the alert specified using the alert ID.
 
 ## Delete Alert
 
