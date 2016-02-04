@@ -53,10 +53,11 @@ error_document: error_files/error.html
 redirects:
   /: https://www.librato.com/docs/kb/index.html
   index.html: https://www.librato.com/docs/kb/index.html
-  knowledgebase: https://www.librato.com/docs/kb/index.html
   forums: https://www.librato.com/docs/kb/faq/give_feedback.html
   forums/128395: https://www.librato.com/docs/kb/faq/give_feedback.html
   forums/128395-librato: https://www.librato.com/docs/kb/faq/give_feedback.html
+  knowledgebase: https://www.librato.com/docs/kb/index.html
+  knowledgebase/: https://www.librato.com/docs/kb/index.html
   knowledgebase/articles/18437: https://www.librato.com/docs/kb/faq/whats_a_gauge.html
   knowledgebase/articles/18439: https://www.librato.com/docs/kb/faq/whats_a_counter.html
   knowledgebase/articles/22317: https://www.librato.com/docs/kb/metrics_site/account_management/tokens.html
