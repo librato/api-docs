@@ -149,7 +149,7 @@ redirects:
   knowledgebase/articles/749103: https://www.librato.com/docs/kb/collect/integrations/agent.html
   knowledgebase/articles/752955: https://www.librato.com/docs/kb/collect/integrations/docker.html
   knowledgebase/articles/753039: https://www.librato.com/docs/kb/collect/integrations/redis.html
-  knowledgebase/articles/753075: https://www.librato.com/docs/kb/collect/integrations/ngnix.html
+  knowledgebase/articles/753075: https://www.librato.com/docs/kb/collect/integrations/nginx.html
   knowledgebase/articles/763149: https://www.librato.com/docs/kb/faq/invoice_statements.html
   knowledgebase/articles/764148: https://www.librato.com/docs/kb/faq/retain_data_for_more_than_a_year.html
   knowledgebase/articles/776451: https://www.librato.com/docs/kb/collect/integrations/memcached.html
@@ -272,7 +272,7 @@ redirects:
   knowledgebase/articles/749103-server-monitoring-with-the-librato-agent: https://www.librato.com/docs/kb/collect/integrations/agent/index.html
   knowledgebase/articles/752955-docker-integration: https://www.librato.com/docs/kb/collect/integrations/docker.html
   knowledgebase/articles/753039-redis-integration: https://www.librato.com/docs/kb/collect/integrations/redis.html
-  knowledgebase/articles/753075-nginx-integration: https://www.librato.com/docs/kb/collect/integrations/ngnix.html
+  knowledgebase/articles/753075-nginx-integration: https://www.librato.com/docs/kb/collect/integrations/nginx.html
   knowledgebase/articles/763149-how-can-i-get-an-invoice-statement-from-my-librato: https://www.librato.com/docs/kb/faq/account_questions/invoice_statements.html
   knowledgebase/articles/764148-can-i-retain-data-for-more-than-a-year: https://www.librato.com/docs/kb/faq/account_questions/retain_data_for_more_than_a_year.html
   knowledgebase/articles/76826-how-to-control-gauge-aggregation: https://www.librato.com/docs/kb/visualize/faq/gauge_aggregation.html
