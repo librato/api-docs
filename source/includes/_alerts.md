@@ -580,7 +580,7 @@ See details in the [alert overview](#alerts).
 >Definition
 
 ```
-POST https://metrics-api-stg.librato.com/v1/alerts/:alert_id/clear
+POST https://metrics-api.librato.com/v1/alerts/:alert_id/clear
 ```
 
 >Example Request
@@ -592,7 +592,7 @@ curl \
   -i \
   -u <user>:<token> \
   -X GET \
-  'https://metrics-api-stg.librato.com/v1/alerts/120/clear'
+  'https://metrics-api.librato.com/v1/alerts/120/clear'
 ```
 
 >Response Code
