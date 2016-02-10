@@ -136,7 +136,7 @@ curl \
       "name": "production.web.frontend.response_time",
       "conditions": [
         {
-          "condition_type": "above",
+          "type": "above",
           "threshold": 200,
           "metric_name": "web.nginx.response_time"
         }
@@ -203,7 +203,7 @@ curl \
   "name": "production.web.frontend.response_time",
   "conditions": [
     {
-      "condition_type": "above",
+      "type": "above",
       "threshold": 200,
       "metric_name": "web.nginx.response_time"
     }
@@ -331,7 +331,7 @@ POST https://metrics-api.librato.com/v1/alerts
   "name": "production.web.frontend.response_time",
   "conditions": [
     {
-      "condition_type": "above",
+      "type": "above",
       "threshold": 200,
       "metric_name": "web.nginx.response_time"
     }
@@ -366,7 +366,7 @@ Location: /v1/alerts/123
   "name": "production.web.frontend.response_time",
   "conditions": [
     {
-      "condition_type": "above",
+      "type": "above",
       "threshold": 200,
       "metric_name": "web.nginx.response_time"
     }
