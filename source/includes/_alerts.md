@@ -39,6 +39,7 @@ Property | Definition
 type | One of above, absent, or below.
 metric_name | The name of the metric this alert condition applies to.
 source<br>`optional` | A source expression which identifies which sources for the given metric to monitor. If not specified all sources will be monitored. Wildcards can be used here (e.g. prod-* will include all sources that begin with prod-).
+detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
 
 ### Additional properties for the 'above' alert condition type:
 
@@ -47,7 +48,6 @@ Property | Definition
 threshold | float: measurements over this number will fire the alert.
 summary_function<br>`optional` | string: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property summary_function](#instruments) for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be above the threshold for before the condition is met. All data points within the given duration must be above the threshold to meet this condition. This avoids a single spike from triggering the condition. <br><br>If unset, a single sample above the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
-detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
 
 ### Additional properties for the 'absent' alert condition type:
 
