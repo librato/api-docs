@@ -91,7 +91,7 @@ redirects:
   v1/get/charts: https://www.librato.com/docs/api/#retrieve-chart-tokens
   v1/post/charts: https://www.librato.com/docs/api/#create-chart-token
   v1/delete/charts/:token: https://www.librato.com/docs/api/#delete-chart-token
-  v1/get/dashboards: https://www.librato.com/docs/api/#retrieve-all-dashbboards
+  v1/get/dashboards: https://www.librato.com/docs/api/#retrieve-all-dashboards
   v1/post/dashboards: https://www.librato.com/docs/api/#create-a-dashboard
   v1/put/dashboards/:id: https://www.librato.com/docs/api/#modify-a-dashboard
   v1/delete/dashboards/:id: https://www.librato.com/docs/api/#delete-dashboard
