@@ -12,7 +12,7 @@ id | Each dashboard has a unique numeric ID
 name | Unique name for dashboard
 instruments | Array of objects containing the IDs of the instruments to be included, in order
 
-## Retrieve All Dashbboards
+## Retrieve All Dashboards
 
 >Definition
 
