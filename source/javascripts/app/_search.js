@@ -40,9 +40,20 @@
    
     unhighlight();
     searchResults.addClass('visible');
+    
+    $('.search-results').click(function(event){
+    event.stopPropagation();
+    });
 
     // ESC clears the field
     if (event.keyCode === 27) this.value = '';
+
+    $('html').click(function() {
+    //Hide the menus if visible
+      unhighlight();
+      searchResults.removeClass('visible');
+    });
+
 
     // Keydown to search results. 
     if (event.keyCode==40) {
