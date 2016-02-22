@@ -311,6 +311,19 @@ curl \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
 ```
 
+>Create an annotation event with a link:
+
+```shell
+curl \
+  -u <user>:<token> \
+  -d 'title=My Annotation&description=Joe deployed v29 to metrics&start_time=1234567890' \
+  -d 'links[0][label]=Metrics Gem' \
+  -d 'links[0][href]=https://github.com/librato/librato-metrics' \
+  -d 'links[0][rel]=github' \
+  -X POST \
+  'https://metrics-api.librato.com/v1/annotations/api-deploys'
+```
+
 >Response Code
 
 ```
