@@ -60,7 +60,7 @@ redirects:
   knowledgebase/index.html: https://www.librato.com/docs/kb/index.html
   knowledgebase/articles/18437: https://www.librato.com/docs/kb/faq/whats_a_gauge.html
   knowledgebase/articles/18439: https://www.librato.com/docs/kb/faq/whats_a_counter.html
-  knowledgebase/articles/22317: https://www.librato.com/docs/kb/metrics_site/account_management/tokens.html
+  knowledgebase/articles/22317: https://www.librato.com/docs/kb/librato/account_management/tokens.html
   knowledgebase/articles/24205: https://www.librato.com/docs/kb/collect/index.html
   knowledgebase/articles/30296: https://www.librato.com/docs/kb/collect/integrations/papertrail.html
   knowledgebase/articles/30962: https://www.librato.com/docs/kb/collect/integrations/heroku-addon.html
@@ -73,15 +73,15 @@ redirects:
   knowledgebase/articles/38938: https://www.librato.com/docs/kb/collect/integrations/collectd.html
   knowledgebase/articles/41338: https://www.librato.com/docs/kb/faq/pricing.html
   knowledgebase/articles/47904: https://www.librato.com/docs/kb/faq/whats_a_source.html
-  knowledgebase/articles/50921: https://www.librato.com/docs/kb/metrics_site/account_management/collaborators.html
+  knowledgebase/articles/50921: https://www.librato.com/docs/kb/librato/account_management/account_settings.html#collaborators
   knowledgebase/articles/59534: https://www.librato.com/docs/kb/visualize/faq/sdk.html
-  knowledgebase/articles/61566: https://www.librato.com/docs/kb/metrics_site/index.html
+  knowledgebase/articles/61566: https://www.librato.com/docs/kb/librato/getting_started.html
   knowledgebase/articles/66169: https://www.librato.com/docs/kb/faq/whats_an_instrument.html
   knowledgebase/articles/66170: https://www.librato.com/docs/kb/visualize/spaces.html
   knowledgebase/articles/66171: https://www.librato.com/docs/kb/visualize/charts.html
   knowledgebase/articles/66172: https://www.librato.com/docs/kb/visualize/metrics.html
   knowledgebase/articles/66838: https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html
-  knowledgebase/articles/68425: https://www.librato.com/docs/kb/metrics_site/account_management/account_settings.html
+  knowledgebase/articles/68425: https://www.librato.com/docs/kb/librato/account_management/account_settings.html
   knowledgebase/articles/71493: https://www.librato.com/docs/kb/visualize/faq/metric_v_data-stream.html
   knowledgebase/articles/71495: https://www.librato.com/docs/kb/visualize/faq/moving_charts.html
   knowledgebase/articles/71932: https://www.librato.com/docs/kb/visualize/faq/stacked_graph.html
@@ -103,7 +103,7 @@ redirects:
   knowledgebase/articles/129240: https://www.librato.com/docs/kb/faq/test_librato.html
   knowledgebase/articles/146093: https://www.librato.com/docs/kb/alert/service_integrations/opsgenie.html
   knowledgebase/articles/169077: https://www.librato.com/docs/kb/collect/language_bindings/php_example.html
-  knowledgebase/articles/174446: https://www.librato.com/docs/kb/metrics_site/account_management/tokens.html
+  knowledgebase/articles/174446: https://www.librato.com/docs/kb/librato/account_management/account_settings.html#api-tokens
   knowledgebase/articles/174815: https://www.librato.com/docs/kb/collect/integrations/os-nexus.html
   knowledgebase/articles/175825: https://www.librato.com/docs/kb/faq/user_agent.html
   knowledgebase/articles/184875: https://www.librato.com/docs/kb/faq/naming_convention_metrics_sources.html
@@ -141,7 +141,7 @@ redirects:
   knowledgebase/articles/494898: https://www.librato.com/docs/kb/faq/delete_a_source.html
   knowledgebase/articles/497909: https://www.librato.com/docs/kb/alert/service_integrations/aws_sns.html
   knowledgebase/articles/525827: https://www.librato.com/docs/kb/faq/pull_data_via_api.html
-  knowledgebase/articles/537559: https://www.librato.com/docs/kb/metrics_site/legacy-ui.html
+  knowledgebase/articles/537559: https://www.librato.com/docs/kb/librato/legacy-ui.html
   knowledgebase/articles/559602: https://www.librato.com/docs/kb/alert/service_integrations/bigpanda.html
   knowledgebase/articles/686868: https://www.librato.com/docs/kb/alert/service_integrations/zapier.html
   knowledgebase/articles/731082: https://www.librato.com/docs/kb/collect/integrations/heroku_integration.html
@@ -160,14 +160,14 @@ redirects:
   knowledgebase/articles/802932: https://www.librato.com/docs/kb/collect/integrations/agent-metrics.html
   knowledgebase/articles/809373: https://www.librato.com/docs/kb/collect/integrations/flask.html
   knowledgebase/topics/30944: https://www.librato.com/docs/kb/faq/index.html
-  knowledgebase/topics/10323: https://www.librato.com/docs/kb/metrics_site/index.html
+  knowledgebase/topics/10323: https://www.librato.com/docs/kb/librato/getting_started.html
   knowledgebase/topics/7068: https://www.librato.com/docs/kb/collect/index.html
   knowledgebase/topics/5363: https://www.librato.com/docs/kb/visualize/index.html
   knowledgebase/topics/51770: https://www.librato.com/docs/kb/manipulate/composite_metrics/index.html
   knowledgebase/topics/5594: https://www.librato.com/docs/kb/alert/index.html
-  knowledgebase/topics/7745: https://www.librato.com/docs/kb/metrics_site/account_management/index.html
+  knowledgebase/topics/7745: https://www.librato.com/docs/kb/librato/account_management/index.html
   knowledgebase/topics/4808: https://www.librato.com/docs/kb/collect/integrations/index.html
-  knowledgebase/articles/all: https://www.librato.com/docs/kb/intro.html
+  knowledgebase/articles/all: https://www.librato.com/docs/kb/librato/getting_started.html
   knowledgebase/articles/114911-snapshots: https://www.librato.com/docs/kb/visualize/faq/snapshots.html
   knowledgebase/articles/114911-take-snapshots-of-graphs-and-share-them: https://www.librato.com/docs/kb/visualize/faq/snapshots.html
   knowledgebase/articles/119267-hipchat-service-integration: https://www.librato.com/docs/kb/alert/service_integrations/hipchat.html
