@@ -2,6 +2,8 @@
 
 ## Overview
 
+<aside class="notice">Note: The Users API will to be enabled before you can utilize it. Please <a href="mailto:support@librato.com">contact the Librato support team</a> for access.</aside>
+
 The `users` API enables third party IaaS and PaaS vendors to create and manage user accounts on behalf of their customers.
 
 ### Managing Users
@@ -98,7 +100,7 @@ Returns all users managed by the partner.
 
 ### Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`. 
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to users, the default value of the `orderby` pagination parameter is `id`, and the permissible values of the `orderby` pagination parameter are: `id`, `email`, `reference`.
 
 Parameter | Definition
 ----------| ----------

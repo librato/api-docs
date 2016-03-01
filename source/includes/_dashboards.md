@@ -2,6 +2,8 @@
 
 ## Overview
 
+<aside class="notice">Note: This is a legacy feature & deprecated. Please refer to the <a href="#spaces">Spaces section</a> for displaying a collection of charts.</aside>
+
 Dashboards contain a stacked collection of instruments that graph one or more metrics in real time. Dashboards can be projected on large-screen displays to easily observe many metrics side-by-side.
 
 ### Dashboard Properties

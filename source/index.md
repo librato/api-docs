@@ -8,20 +8,20 @@ includes:
   - response-errors
   - pagination
   - time-intervals
-  - metric-attributes
   - metrics
+  - metric-attributes
+  - spaces
+  - charts
   - annotations
   - alerts
   - api-tokens
   - chart-tokens
-  - dashboards
-  - instruments
   - jobs
   - services
   - sources
-  - spaces
-  - charts
   - users
+  - dashboards
+  - instruments
 
 search: true
 ---

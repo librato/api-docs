@@ -2,6 +2,8 @@
 
 ## Overview
 
+<aside class="notice">Note: This is a legacy feature & deprecated. Please refer to the <a href="#charts">Charts section</a> for displaying metrics.</aside>
+
 Instruments are the data representations of graphs of one or more metrics that you use to visualize and correlate behavior. Instruments can be placed on dashboards for viewing.
 
 ### Instrument Properties
