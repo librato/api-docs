@@ -20,8 +20,9 @@ includes:
   - services
   - sources
   - spaces
+  - charts
   - users
-  
+
 search: true
 ---
 
