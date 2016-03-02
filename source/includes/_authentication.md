@@ -2,10 +2,15 @@
 
 >Example Request
 
->A user with an email address `example@librato.com` and an API token of `75AFDB82` will use the following curl command:
+>A user with an email address `example@librato.com` and an API token of `75AFDB82` will use the following command:
 
 ```shell
 curl -u example@librato.com:75AFDB82 https://metrics-api.librato.com/v1/metrics
+```
+
+```ruby
+require "librato-metrics"
+Librato.api_key = "YOUR-API-KEY"
 ```
 
 > Or you may include the credentials in the URL (see the note about URL Encoding below):
@@ -41,7 +46,7 @@ https://example%40librato.com:apitoken@metrics-api.librato.com/v1/metrics
 
 >Note: cURL automatically converts the `@` to a `%40` if you use the `-u` option, but not if you put authentication in the URL directly.
 
-You can also include your *user* and *token* credentials in the URL with most clients. 
+You can also include your *user* and *token* credentials in the URL with most clients.
 
 ## Partner Admin Access
 
@@ -51,6 +56,6 @@ You can also include your *user* and *token* credentials in the URL with most cl
 curl -u <user email>:<partner admin token> https://metrics-api.librato.com/v1/metrics
 ```
 
-To administrate a user account created via the [partner API](#users), select the user's email address and use your partner admin user's token as the API token. 
+To administrate a user account created via the [partner API](#users), select the user's email address and use your partner admin user's token as the API token.
 
 See the [Managing Users section](#users) of the partner API for more information.

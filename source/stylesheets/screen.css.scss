@@ -287,9 +287,10 @@ html, body {
   }
 
   .lang-selector {
+    top: 150px;
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: 5px solid $sub-nav-bg;
   }
 }
 
@@ -309,6 +310,10 @@ html, body {
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
       color: $lang-select-pressed-text;
+    }
+
+    &:hover {
+      color: $lang-select-text;
     }
 
     &.active {
@@ -484,7 +489,7 @@ html, body {
     @extend %break-words;
     @extend %code-font;
   }
-  
+
   .prettyprint {
     color: #0BA57C;
     background-color: rgba(160, 160, 160, 0.10);
