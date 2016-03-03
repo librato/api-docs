@@ -10,10 +10,10 @@ curl -u example@librato.com:75AFDB82 https://metrics-api.librato.com/v1/metrics
 
 ```ruby
 require "librato-metrics"
-Librato.api_key = "YOUR-API-KEY"
+Librato::Metrics.authenticate example@librato.com, 75AFDB82
 ```
 
-> Or you may include the credentials in the URL (see the note about URL Encoding below):
+>Or you may include the credentials in the URL (see the note about URL Encoding below):
 
 ```shell
 curl https://example%40librato.com:75AFDB82@metrics-api.librato.com/v1/metrics

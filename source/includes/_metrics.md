@@ -63,6 +63,12 @@ curl \
   'https://metrics-api.librato.com/v1/metrics'
 ```
 
+```ruby
+require "librato-metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.metrics
+```
+
 >Retrieve all metrics pertaining to a request:
 
 ```shell
@@ -246,7 +252,7 @@ This route will also execute a [composite metric query](https://www.librato.com/
 
 Parameter | Definition
 --------- | ----------
-compose | A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters. 
+compose | A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters.
 
 **NOTE**: `start_time` and `resolution` are required. The `end_time` parameter is optional. The `count` parameter is currently ignored. When specified, the response is a composite metric query response.
 
@@ -642,7 +648,7 @@ The individual gauge and counter measurements can be specified in one of several
 }
 ```
 
-Each metric name is a hash to the measurement values. 
+Each metric name is a hash to the measurement values.
 
 ### Multiple measurements with the same name
 
