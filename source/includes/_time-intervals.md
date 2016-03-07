@@ -12,7 +12,7 @@ Request Parameter | Definition
 ----------------- | ----------
 start_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the start time of the desired interval.
 end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the end time of the desired interval. If left unspecified it defaults to the current time.
-count | The number of measurements desired. When specified as N in conjunction with `starttime`, the response contains the first N measurements after `starttime`. When specified as N in conjunction with `endtime`, the response contains the last N measurements before `endtime`.
+count | The number of measurements desired. When specified as N in conjunction with `start_time`, the response contains the first N measurements after `start_time`. When specified as N in conjunction with `end_time`, the response contains the last N measurements before `end_time`.
 resolution | A resolution for the response as measured in seconds. If the original measurements were reported at a higher resolution than specified in the request, the response contains averaged measurements.
 
 ## Pagination
