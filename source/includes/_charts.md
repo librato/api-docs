@@ -111,6 +111,7 @@ source | Name of source or * to include all sources. This field will also accept
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
 group_function | How to process the results when multiple sources will be returned. Value must be one of average, sum, breakout. If average or sum, a single line will be drawn representing the average or sum (respectively) of all sources. If the group_function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
+downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 color | Sets a color to use when rendering the stream. Must be a seven character string that represents the hex code of the color e.g. #52D74C.
 name | A display name to use for the stream when generating the tooltip.
 units_short | Unit value string to use as the tooltip label.
@@ -193,6 +194,7 @@ source | Name of source or * to include all sources. This field will also accept
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
 group_function | How to process the results when multiple sources will be returned. Value must be one of average, sum, breakout. If average or sum, a single line will be drawn representing the average or sum (respectively) of all sources. If the group_function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
+downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 color | Sets a color to use when rendering the stream. Must be a seven character string that represents the hex code of the color e.g. #52D74C.
 name | A display name to use for the stream when generating the tooltip.
 units_short | Unit value string to use as the tooltip label.
