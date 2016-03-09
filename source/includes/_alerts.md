@@ -108,6 +108,10 @@ curl \
   'https://metrics-api.librato.com/v1/alerts?version=2&name=production'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -181,6 +185,10 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/123'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code
@@ -493,6 +501,10 @@ curl \
 "https://metrics-api.librato.com/v1/alerts/123"
 ```
 
+```ruby
+currently not supported
+```
+
 >Enable an alert:
 
 ```shell
@@ -502,6 +514,10 @@ curl \
   -H "Content-Type: application/json" \
   -d '{"active": true, "name": "my.alert.name", "description": "Process went down", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}]}' \
 "https://metrics-api.librato.com/v1/alerts/123"
+```
+
+```ruby
+currently not supported
 ```
 
 >Update the description of an alert:
@@ -515,6 +531,10 @@ curl \
 "https://metrics-api.librato.com/v1/alerts/123"
 ```
 
+```ruby
+currently not supported
+```
+
 >Update the runbook URL for an alert:
 
 ```shell
@@ -524,6 +544,10 @@ curl \
   -H "Content-Type: application/json" \
   -d '{"attributes": {"runbook_url": "http://google.com"}, "name": "my.alert.name", "description": "A process went down.", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}], "active": true}' \
 "https://metrics-api.librato.com/v1/alerts/123"
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code
@@ -623,6 +647,10 @@ curl \
   'https://metrics-api.librato.com/v1/alerts/123'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -661,6 +689,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/alerts/123/services/209'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code

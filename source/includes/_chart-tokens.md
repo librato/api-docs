@@ -34,6 +34,10 @@ curl \
   'https://metrics-api.librato.com/v1/charts'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -106,6 +110,10 @@ curl \
   'https://metrics-api.librato.com/v1/charts/irhjoz9f'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -146,6 +154,10 @@ curl \
   -d 'entity_type=instrument&entity_id=1848' \
   -X POST \
   'https://metrics-api.librato.com/v1/charts'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code
@@ -209,6 +221,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/charts/conrhpsk'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code

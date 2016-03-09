@@ -47,6 +47,10 @@ curl \
   'https://metrics-api.librato.com/v1/users'
 ```
 
+```ruby
+currently not supported
+```
+
 >The user identified in the partner's application by `67523`:
 
 ```shell
@@ -55,6 +59,10 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/users?reference=67523'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code
@@ -127,6 +135,10 @@ curl \
   'https://metrics-api.librato.com/v1/users/123'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -176,6 +188,10 @@ curl \
   -d 'email=foobar@baz.com&reference=5267&country=US' \
   -X POST \
   'https://metrics-api.librato.com/v1/users'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code
@@ -253,6 +269,10 @@ curl \
   'https://metrics-api.librato.com/v1/users/123'
 ```
 
+```ruby
+currently not supported
+```
+
 >Generate random password for user:
 
 ```shell
@@ -261,6 +281,10 @@ curl \
   -d 'password_reset=1' \
   -X PUT \
   'https://metrics-api.librato.com/v1/users/156'
+```
+
+```ruby
+currently not supported
 ```
 
 >Note that `password` and `password_reset` must not be set at the same time.
@@ -340,6 +364,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/users/672'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code

@@ -38,6 +38,10 @@ curl \
   'https://metrics-api.librato.com/v1/jobs/123456'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Body Response Examples Response properties may vary depending on the state of the job. Some jobs may only report `id` and `state`, so you are encouraged to consider `state` authoritative rather than relying on the presence of other properties (`errors` or `progress` for example).
 
 >Job in progress:

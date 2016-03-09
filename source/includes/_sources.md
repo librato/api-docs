@@ -33,6 +33,10 @@ curl \
   'https://metrics-api.librato.com/v1/sources?name=example'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -100,6 +104,10 @@ curl \
   'https://metrics-api.librato.com/v1/sources/foo.bar.com'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -143,6 +151,10 @@ curl \
   'https://metrics-api.librato.com/v1/sources/i-d32d61af'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -165,6 +177,10 @@ curl \
   -d 'display_name=FooBar' \
   -X PUT \
   'https://metrics-api.librato.com/v1/sources/foo.bar.com'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code

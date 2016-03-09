@@ -34,6 +34,10 @@ curl \
   'https://metrics-api.librato.com/v1/dashboards?name=ops'
 ```
 
+```ruby
+currently not supported
+```
+
 >Response Code
 
 ```
@@ -146,6 +150,10 @@ curl \
   'https://metrics-api.librato.com/v1/dashboards'
 ```
 
+```ruby
+currently not supported
+```
+
 >Using JSON
 
 ```json
@@ -232,6 +240,10 @@ curl \
   'https://metrics-api.librato.com/v1/dashboards/:id'
 ```
 
+```ruby
+currently not supported
+```
+
 >Using JSON
 
 ```json
@@ -301,6 +313,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/dashboards/145'
+```
+
+```ruby
+currently not supported
 ```
 
 >Response Code
