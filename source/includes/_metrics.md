@@ -64,7 +64,7 @@ curl \
 ```
 
 ```ruby
-require "librato-metrics"
+require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.metrics
 ```
@@ -79,9 +79,15 @@ curl \
   'https://metrics-api.librato.com/v1/metrics?name=request'
 ```
 
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.metrics name:'request'
+```
+
 >Execute a composite query to derive the idle collectd CPU time for a given host:
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
@@ -89,14 +95,10 @@ curl \
   'https://metrics-api.librato.com/v1/metrics?compose=derive(s("collectd.cpu.*.idle","boatman*45"))&start_time=1432931007&resolution=60'
 ```
 
->With URL Encoding
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/metrics?compose=derive(s(%22collectd.cpu.*.idle%22,%20%22boatman*45%22))&start_time=1432931007&resolution=60'
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_composite 'derive(s("collectd.cpu.*.idle","boatman*45"))', start_time: Time.now.to_i - 60*60, resolution: 60
 ```
 
 >Response Code
@@ -274,6 +276,12 @@ curl \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp'
 ```
 
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :cpu_temp
+```
+
 >Response Code:
 
 ```
@@ -317,6 +325,12 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?count=4&resolution=60'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :cpu_temp, count: 4, resolution: 60
 ```
 
 >Response Body:
@@ -375,6 +389,12 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?source=server*&count=4&resolution=60'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :cpu_temp, source: 'server', count: 4, resolution:60
 ```
 
 >Response Body:
@@ -453,6 +473,12 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?sources%5B%5D=server1.acme.com&sources%5B%5D=server2.acme.com&count=4&resolution=60'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :cpu_temp, :source => 'server1.acme.com', :count => 4, :resolution => 60
 ```
 
 >Response Body:
@@ -569,6 +595,12 @@ curl \
   -d 'gauges[0][measure_time]=1234567949' \
   -X POST \
   https://metrics-api.librato.com/v1/metrics
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :cpu_temp, :source => 'server1.acme.com', :count => 4, :resolution => 60
 ```
 
 >Response Code:
@@ -718,6 +750,12 @@ curl \
   'https://metrics-api.librato.com/v1/metrics'
 ```
 
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.update_metrics :names => ["cpu", "servers", "reqs"], :period => 60, :display_min => 0
+```
+
 >Example Request
 
 >Set the `display_units_short` for all metrics that end with `.time`:
@@ -728,6 +766,12 @@ curl \
   -d 'names=*.time&display_units_short=ms' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.update_metrics :names => ["*.time"] , :display_units_short => "ms"
 ```
 
 >Response Code
@@ -790,6 +834,12 @@ curl \
   'https://metrics-api.librato.com/v1/metrics/temp'
 ```
 
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.update_metric :temp, :name => "Temperature in Celsius", :attributes => { :display_min => '0' }
+```
+
 >Response Code
 
 ```
@@ -812,6 +862,12 @@ curl \
   -d 'type=gauge&description=Length of app queue&display_name=num. elements' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics/queue_len'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.submit :queue_len => {:type => :gauge, :display_name => "num. elements", :value => 0}
 ```
 
 >Response Code
@@ -892,6 +948,12 @@ curl \
   'https://metrics-api.librato.com/v1/metrics'
 ```
 
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.delete_metrics :cpu, :servers, :reqs
+```
+
 >Delete all metrics that start with `cpu` and end with `.90`:
 
 ```shell
@@ -900,6 +962,12 @@ curl \
   -d 'names=cpu*.90' \
   -X DELETE \
   'https://metrics-api.librato.com/v1/metrics'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.delete_metrics :names => ["cpu*.90"]
 ```
 
 >Response Code
@@ -950,6 +1018,12 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/metrics/app_requests'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.delete_metrics :app_requests
 ```
 
 >Response Code

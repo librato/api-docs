@@ -9,13 +9,13 @@ curl -u example@librato.com:75AFDB82 https://metrics-api.librato.com/v1/metrics
 ```
 
 ```ruby
-require "librato-metrics"
+require "librato/metrics"
 Librato::Metrics.authenticate example@librato.com, 75AFDB82
 ```
 
 >Or you may include the credentials in the URL (see the note about URL Encoding below):
 
-```shell
+```
 curl https://example%40librato.com:75AFDB82@metrics-api.librato.com/v1/metrics
 ```
 
@@ -40,7 +40,7 @@ https://user:token@metrics-api.librato.com/v1/metrics
 
 >Because the *user* value is an email address, it has to be escaped in order to form a valid URL. The `@` sign is represented by the `%40` entity. For example:
 
-```shell
+```
 https://example%40librato.com:apitoken@metrics-api.librato.com/v1/metrics
 ```
 
@@ -52,7 +52,7 @@ You can also include your *user* and *token* credentials in the URL with most cl
 
 >Example Request
 
-```shell
+```
 curl -u <user email>:<partner admin token> https://metrics-api.librato.com/v1/metrics
 ```
 
