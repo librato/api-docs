@@ -290,7 +290,10 @@ html, body {
     top: 150px;
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $sub-nav-bg;
+    height: 50px;
+    padding-left: 40px;
+    background: #262626;
+    color: #d0d4d7;
   }
 }
 
@@ -301,24 +304,29 @@ html, body {
   a {
     display: block;
     float:left;
-    color: $lang-select-text;
+    color: #999;
+    font-size: 1.2rem;
+    padding: 8px 10px;
     text-decoration: none;
-    padding: 0 10px;
     line-height: 30px;
     outline: 0;
 
     &:active, &:focus {
-      background-color: $lang-select-pressed-bg;
+      border-bottom: 5px solid $lang-select-pressed-bg;
       color: $lang-select-pressed-text;
+      text-decoration: none;
     }
 
     &:hover {
       color: $lang-select-text;
+      border-bottom: 5px solid $lang-select-pressed-bg;
+      text-decoration: none;
     }
 
     &.active {
-      background-color: $lang-select-active-bg;
+      border-bottom: 5px solid $lang-select-pressed-bg;
       color: $lang-select-active-text;
+      text-decoration: none;
     }
   }
 
