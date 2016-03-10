@@ -109,7 +109,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -188,7 +188,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -502,7 +502,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Enable an alert:
@@ -517,7 +517,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Update the description of an alert:
@@ -532,7 +532,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Update the runbook URL for an alert:
@@ -547,7 +547,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -648,7 +648,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -692,7 +692,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code

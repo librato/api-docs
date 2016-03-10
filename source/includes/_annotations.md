@@ -348,6 +348,13 @@ curl \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
 ```
 
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.annotate :'app-deploys', 'My Annotation', :source => 'foo3.bar.com',
+    :start_time => 1234567890, :description => 'Joe deployed v29 to metrics'
+```
+
 >Create an annotation event with a link:
 
 ```shell
@@ -359,6 +366,14 @@ curl \
   -d 'links[0][rel]=github' \
   -X POST \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.annotate :'app-deploys', 'My Annotation', :source => 'foo3.bar.com',
+    :start_time => 1234567890, :description => 'Joe deployed v29 to metrics',
+    :links => [:label=>'Metrics Gem', :href => 'https://github.com/librato/librato-metrics', :rel => 'github']
 ```
 
 >Response Code
@@ -435,7 +450,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.fetch :'app-deploys', :start_time => 1234500000, :end_time => 1234600000, :sources => ['db1.acme', 'db2.acme']
+Librato::Metrics::Annotator.new.fetch :'app-deploys', :start_time => (Time.now.to_i-3600), :end_time => (Time.now.to_i), :sources => ['db1.acme', 'db2.acme']
 ```
 
 >Response Code
@@ -503,7 +518,7 @@ curl \
 ```
 
 ```ruby
-Not Available
+Not available
 ```
 
 >Response Code
@@ -726,7 +741,7 @@ curl \
 ```
 
 ```ruby
-Not Available
+Not available
 ```
 
 >Response Code

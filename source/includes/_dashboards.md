@@ -35,7 +35,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -151,7 +151,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Using JSON
@@ -241,7 +241,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Using JSON
@@ -316,7 +316,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code

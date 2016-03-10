@@ -38,7 +38,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -115,7 +115,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -164,7 +164,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -235,7 +235,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -295,7 +295,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code

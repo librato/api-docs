@@ -48,7 +48,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >The user identified in the partner's application by `67523`:
@@ -62,7 +62,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -136,7 +136,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -191,7 +191,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -270,7 +270,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Generate random password for user:
@@ -284,7 +284,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Note that `password` and `password_reset` must not be set at the same time.
@@ -367,7 +367,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code

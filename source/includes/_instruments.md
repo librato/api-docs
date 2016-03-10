@@ -63,7 +63,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -119,7 +119,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
@@ -195,7 +195,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >POST Request Body (JSON)
@@ -358,7 +358,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >PUT Request Body (JSON)
@@ -481,7 +481,7 @@ curl \
 ```
 
 ```ruby
-currently not supported
+Not available
 ```
 
 >Response Code
