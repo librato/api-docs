@@ -73,7 +73,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.list :name => ('api')
+Librato::Metrics::Annotator.new.list name: ('api')
 ```
 
 >Response Code
@@ -140,7 +140,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.list :name => ('api-deploys')
+Librato::Metrics::Annotator.new.list name: ('api-deploys')
 ```
 
 >Specifying a set of [time interval search parameters](#time-intervals) will return a list of all annotation events for a stream. For example, to return the set of annotation events on the annotation stream blog-posts between two timestamps and limited to sources `db1.acme` and `db2.acme`:
@@ -156,7 +156,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.fetch :'blog-posts', :start_time => 1234500000, :end_time => 1234600000, :sources => ['db1.acme', 'db2.acme']
+Librato::Metrics::Annotator.new.fetch :'blog-posts', start_time: 1234500000, end_time: 1234600000, sources: ['db1.acme', 'db2.acme']
 ```
 
 >Response Code
@@ -269,7 +269,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.fetch :'api-deploys', :start_time => (Time.now.to_i-3600)
+Librato::Metrics::Annotator.new.fetch :'api-deploys', start_time: (Time.now.to_i-3600)
 ```
 
 >Response Code
@@ -334,8 +334,8 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.annotate :'app-deploys', 'Deployed v56', :source => 'foo3.bar.com',
-    :description => 'v56 - Fixed typo in page titles'
+Librato::Metrics.annotate :'app-deploys', 'Deployed v56', source: 'foo3.bar.com',
+    description: 'v56 - Fixed typo in page titles'
 ```
 
 >Create an annotation event at a specific timestamp:
@@ -351,8 +351,8 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.annotate :'app-deploys', 'My Annotation', :source => 'foo3.bar.com',
-    :start_time => 1234567890, :description => 'Joe deployed v29 to metrics'
+Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com',
+    start_time: 1234567890, description: 'Joe deployed v29 to metrics'
 ```
 
 >Create an annotation event with a link:
@@ -371,9 +371,9 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.annotate :'app-deploys', 'My Annotation', :source => 'foo3.bar.com',
-    :start_time => 1234567890, :description => 'Joe deployed v29 to metrics',
-    :links => [:label=>'Metrics Gem', :href => 'https://github.com/librato/librato-metrics', :rel => 'github']
+Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com',
+    start_time: 1234567890, description: 'Joe deployed v29 to metrics',
+    links: [label: 'Metrics Gem', href: 'https://github.com/librato/librato-metrics', rel: 'github']
 ```
 
 >Response Code
@@ -450,7 +450,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.fetch :'app-deploys', :start_time => (Time.now.to_i-3600), :end_time => (Time.now.to_i), :sources => ['db1.acme', 'db2.acme']
+Librato::Metrics::Annotator.new.fetch :'app-deploys', start_time: (Time.now.to_i-3600), end_time: (Time.now.to_i), sources: ['db1.acme', 'db2.acme']
 ```
 
 >Response Code
@@ -582,7 +582,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics::Annotator.new.update_event :app-deploys, 143, :description => 'Deployed git SHA 601060a68ff2e'
+Librato::Metrics::Annotator.new.update_event :app-deploys, 143, description: 'Deployed git SHA 601060a68ff2e'
 ```
 
 >Response Code

@@ -394,7 +394,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.get_metric :cpu_temp, source: 'server', count: 4, resolution:60
+Librato::Metrics.get_metric :cpu_temp, source: :server, count: 4, resolution:60
 ```
 
 >Response Body:
@@ -478,7 +478,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.get_metric :cpu_temp, :source => 'server1.acme.com', :count => 4, :resolution => 60
+Librato::Metrics.get_metric :cpu_temp, sources: ['server1.acme.com', 'server2.acme.com'], count: 4, resolution: 60
 ```
 
 >Response Body:
@@ -600,7 +600,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.get_metric :cpu_temp, :source => 'server1.acme.com', :count => 4, :resolution => 60
+Librato::Metrics.get_metric :cpu_temp, source: 'server1.acme.com', count: 4, resolution: 60
 ```
 
 >Response Code:
@@ -753,7 +753,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.update_metrics :names => ["cpu", "servers", "reqs"], :period => 60, :display_min => 0
+Librato::Metrics.update_metrics names: ["cpu", "servers", "reqs"], period: 60, display_min: 0
 ```
 
 >Example Request
@@ -771,7 +771,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.update_metrics :names => ["*.time"] , :display_units_short => "ms"
+Librato::Metrics.update_metrics names: ["*.time"] , display_units_short: "ms"
 ```
 
 >Response Code
@@ -837,7 +837,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.update_metric :temp, :name => "Temperature in Celsius", :attributes => { :display_min => '0' }
+Librato::Metrics.update_metric :temp, name: "Temperature in Celsius", attributes: { display_min: '0' }
 ```
 
 >Response Code
@@ -867,7 +867,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.submit :queue_len => {:type => :gauge, :display_name => "num. elements", :value => 0}
+Librato::Metrics.update_metric :queue_len, type: :gauge, display_name: "num. elements", period: 15
 ```
 
 >Response Code
@@ -967,7 +967,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.delete_metrics :names => ["cpu*.90"]
+Librato::Metrics.delete_metrics names: ["cpu*.90"]
 ```
 
 >Response Code

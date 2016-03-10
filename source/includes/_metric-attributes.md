@@ -34,7 +34,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.update_metric :temperature, :attributes => { :display_max => '150' }
+Librato::Metrics.update_metric :temperature, attributes: { display_max: '150' }
 ```
 
 >For `aggregate`, the following example demonstrates how to enable SSA for the metric speed.
@@ -50,7 +50,7 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.update_metric :speed, :attributes => { :aggregate => 'true' }
+Librato::Metrics.update_metric :speed, attributes: { aggregate: 'true' }
 ```
 
 Gauge Attribute | Definition
