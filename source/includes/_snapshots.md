@@ -54,7 +54,7 @@ curl \
 ```json
 {
   "href": "https://metrics-api.librato.com/v1/snapshots/1",
-  "job_href": "https://metrics-api.librato.comv1/jobs/123456",
+  "job_href": "https://metrics-api.librato.com/v1/jobs/123456",
   "image_href": "http://snapshots.librato.com/chart/tuqlgn1i-71569.png",
   "duration": 3600,
   "end_time": "2016-02-20T01:18:46Z",
@@ -109,7 +109,7 @@ Location: /v1/snapshots/:id
 ```json
 {
   "href": "https://metrics-api.librato.com/v1/snapshots/1",
-  "job_href": "https://metrics-api.librato.comv1/jobs/123456",
+  "job_href": "https://metrics-api.librato.com/v1/jobs/123456",
   "image_href": "http://snapshots.librato.com/chart/tuqlgn1i-71569.png",
   "duration": 3600,
   "end_time": "2016-02-20T01:18:46Z",
