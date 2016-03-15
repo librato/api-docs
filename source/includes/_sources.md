@@ -23,6 +23,22 @@ GET https://metrics-api.librato.com/v1/sources
 
 >Example Request
 
+>Return all sources:
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/sources'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.sources
+```
+
 >Return all sources owned by the user with name matching example:
 
 ```shell
@@ -34,7 +50,9 @@ curl \
 ```
 
 ```ruby
-Not available
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.sources name: "example"
 ```
 
 >Response Code
@@ -105,7 +123,9 @@ curl \
 ```
 
 ```ruby
-Not available
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_source "foo.bar.com"
 ```
 
 >Response Code
@@ -152,7 +172,9 @@ curl \
 ```
 
 ```ruby
-Not available
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.update_source "i-d32d61af", display_name: "web-frontend-0"
 ```
 
 >Response Code
