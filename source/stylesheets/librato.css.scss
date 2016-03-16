@@ -352,9 +352,9 @@ ul {
 // Subnav Styles
 
 .sub-nav {
-  background-color: #1280A9;
+  background-color: $sub-nav-bg;
   height: 60px;
-  ul { 
+  ul {
     list-style-type: none;
     float: left;
     margin: 0;
@@ -402,13 +402,13 @@ ul {
     border-top-left-radius: 3px;
     float: left;
 
-    i { 
+    i {
       color: #C4DFEA;
       position: relative;
       top: -1px;
       left: -2px;
       }
-    } 
+    }
   .search {
     color: #000;
     font-size: 14px;
@@ -453,7 +453,7 @@ ul {
 
 }
 
-   
+
 
 // End of subnav styles
 

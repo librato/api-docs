@@ -62,6 +62,10 @@ curl \
   'https://metrics-api.librato.com/v1/instruments'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -112,6 +116,10 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/instruments/123'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code
@@ -184,6 +192,10 @@ curl \
   -d 'attributes[display_integral]=true' \
   -X POST \
   https://metrics-api.librato.com/v1/instruments
+```
+
+```ruby
+Not available
 ```
 
 >POST Request Body (JSON)
@@ -345,6 +357,10 @@ curl \
   https://metrics-api.librato.com/v1/instruments/129
 ```
 
+```ruby
+Not available
+```
+
 >PUT Request Body (JSON)
 
 ```json
@@ -462,6 +478,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/instruments/123'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code

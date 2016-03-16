@@ -29,6 +29,10 @@ curl \
   'https://metrics-api.librato.com/v1/spaces?name=ops'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -80,6 +84,10 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces/129'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code
@@ -137,6 +145,10 @@ curl \
   -d 'name=CPUs' \
   -X POST \
   'https://metrics-api.librato.com/v1/spaces'
+```
+
+```ruby
+Not available
 ```
 
 >Using JSON
@@ -216,6 +228,10 @@ curl \
   'https://metrics-api.librato.com/v1/spaces/:id'
 ```
 
+```ruby
+Not available
+```
+
 >Using JSON
 
 ```curl
@@ -274,6 +290,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/spaces/145'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code

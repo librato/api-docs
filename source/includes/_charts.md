@@ -141,6 +141,10 @@ curl \
   'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -222,6 +226,10 @@ curl \
   'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -272,6 +280,10 @@ curl \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces/:id/charts'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code
@@ -341,6 +353,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code

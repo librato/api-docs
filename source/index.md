@@ -2,6 +2,12 @@
 title: API Reference
 
 language_tabs:
+  - shell
+  - ruby
+
+language_tabs:
+  - shell: cURL
+  - ruby: Ruby
 
 includes:
   - authentication

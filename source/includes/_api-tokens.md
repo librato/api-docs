@@ -33,6 +33,10 @@ curl \
   'https://metrics-api.librato.com/v1/api_tokens'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -149,6 +153,10 @@ curl \
   'https://metrics-api.librato.com/v1/api_tokens'
 ```
 
+```ruby
+Not available
+```
+
 >Using JSON
 
 ```json
@@ -214,6 +222,10 @@ curl \
   -d 'name=New Token Name&active=false&role=admin' \
   -X PUT \
   'https://metrics-api.librato.com/v1/api_tokens/:id'
+```
+
+```ruby
+Not available
 ```
 
 >Using JSON
@@ -284,6 +296,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/api_tokens/28'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code

@@ -34,6 +34,7 @@ $librato-yellow: #e6b71c;
 
 // BACKGROUND COLORS
 ////////////////////
+$sub-nav-bg: #1280A9;
 $nav-bg: #EAEAEA;
 $examples-bg: #393939;
 $code-bg: #292929;
@@ -42,9 +43,9 @@ $nav-subitem-bg: #e6e9ea;
 $nav-active-bg: #2467af;
 $lang-select-border: #000;
 $lang-select-bg: #222;
-$lang-select-active-bg: $nav-active-text; // feel free to change this to blue or something
+$lang-select-active-bg: #1280A9; // feel free to change this to blue or something
 $main-bg: #fff;
-$lang-select-pressed-bg: $main-bg; // color of language tab bg when mouse is pressed
+$lang-select-pressed-bg: $sub-nav-bg; // color of language tab bg when mouse is pressed
 $aside-notice-bg: #8fbcd4;
 $aside-warning-bg: #c97a7e;
 $aside-success-bg: #6ac174;
@@ -67,7 +68,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 
 // FONTS
 ////////////////////
-%default-font { 
+%default-font {
   font-family: "Proxima Nova", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }

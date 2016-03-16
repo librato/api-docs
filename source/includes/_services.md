@@ -37,6 +37,10 @@ curl \
   'https://metrics-api.librato.com/v1/services'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -110,6 +114,10 @@ curl \
   'https://metrics-api.librato.com/v1/services/156'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -153,6 +161,10 @@ curl \
   -d 'title=Notify Ops Room&type=campfire&settings%5Btoken%5D=1234567890ABCDEF&settings%5Broom%5D=Ops&settings%5Bsubdomain%5D=acme' \
   -X POST \
   'https://metrics-api.librato.com/v1/services'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code
@@ -222,6 +234,10 @@ curl \
   'https://metrics-api.librato.com/v1/services/145'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -276,6 +292,10 @@ curl \
   -u <user>:<token> \
   -X DELETE \
   'https://metrics-api.librato.com/v1/services/145'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code

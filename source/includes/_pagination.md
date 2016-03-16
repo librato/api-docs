@@ -14,9 +14,13 @@ curl \
   https://metrics-api.librato.com/v1/metrics?offset=10&length=10
 ```
 
+```ruby
+Not available
+```
+
 >Response Code:
 
-```shell
+```
 Code: 200
 Headers: not applicable
 ```
@@ -59,9 +63,13 @@ curl \
   https://metrics-api.librato.com/v1/metrics?name=api&offset=20&limit=10
 ```
 
+```ruby
+Not available
+```
+
 >Response Code:
 
-```shell
+```
 Code: 200
 Headers: not applicable
 ```
