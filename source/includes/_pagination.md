@@ -10,8 +10,8 @@ Many of the resources accessible through the Metrics REST APIs can contain large
 
 ```shell
 curl \
-  -u user:token \
-  https://metrics-api.librato.com/v1/metrics?offset=10&length=10
+  -u <user>:<token> \
+  'https://metrics-api.librato.com/v1/metrics?offset=10&length=10'
 ```
 
 ```ruby

@@ -17,7 +17,21 @@ resolution | A resolution for the response as measured in seconds. If the origin
 
 ## Pagination
 
->For example, if the response includes the following `query` section it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
+>Example Request (with no explicit `count`)
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.idle?resolution=60&start_time=1303252025'
+```
+
+```ruby
+Not available
+```
+
+>If the response includes the following `query` section with `next_time` it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
 
 ```json
 "query" : {
