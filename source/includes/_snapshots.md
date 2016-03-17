@@ -95,7 +95,7 @@ curl \
 >Response Code
 
 ```
-201 Created
+202 Accepted
 ```
 
 >Response Headers
