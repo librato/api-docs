@@ -13,7 +13,6 @@ includes:
   - authentication
   - response-errors
   - pagination
-  - time-intervals
   - metrics
   - metric-attributes
   - spaces
