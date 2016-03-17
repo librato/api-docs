@@ -23,6 +23,7 @@ includes:
   - api-tokens
   - chart-tokens
   - jobs
+  - snapshots
   - services
   - sources
   - users
@@ -46,4 +47,3 @@ Detailed documentation for authentication and each individual API call can
 be accessed through the menu. We invite suggestions, feature
 requests or problem reports at
 [our support forum](http://www.librato.com/docs/kb).
-
