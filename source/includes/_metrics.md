@@ -588,7 +588,11 @@ If a request does not include an explicit count and the matched data range inclu
 
 ### Request Parameters
 
-All metric requests and responses support our generic [Pagination Parameters](#pagination).
+The response is paginated, so the request supports our generic [Pagination Parameters](#Pagination). Specific to metrics, the default and only permissible value of the `orderby` pagination parameter is `name`.
+
+Parameter | Definition
+--------- | ----------
+name | A search parameter that limits the results to metrics whose names contain a matching substring. The search is not case-sensitive.
 
 ### Time Interval Parameters
 
