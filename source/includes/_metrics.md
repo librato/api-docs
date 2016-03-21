@@ -665,11 +665,11 @@ The individual gauge and counter measurements can be specified in one of several
 
 ### Hashed by Name
 
->Hashed by name Example:
+>Example Request:
 
 >The example below creates a gauge measurement for the gauge login-delay with a value 3.5.
 
-```curl
+```json
 {
   "gauges": {
     "login-delay": {
@@ -686,7 +686,7 @@ Each metric name is a hash to the measurement values.
 
 >For example:
 
-```curl
+```json
 {
   "gauges": {
     "0": {

@@ -35,8 +35,26 @@ Headers: not applicable
     "offset": 10,
     "total": 200
   },
-  "metrics": [
-    // 10 Metrics...
+  "metrics": [{
+    "name": "api",
+    "display_name": null,
+    "type": "gauge",
+    "attributes": {
+      "summarize_function": "average",
+      "display_units_long": "Request Latency (mS)",
+      "display_units_short": "mS",
+      "display_min": 0,
+      "created_by_ua": "librato-metrics/0.7.4",
+      "display_transform": "x/p",
+      "display_stacked": false,
+      "gap_detection": false,
+      "aggregate": true
+      },
+    "description":null,
+    "period":300,
+    "source_lag":null
+    },
+    // 9 more metrics...
   ]
 }
 ```
@@ -59,7 +77,7 @@ sort<br>`optional` | The sort order in which the results should be ordered. Perm
 
 ```shell
 curl \
-  -u user:token \
+  -u <user>:<token> \
   https://metrics-api.librato.com/v1/metrics?name=api&offset=20&limit=10
 ```
 
@@ -84,8 +102,26 @@ Headers: not applicable
     "offset": 20,
     "total": 200
   },
-  "metrics": [
-    // 10 Metrics...
+  "metrics": [{
+    "name": "api",
+    "display_name": null,
+    "type": "gauge",
+    "attributes": {
+      "summarize_function": "average",
+      "display_units_long": "Request Latency (mS)",
+      "display_units_short": "mS",
+      "display_min": 0,
+      "created_by_ua": "librato-metrics/0.7.4",
+      "display_transform": "x/p",
+      "display_stacked": false,
+      "gap_detection": false,
+      "aggregate": true
+      },
+    "description":null,
+    "period":300,
+    "source_lag":null
+    },
+    // 9 more metrics...
   ]
 }
 ```

@@ -208,7 +208,7 @@ Location: /v1/users/123
 
 >Response Body
 
-```curl
+```json
 {
   "id": 123,
   "email": "foobar@baz.com",
@@ -308,7 +308,7 @@ not applicable
 <br><br>
 >A successful `password_reset` will return a `200 OK` with the new password:
 
-```curl
+```json
 {
   "password": "69d07dbd7cb7302b"
 }

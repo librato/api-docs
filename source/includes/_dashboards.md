@@ -85,7 +85,7 @@ GET https://metrics-api.librato.com/v1/dashboards/:id
 
 >Return the dashboard id `129`.
 
-```curl
+```shell
 curl \
   -i \
   -u <user>:<token> \

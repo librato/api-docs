@@ -173,7 +173,7 @@ Location: /v1/spaces/129
 
 >Response Body
 
-```curl
+```json
 {
   "id": 129,
   "name": "CPUs"
