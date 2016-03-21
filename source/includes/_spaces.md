@@ -153,7 +153,7 @@ Not available
 
 >Using JSON
 
-```
+```json
 {
   "name": "CPUs"
 }
@@ -175,22 +175,8 @@ Location: /v1/spaces/129
 
 ```curl
 {
-  "name": "CPUs",
   "id": 129,
-  "charts": [
-    {
-      "id": 915
-    },
-    {
-      "id": 1321
-    },
-    {
-      "id": 47842
-    },
-    {
-      "id": 922
-    }
-  ]
+  "name": "CPUs"
 }
 ```
 
@@ -234,7 +220,7 @@ Not available
 
 >Using JSON
 
-```curl
+```json
 {
   "name": "CPUs"
 }
