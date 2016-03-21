@@ -97,7 +97,7 @@ GET https://metrics-api.librato.com/v1/api_tokens/:id
 
 >Example Request
 
-```curl
+```shell
 curl \
   -i \
   -u <user>:<token> \

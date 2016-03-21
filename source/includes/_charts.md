@@ -12,30 +12,28 @@ A charts graphs one or more metrics in real time. In order to create a chart you
 POST https://metrics-api.librato.com/v1/spaces/:id/charts
 ```
 
->POST Request Body (JSON)
+>Example Request
 
-```json
-{
-  "name": "Server Temperature",
-  "type": "line",
-  "streams": [
-    {
-      "metric": "server_temp",
-      "source": "app1"
-    },
-    {
-      "metric": "environmental_temp",
-      "source": "*",
-      "group_function": "breakout",
-      "summary_function": "average"
-    },
-    {
-      "metric": "server_temp",
-      "source": "%",
-      "group_function": "average"
-    }
-  ]
-}
+```shell
+curl \
+-u <user>:<token> \
+-d 'type=line' \
+-d 'name=Server Temperature' \
+-d 'streams[0][metric]=server_temp' \
+-d 'streams[0][source]=app1' \
+-d 'streams[1][metric]=environmental_temp' \
+-d 'streams[1][source]=*' \
+-d 'streams[1][group_function]=breakout' \
+-d 'streams[1][summary_function]=average' \
+-d 'streams[2][metric]=server_temp' \
+-d 'streams[2][source]=%' \
+-d 'streams[2][group_function]=average' \
+-X POST \
+'https://metrics-api.librato.com/v1/spaces/:id/charts/'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code
@@ -76,6 +74,43 @@ Location: /v1/spaces/123
     }
   ]
 }
+```
+
+>Example Request
+
+>Add a composite metric to a chart
+
+>NOTE: This will replace existing streams within the specified chart
+
+```shell
+curl \
+  -u  $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -d 'type=line' \
+  -d 'streams[0][composite]=divide([sum(s("memory_total","prod.web*")),sum(s("memory_used","prod.web*"))])' \
+  -X PUT \
+  'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
+```
+
+```ruby
+Not available
+```
+
+>Response Code
+
+```
+204 No Content
+```
+
+>Response Headers
+
+```
+** NOT APPLICABLE **
+```
+
+>Response Body
+
+```
+** NOT APPLICABLE **
 ```
 
 ### Headers
@@ -244,7 +279,7 @@ Not available
 
 >Response Body
 
-```curl
+```shell
 {
   "id": 6637,
   "name": "CPU Usage",
