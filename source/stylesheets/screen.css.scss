@@ -504,6 +504,7 @@ html, body {
   }
 
   pre>code {
+    white-space: pre-wrap;
     border-radius: 5px;
     padding: $code-annotation-padding;
     color: #ccc;
