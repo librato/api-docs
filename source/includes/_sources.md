@@ -151,7 +151,7 @@ Librato::Metrics.get_source "foo.bar.com"
 
 Returns the current representation of the source identifed by name.
 
-## Update a Source
+## Create or update a Source
 
 >Definition
 
@@ -226,9 +226,9 @@ Location: /v1/sources/foo.bar.com
 }
 ```
 
-Updates or creates the source identified by `:name`. If the source already exists, it performs an update of the source's properties.
+Creates or updates the source identified by `:name`. If the source name does not exist, the source will be created with the associated properties. If the source already exists, properties will be updated.
 
-If the source name does not exist, then the source will be created with the associated properties. Typically sources are created the first time a measurement with that name set as the source value is sent to the [collated POST route](#submit-metrics).
+Typically sources are created the first time a measurement for a given source is sent to the [collated POST route](#submit-metrics).
 
 
 ### Headers
