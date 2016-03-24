@@ -37,6 +37,10 @@ curl \
   'https://metrics-api.librato.com/v1/snapshots/1'
 ```
 
+```ruby
+Not available
+```
+
 >Response Code
 
 ```
@@ -90,6 +94,10 @@ curl \
   -d 'subject[chart][id]=1&subject[chart][source]=*&subject[chart][type]=stacked' \
   -X POST \
   'https://metrics-api.librato.com/v1/snapshots'
+```
+
+```ruby
+Not available
 ```
 
 >Response Code

@@ -61,7 +61,6 @@ Headers: not applicable
 
 There are several request parameters that you can use to control the pagination of the results. These apply in a consistent fashion across all paginated resources. All of the following request parameters have default values and are therefore optional:
 
-
 Request Parameter | Definition
 ----------------- | ----------
 offset<br>`optional` | Specifies how many results to skip for the first returned result. Defaults to 0.
