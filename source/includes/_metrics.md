@@ -558,7 +558,9 @@ group_by | When querying a gauge and specifying multiple sources with the `sourc
 
 ## Pagination
 
->Example Request (with no explicit `count`)
+>Example Request
+
+>Return the metric `librato.cpu.percent.idle` with the `start_time` of 1303252025 (unix time):
 
 ```shell
 curl \
@@ -579,6 +581,8 @@ Not available
     "next_time" : 1305562061
 }
 ```
+
+>Note: In order to receive a `next_time` value, ensure you aren't including a `count` value in your request.
 
 If a request does not include an explicit count and the matched data range includes more points than the maximum return size, then the response will include a pagination hint. In this case the response will include a parameter `next_time` in the `query` top-level response section. The `next_time` will be set to the epoch second start time of the next matching element of the original request. This hint serves two purposes:
 
@@ -594,6 +598,10 @@ Parameter | Definition
 --------- | ----------
 name | A search parameter that limits the results to metrics whose names contain a matching substring. The search is not case-sensitive.
 
+### Time Intervals
+
+Librato tracks and stores several different types of measurements as time-series data. Each measurement corresponds to a particular point in time. Queries are typically made to request the values over some time interval that is a subset of the entire series e.g. the last hour, last Monday, etc. The search parameters described below may be used in different combinations to specify a time interval when making queries against [metrics](#metrics).
+
 ### Time Interval Parameters
 
 If an explicit interval (i.e. `start_time` to `end_time`) is specified, the response contains all measurements that fall within the interval. In this scenario the parameter `start_time` must be set, while `end_time` may be set or left to default to the current time.
@@ -606,32 +614,6 @@ start_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indica
 end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the end time of the desired interval. If left unspecified it defaults to the current time.
 count | The number of measurements desired. When specified as N in conjunction with `start_time`, the response contains the first N measurements after `start_time`. When specified as N in conjunction with `end_time`, the response contains the last N measurements before `end_time`.
 resolution | A resolution for the response as measured in seconds. If the original measurements were reported at a higher resolution than specified in the request, the response contains averaged measurements.
-
-### Time Intervals
-
->Example Request (with no explicit `count`)
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.idle?resolution=60&start_time=1303252025'
-```
-
-```ruby
-Not available
-```
-
->If the response includes the following `query` section with `next_time` it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
-
-```json
-"query" : {
-    "next_time" : 1305562061
-}
-```
-
-Librato tracks and stores several different types of measurements as time-series data. Each measurement corresponds to a particular point in time. Queries are typically made to request the values over some time interval that is a subset of the entire series e.g. the last hour, last Monday, etc. The search parameters described below may be used in different combinations to specify a time interval when making queries against [metrics](#metrics).
 
 ## Submit Metrics
 
