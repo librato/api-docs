@@ -592,7 +592,7 @@ If a request does not include an explicit count and the matched data range inclu
 
 ### Request Parameters
 
-The response is paginated, so the request supports our generic [Pagination Parameters](#Pagination). Specific to metrics, the default and only permissible value of the `orderby` pagination parameter is `name`.
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to metrics, the default and only permissible value of the `orderby` pagination parameter is `name`.
 
 Parameter | Definition
 --------- | ----------
