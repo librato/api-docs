@@ -7,7 +7,7 @@ https://www.librato.com/docs/api
 
 ### About This Project
 
-[Slate](https://github.com/tripit/slate) is a project designed to provide single page API documention using [Middleman](https://github.com/middleman/middleman). 
+[Slate](https://github.com/tripit/slate) is a project designed to provide single page API documentation using [Middleman](https://github.com/middleman/middleman). 
 
 You can add/edit the docs using Markdown. CircleCI takes care of automating the process: anything that is merged into the master branch kicks off a build and is automagically shipped to production (hosted on S3).
 
