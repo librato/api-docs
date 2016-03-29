@@ -29,7 +29,7 @@ curl \
 -d 'streams[2][source]=%' \
 -d 'streams[2][group_function]=average' \
 -X POST \
-'https://metrics-api.librato.com/v1/spaces/:id/charts/'
+'https://metrics-api.librato.com/v1/spaces/:id/charts'
 ```
 
 ```ruby
