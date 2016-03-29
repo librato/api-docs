@@ -299,7 +299,7 @@ Not available
 
 Returns a specific chart by its id and space id.
 
-## Retrieve Chart of Space
+## Retrieve Charts in Space
 
 >Definition
 
@@ -307,7 +307,7 @@ Returns a specific chart by its id and space id.
 GET https://metrics-api.librato.com/v1/spaces/:id/charts
 ```
 
->Return all charts related to the space.
+>List all charts in a space.
 
 ```shell
 curl \
