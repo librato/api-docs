@@ -23,6 +23,8 @@ period | The `period` of a metric is an integer value that describes (in seconds
 description | The description of a metric is a string and may contain spaces. The description can be used to explain precisely what a metric is measuring, but is not required. This attribute is not currently exposed in the Librato UI.
 display_name | More descriptive name of the metric which will be used in views on the Metrics website. Allows more characters than the metric `name`, including spaces, parentheses, colons and more.
 attributes | The [attributes hash](#metric-attributes) configures specific components of a metric's visualization.
+source_lag | This property sets a "look back" further in the data stream when rendering a composite metric for the purposes of alerting.  The default is 120, meaning we look back 2 minutes when rendering, which should normally be enough time for the appropriate sources to have reported their data.
+
 
 ### Measurement Properties
 
