@@ -6,7 +6,7 @@ Alerts are used to build actionable responses to changes in metric measurements.
 
 <aside class="notice">Our alerts endpoints currently support two versions of the alert data model. Version 2 is required for many of our new alerting features. Version 1 is legacy & deprecated.</aside>
 
-### Alerts (Version 2)
+### Alerts
 
 Alert Property | Definition
 -------------- | ----------
@@ -20,7 +20,7 @@ description | A string describing this alert.
 active | Boolean: identifies whether the alert is active (can be triggered). Defaults to true.
 rearm_seconds | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are recieved that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
 
-### Alert Conditions (Version 2)
+### Alert Conditions
 
 Each alert can have multiple alert conditions, each of which specifies a state which must be met for the alert to fire. Note an alert will fire when ALL alert conditions are met, not when a single condition is met.
 
@@ -63,7 +63,7 @@ threshold | *float*: measurements below this number will fire the alert. (Requir
 summary_function | *string*: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property](instruments) `summary_function` for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be below the threshold for before the condition is met. All data points within the given duration must be below the threshold to meet this condition. This avoids a single drop from triggering the condition. <br><br>If unset, a single sample below the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
 
-### Alert Attributes (Version 2)
+### Alert Attributes
 
 The attributes field on the alert accepts an optional map of key-value pairs and allows metadata to be associated with the alert. Some keys are used for special behavior:
 
@@ -72,21 +72,6 @@ Attribute | Definition
 runbook_url | a URL for the runbook to be followed when this alert is firing. Used in the Librato UI if set.
 
 Attributes can be unset by excluding their key when updating an alert.
-
-### Alerts (v1, deprecated)
-
-v1 alerts are deprecated and will be removed in the near future. Their properties are available here for reference:
-
-Alert Property | Definition
--------------- | ----------
-id | Each alert has a unique numeric ID.
-entity_type | Type of metric this alert is for, either: counter or gauge.
-entity_name | Name of the metric this alert applies to.
-thresh_above_value | Defines a simple threshold value that triggers this alert if a single measurement value goes above this value.
-thresh_below_value | Defines a simple threshold value that triggers this alert if a single measurement value drops below this value.
-services | An array of [services](#services) to notifiy for this alert (can be sent as list of IDs).
-name | Allows one to specify a string that is used when displaying the alert to identify its purpose.
-active | Boolean identifying whether the alert is active (can be triggered). Defaults to true.
 
 ## Retrieve All Alerts
 
@@ -172,7 +157,7 @@ The response is paginated, so the request supports our generic [Pagination Param
 
 Parameter | Definition
 --------- | ----------
-version | Should be set to either `1` or `2` and dictates whether to return v1 or v2 alerts. If unspecified will return v1 alerts for now - this will be changing to default to v2 alerts shortly.
+version | Should be set to either `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified the recommended v2 alerts will be returned.
 name | v2 only - A search parameter that limits the results to metrics whose names contain a matching substring. Search is case-insensitive.
 
 ## Retrieve Alert by ID
@@ -411,7 +396,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 name | A unique name used to identify the alert. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-'. Dotted decimal notation (e.g. *production.web.frontend.responsetime*) is recommended.
-version | Identifies the alert as v1 or v2. For v2 alerts this must be submitted as '2'.
+version | Should be set to either `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified the recommended v2 alerts will be returned.
 conditions | An array of conditions hashes (properties described in the [overview](#alerts)).<br><br>NOTE: Conditions are required for PUT operations.
 services | An array of [services](#services) to notify for this alert (sent as list of IDs).
 attributes<br>`optional` | A key-value hash of metadata for the alert (described in alert attributes).
