@@ -4,7 +4,7 @@
 
 Alerts are used to build actionable responses to changes in metric measurements. Alerts define conditions on the input measurements and are triggered when the value(s) of the input measurements cross a threshold or stop reporting. For example, an alert could be used to notify an administrator that response time for a given service is elevated above an acceptable range.
 
-<aside class="notice">Our alerts endpoints currently support two versions of the alert data model. Version 2 is required for many of our new alerting features. Version 1 is legacy & deprecated.</aside>
+<aside class="notice">Our alerts endpoints currently support two versions of the alert data model. Version 2 supports our latest alerting features. Version 1 is legacy & deprecated.</aside>
 
 ### Alerts
 
@@ -12,7 +12,7 @@ Alert Property | Definition
 -------------- | ----------
 id | Each alert has a unique numeric ID.
 name | A unique name used to identify the alert. Must be 255 or fewer characters, and may only consist of `A-Za-z0-9.:-`. Dotted decimal notation (e.g. `production.web.frontend.responsetime`) is recommended.
-version | Identifies the alert as v1 or v2. For v2 alerts this must be submitted as '2'.
+version | Optional. Identifies the alert as v1 or v2. Defaults to '2'. For v1 alerts (deprecated) this must be submitted as '1'.
 conditions | An array of conditions hashes (properties described in the [overview](#alerts)). NOTE: conditions are required for PUT operations.
 services | An array of [services](#services) to notify for this alert (sent as list of IDs).
 attributes | A key-value hash of metadata for the alert (described in alert attributes).
@@ -90,7 +90,7 @@ curl \
   -i \
   -u <user>:<token> \
   -X GET \
-  'https://metrics-api.librato.com/v1/alerts?version=2&name=production'
+  'https://metrics-api.librato.com/v1/alerts?name=production'
 ```
 
 ```ruby
@@ -157,8 +157,8 @@ The response is paginated, so the request supports our generic [Pagination Param
 
 Parameter | Definition
 --------- | ----------
-version | Should be set to either `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified the recommended v2 alerts will be returned.
-name | v2 only - A search parameter that limits the results to metrics whose names contain a matching substring. Search is case-insensitive.
+version | Optional. Can be set to `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified, v2 alerts will be returned.
+name | A search parameter that limits the results to metrics whose names contain a matching substring. Search is case-insensitive.
 
 ## Retrieve Alert by ID
 
@@ -396,7 +396,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 name | A unique name used to identify the alert. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-'. Dotted decimal notation (e.g. *production.web.frontend.responsetime*) is recommended.
-version | Should be set to either `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified the recommended v2 alerts will be returned.
+version | Optional. Can be set to `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified, v2 alerts will be returned.
 conditions | An array of conditions hashes (properties described in the [overview](#alerts)).<br><br>NOTE: Conditions are required for PUT operations.
 services | An array of [services](#services) to notify for this alert (sent as list of IDs).
 attributes<br>`optional` | A key-value hash of metadata for the alert (described in alert attributes).
@@ -572,7 +572,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 name | A unique name used to identify the alert. Must be 255 or fewer characters, and may only consist of `A-Za-z0-9.:-`. Dotted decimal notation (e.g. `production.web.frontend.responsetime`) is recommended.
-version | Identifies the alert as v1 or v2. For v2 alerts this must be submitted as '2'.
+version | Optional. Identifies the alert as v1 or v2. Defaults to '2'. For v1 alerts (deprecated) this must be submitted as '1'.
 conditions | An array of conditions hashes (properties described in the [overview](#alerts)). NOTE: conditions are required for PUT operations.
 services | An array of [services](#services) to notify for this alert (sent as list of IDs).
 attributes<br>`optional` | A key-value hash of metadata for the alert (described in alert attributes).
