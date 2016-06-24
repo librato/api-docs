@@ -263,7 +263,7 @@ curl \
   -i \
   -u <user>:<token> \
   -X GET \
-  '/v1/metrics/annotations/api-deploys/189'
+  'https://metrics-api.librato.com/v1/metrics/annotations/api-deploys/189'
 ```
 
 ```ruby
@@ -444,7 +444,7 @@ curl \
   -u <user>:<token> \
   -d 'rel=github&label=Github Commit&href=https://github.com/acme/app/commits/01beaf' \
   -X POST \
-  '/v1/annotations/app-deploys/198/links'
+  'https://metrics-api.librato.com/v1/annotations/app-deploys/198/links'
 ```
 
 ```ruby
@@ -576,7 +576,7 @@ curl \
   -u <user>:<token> \
   -d 'description=Deployed git SHA 601060a68ff2e' \
   -X PUT \
-  '/v1/annotations/app-deploys/143'
+  'https://metrics-api.librato.com/v1/annotations/app-deploys/143'
 ```
 
 ```ruby
@@ -691,7 +691,7 @@ curl \
   -i \
   -u <user>:<token> \
   -X DELETE \
-  '/v1/annotations/app-deploys/123'
+  'https://metrics-api.librato.com/v1/annotations/app-deploys/123'
 ```
 
 ```ruby
@@ -737,7 +737,7 @@ curl \
   -i \
   -u <user>:<token> \
   -X DELETE \
-  '/v1/annotations/app-deploys/189/links/github'
+  'https://metrics-api.librato.com/v1/annotations/app-deploys/189/links/github'
 ```
 
 ```ruby
