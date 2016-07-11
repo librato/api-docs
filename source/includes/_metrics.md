@@ -653,7 +653,11 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.get_metric :cpu_temp, source: 'server1.acme.com', count: 4, resolution: 60
+queue = Librato::Metrics::Queue.new
+queue.add :conn_servers => {:type => :counter, :measure_time => 1234567950, :value => 5}
+queue.add :write_fails => {:type => :counter, :measure_time => 1234567950, :value => 3}
+queue.add :cpu_temp => {:measure_time => 1234567949, :value => 88.4}
+queue.submit
 ```
 
 >Response Code:
