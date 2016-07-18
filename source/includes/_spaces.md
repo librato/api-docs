@@ -19,6 +19,26 @@ name | Unique name for space
 GET https://metrics-api.librato.com/v1/spaces
 ```
 
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/spaces'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+spaces = api.list_spaces()
+for s in spaces:
+  print s.name
+```
+
 >Return all spaces owned by the user with name matching ops.
 
 ```shell
@@ -31,6 +51,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+spaces = api.list_spaces(name="app")
+for s in spaces:
+  print(s.name)
 ```
 
 >Response Code
@@ -88,6 +116,10 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+Not available, confirm with Jason
 ```
 
 >Response Code
@@ -149,6 +181,13 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+space = api.create_space("CPUs")
+print("Created '%s'" % space.name)
 ```
 
 >Using JSON
@@ -218,6 +257,10 @@ curl \
 Not available
 ```
 
+```python
+Not available (confirm with Jason)
+
+```
 >Using JSON
 
 ```json
@@ -282,6 +325,11 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.delete_space(145)
+```
 >Response Code
 
 ```

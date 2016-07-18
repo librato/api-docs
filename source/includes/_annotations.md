@@ -60,6 +60,13 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.list
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+for stream in api.list_annotation_streams():
+  print(stream.name)
+```
+
 >All annotation streams matching the name `api`:
 
 ```shell
@@ -75,6 +82,13 @@ require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.list name: ('api')
 ```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+for stream in api.list_annotation_streams(name="api"):
+  print(stream.name)
+ ```
 
 >Response Code
 
@@ -143,6 +157,13 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.list name: ('api-deploys')
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+stream = api.get_annotation_stream("api-deploys")
+print stream
+```
+
 >Specifying a set of [time interval search parameters](#time-intervals) will return a list of all annotation events for a stream. For example, to return the set of annotation events on the annotation stream blog-posts between two timestamps and limited to sources `db1.acme` and `db2.acme`:
 
 ```shell
@@ -158,6 +179,20 @@ require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.fetch :'blog-posts', start_time: 1234500000, end_time: 1234600000, sources: ['db1.acme', 'db2.acme']
 ```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+stream = api.get_annotation_stream("blog-posts", start_time="1234500000")
+for source in stream.events:
+    print source
+    events = stream.events[source]
+    for event in events:
+        print event['id']
+        print event['title']
+        print event['description']
+```
+
 
 >Response Code
 
@@ -270,6 +305,10 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.fetch :'api-deploys', start_time: (Time.now.to_i-3600)
+```
+
+```python
+Not available
 ```
 
 >Response Code
@@ -652,6 +691,12 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.delete :api-deploys
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.delete_annotation_stream("api-deploys")
 ```
 
 >Response Code

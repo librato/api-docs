@@ -97,6 +97,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alerts = api.list_alerts(name="production")
+for a in alerts:
+  print(a.name)
+```
+
 >Response Code
 
 ```
@@ -176,6 +184,10 @@ curl \
 Not available
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -236,6 +248,14 @@ curl \
   'https://metrics-api.librato.com/v1/alerts/status'
 ```
 
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
 >Response Body
 
 ```json
@@ -281,6 +301,14 @@ curl \
   'https://metrics-api.librato.com/v1/alerts/120/status'
 ```
 
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
 ```json
 {
     "alert": {
@@ -316,6 +344,20 @@ POST https://metrics-api.librato.com/v1/alerts
 >Create an alert named `production.web.frontend.response_time` with one condition which monitors the `metric web.nginx.response_time` and alerts whenever the value goes over 200.
 
 >When the alert is triggered, the service identified by ID 849 (a campfire room in this case) will be notified.
+
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.create_alert("production.web.frontend.response_time")
+alert.add_condition_for('web.nginx.response_time').above(200)
+alert.add_service("849")
+alert.save()
+```
 
 >JSON Request used to create alert:
 
@@ -427,6 +469,15 @@ curl \
   -X POST \
   'https://metrics-api.librato.com/v1/alerts/45/services'
 ```
+
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -490,6 +541,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.get_alert("my.alert.name")
+alert.active = "false"
+alert.save()
+```
+
 >Enable an alert:
 
 ```shell
@@ -503,6 +562,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.get_alert("my.alert.name")
+alert.active = "true"
+alert.save()
 ```
 
 >Update the description of an alert:
@@ -520,6 +587,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.get_alert("my.alert.name")
+alert.description = "A new description"
+alert.save()
+```
+
 >Update the runbook URL for an alert:
 
 ```shell
@@ -532,6 +607,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 
@@ -604,6 +683,14 @@ curl \
   'https://metrics-api.librato.com/v1/alerts/120/clear'
 ```
 
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -636,6 +723,11 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.delete_alert("alert_name")
+```
 >Response Code
 
 ```
@@ -677,6 +769,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 

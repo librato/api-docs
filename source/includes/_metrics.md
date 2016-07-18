@@ -71,6 +71,12 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.metrics
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.list_metrics()
+```
+
 >Retrieve all metrics pertaining to a request:
 
 ```shell
@@ -86,6 +92,14 @@ require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.metrics name:'request'
 ```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.list_metrics(name="request")
+```
+
+
 
 >Execute a composite query to derive the idle collectd CPU time for a given host:
 
@@ -276,6 +290,12 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.get_metric :cpu_temp
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.get("cpu_temp")
+```
+
 >Response Code:
 
 ```
@@ -325,6 +345,13 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.get_metric :cpu_temp, count: 4, resolution: 60
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+metric = api.get("cpu_temp", count=4, resolution=60)
+metric.measurements
 ```
 
 >Response Body:
@@ -389,6 +416,12 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.get_metric :cpu_temp, source: :server, count: 4, resolution:60
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.get("cpu_temp", source="server*", count=4, resolution=60).measurements
 ```
 
 >Response Body:
@@ -473,6 +506,10 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.get_metric :cpu_temp, sources: ['server1.acme.com', 'server2.acme.com'], count: 4, resolution: 60
+```
+
+```python
+Not available
 ```
 
 >Response Body:
@@ -576,6 +613,10 @@ curl \
 Not available
 ```
 
+```python
+Not available
+```
+
 >If the response includes the following `query` section with `next_time` it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
 
 ```json
@@ -654,6 +695,16 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.get_metric :cpu_temp, source: 'server1.acme.com', count: 4, resolution: 60
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+q  = api.new_queue()
+q.add('conn_servers', 5, type='counter', source='blah.com')
+q.add('write_fails', 3, type='counter', source='blah.com')
+q.add('cpu_temp', 88.4, type='gauge', source='cpu0_blah.com')
+q.submit()
 ```
 
 >Response Code:
@@ -809,6 +860,10 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.update_metrics names: ["cpu", "servers", "reqs"], period: 60, display_min: 0
 ```
 
+```python
+Having issues with this one.. ask Jason
+```
+
 >Example Request
 
 >Set the `display_units_short` for all metrics that end with `.time`:
@@ -921,6 +976,12 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.update_metric :queue_len, type: :gauge, display_name: "num. elements", period: 15
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.submit("queue_len", 10)
 ```
 
 >Response Code

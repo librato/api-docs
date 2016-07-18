@@ -41,6 +41,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+services = api.list_services()
+for s in services:
+  print(s._id, s.title, s.settings)
+```
+
 >Response Code
 
 ```
@@ -118,6 +126,10 @@ curl \
 Not available
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -164,6 +176,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 
@@ -238,6 +254,10 @@ curl \
 Not available
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -295,6 +315,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 

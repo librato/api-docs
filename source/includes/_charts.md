@@ -36,6 +36,12 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.create_chart('Server Temperature', space, streams=[{'metric': 'server_temp', 'source': 'app1'}, {'metric': 'environmental_temp', 'source': '*', 'group_function': 'breakout', 'summary_function': 'average'}])
+```
+
 >Response Code
 
 ```
@@ -93,6 +99,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.get_chart(chart_id, space_id)
+chart.new_stream(composite='divide([sum(s("memory_total","prod.web*")),sum(s("memory_used","prod.web*"))])')
+chart.save()
 ```
 
 >Response Code
@@ -180,6 +194,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.get_chart(chart_id, space_id)
+chart.name = 'Server Temperature'
+chart.save()
+```
+
 >Response Code
 
 ```
@@ -265,6 +287,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.get_chart(chart_id, space_id)
+for s in chart.streams:
+  print(s.metric, s.source, s.group_function, s.summary_function)
+```
+
 >Response Code
 
 ```
@@ -319,6 +349,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.get_chart(chart_id, space_id)
+for s in chart.streams:
+  print(s.metric, s.source, s.group_function, s.summary_function)
 ```
 
 >Response Code
@@ -394,6 +432,12 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.get_chart(123, space_id)
+chart.delete()
+```
 >Response Code
 
 ```
