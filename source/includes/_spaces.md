@@ -119,7 +119,7 @@ Not available
 ```
 
 ```python
-Not available, confirm with Jason
+Not available
 ```
 
 >Response Code
@@ -258,9 +258,13 @@ Not available
 ```
 
 ```python
-Not available (confirm with Jason)
-
+import librato
+api = librato.connect(<user>, <token>)
+space = api.find_space('space_name')
+space.name = "CPUs"
+space.save()
 ```
+
 >Using JSON
 
 ```json

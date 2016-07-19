@@ -160,8 +160,14 @@ Librato::Metrics::Annotator.new.list name: ('api-deploys')
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-stream = api.get_annotation_stream("api-deploys")
-print stream
+stream = api.get_annotation_stream("api-deploys", start_time="1234500000")
+for source in stream.events:
+   print source
+   events = stream.events[source]
+   for event in events:
+       print event['id']
+       print event['title']
+       print event['description']
 ```
 
 >Specifying a set of [time interval search parameters](#time-intervals) will return a list of all annotation events for a stream. For example, to return the set of annotation events on the annotation stream blog-posts between two timestamps and limited to sources `db1.acme` and `db2.acme`:
@@ -181,16 +187,7 @@ Librato::Metrics::Annotator.new.fetch :'blog-posts', start_time: 1234500000, end
 ```
 
 ```python
-import librato
-api = librato.connect(<user>, <token>)
-stream = api.get_annotation_stream("blog-posts", start_time="1234500000")
-for source in stream.events:
-    print source
-    events = stream.events[source]
-    for event in events:
-        print event['id']
-        print event['title']
-        print event['description']
+Not available
 ```
 
 
@@ -377,6 +374,12 @@ Librato::Metrics.annotate :'app-deploys', 'Deployed v56', source: 'foo3.bar.com'
     description: 'v56 - Fixed typo in page titles'
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.post_annotation("app-deploys", title="Deployed v56", source="foo3.bar.com", description="v56 - Fixed typo in page titles")
+```
+
 >Create an annotation event at a specific timestamp:
 
 ```shell
@@ -392,6 +395,12 @@ require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com',
     start_time: 1234567890, description: 'Joe deployed v29 to metrics'
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.post_annotation("app-deploys", title="My Annotation", source="foo3.bar.com", start_time="1234567890", description="Joe deployed v29 to metrics")
 ```
 
 >Create an annotation event with a link:
@@ -413,6 +422,12 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com',
     start_time: 1234567890, description: 'Joe deployed v29 to metrics',
     links: [label: 'Metrics Gem', href: 'https://github.com/librato/librato-metrics', rel: 'github']
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.post_annotation("app-deploys", title="My Annotation", source="foo3.bar.com", start_time="1234567890", description="Joe deployed v29 to metrics", links=[{'rel': 'github', 'href': 'https://github.com/librato/librato-metrics'}])
 ```
 
 >Response Code
@@ -492,6 +507,10 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.fetch :'app-deploys', start_time: (Time.now.to_i-3600), end_time: (Time.now.to_i), sources: ['db1.acme', 'db2.acme']
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -560,6 +579,10 @@ curl \
 Not available
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -622,6 +645,10 @@ curl \
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.update_event :app-deploys, 143, description: 'Deployed git SHA 601060a68ff2e'
+```
+
+```python
+Not available
 ```
 
 >Response Code
@@ -745,6 +772,10 @@ Librato::Metrics.authenticate <user>, <token>
 Librato::Metrics::Annotator.new.delete_event :api-deploys, 123
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -786,6 +817,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 
