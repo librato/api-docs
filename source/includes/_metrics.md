@@ -117,11 +117,11 @@ Librato::Metrics.get_composite 'derive(s("collectd.cpu.*.idle","boatman*45"))', 
 ```
 
 ```python
-mport librato
+import librato
 api = librato.connect(<user>, <token>)
-compose = 'derive(s("collectd.cpu.*.idle","boatman*45"))'
+compose = 'derive(s("collectd.cpu.*.idle", "boatman*45", {period: "60"}))'
 import time
-start_time = int(time.time()) - 8 * 3600
+start_time = 1432931007
 resp = api.get_composite(compose, start_time=start_time)
 resp['measurements'][0]['series']
 ```
