@@ -19,6 +19,8 @@ name | Unique name for space
 GET https://metrics-api.librato.com/v1/spaces
 ```
 
+>Retrieve all spaces.
+
 ```shell
 curl \
   -i \
@@ -56,7 +58,7 @@ Not available
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-spaces = api.list_spaces(name="app")
+spaces = api.list_spaces(name="ops")
 for s in spaces:
   print(s.name)
 ```
