@@ -106,7 +106,7 @@ name | Search by name of the space.
 GET https://metrics-api.librato.com/v1/spaces/:id
 ```
 
->Return the space id 129:
+>Return the details of a Space with ID `129`:
 
 ```shell
 curl \
@@ -121,7 +121,10 @@ Not available
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+space_info = api.get_space(129)
+print space_info.chart_ids
 ```
 
 >Response Code
@@ -317,14 +320,14 @@ DELETE https://metrics-api.librato.com/v1/spaces/:id
 
 >Example Request
 
->Delete the space with ID `145`:
+>Delete the space with ID `129`:
 
 ```shell
 curl \
   -i \
   -u <user>:<token> \
   -X DELETE \
-  'https://metrics-api.librato.com/v1/spaces/145'
+  'https://metrics-api.librato.com/v1/spaces/129'
 ```
 
 ```ruby
@@ -334,7 +337,7 @@ Not available
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.delete_space(145)
+api.delete_space(129  )
 ```
 >Response Code
 
