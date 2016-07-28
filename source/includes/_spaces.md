@@ -41,7 +41,7 @@ for s in spaces:
   print s.name
 ```
 
->Return all spaces owned by the user with name matching ops.
+>Return all spaces owned by the user, with name matching ops.
 
 ```shell
 curl \
@@ -245,12 +245,12 @@ PUT https://metrics-api.librato.com/v1/spaces/:id
 
 >Example Request
 
->Change the name of the space to CPUs:
+>Change the name of the space to MEMORY:
 
 ```shell
 curl \
   -u <user>:<token> \
-  -d 'name=CPUs' \
+  -d 'name=MEMORY' \
   -X PUT \
   'https://metrics-api.librato.com/v1/spaces/:id'
 ```
@@ -262,8 +262,8 @@ Not available
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-space = api.find_space('space_name')
-space.name = "CPUs"
+space = api.find_space('CPUs')
+space.name = "MEMORY"
 space.save()
 ```
 
@@ -271,7 +271,7 @@ space.save()
 
 ```json
 {
-  "name": "CPUs"
+  "name": "MEMORY"
 }
 ```
 
