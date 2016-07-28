@@ -83,7 +83,7 @@ GET https://metrics-api.librato.com/v1/alerts
 
 >Example Request
 
->Return all alerts owned by the user with `production` in the name:
+>Return all enabled alerts owned by the user with `production` in the name:
 
 ```shell
 curl \
@@ -185,7 +185,11 @@ Not available
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+alerts = api.list_alerts(id="123")
+for a in alerts:
+  print(a.name)
 ```
 
 >Response Code
@@ -240,7 +244,7 @@ GET https://metrics-api.librato.com/v1/alerts/status
 
 >Example Request
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
@@ -293,7 +297,7 @@ GET https://metrics-api.librato.com/v1/alerts/:alert_id/status
 
 >Return the status for alert ID `120`:
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
@@ -308,6 +312,8 @@ Not available
 ```python
 Not available
 ```
+
+>Response for an alert that is triggered:
 
 ```json
 {
@@ -460,7 +466,9 @@ POST https://metrics-api.librato.com/v1/alerts/:id/services
 
 >Example Request
 
->Add the service identified by `ID 290` to the alert `45`. When alert `45` is triggered, the service `290` will be notified.
+>Add the service identified by `ID 290` to the alert "my.alert.name" (ID `45`). When the alert is triggered, the service `290` will be notified.
+
+>Note: To get a list of created services, view the section on [Retriving all services](#retrieve-all-services).
 
 ```shell
 curl \
@@ -476,6 +484,9 @@ Not available
 
 ```python
 Not available
+alert = api.get_alert("my.alert.name")
+alert.add_service("290")
+alert.save()
 ```
 
 >Response Code
@@ -514,7 +525,7 @@ For JSON:
 
 This route excepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
-## Update Alert
+## Modify Alert
 
 >Definition
 
@@ -675,7 +686,7 @@ POST https://metrics-api.librato.com/v1/alerts/:alert_id/clear
 
 >Resolve alert ID `120`:
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
