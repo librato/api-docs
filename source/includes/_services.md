@@ -96,7 +96,7 @@ for s in services:
 }
 ```
 
-Returns all services created by the user.
+Returns a list of outbound services that are created within the user's account.
 
 ### Pagination Parameters
 
@@ -230,7 +230,7 @@ title | Display title for the service.
 type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 
-## Update a Service
+## Modify a Service
 
 >Definition
 
