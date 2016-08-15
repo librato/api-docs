@@ -468,7 +468,7 @@ POST https://metrics-api.librato.com/v1/alerts/:id/services
 
 >Add the service identified by `ID 290` to the alert "my.alert.name" (ID `45`). When the alert is triggered, the service `290` will be notified.
 
->Note: To get a list of created services, view the section on [Retriving all services](#retrieve-all-services).
+>Note: To get a list of created services, view the section on [Retrieving all services](#retrieve-all-services).
 
 ```shell
 curl \
@@ -523,7 +523,7 @@ For JSON:
 
 ### Parameters
 
-This route excepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
+This route accepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
 ## Modify Alert
 
