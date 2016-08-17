@@ -83,7 +83,7 @@ GET https://metrics-api.librato.com/v1/alerts
 
 >Example Request
 
->Return all alerts owned by the user with `production` in the name:
+>Return all enabled alerts owned by the user with `production` in the name:
 
 ```shell
 curl \
@@ -95,6 +95,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alerts = api.list_alerts(name="production")
+for a in alerts:
+  print(a.name)
 ```
 
 >Response Code
@@ -176,6 +184,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alerts = api.list_alerts(id="123")
+for a in alerts:
+  print(a.name)
+```
+
 >Response Code
 
 ```
@@ -228,12 +244,20 @@ GET https://metrics-api.librato.com/v1/alerts/status
 
 >Example Request
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/status'
+```
+
+```ruby
+Not available
+```
+
+```python
+Not available
 ```
 
 >Response Body
@@ -273,13 +297,23 @@ GET https://metrics-api.librato.com/v1/alerts/:alert_id/status
 
 >Return the status for alert ID `120`:
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/120/status'
 ```
+
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
+>Response for an alert that is triggered:
 
 ```json
 {
@@ -316,6 +350,20 @@ POST https://metrics-api.librato.com/v1/alerts
 >Create an alert named `production.web.frontend.response_time` with one condition which monitors the `metric web.nginx.response_time` and alerts whenever the value goes over 200.
 
 >When the alert is triggered, the service identified by ID 849 (a campfire room in this case) will be notified.
+
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.create_alert("production.web.frontend.response_time")
+alert.add_condition_for('web.nginx.response_time').above(200)
+alert.add_service("849")
+alert.save()
+```
 
 >JSON Request used to create alert:
 
@@ -418,7 +466,9 @@ POST https://metrics-api.librato.com/v1/alerts/:id/services
 
 >Example Request
 
->Add the service identified by `ID 290` to the alert `45`. When alert `45` is triggered, the service `290` will be notified.
+>Add the service identified by `ID 290` to the alert "my.alert.name" (ID `45`). When the alert is triggered, the service `290` will be notified.
+
+>Note: To get a list of created services, view the section on [Retrieving all services](#retrieve-all-services).
 
 ```shell
 curl \
@@ -427,6 +477,18 @@ curl \
   -X POST \
   'https://metrics-api.librato.com/v1/alerts/45/services'
 ```
+
+```ruby
+Not available
+```
+
+```python
+Not available
+alert = api.get_alert("my.alert.name")
+alert.add_service("290")
+alert.save()
+```
+
 >Response Code
 
 ```
@@ -461,9 +523,9 @@ For JSON:
 
 ### Parameters
 
-This route excepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
+This route accepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
-## Update Alert
+## Modify Alert
 
 >Definition
 
@@ -490,6 +552,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.get_alert("my.alert.name")
+alert.active = "false"
+alert.save()
+```
+
 >Enable an alert:
 
 ```shell
@@ -503,6 +573,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.get_alert("my.alert.name")
+alert.active = "true"
+alert.save()
 ```
 
 >Update the description of an alert:
@@ -520,6 +598,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alert = api.get_alert("my.alert.name")
+alert.description = "A new description"
+alert.save()
+```
+
 >Update the runbook URL for an alert:
 
 ```shell
@@ -532,6 +618,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 
@@ -596,12 +686,20 @@ POST https://metrics-api.librato.com/v1/alerts/:alert_id/clear
 
 >Resolve alert ID `120`:
 
-```
+```shell
 curl \
   -i \
   -u <user>:<token> \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/120/clear'
+```
+
+```ruby
+Not available
+```
+
+```python
+Not available
 ```
 
 >Response Code
@@ -636,6 +734,11 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.delete_alert("alert_name")
+```
 >Response Code
 
 ```
@@ -677,6 +780,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 

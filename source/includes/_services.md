@@ -41,6 +41,14 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+services = api.list_services()
+for s in services:
+  print(s._id, s.title, s.settings)
+```
+
 >Response Code
 
 ```
@@ -88,7 +96,7 @@ Not available
 }
 ```
 
-Returns all services created by the user.
+Returns a list of outbound services that are created within the user's account.
 
 ### Pagination Parameters
 
@@ -115,6 +123,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 
@@ -167,6 +179,10 @@ curl \
 Not available
 ```
 
+```python
+Not available
+```
+
 >Response Code
 
 ```
@@ -214,7 +230,7 @@ title | Display title for the service.
 type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 
-## Update a Service
+## Modify a Service
 
 >Definition
 
@@ -235,6 +251,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 
@@ -295,6 +315,10 @@ curl \
 ```
 
 ```ruby
+Not available
+```
+
+```python
 Not available
 ```
 

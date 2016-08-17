@@ -19,7 +19,29 @@ name | Unique name for space
 GET https://metrics-api.librato.com/v1/spaces
 ```
 
->Return all spaces owned by the user with name matching ops.
+>Retrieve all spaces.
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/spaces'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+spaces = api.list_spaces()
+for s in spaces:
+  print s.name
+```
+
+>Return all spaces owned by the user, with name matching ops.
 
 ```shell
 curl \
@@ -31,6 +53,14 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+spaces = api.list_spaces(name="ops")
+for s in spaces:
+  print(s.name)
 ```
 
 >Response Code
@@ -76,7 +106,7 @@ name | Search by name of the space.
 GET https://metrics-api.librato.com/v1/spaces/:id
 ```
 
->Return the space id 129:
+>Return the details of a Space with ID `129`:
 
 ```shell
 curl \
@@ -88,6 +118,13 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+space_info = api.get_space(129)
+print space_info.chart_ids
 ```
 
 >Response Code
@@ -151,6 +188,13 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+space = api.create_space("CPUs")
+print("Created '%s'" % space.name)
+```
+
 >Using JSON
 
 ```json
@@ -204,12 +248,12 @@ PUT https://metrics-api.librato.com/v1/spaces/:id
 
 >Example Request
 
->Change the name of the space to CPUs:
+>Change the name of the space to MEMORY:
 
 ```shell
 curl \
   -u <user>:<token> \
-  -d 'name=CPUs' \
+  -d 'name=MEMORY' \
   -X PUT \
   'https://metrics-api.librato.com/v1/spaces/:id'
 ```
@@ -218,11 +262,19 @@ curl \
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+space = api.find_space('CPUs')
+space.name = "MEMORY"
+space.save()
+```
+
 >Using JSON
 
 ```json
 {
-  "name": "CPUs"
+  "name": "MEMORY"
 }
 ```
 
@@ -268,20 +320,25 @@ DELETE https://metrics-api.librato.com/v1/spaces/:id
 
 >Example Request
 
->Delete the space with ID `145`:
+>Delete the space with ID `129`:
 
 ```shell
 curl \
   -i \
   -u <user>:<token> \
   -X DELETE \
-  'https://metrics-api.librato.com/v1/spaces/145'
+  'https://metrics-api.librato.com/v1/spaces/129'
 ```
 
 ```ruby
 Not available
 ```
 
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.delete_space(129  )
+```
 >Response Code
 
 ```

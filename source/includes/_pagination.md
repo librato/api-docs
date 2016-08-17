@@ -18,6 +18,12 @@ curl \
 Not available
 ```
 
+```python
+# pagination not available, use list_metrics() for all metrics
+for m in api.list_metrics():
+    print m.name
+```
+
 >Response Code:
 
 ```
@@ -82,6 +88,12 @@ curl \
 
 ```ruby
 Not available
+```
+
+```python
+# pagination not available, use list_metrics() for all metrics
+for m in api.list_metrics():
+    print m.name
 ```
 
 >Response Code:
