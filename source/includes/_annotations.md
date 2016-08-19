@@ -187,9 +187,11 @@ Librato::Metrics::Annotator.new.fetch :'blog-posts', start_time: 1234500000, end
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+stream = api.get_annotation_stream("blog-posts", start_time="1234500000", end_time="1234600000", sources=['db1.acme', 'db2.acme'])
+print(stream.events)
 ```
-
 
 >Response Code
 
