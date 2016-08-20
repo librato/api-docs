@@ -189,7 +189,10 @@ Librato::Metrics::Annotator.new.fetch :'blog-posts', start_time: 1234500000, end
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-stream = api.get_annotation_stream("blog-posts", start_time="1234500000", end_time="1234600000", sources=['db1.acme', 'db2.acme'])
+stream = api.get_annotation_stream("blog-posts", 
+  start_time="1234500000", 
+  end_time="1234600000", 
+  sources=['db1.acme', 'db2.acme'])
 print(stream.events)
 ```
 
@@ -379,7 +382,10 @@ Librato::Metrics.annotate :'app-deploys', 'Deployed v56', source: 'foo3.bar.com'
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.post_annotation("app-deploys", title="Deployed v56", source="foo3.bar.com", description="v56 - Fixed typo in page titles")
+api.post_annotation("app-deploys", 
+  title="Deployed v56", 
+  source="foo3.bar.com", 
+  description="v56 - Fixed typo in page titles")
 ```
 
 >Create an annotation event at a specific timestamp:
@@ -402,7 +408,11 @@ Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.post_annotation("app-deploys", title="My Annotation", source="foo3.bar.com", start_time="1234567890", description="Joe deployed v29 to metrics")
+api.post_annotation("app-deploys", 
+  title="My Annotation", 
+  source="foo3.bar.com", 
+  start_time="1234567890", 
+  description="Joe deployed v29 to metrics")
 ```
 
 >Create an annotation event with a link:
@@ -429,7 +439,12 @@ Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.post_annotation("app-deploys", title="My Annotation", source="foo3.bar.com", start_time="1234567890", description="Joe deployed v29 to metrics", links=[{'rel': 'github', 'href': 'https://github.com/librato/librato-metrics'}])
+api.post_annotation("app-deploys", 
+  title="My Annotation", 
+  source="foo3.bar.com", 
+  start_time="1234567890", 
+  description="Joe deployed v29 to metrics", 
+  links=[{'rel': 'github', 'href': 'https://github.com/librato/librato-metrics'}])
 ```
 
 >Response Code
