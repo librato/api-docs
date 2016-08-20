@@ -624,11 +624,17 @@ curl \
 ```
 
 ```ruby
-Not available
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :librato.cpu.percent.idle, start_time: 1303252025, resolution: 60
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+metric = api.get("librato.cpu.percent.idle", start_time="1303252025", resolution=60)
+print(metric.measurements)
+
 ```
 
 >If the response includes the following `query` section with `next_time` it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
