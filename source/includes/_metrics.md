@@ -520,7 +520,10 @@ Librato::Metrics.get_metric :cpu_temp, sources: ['server1.acme.com', 'server2.ac
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+metric = api.get("cpu_temp", sources=['server1.acme.com', 'server2.acme.com'], count=4, resolution=60)
+print(metric.measurements)
 ```
 
 >Response Body:
@@ -621,11 +624,16 @@ curl \
 ```
 
 ```ruby
-Not available
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_metric :librato.cpu.percent.idle, start_time: 1303252025, resolution: 60
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+metric = api.get("librato.cpu.percent.idle", start_time="1303252025", resolution=60)
+print(metric.measurements)
 ```
 
 >If the response includes the following `query` section with `next_time` it implies there are more points and that `start_time` should be set to 1305562061 to retrieve the next matching elements.
@@ -876,7 +884,13 @@ Librato::Metrics.update_metrics names: ["cpu", "servers", "reqs"], period: 60, d
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+for name in ['cpu', 'servers', 'reqs']:
+  gauge = api.get(name)
+  attrs['period'] = '60'
+  attrs['display_min'] = '0'
+  api.update(name, attributes=attrs)
 ```
 
 >Example Request
@@ -1099,7 +1113,9 @@ Librato::Metrics.delete_metrics :cpu, :servers, :reqs
 ```
 
 ```python
-Not available
+import librato
+api = librato.connect(<user>, <token>)
+api.delete(names=['cpu', 'servers', 'reqs'])
 ```
 
 >Delete all metrics that start with `cpu` and end with `.90`:

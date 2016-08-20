@@ -337,7 +337,7 @@ Not available
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.delete_space(129  )
+api.delete_space(129)
 ```
 >Response Code
 
