@@ -305,7 +305,7 @@ Parameter | Definition
 --------- | ----------
 name | Title of the chart when it is displayed.
 streams | An array of hashes describing the metrics and sources to use for data in the chart.
-type | Indicates the type of chart. Must be one of line or stacked (default to line)
+type | Indicates the type of chart. Must be one of line, stacked, or bignumber (default to line)
 min | The minimum display value of the chart's Y-axis
 max | The maximum display value of the chart's Y-axis
 label | The Y-axis label
