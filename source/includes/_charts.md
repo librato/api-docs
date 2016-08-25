@@ -162,6 +162,9 @@ POST https://metrics-api.librato.com/v1/spaces/:id/charts
 
 >Example Request
 
+>Create a line chart with various metric streams including their source(s) and 
+group/summary functions:
+
 ```shell
 curl \
 -u <user>:<token> \
