@@ -58,4 +58,4 @@ Error Code | Meaning | Definition
 }
 ```
 
-The API reports errors in a the JSON format which makes it easier to parse and evaluate them. As of now, there are two kinds of errors: `params` and `request`.
+The API reports errors in a JSON format which makes it easier to parse and evaluate them. As of now, there are two kinds of errors: `params` and `request`.
