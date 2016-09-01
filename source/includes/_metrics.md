@@ -2,7 +2,7 @@
 
 ## Overview
 
-Metrics are custom measurements stored in Librato's Metrics service. These measurements are created and may be accessed programatically through a set of RESTful API calls. There are currently two types of metrics that may be stored in Librato Metrics, `gauges` and `counters`.
+Metrics are custom measurements stored in Librato's Metrics service. These measurements are created and may be accessed programmatically through a set of RESTful API calls. There are currently two types of metrics that may be stored in Librato Metrics, `gauges` and `counters`.
 
 ### Gauges
 
@@ -18,7 +18,7 @@ Some common properties are supported across all types of metrics:
 
 Property | Definition
 -------- | ----------
-name | Each metric has a name that is unique to its class of metrics e.g. a gauge name must be unique amongst gauges. The name identifies a metric in subsequent API calls to store/query individual measurements and can be up to 255 characters in length. Valid characters for metric names are 'A-Za-z0-9.:-_'. The metric namespace is case insensitive.
+name | Each metric has a name that is unique to its class of metrics e.g. a gauge name must be unique among gauges. The name identifies a metric in subsequent API calls to store/query individual measurements and can be up to 255 characters in length. Valid characters for metric names are 'A-Za-z0-9.:-_'. The metric namespace is case insensitive.
 period | The `period` of a metric is an integer value that describes (in seconds) the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics.
 description | The description of a metric is a string and may contain spaces. The description can be used to explain precisely what a metric is measuring, but is not required. This attribute is not currently exposed in the Librato UI.
 display_name | More descriptive name of the metric which will be used in views on the Metrics website. Allows more characters than the metric `name`, including spaces, parentheses, colons and more.
@@ -34,7 +34,7 @@ Property | Definition
 -------- | ----------
 measure_time | The epoch time at which an individual measurement occurred with a maximum resolution of seconds.
 value | The numeric value of an individual measurement. Multiple formats are supported (e.g. integer, floating point, etc) but the value must be numeric.
-source | Source is an optional property that can be used to subdivide a common gauge/counter amongst multiple members of a population. For example the number of requests/second serviced by an application could be broken up amongst a group of server instances in a scale-out tier by setting the hostname as the value of source.
+source | Source is an optional property that can be used to subdivide a common gauge/counter among multiple members of a population. For example the number of requests/second serviced by an application could be broken up among a group of server instances in a scale-out tier by setting the hostname as the value of source.
 Source names can be up to 255 characters in length and must be composed of the characters `A-Za-z0-9.:-_`. The word all is a reserved word and cannot be used as a user source. The source namespace is case insensitive.
 
 ### Measurement Restrictions
@@ -607,7 +607,7 @@ sources | If `sources` is specified, the response is limited to measurements fro
 summarize_time | If `summarize_time` is specified, then the individual measurements over the covered time period will be aggregated into a single summarized record for each source. In this case, the measurements array for each source will contain a single summarized record. <br><br>The `measure_time` in each of the summarized measurements will be set to the first `measure_time` in the period covered by the [time interval search parameters](#time-intervals). <br><br>If the metric is a counter, then the summarized record will be a gauge that represents the summarization of the deltas of the counter values for each source.
 summarize_sources | If `summarize_sources` is specified, a source name `all` is included in the list of measurements. This special source name will include all measurements summarized across all the sources for each point in time. For each unique point in time within the covered time interval search, there will be a single record in the `all` measurements list. <br><br>If multiple sources published a measurement at the same time, the record in the `all` list will be a summarized record of all the individual source measurements at that point in time. If combined with the `summarize_time` parameter, then the `all` list will be summarized across sources and across time, implying it will be a list with a single record. <br><br>If the metric is a counter, then the summarized record will be a gauge that represents the summarization of the deltas of the counter values for each source.
 breakout_sources | When `summarize_sources` is specified with multiple sources (and the `all` series is generated) by default the individual source series are also included in the response. Setting `breakout_sources` to `false` will reduce the response to only the `all` series. This reduces resource consumption when the individual series are not needed.
-group_by | When querying a gauge and specifying multiple sources with the `sources` parameter the `group_by` parameter optionally specifies a statistical function used to generate an aggregated time series across sources identifed in the response with the special source name `all`. The acceptable values for `group_by` are: `min`, `max`, `mean`, `sum`, `count`. <br><br>Each entry in the `all` series contains a set of summary statistics, each of which represents the result of applying the `group_by` function across that summary statistic in the corresponding entry in each the individual sources. For example when `group_by` is set to `max`, each entry in the `all` series specifies the minimum of the maximums as `min`, the maximum of the maxiums as `max`, the maximum of the sums as `sum`, etc. <br><br>Regardless of the function specified for `group_by` each entry in `all` also includes a field named `summarized` that communicates how many individual source series were grouped at that point in time and a field named `count` that contains the total number of samples aggregated across all sources at that point in time. <br><br>Setting the `group_by` option implies both `summarize_sources=true` (required) and `breakout_sources=false` (can be optionally overridden).
+group_by | When querying a gauge and specifying multiple sources with the `sources` parameter the `group_by` parameter optionally specifies a statistical function used to generate an aggregated time series across sources identified in the response with the special source name `all`. The acceptable values for `group_by` are: `min`, `max`, `mean`, `sum`, `count`. <br><br>Each entry in the `all` series contains a set of summary statistics, each of which represents the result of applying the `group_by` function across that summary statistic in the corresponding entry in each the individual sources. For example when `group_by` is set to `max`, each entry in the `all` series specifies the minimum of the maximums as `min`, the maximum of the maximums as `max`, the maximum of the sums as `sum`, etc. <br><br>Regardless of the function specified for `group_by` each entry in `all` also includes a field named `summarized` that communicates how many individual source series were grouped at that point in time and a field named `count` that contains the total number of samples aggregated across all sources at that point in time. <br><br>Setting the `group_by` option implies both `summarize_sources=true` (required) and `breakout_sources=false` (can be optionally overridden).
 
 ## Pagination
 
@@ -782,8 +782,8 @@ Parameter | Definition
 --------- | ----------
 count | Indicates the request corresponds to a multi-sample measurement. This is useful if measurements are taken very frequently in a closed loop and the metric value is only periodically reported. If `count` is set, then `sum` must also be set in order to calculate an average value for the recorded metric measurement. Additionally `min`, `max`, and `sum_squares` may also be set when `count` is set. The `value` parameter should not be set if `count` is set.
 sum | If `count` was set, `sum` must be set to the summation of the individual measurements. The combination of `count` and `sum` are used to calculate an average value for the recorded metric measurement.
-max | If `count` was set, `max` can be used to report the largest individual measurement amongst the averaged set.
-min | If `count` was set, `min` can be used to report the smallest individual measurement amongst the averaged set.
+max | If `count` was set, `max` can be used to report the largest individual measurement among the averaged set.
+min | If `count` was set, `min` can be used to report the smallest individual measurement among the averaged set.
 sum_squares | If `count` was set, `sum_squares` report the summation of the squared individual measurements. If `sum_squares` is set, a standard deviation can be calculated for the recorded metric measurement.
 
 ### Measurement Formats
@@ -1158,7 +1158,7 @@ Location: <job-checking URI>  # issued only for 202
 
 Batch-delete a set of metrics. Both the metrics and all of their measurements will be removed. All data deleted will be unrecoverable, so use this with care.
 
-This route accepts either a list of metric names OR a single pattern which includes wilcards (`*`).
+This route accepts either a list of metric names OR a single pattern which includes wildcards (`*`).
 
 If you post measurements to a metric name after deleting the metric, that metric will be re-created as a new metric with measurements starting from that point.
 

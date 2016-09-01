@@ -6,14 +6,14 @@ Services define the actions that are taken when an alert is triggered. Example a
 
 A single service can be shared across multiple alerts. This allows for a single service to be configured and reused on multiple alerts without having to copy the service details. Similarly, a single alert can notify multiple services of the same type. For example, a single alert could notify multiple real-time chat rooms.
 
-Each service is chosen from a set of supported backend services. The supported services are implemented in the [Librato Services](https://github.com/librato/librato-services) Github repository. Users are encouraged to contribute new services.
+Each service is chosen from a set of supported back end services. The supported services are implemented in the [Librato Services](https://github.com/librato/librato-services) Github repository. Users are encouraged to contribute new services.
 
 ### Service Properties
 
 Property | Definition
 -------- | ----------
 id | Each service has a unique numeric ID.
-type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
+type | The service type (e.g. Campfire, Pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 title | Display title for the service.
 
@@ -227,7 +227,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 title | Display title for the service.
-type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
+type | The service type (e.g. Campfire, Pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 
 ## Modify a Service
@@ -291,7 +291,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 title | Display title for the service.
-type | The service type (e.g. campfire, pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
+type | The service type (e.g. Campfire, Pagerduty, mail, etc.). See an extensive list of [services here](https://github.com/librato/librato-services/tree/master/services).
 settings | Hash of settings specific to the service type.
 
 ## Delete a Service

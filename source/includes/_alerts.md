@@ -18,7 +18,7 @@ services | An array of [services](#services) to notify for this alert (sent as l
 attributes | A key-value hash of metadata for the alert (described in alert attributes).
 description | A string describing this alert.
 active | Boolean: identifies whether the alert is active (can be triggered). Defaults to true.
-rearm_seconds | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are recieved that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
+rearm_seconds | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are received that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
 
 ### Alert Conditions
 
@@ -450,7 +450,7 @@ services | An array of [services](#services) to notify for this alert (sent as l
 attributes<br>`optional` | A key-value hash of metadata for the alert (described in alert attributes).
 description<br>`optional` | A string describing this alert.
 active<br>`optional` | Boolean: identifies whether the alert is active (can be triggered). Defaults to true.
-rearm_seconds<br>`optional` | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are recieved that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
+rearm_seconds<br>`optional` | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are received that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
 
 ### Alert Conditions & Attributes
 
@@ -668,7 +668,7 @@ services | An array of [services](#services) to notify for this alert (sent as l
 attributes<br>`optional` | A key-value hash of metadata for the alert (described in alert attributes).
 description<br>`optional` | A string describing this alert.
 active<br>`optional` | Boolean: identifies whether the alert is active (can be triggered). Defaults to true.
-rearm_seconds<br>`optional` | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are recieved that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
+rearm_seconds<br>`optional` | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are received that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
 
 ### Alert Conditions & Attributes
 

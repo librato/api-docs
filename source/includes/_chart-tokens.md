@@ -14,7 +14,7 @@ Property | Definition
 -------- | ----------
 token | The randomly generated string which is used to identify the chart token.
 entity_type | The type of resource the chart token refers to. This may be either instrument or dashboard.
-entity_id | The ID of the entity that the chart token refers to. This would either be the intrument's or dashboard's ID.
+entity_id | The ID of the entity that the chart token refers to. This would either be the instrument's or dashboard's ID.
 
 ## Retrieve Chart Tokens
 
@@ -201,7 +201,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 entity_type | The type of resource the chart token refers to. This may be either instrument or dashboard.
-entity_id | The ID of the entity that the chart token refers to. This would either be the intrument's or dashboard's ID.
+entity_id | The ID of the entity that the chart token refers to. This would either be the instrument's or dashboard's ID.
 
 ## Delete Chart Token
 

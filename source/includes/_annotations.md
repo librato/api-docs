@@ -1,7 +1,7 @@
 # Annotations
 ## Overview
 
-Annotations are used to record external events (e.g. a deployment) that typically occur at non-uniform times, yet may impact the behavior of monitored metrics. Each annotation event has an associated time and meta-data description. When a set of annotation events are added to a graph, each event is plotted as a single vertical line. This permits a user to correlate operational or business actions to observed metrics.
+Annotations are used to record external events (e.g. a deployment) that typically occur at non-uniform times, yet may impact the behavior of monitored metrics. Each annotation event has an associated time and metadata description. When a set of annotation events are added to a graph, each event is plotted as a single vertical line. This permits a user to correlate operational or business actions to observed metrics.
 
 Every annotation event is associated with a single named annotation stream, analogous to how multiple measurements are associated with the named metric they belong to. For example, you might have an annotation stream named ux-app-deploys to track deployments to your UX application and another annotation stream api-app-deploys to track deploys to your API application. Multiple annotation events can be added to a graph by selecting the name of the annotation stream, similar to selecting a metric name.
 
@@ -20,7 +20,7 @@ display_name | The string used to display this annotation stream.
 
 ### Annotation Events
 
-An annotation event records a single point in time when an external action (like a deployment) occurred. Annotation events can include meta-data that describe the particular event in more detail or reference an external site.
+An annotation event records a single point in time when an external action (like a deployment) occurred. Annotation events can include metadata that describe the particular event in more detail or reference an external site.
 
 Annotation events have the following properties:
 
@@ -29,7 +29,7 @@ Annotation Property | Definition
 id | Each annotation event has a unique numeric ID.
 title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. `v45 Deployment`. The title is a required parameter to create an annotation.
 source | A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
-description | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
+description | The description contains extra metadata about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
 links | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link's relationship to the annotation. See the [link documentation](#add-link-to-annotation-event) for details on available parameters.
 start_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
 end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
@@ -493,7 +493,7 @@ Parameter | Definition
 --------- | ----------
 title | The title of an annotation is a string and may contain spaces. The title should be a short, high-level summary of the annotation e.g. `v45 Deployment`. The title is a required parameter to create an annotation.
 source<br>`optional` | A string which describes the originating source of an annotation when that annotation is tracked across multiple members of a population. Examples: foo3.bar.com, user-123, 77025.
-description<br>`optional` | The description contains extra meta-data about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
+description<br>`optional` | The description contains extra metadata about a particular annotation. The description should contain specifics on the individual annotation e.g. `Deployed 9b562b2: shipped new feature foo!` A description is not required to create an annotation.
 links<br>`optional` | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link's relationship to the annotation. See the [link documentation](#add-link-to-annotation-event) for details on available parameters.
 start_time<br>`optional` | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation started. By default this is set to the current time if not specified.
 end_time<br>`optional` | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicating the the time at which the event referenced by this annotation ended. For events that have a duration, this is a useful way to annotate the duration of the event. This parameter is optional and defaults to null if not set.
@@ -686,7 +686,7 @@ Not available
 ** NOT APPLICABLE **
 ```
 
-Update the meta-data of an annotation event.
+Update the metadata of an annotation event.
 
 ### Headers
 

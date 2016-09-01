@@ -2,7 +2,7 @@
 
 ## Overview
 
-When submitting a measurement to Librato, in addition to specifying the metric name you can optionally specify a source name as additional meta-data. This is useful when you are tracking the same metrics across a set of homogenous entities e.g. server instances in a cluster (source name => hostname) or sensors in a grid (source name => MAC address).
+When submitting a measurement to Librato, in addition to specifying the metric name you can optionally specify a source name as additional metadata. This is useful when you are tracking the same metrics across a set of homogeneous entities e.g. server instances in a cluster (source name => hostname) or sensors in a grid (source name => MAC address).
 
 For more information on sources and how they can be leveraged, check out [this knowledge base article](https://www.librato.com/docs/kb/faq/whats_a_source.html).
 
