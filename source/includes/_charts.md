@@ -2,7 +2,7 @@
 
 ## Overview
 
-A charts graphs one or more metrics in real time. In order to create a chart you will first need to build a [Space](#spaces). Each [Space](#spaces) accomodates multiple charts.
+A charts graphs one or more metrics in real time. In order to create a chart you will first need to build a [Space](#spaces). Each [Space](#spaces) accommodates multiple charts.
 
 ## Retrieve Chart by ID
 
@@ -330,7 +330,7 @@ units_short | Unit value string to use as the tooltip label.
 units_long | String value to set as they Y-axis label. All streams that share the same units_long value will be plotted on the same Y-axis.
 min | Theoretical minimum Y-axis value.
 max | Theoretical maximum Y-axis value.
-transform_function | Linear formula to run on each measurement prior to visualizaton.
+transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
 ## Update Chart Attributes
@@ -427,7 +427,7 @@ units_short | Unit value string to use as the tooltip label.
 units_long | String value to set as they Y-axis label. All streams that share the same units_long value will be plotted on the same Y-axis.
 min | Theoretical minimum Y-axis value.
 max | Theoretical maximum Y-axis value.
-transform_function | Linear formula to run on each measurement prior to visualizaton.
+transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
 ## Delete Chart

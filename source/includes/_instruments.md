@@ -13,7 +13,7 @@ Property | Definition
 id | Each instrument has a unique numeric ID.
 name | Title of the instrument when it is displayed.
 streams | An array of hashes describing the metrics and sources to use for data in the instrument.
-attributes | The attributes hash configures specific components of an instruments's visualization.
+attributes | The attributes hash configures specific components of an instrument's visualization.
 
 ### Stream Properties
 
@@ -32,7 +32,7 @@ units_short | Unit value string to use as the tooltip label.
 units_long | String value to set as they Y-axis label. All streams that share the same units_long value will be plotted on the same Y-axis.
 min | Theoretical minimum Y-axis value.
 max | Theoretical maximum Y-axis value.
-transform_function | Linear formula to run on each measurement prior to visualizaton.
+transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
 ### Attribute Properties
@@ -176,7 +176,7 @@ POST https://metrics-api.librato.com/v1/instruments
 
 >Example Request
 
->Create an instrument named `Server Temperature` which will display the internal server temperature (metric=`server_temp`) for application server 1 (source=`app1`) in the same graph as the average external temperature in the datacenter for all sources (source=`*`) and a 'dynamic source' to be specified by the user after the graph has loaded, or on the URL. (source=`%`). The literal `%` needs to be % encoded for it to be handled properly, hence `%25`.
+>Create an instrument named `Server Temperature` which will display the internal server temperature (metric=`server_temp`) for application server 1 (source=`app1`) in the same graph as the average external temperature in the data center for all sources (source=`*`) and a 'dynamic source' to be specified by the user after the graph has loaded, or on the URL. (source=`%`). The literal `%` needs to be % encoded for it to be handled properly, hence `%25`.
 
 ```shell
 curl \
@@ -303,7 +303,7 @@ Parameter | Definition
 --------- | ----------
 name | Title of the instrument when it is displayed.
 streams | An array of hashes describing the metrics and sources to use for data in the instrument.
-attributes | The attributes hash configures specific components of an instruments's visualization.
+attributes | The attributes hash configures specific components of an instrument's visualization.
 
 ### Stream Properties
 
@@ -320,7 +320,7 @@ units_short | Unit value string to use as the tooltip label.
 units_long | String value to set as they Y-axis label. All streams that share the same units_long value will be plotted on the same Y-axis.
 min | Theoretical minimum Y-axis value.
 max | Theoretical maximum Y-axis value.
-transform_function | Linear formula to run on each measurement prior to visualizaton.
+transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
 ### Attribute Properties
@@ -440,7 +440,7 @@ Parameter | Definition
 --------- | ----------
 name | Title of the instrument when it is displayed.
 streams | An array of hashes describing the metrics and sources to use for data in the instrument.
-attributes | The attributes hash configures specific components of an instruments's visualization.
+attributes | The attributes hash configures specific components of an instrument's visualization.
 
 ### Stream Properties
 
@@ -457,7 +457,7 @@ units_short | Unit value string to use as the tooltip label.
 units_long | String value to set as they Y-axis label. All streams that share the same units_long value will be plotted on the same Y-axis.
 min | Theoretical minimum Y-axis value.
 max | Theoretical maximum Y-axis value.
-transform_function | Linear formula to run on each measurement prior to visualizaton.
+transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
 ## Delete an Instrument

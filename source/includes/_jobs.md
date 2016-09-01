@@ -13,7 +13,7 @@ Jobs can be queried for their current state and other status information. They h
 Property | Definition
 -------- | ----------
 id | Each job has a unique numeric ID.
-state | Reflects the current status of the job, will be one of `queued`, `working`, `complete` `failed`, or `cancelled`.
+state | Reflects the current status of the job, will be one of `queued`, `working`, `complete` `failed`, or `canceled`.
 progress<br>`optional` | a floating point number from `0.0-100.0` reflecting how close to completion the job is currently.
 output<br>`optional` | if the job results in output it will be available in this field.
 errors<br>`optional` | if the job results in any errors they will be available in this field.
