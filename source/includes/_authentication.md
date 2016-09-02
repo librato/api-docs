@@ -15,7 +15,7 @@ Librato::Metrics.authenticate example@librato.com, 75AFDB82
 
 ```python
 import librato
-api = librato.connect(example@librato.com, 75AFDB82)
+api = librato.connect('email', 'token')
 ```
 
 >Or you may include the credentials in the URL (see the note about URL Encoding below):
