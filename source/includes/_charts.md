@@ -194,6 +194,7 @@ space = api.get_space(123)
 chart = api.create_chart(
     'Server Temperature', 
     space, 
+    type='line',
     streams=[
         {'metric': 'server_temp', 'source': 'app1'}, 
         {'metric': 'environmental_temp', 'source': '*', 
