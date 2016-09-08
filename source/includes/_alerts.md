@@ -363,6 +363,20 @@ alert = api.create_alert("production.web.frontend.response_time")
 alert.add_condition_for('web.nginx.response_time').above(200)
 alert.add_service("849")
 alert.save()
+
+#alternatively (trigger if max value is over 200 for 5min):
+alert = api.create_alert(
+    name="production.web.frontend.response_time", 
+    description="Web Response Time", 
+    version=2, 
+    services=["849"],
+    attributes={"runbook_url":"http://mydomain.com/wiki/whattodo"},
+    conditions=[
+        {"metric_name":'web.nginx.response_time', 
+        "condition_type":'above', 
+        "threshold":200, 
+        "summary_function":'max', 
+        "duration":300}])
 ```
 
 >JSON Request used to create alert:
