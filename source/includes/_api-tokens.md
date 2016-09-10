@@ -87,6 +87,61 @@ Not available
 
 Returns all API Tokens.
 
+## Retrieve Tokens by Name
+
+>Example Request
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/api_tokens?name=*token*'
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Body
+
+```json
+{
+  "api_tokens": [
+    {
+      "name": "Token for collectors",
+      "token": "24f9fb2134399595b91da1dcac39cb6eafc68a07fa08ad3d70892b7aad10e1cf",
+      "active": true,
+      "role": "recorder",
+      "href": "http://metrics-api.librato.com/v1/api_tokens/28",
+      "created_at": "2013-02-01 18:53:38 UTC",
+      "updated_at": "2013-02-01 18:53:38 UTC"
+    },
+    {
+      "name": "Token that has been disabled",
+      "active": false,
+      "role": "viewer",
+      "href": "http://metrics-api.librato.com/v1/api_tokens/29",
+      "token": "d1ffbbbe327c6839a71023c2a8c9ba921207e32e427a49fb221843d74d63f7b8",
+      "created_at": "2013-02-01 18:54:28 UTC",
+      "updated_at": "2013-02-01 18:54:28 UTC"
+    }
+  ],
+    "query": {
+        "found": 2,
+        "length": 2,
+        "offset": 0,
+        "total": 2
+    }
+}
+```
+
+Returns the details for API Tokens that match a name. Supports wildcards, 
+e.g. `? name=*token*`. Omitting a wild card will automatically add them, so 
+querying `?name=foo.bar` will return `foo.bar` and `foo.bar.bazzle`.
+
 ## Retrieve Specific Token
 
 >Definition
