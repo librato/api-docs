@@ -7,7 +7,7 @@ https://www.librato.com/docs/api
 
 ### About This Project
 
-[Slate](https://github.com/tripit/slate) is a project designed to provide single page API documentation using [Middleman](https://github.com/middleman/middleman). 
+[Slate](https://github.com/tripit/slate) is a project designed to provide single page API documentation using [Middleman](https://github.com/middleman/middleman).
 
 You can add/edit the docs using Markdown. CircleCI takes care of automating the process: anything that is merged into the master branch kicks off a build and is automagically shipped to production (hosted on S3).
 
@@ -36,8 +36,8 @@ docker run -d -p 4567:4567 --name api-docs -v $(pwd)/source:/app/source api-docs
 
 You can now see the docs at <http://localhost:4567>.
 
-*Note: if you're using the Docker setup on OSX, the docs will be
-availalable at the output of `boot2docker ip` instead of `localhost:4567`.*
+*Note: if you're using the Docker setup on OSX, the docs may be
+availalable at the output of `local.docker:4567` instead of `localhost:4567`.*
 
 ### Editing the Docs
 
@@ -49,6 +49,6 @@ H1 tags (`#` in Markdown) are automatically added to the sidebar, and H2 tags (`
 
 Learn more about [editing Slate markdown](https://github.com/tripit/slate/wiki/Markdown-Syntax).
 
-### Deployment 
+### Deployment
 
-This project is deployed via CircleCI each time a PR is merged into master. [Check Deploy status on CircleCI](https://circleci.com/gh/librato/api-docs/) 
+This project is deployed via CircleCI each time a PR is merged into master. [Check Deploy status on CircleCI](https://circleci.com/gh/librato/api-docs/)
