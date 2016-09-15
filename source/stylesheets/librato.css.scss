@@ -24,6 +24,7 @@ a {
 
 a:active,a:hover {
   outline:0;
+  text-decoration: underline;
 }
 
 img {
@@ -49,11 +50,6 @@ button {
 
 * {
   box-sizing:border-box;
-}
-
-a:hover {
-  color:#23527c;
-  text-decoration:underline;
 }
 
 .sr-only {
@@ -483,16 +479,24 @@ ul {
   clear:both;
 }
 
+
 .content {
+
+  h2, h3, h4{
+    font-weight: 100;
+  }
   h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   h4 {
     color: #989898;
     font-size: 14px;
+  }
+  .example {
+    margin-top: 40px;
   }
 }
 

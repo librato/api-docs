@@ -679,24 +679,22 @@ POST https://metrics-api.librato.com/v1/metrics
 
 >Example Request
 
->This creates a total of three new measurements: two counter measurements (conn_servers and write_fails) and one gauge measurement (cpu_temp).
+>Creates 3 new measurements: Two counter measurements (conn_servers and write_fails) and one gauge measurement (cpu_temp).
 
 >The gauge measurement specifies an explicit measure_time and source that overrides the global ones while the counter measurements default to the global measure_time and source.
-
->Default measure_time and source:
 
 ```shell
 curl \
   -u <user>:<token> \
   -d 'measure_time=1234567950' \
-  -d 'source=blah.com' \
+  -d 'source=prod-us-west' \
   -d 'counters[0][name]=conn_servers' \
   -d 'counters[0][value]=5' \
   -d 'counters[1][name]=write_fails' \
   -d 'counters[1][value]=3' \
   -d 'gauges[0][name]=cpu_temp' \
   -d 'gauges[0][value]=88.4' \
-  -d 'gauges[0][source]=cpu0_blah.com' \
+  -d 'gauges[0][source]=prod-us-east' \
   -d 'gauges[0][measure_time]=1234567949' \
   -X POST \
   https://metrics-api.librato.com/v1/metrics
@@ -705,16 +703,20 @@ curl \
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.get_metric :cpu_temp, source: 'server1.acme.com', count: 4, resolution: 60
+queue = Librato::Metrics::Queue.new
+queue.add :conn_servers => {:type => :counter, :measure_time => 1234567950, :value => 5}
+queue.add :write_fails => {:type => :counter, :measure_time => 1234567950, :value => 3}
+queue.add :cpu_temp => {:measure_time => 1234567949, :value => 88.4}
+queue.submit
 ```
 
 ```python
 import librato
 api = librato.connect(<user>, <token>)
 q  = api.new_queue()
-q.add('conn_servers', 5, type='counter', source='blah.com')
-q.add('write_fails', 3, type='counter', source='blah.com')
-q.add('cpu_temp', 88.4, type='gauge', source='cpu0_blah.com')
+q.add('conn_servers', 5, type='counter', source='prod-us-west')
+q.add('write_fails', 3, type='counter', source='prod-us-west')
+q.add('cpu_temp', 88.4, type='gauge', source='prod-us-east')
 q.submit()
 ```
 
@@ -722,12 +724,6 @@ q.submit()
 
 ```
 200 Success
-```
-
->Response Body:
-
-```
-** NOT APPLICABLE **
 ```
 
 This action allows you to create metrics and submit measurements for new or existing metrics. You can submit measurements for multiple metrics in a single request.
@@ -860,7 +856,7 @@ PUT https://metrics-api.librato.com/v1/metrics
 ```shell
 curl \
   -u <user>:<token> \
-  -d 'names%5B%5D=cpu&names%5B%5D=servers&names%5B%5D=reqs&period=60&display_min=0' \
+  -d 'names=cpu&names=servers&names=reqs&period=60&display_min=0' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics'
 ```
@@ -907,12 +903,6 @@ Not available
 
 ```
 Location: <job-checking URI>  # issued only for 202
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Update the [properties](#metrics) and/or [attributes](#metric-attributes) of a set of metrics at the same time.
@@ -978,12 +968,6 @@ for metric in api.list_metrics(name="temp"):
 
 ```
 204 No Content
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 >Example Request
@@ -1130,12 +1114,6 @@ Not available
 Location: <job-checking URI>  # issued only for 202
 ```
 
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Batch-delete a set of metrics. Both the metrics and all of their measurements will be removed. All data deleted will be unrecoverable, so use this with care.
 
 This route accepts either a list of metric names OR a single pattern which includes wilcards (`*`).
@@ -1187,12 +1165,6 @@ api.delete("app_requests")
 ```
 
 >Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
 
 ```
 ** NOT APPLICABLE **
