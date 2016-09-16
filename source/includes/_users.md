@@ -2,7 +2,7 @@
 
 ## Overview
 
-<aside class="notice">Note: The Users API will to be enabled before you can utilize it. Please <a href="mailto:support@librato.com">contact the Librato support team</a> for access.</aside>
+<aside class="notice">Note: The Users API will need to be enabled before you can utilize it. Please <a href="mailto:support@librato.com">contact the Librato support team</a> for access.</aside>
 
 The `users` API enables third party IaaS and PaaS vendors to create and manage user accounts on behalf of their customers.
 
