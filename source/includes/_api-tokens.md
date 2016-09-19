@@ -138,8 +138,8 @@ curl \
 }
 ```
 
-Returns the details for API Tokens that match a name. Supports wildcards, 
-e.g. `? name=*token*`. Omitting a wild card will automatically add them, so 
+Returns the details for API Tokens that match a name. Supports wildcards,
+e.g. `? name=*token*`. Omitting a wild card will automatically add them, so
 querying `?name=foo.bar` will return `foo.bar` and `foo.bar.bazzle`.
 
 ## Retrieve Specific Token
@@ -164,12 +164,6 @@ curl \
 
 ```
 200 OK
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body
@@ -299,12 +293,6 @@ Not available
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```
@@ -361,12 +349,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the API Token identified by `:id`.

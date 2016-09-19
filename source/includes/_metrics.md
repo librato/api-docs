@@ -132,12 +132,6 @@ resp['measurements'][0]['series']
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body for all metrics (when there are two total):
 
 ```json
@@ -310,12 +304,6 @@ print(metric.attributes)
 
 ```
 200 OK
-```
-
->Response Headers:
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body:
@@ -1178,12 +1166,6 @@ api.delete("app_requests")
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the metric identified by :name. This will delete both the metric and all of its measurements.

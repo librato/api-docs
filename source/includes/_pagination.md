@@ -27,8 +27,7 @@ for m in api.list_metrics():
 >Response Code:
 
 ```
-Code: 200
-Headers: not applicable
+200
 ```
 
 >Response Body:
@@ -99,8 +98,7 @@ for m in api.list_metrics():
 >Response Code:
 
 ```
-Code: 200
-Headers: not applicable
+200
 ```
 
 >Response Body:

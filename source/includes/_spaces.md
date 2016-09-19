@@ -133,12 +133,6 @@ print space_info.chart_ids
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json
@@ -284,18 +278,6 @@ space.save()
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Modifies a space by changing its name.
 
 ### Headers
@@ -343,12 +325,6 @@ api.delete_space(129)
 
 ```
 204 No Content
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the space identified by :id.

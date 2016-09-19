@@ -44,12 +44,6 @@ Not available
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 <br><br>
 >All chart tokens (when there are 3 total):
@@ -118,12 +112,6 @@ Not available
 
 ```
 200 OK
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body
@@ -231,18 +219,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the specified chart token, revoking public access to the referenced entity. This will only delete access to the referenced entity via this chart token; it does affect the referenced entity.

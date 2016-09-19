@@ -40,12 +40,6 @@ for s in chart.streams:
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json
@@ -107,12 +101,6 @@ for c in charts:
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json
@@ -162,7 +150,7 @@ POST https://metrics-api.librato.com/v1/spaces/:id/charts
 
 >Example Request
 
->Create a line chart with various metric streams including their source(s) and 
+>Create a line chart with various metric streams including their source(s) and
 group/summary functions:
 
 ```shell
@@ -192,12 +180,12 @@ import librato
 api = librato.connect(<user>, <token>)
 space = api.get_space(123)
 chart = api.create_chart(
-    'Server Temperature', 
-    space, 
+    'Server Temperature',
+    space,
     type='line',
     streams=[
-        {'metric': 'server_temp', 'source': 'app1'}, 
-        {'metric': 'environmental_temp', 'source': '*', 
+        {'metric': 'server_temp', 'source': 'app1'},
+        {'metric': 'environmental_temp', 'source': '*',
         'group_function': 'average'},
         {'metric': 'server_temp', 'source': '%'}])
 ```
@@ -277,18 +265,6 @@ chart.save()
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 ### Headers
@@ -374,18 +350,6 @@ chart.save()
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Updates attributes of a specific chart.
 
 ### Headers
@@ -465,18 +429,6 @@ chart.delete()
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the specified chart.

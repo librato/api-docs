@@ -134,12 +134,6 @@ Librato::Metrics.get_source "foo.bar.com"
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json
@@ -181,12 +175,6 @@ Librato::Metrics.update_source "i-d32d61af", display_name: "web-frontend-0"
 
 ```
 204 No Content
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 >Example Request
