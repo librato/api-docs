@@ -47,12 +47,6 @@ Not available
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json

@@ -55,14 +55,8 @@ for s in services:
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
-<br><br>
+
 >All services (when there are two total):
 
 ```json
@@ -134,12 +128,6 @@ Not available
 
 ```
 200 OK
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body
@@ -264,18 +252,6 @@ Not available
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 ### Headers
 
 This specifies the format of the data sent to the API.
@@ -326,18 +302,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the service referenced by `:id`. It will automatically be removed from any alert that is currently using it.

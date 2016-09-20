@@ -111,12 +111,6 @@ for a in alerts:
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json
@@ -196,12 +190,6 @@ for a in alerts:
 
 ```
 200 OK
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body
@@ -366,16 +354,16 @@ alert.save()
 
 #alternatively (trigger if max value is over 200 for 5min):
 alert = api.create_alert(
-    name="production.web.frontend.response_time", 
-    description="Web Response Time", 
-    version=2, 
+    name="production.web.frontend.response_time",
+    description="Web Response Time",
+    version=2,
     services=["849"],
     attributes={"runbook_url":"http://mydomain.com/wiki/whattodo"},
     conditions=[
-        {"metric_name":'web.nginx.response_time', 
-        "condition_type":'above', 
-        "threshold":200, 
-        "summary_function":'max', 
+        {"metric_name":'web.nginx.response_time',
+        "condition_type":'above',
+        "threshold":200,
+        "summary_function":'max',
         "duration":300}])
 ```
 
@@ -515,12 +503,6 @@ alert.save()
 Location: /v1/alerts/45/services/209
 ```
 
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Associates a single service with the alert identified by `:alert_id`.
 
 ### Headers
@@ -645,18 +627,6 @@ Not available
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Update the specified alert.
 
 ### Headers
@@ -758,16 +728,6 @@ api.delete_alert("alert_name")
 ```
 204 No Content
 ```
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
->Response Body
-
-```
-** NOT APPLICABLE **
-```
 
 Delete the specified alert.
 
@@ -805,18 +765,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-not applicable
-```
-
->Response Body
-
-```
-not applicable
 ```
 
 Remove the service identified by `:id` from the alert identified by `:alert_id`.

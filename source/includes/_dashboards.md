@@ -99,12 +99,6 @@ curl \
 200 OK
 ```
 
-> Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```json
@@ -269,18 +263,6 @@ Not available
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Modify a dashboard, such as changing the name, or adding, deleting or reordering instruments.
 
 ### Headers
@@ -323,12 +305,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete the dashboard identified by :id.

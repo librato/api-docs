@@ -96,12 +96,6 @@ for stream in api.list_annotation_streams(name="api"):
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body (all annotation streams)
 
 ```json
@@ -189,9 +183,9 @@ Librato::Metrics::Annotator.new.fetch :'blog-posts', start_time: 1234500000, end
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-stream = api.get_annotation_stream("blog-posts", 
-  start_time="1234500000", 
-  end_time="1234600000", 
+stream = api.get_annotation_stream("blog-posts",
+  start_time="1234500000",
+  end_time="1234600000",
   sources=['db1.acme', 'db2.acme'])
 print(stream.events)
 ```
@@ -200,12 +194,6 @@ print(stream.events)
 
 ```
 200 OK
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body
@@ -319,12 +307,6 @@ Not available
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```
@@ -382,9 +364,9 @@ Librato::Metrics.annotate :'app-deploys', 'Deployed v56', source: 'foo3.bar.com'
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.post_annotation("app-deploys", 
-  title="Deployed v56", 
-  source="foo3.bar.com", 
+api.post_annotation("app-deploys",
+  title="Deployed v56",
+  source="foo3.bar.com",
   description="v56 - Fixed typo in page titles")
 ```
 
@@ -408,10 +390,10 @@ Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.post_annotation("app-deploys", 
-  title="My Annotation", 
-  source="foo3.bar.com", 
-  start_time="1234567890", 
+api.post_annotation("app-deploys",
+  title="My Annotation",
+  source="foo3.bar.com",
+  start_time="1234567890",
   description="Joe deployed v29 to metrics")
 ```
 
@@ -439,11 +421,11 @@ Librato::Metrics.annotate :'app-deploys', 'My Annotation', source: 'foo3.bar.com
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-api.post_annotation("app-deploys", 
-  title="My Annotation", 
-  source="foo3.bar.com", 
-  start_time="1234567890", 
-  description="Joe deployed v29 to metrics", 
+api.post_annotation("app-deploys",
+  title="My Annotation",
+  source="foo3.bar.com",
+  start_time="1234567890",
+  description="Joe deployed v29 to metrics",
   links=[{'rel': 'github', 'href': 'https://github.com/librato/librato-metrics'}])
 ```
 
@@ -606,18 +588,6 @@ Not available
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Update the attributes of an annotation stream.
 
 ### Headers
@@ -672,18 +642,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Update the metadata of an annotation event.
@@ -749,18 +707,6 @@ api.delete_annotation_stream("api-deploys")
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Delete an annotation stream. This will delete all annotation events associated with the stream.
 
 ## Delete Annotation Event
@@ -799,18 +745,6 @@ Not available
 204 No Content
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
-```
-
 Delete an annotation event.
 
 ## Delete Link From Annotation Event
@@ -845,18 +779,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete a link from an annotation event.

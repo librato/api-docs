@@ -71,12 +71,6 @@ Not available
 200 OK
 ```
 
->Response Headers
-
-```
-** NOT APPLICABLE **
-```
-
 >Response Body
 
 ```
@@ -143,12 +137,6 @@ Not available
 
 ```
 200 OK
-```
-
->Response Headers
-
-```
-** NOT APPLICABLE **
 ```
 
 >Response Body
@@ -296,12 +284,6 @@ Not available
 204 No Content
 ```
 
->Headers
-
-```
-not applicable
-```
-
 >Response Body
 <br><br>
 >If `password_reset` was not provided, a `204 No Content` is returned and the body is empty.
@@ -374,12 +356,6 @@ Not available
 
 ```
 204 No Content
-```
-
->Response Body
-
-```
-** NOT APPLICABLE **
 ```
 
 Delete a user by ID.
