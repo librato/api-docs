@@ -128,7 +128,7 @@ resp['measurements'][0]['series']
 
 >Response Code
 
-```shell
+```
 200 OK
 ```
 
