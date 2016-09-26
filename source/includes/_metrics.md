@@ -693,8 +693,6 @@ resolution | A resolution for the response as measured in seconds. If the origin
 
 ## Pagination
 
->Example Request
-
 >Return the metric `librato.cpu.percent.idle` with the `start_time` of 1303252025 (unix time):
 
 ```shell
@@ -742,15 +740,11 @@ Parameter | Definition
 --------- | ----------
 name | A search parameter that limits the results to metrics whose names contain a matching substring. The search is not case-sensitive.
 
-## Update Metric
+## Update a Metric
 
->Definition
+#### HTTP Request
 
-```
-PUT https://metrics-api.librato.com/v1/metrics
-```
-
->Example Request
+`PUT https://metrics-api.librato.com/v1/metrics`
 
 >Set the `period` and `display_min` for metrics `cpu`, `servers` and `reqs`:
 
@@ -777,8 +771,6 @@ for name in ['cpu', 'servers', 'reqs']:
   attrs['display_min'] = '0'
   api.update(name, attributes=attrs)
 ```
-
->Example Request
 
 >Set the `display_units_short` for all metrics that end with `.time`:
 
@@ -822,7 +814,7 @@ There are two potential success states for this action, either a `204 No Content
 
 A `202` will be issued when the metric set is large enough that it cannot be operated on immediately. In those cases a `Location`: response header will be included which identifies a [Job resource](#jobs) which can be monitored to determine when the operation is complete and if it has been successful.
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -834,15 +826,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-## Update Metric by Name
-
->Definition
-
-```
-PUT https://metrics-api.librato.com/v1/metrics/:name
-```
-
->Example Request
+### Update a Metric by Name
 
 >Update the existing metric temp by setting the display_name and the minimum display attribute.
 
@@ -877,7 +861,6 @@ for metric in api.list_metrics(name="temp"):
 204 No Content
 ```
 
->Example Request
 
 >Create a gauge metric named `queue_len` (this assumes the metric does not exist):
 
@@ -928,6 +911,10 @@ Location: /v1/metrics/queue_len
 }
 ```
 
+#### HTTP Request
+
+`PUT https://metrics-api.librato.com/v1/metrics/:name`
+
 Updates or creates the metric identified by `name`. If the metric already exists, it performs an update of the metric's properties.
 
 If the metric name does not exist, then the metric will be created with the associated properties. Normally metrics are created the first time a measurement is sent to the [collated POST route](#submit-metrics), after which their properties can be updated with this route. However, sometimes it is useful to set the metric properties before the metric has received any measurements so this will create the metric if it does not exist. The property `type` must be set if the metric is to be created.
@@ -936,7 +923,7 @@ Creating Persisted Composite Metrics
 
 With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -961,13 +948,9 @@ composite<br>`optional` | The composite definition. Only used when type is compo
 
 ## Delete Metric
 
->Definition
+#### HTTP Request
 
-```
-DELETE https://metrics-api.librato.com/v1/metrics
-```
-
->Example Request
+`DELETE https://metrics-api.librato.com/v1/metrics`
 
 > Delete the metrics `cpu`, `servers` and `reqs`:
 
@@ -1035,15 +1018,12 @@ A `202` will be issued when the metric set is large enough that it cannot be ope
 
 <aside class="notice">If you have attempted to DELETE a metric but it is still in your metric list, ensure that you are not continuing to submit measurements to the metric you are trying to delete.</aside>
 
-## Delete Metric by Name
+### Delete a Metric by Name
 
->Definition
+#### HTTP Request
 
-```
-DELETE https://metrics-api.librato.com/v1/metrics/:name
-```
+`DELETE https://metrics-api.librato.com/v1/metrics/:name`
 
->Example Request
 
 >Delete the metric named `app_requests`.
 
