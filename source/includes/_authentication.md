@@ -35,7 +35,7 @@ pair. *User* is the email address that you used to create your
 Librato Metrics account and *token* is the API token that can be
 found [on your account page](https://metrics.librato.com/tokens).
 
-## URL Encoding
+### URL Encoding
 
 >To use URL encoding, use the following format:
 
@@ -43,7 +43,7 @@ found [on your account page](https://metrics.librato.com/tokens).
 https://user:token@metrics-api.librato.com/v1/metrics
 ```
 
->Because the *user* value is an email address, it has to be escaped in order to form a valid URL. The `@` sign is represented by the `%40` entity. For example:
+>Because the `user` value is an email address, it has to be escaped in order to form a valid URL. The `@` sign is represented by the `%40` entity. For example:
 
 ```
 https://example%40librato.com:apitoken@metrics-api.librato.com/v1/metrics
@@ -51,4 +51,4 @@ https://example%40librato.com:apitoken@metrics-api.librato.com/v1/metrics
 
 >Note: cURL automatically converts the `@` to a `%40` if you use the `-u` option, but not if you put authentication in the URL directly.
 
-You can also include your *user* and *token* credentials in the URL with most clients.
+You can also include your `user` and `token` credentials in the URL with most clients.

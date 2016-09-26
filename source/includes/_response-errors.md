@@ -18,22 +18,7 @@ Error Code | Meaning | Definition
 
 ## Error Messages
 
-<h3 class="side">Error Message Structure</h3>
-
->Errors related to parameters are reported based on the attribute the error occurred on.
-
-```json
-{
-  "errors": {
-    "params": {
-      "name":["is not present"],
-      "start_time":["is not a number"]
-    }
-  }
-}
-```
-
->Errors related to the request itself are reported in an array structure with the key `request`.
+>Example of a `request` type error message.
 
 ```json
 {
@@ -46,16 +31,14 @@ Error Code | Meaning | Definition
 }
 ```
 
->Service errors due to maintenance periods, for example, are reported in an array structure with the key `system`:
+The API reports errors in a JSON format which makes it easier to parse and evaluate them.
 
-```json
-{
-  "errors": {
-    "system": [
-      "The API is currently down for maintenance. It'll be back shortly."
-    ]
-  }
-}
-```
+### Error Message Structure
 
-The API reports errors in a JSON format which makes it easier to parse and evaluate them. As of now, there are two kinds of errors: `params` and `request`.
+There are three types of errors: `params`, `request`, and `system`.
+
+Type | Description
+---- | -----------
+params | Errors related to parameters are reported based on the attribute the error occurred on.
+requests | Errors related to the request itself are reported in an array structure with the key `request`.
+system | Service errors due to maintenance periods, for example, are reported in an array structure with the key `system`.

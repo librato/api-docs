@@ -17,6 +17,7 @@ includes:
   - response-errors
   - metrics
   - metric-attributes
+  - measurements
   - pagination
   - spaces
   - charts
@@ -28,7 +29,6 @@ includes:
   - snapshots
   - services
   - sources
-  - users
 
 search: true
 ---
