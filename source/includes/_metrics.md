@@ -126,7 +126,7 @@ Parameter | Definition
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-_'. Depending on the submission format the location of the name parameter may vary, see examples below in "Measurement Formats". The metric namespace is case insensitive.
 value | The numeric value of a single measured sample.
 measure_time<br>`optional` | The integer value of the [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) of the measurement. If not specified will default to time the measurement is received.
-source<br>`optional` | A string which describes the originating source of a measurement when that measurement is tracked across multiple members of a population. Examples: foo.bar.com, user-123, 77025. <br><br>Sources must be composed of 'A-Za-z0-9.:-_' and can be up to 255 characters in length. The word all is reserved and cannot be used as user source. The source namespace is case insensitive. <br><br>`source` and `measure_time` can also be specified as a parameters outside of the `gauges` and `counters` measurement hashes. In this case the given `source` and `measure_time` values will be applied to all values submitted unless those measurements have another `source` or `measure_time` specified in their sub-hashes. <br><br>**NOTE**: The [optional parameters](#update-metric-by-name) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
+source<br>`optional` | A string which describes the originating source of a measurement when that measurement is tracked across multiple members of a population. Examples: foo.bar.com, user-123, 77025. <br><br>Sources must be composed of 'A-Za-z0-9.:-_' and can be up to 255 characters in length. The word all is reserved and cannot be used as user source. The source namespace is case insensitive. <br><br>`source` and `measure_time` can also be specified as a parameters outside of the `gauges` and `counters` measurement hashes. In this case the given `source` and `measure_time` values will be applied to all values submitted unless those measurements have another `source` or `measure_time` specified in their sub-hashes. <br><br>**NOTE**: The [optional parameters](#update-metric) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
 
 ### Gauge Specific Parameters
 
@@ -946,7 +946,7 @@ period<br>`optional` | Number of seconds that is the standard reporting period o
 attributes<br>`optional` | The attributes hash configures specific components of a metric's visualization.
 composite<br>`optional` | The composite definition. Only used when type is composite.
 
-## Delete Metric
+## Delete a Metric
 
 #### HTTP Request
 
