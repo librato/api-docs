@@ -4,8 +4,6 @@ Many of the resources accessible through the Metrics REST APIs can contain large
 
 ## Request Parameters
 
->Example Request
-
 >Request which returns the 2nd 10 metrics (would equal to page 2 where each page displays 10 metrics):
 
 ```shell

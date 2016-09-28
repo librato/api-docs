@@ -1,154 +1,8 @@
 # Charts
 
-## Overview
-
 A charts graphs one or more metrics in real time. In order to create a chart you will first need to build a [Space](#spaces). Each [Space](#spaces) accommodates multiple charts.
 
-## Retrieve Chart by ID
-
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id
-```
-
->Return chart by id and space id.
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
-```
-
-```ruby
-Not available
-```
-
-```python
-import librato
-api = librato.connect(<user>, <token>)
-chart = api.get_chart(chart_id, space_id)
-for s in chart.streams:
-  print(s.metric, s.source, s.group_function, s.summary_function)
-```
-
->Response Code
-
-```
-200 OK
-```
-
->Response Body
-
-```json
-{
-  "id": 6637,
-  "name": "CPU Usage",
-  "type": "line",
-  "streams": [
-    {
-      "id": 386291,
-      "metric": "collectd.cpu.0.cpu.user",
-      "type": "counter",
-      "source": "*",
-      "group_function": "average",
-      "summary_function": "derivative"
-    }
-  ]
-}
-```
-
-Returns a specific chart by its id and space id.
-
-## Retrieve Charts in Space
-
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/spaces/:id/charts
-```
-
->List all charts in a Space with ID `129`.
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/spaces/129/charts'
-```
-
-```ruby
-Not available
-```
-
-```python
-import librato
-api = librato.connect(<user>, <token>)
-space = api.get_space(129)
-charts = space.chart_ids
-for c in charts:
-   i = api.get_chart(c, space.id)
-   for s in i.streams:
-       print(s.id, s.metric, s.source, s.group_function, s.summary_function)
-```
-
->Response Code
-
-```
-200 OK
-```
-
->Response Body
-
-```json
-[
-  {
-    "id": 6637,
-    "name": "CPU Usage",
-    "type": "line",
-    "streams": [
-      {
-        "id": 386291,
-        "metric": "collectd.cpu.0.cpu.user",
-        "type": "counter",
-        "source": "*",
-        "group_function": "average",
-        "summary_function": "derivative"
-      }
-    ]
-  },
-  {
-    "id": 6638,
-    "name": "Free Memory",
-    "type": "line",
-    "streams": [
-      {
-        "id": 386292,
-        "metric": "collectd.memory.memory.free",
-        "type": "gauge",
-        "source": "*",
-        "group_function": "average",
-        "summary_function": "average"
-      }
-    ]
-  }
-]
-```
-
-Return charts for a given space.
-
 ## Create a Chart
-
->Definition
-
-```
-POST https://metrics-api.librato.com/v1/spaces/:id/charts
-```
-
->Example Request
 
 >Create a line chart with various metric streams including their source(s) and
 group/summary functions:
@@ -230,9 +84,7 @@ Location: /v1/spaces/123
 }
 ```
 
->Example Request
-
->Add a composite metric to a chart
+>How to add a composite metric to a chart
 
 >NOTE: This will replace existing streams within the specified chart
 
@@ -266,6 +118,12 @@ chart.save()
 ```
 204 No Content
 ```
+
+You can create a new chart with specified metrics or update an existing chart with new metrics to override the chart's existing metrics.
+
+#### HTTP Request
+
+`POST https://metrics-api.librato.com/v1/spaces/:id/charts`
 
 ### Headers
 
@@ -310,15 +168,64 @@ max | Theoretical maximum Y-axis value.
 transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
-## Update Chart Attributes
+## Retrieve a Chart
 
->Definition
+>Return chart by id and space id.
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+chart = api.get_chart(chart_id, space_id)
+for s in chart.streams:
+  print(s.metric, s.source, s.group_function, s.summary_function)
+```
+
+>Response Code
 
 ```
-PUT https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id
+200 OK
 ```
 
->Example Request
+>Response Body
+
+```json
+{
+  "id": 6637,
+  "name": "CPU Usage",
+  "type": "line",
+  "streams": [
+    {
+      "id": 386291,
+      "metric": "collectd.cpu.0.cpu.user",
+      "type": "counter",
+      "source": "*",
+      "group_function": "average",
+      "summary_function": "derivative"
+    }
+  ]
+}
+```
+
+Returns a specific chart by its id and space id.
+
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id`
+
+
+## Update a Chart
 
 >Update a chart name to `Temperature`:
 
@@ -350,7 +257,11 @@ chart.save()
 204 No Content
 ```
 
-Updates attributes of a specific chart.
+Updates attributes of a specific chart. In order to update the metrics associated with a chart you will need to view the example under [Create a Chart](#create-a-chart), which demonstrates overwriting an existing chart with new metrics.
+
+#### HTTP Request
+
+`PUT https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id`
 
 ### Headers
 
@@ -395,13 +306,7 @@ max | Theoretical maximum Y-axis value.
 transform_function | Linear formula to run on each measurement prior to visualization.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
-## Delete Chart
-
->Definition
-
-```
-DELETE https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id
-```
+## Delete a Chart
 
 >Delete the chart ID 123.
 
@@ -432,3 +337,83 @@ chart.delete()
 ```
 
 Delete the specified chart.
+
+#### HTTP Request
+
+`DELETE https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id`
+
+## List all Charts in Space
+
+>List all charts in a Space with ID `129`.
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/spaces/129/charts'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+space = api.get_space(129)
+charts = space.chart_ids
+for c in charts:
+   i = api.get_chart(c, space.id)
+   for s in i.streams:
+       print(s.id, s.metric, s.source, s.group_function, s.summary_function)
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Body
+
+```json
+[
+  {
+    "id": 6637,
+    "name": "CPU Usage",
+    "type": "line",
+    "streams": [
+      {
+        "id": 386291,
+        "metric": "collectd.cpu.0.cpu.user",
+        "type": "counter",
+        "source": "*",
+        "group_function": "average",
+        "summary_function": "derivative"
+      }
+    ]
+  },
+  {
+    "id": 6638,
+    "name": "Free Memory",
+    "type": "line",
+    "streams": [
+      {
+        "id": 386292,
+        "metric": "collectd.memory.memory.free",
+        "type": "gauge",
+        "source": "*",
+        "group_function": "average",
+        "summary_function": "average"
+      }
+    ]
+  }
+]
+```
+
+Return charts for a given space.
+
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/spaces/:id/charts`

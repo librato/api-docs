@@ -1,12 +1,12 @@
 # Alerts
 
-## Overview
-
 Alerts are used to build actionable responses to changes in metric measurements. Alerts define conditions on the input measurements and are triggered when the value(s) of the input measurements cross a threshold or stop reporting. For example, an alert could be used to notify an administrator that response time for a given service is elevated above an acceptable range.
 
 <aside class="notice">Our alerts endpoints currently support two versions of the alert data model. Version 2 supports our latest alerting features. Version 1 is legacy & deprecated.</aside>
 
-### Alerts
+## The Alert Object
+
+### Alerts Properties
 
 Alert Property | Definition
 -------------- | ----------
@@ -35,13 +35,13 @@ below | Condition is met when the stream goes below the specified threshold.
 All alert conditions have the following properties:
 
 Property | Definition
--------------- | ----------
+-------- | ----------
 type | One of above, absent, or below.
 metric_name | The name of the metric this alert condition applies to.
 source<br>`optional` | A source expression which identifies which sources for the given metric to monitor. If not specified all sources will be monitored. Wildcards can be used here (e.g. prod-* will include all sources that begin with prod-).
 detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
 
-### Additional properties for the 'above' alert condition type:
+Additional properties for the 'above' alert condition type:
 
 Property | Definition
 -------------- | ----------
@@ -49,13 +49,13 @@ threshold | float: measurements over this number will fire the alert.
 summary_function<br>`optional` | string: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property summary_function](#instruments) for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be above the threshold for before the condition is met. All data points within the given duration must be above the threshold to meet this condition. This avoids a single spike from triggering the condition. <br><br>If unset, a single sample above the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
 
-### Additional properties for the 'absent' alert condition type:
+Additional properties for the 'absent' alert condition type:
 
 Alert Property | Definition
 -------------- | ----------
 duration | *integer*: How many seconds data for the specified metric/source combination must not be missing before the condition is met. This will only trigger for a given metric/source combination after a measurement has been seen at least once. Must be >= 60 seconds and <= 3600 seconds. (Required)
 
-### Additional properties for the 'below' alert condition type:
+Additional properties for the 'below' alert condition type:
 
 Alert Property | Definition
 -------------- | ----------
@@ -63,277 +63,17 @@ threshold | *float*: measurements below this number will fire the alert. (Requir
 summary_function | *string*: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property](instruments) `summary_function` for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
 duration | *integer*: Number of seconds that data for the specified metric/source combination must be below the threshold for before the condition is met. All data points within the given duration must be below the threshold to meet this condition. This avoids a single drop from triggering the condition. <br><br>If unset, a single sample below the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
 
-### Alert Attributes
+#### Alert Attributes
 
 The attributes field on the alert accepts an optional map of key-value pairs and allows metadata to be associated with the alert. Some keys are used for special behavior:
 
 Attribute | Definition
---------------- | ----------
+--------- | ----------
 runbook_url | a URL for the runbook to be followed when this alert is firing. Used in the Librato UI if set.
 
 Attributes can be unset by excluding their key when updating an alert.
 
-## Retrieve All Alerts
-
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/alerts
-```
-
->Example Request
-
->Return all enabled alerts owned by the user with `production` in the name:
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/alerts?name=production'
-```
-
-```ruby
-Not available
-```
-
-```python
-import librato
-api = librato.connect(<user>, <token>)
-alerts = api.list_alerts(name="production")
-for a in alerts:
-  print(a.name)
-```
-
->Response Code
-
-```
-200 OK
-```
-
->Response Body
-
-```json
-{
-  "query": {
-    "found": 1,
-    "length": 1,
-    "offset": 0,
-    "total": 1
-  },
-  "alerts": [
-    {
-      "id": 123,
-      "name": "production.web.frontend.response_time",
-      "conditions": [
-        {
-          "type": "above",
-          "threshold": 200,
-          "metric_name": "web.nginx.response_time"
-        }
-      ],
-      "services": [
-        {
-          "id": 849,
-          "title": "Notify Campfire Room",
-          "name": "campfire"
-        }
-      ],
-      "attributes": {
-        "runbook_url": "http://myco.com/runbooks/response_time"
-      },
-      "active": true,
-      "version": 2
-    }
-  ]
-}
-```
-
-Returns all alerts created by the user.
-
-### Pagination Parameters
-
-The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to alerts, the default value of the `orderby` pagination parameter is `updated_at`, and the permissible values of the `orderby` pagination parameter are: `updated_at`.
-
-### Other Parameters
-
-Parameter | Definition
---------- | ----------
-version | Optional. Can be set to `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified, v2 alerts will be returned.
-name | A search parameter that limits the results to metrics whose names contain a matching substring. Search is case-insensitive.
-
-## Retrieve Alert by ID
-
->Example Request: Return alert ID 123
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/alerts/123'
-```
-
-```ruby
-Not available
-```
-
-```python
-import librato
-api = librato.connect(<user>, <token>)
-alerts = api.list_alerts(id="123")
-for a in alerts:
-  print(a.name)
-```
-
->Response Code
-
-```
-200 OK
-```
-
->Response Body
-
-```json
-{
-  "id": 123,
-  "name": "production.web.frontend.response_time",
-  "conditions": [
-    {
-      "type": "above",
-      "threshold": 200,
-      "metric_name": "web.nginx.response_time"
-    }
-  ],
-  "services": [
-    {
-      "id": 849,
-      "title": "Notify Campfire Room",
-      "name": "campfire"
-    }
-  ],
-  "attributes": {
-    "runbook_url": "http://myco.com/runbooks/response_time"
-  },
-  "active": true,
-  "version": 2
-}
-```
-
-Returns a specific alert.
-
-## Retrieve Status of Alerts
-
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/alerts/status
-```
-
->Example Request
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/alerts/status'
-```
-
-```ruby
-Not available
-```
-
-```python
-Not available
-```
-
->Response Body
-
-```json
-{
-    "cleared": [
-        {
-            "cleared_at": 1454108320,
-            "id": 127
-        }
-    ],
-    "firing": [
-        {
-            "id": 106,
-            "triggered_at": 1413328283
-        },
-        {
-            "id": 129,
-            "triggered_at": 1444934147
-        }
-    ]
-}
-```
-
-Returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
-
-## Retrieve Status of Specific Alert
-
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/alerts/:alert_id/status
-```
-
->Example Request
-
->Return the status for alert ID `120`:
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/alerts/120/status'
-```
-
-```ruby
-Not available
-```
-
-```python
-Not available
-```
-
->Response for an alert that is triggered:
-
-```json
-{
-    "alert": {
-        "id": 120
-    },
-    "status": "triggered"
-}
-```
-
->Response for an alert that is not triggered:
-
-```json
-{
-    "alert": {
-        "id": 121
-    },
-    "status": "ok"
-}
-```
-
-Returns the status for a particular alert, specified by ID.
-
 ## Create an Alert
-
->Definition
-
-```
-POST https://metrics-api.librato.com/v1/alerts
-```
-
->Example
 
 >Create an alert named `production.web.frontend.response_time` with one condition which monitors the `metric web.nginx.response_time` and alerts whenever the value goes over 200.
 
@@ -429,7 +169,13 @@ Location: /v1/alerts/123
 }
 ```
 
-### Headers
+Create an alert by setting the condition array parameters by providing a `metric_name`, `threshold`, and condition `type`.
+
+#### HTTP Request
+
+`POST https://metrics-api.librato.com/v1/alerts`
+
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -441,7 +187,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -454,30 +200,142 @@ description<br>`optional` | A string describing this alert.
 active<br>`optional` | Boolean: identifies whether the alert is active (can be triggered). Defaults to true.
 rearm_seconds<br>`optional` | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are received that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
 
-### Alert Conditions & Attributes
+## Retrieve an Alert
 
-See details in the [alert overview](#alerts).
-
-## Associate Service with Alert
-
->Definition
-
-```
-POST https://metrics-api.librato.com/v1/alerts/:id/services
-```
-
->Example Request
-
->Add the service identified by `ID 290` to the alert "my.alert.name" (ID `45`). When the alert is triggered, the service `290` will be notified.
-
->Note: To get a list of created services, view the section on [Retrieving all services](#retrieve-all-services).
+>Return alert with the `id` 123
 
 ```shell
 curl \
+  -i \
   -u <user>:<token> \
-  -d 'service=290' \
-  -X POST \
-  'https://metrics-api.librato.com/v1/alerts/45/services'
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts/123'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alerts = api.list_alerts(id="123")
+for a in alerts:
+  print(a.name)
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Body
+
+```json
+{
+  "id": 123,
+  "name": "production.web.frontend.response_time",
+  "conditions": [
+    {
+      "type": "above",
+      "threshold": 200,
+      "metric_name": "web.nginx.response_time"
+    }
+  ],
+  "services": [
+    {
+      "id": 849,
+      "title": "Notify Campfire Room",
+      "name": "campfire"
+    }
+  ],
+  "attributes": {
+    "runbook_url": "http://myco.com/runbooks/response_time"
+  },
+  "active": true,
+  "version": 2
+}
+```
+
+>Return all alerts owned by the user with `production` in the name:
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts?name=production'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+alerts = api.list_alerts(name="production")
+for a in alerts:
+  print(a.name)
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Body
+
+```json
+{
+  "query": {
+    "found": 1,
+    "length": 1,
+    "offset": 0,
+    "total": 1
+  },
+  "alerts": [
+    {
+      "id": 123,
+      "name": "production.web.frontend.response_time",
+      "conditions": [
+        {
+          "type": "above",
+          "threshold": 200,
+          "metric_name": "web.nginx.response_time"
+        }
+      ],
+      "services": [
+        {
+          "id": 849,
+          "title": "Notify Campfire Room",
+          "name": "campfire"
+        }
+      ],
+      "attributes": {
+        "runbook_url": "http://myco.com/runbooks/response_time"
+      },
+      "active": true,
+      "version": 2
+    }
+  ]
+}
+```
+
+Return the details of an alert (or group of alerts) by providing the `id` or `name`.
+
+### Retrieve Status of Specific Alert
+
+>Return the status for alert ID `120`:
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts/120/status'
 ```
 
 ```ruby
@@ -486,54 +344,41 @@ Not available
 
 ```python
 Not available
-alert = api.get_alert("my.alert.name")
-alert.add_service("290")
-alert.save()
 ```
 
->Response Code
+>Response for an alert that is triggered:
 
-```
-201 Created
-```
-
->Headers
-
-```
-Location: /v1/alerts/45/services/209
-```
-
-Associates a single service with the alert identified by `:alert_id`.
-
-### Headers
-
-This specifies the format of the data sent to the API.
-
-For HTML (default):
-
-`Content-Type: application/x-www-form-urlencoded`
-
-For JSON:
-
-`Content-Type: application/json`
-
-### Parameters
-
-This route accepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
-
-## Modify Alert
-
->Definition
-
-```
-PUT https://metrics-api.librato.com/v1/alerts/:id
+```json
+{
+    "alert": {
+        "id": 120
+    },
+    "status": "triggered"
+}
 ```
 
->Examples
+>Response for an alert that is not triggered:
+
+```json
+{
+    "alert": {
+        "id": 121
+    },
+    "status": "ok"
+}
+```
+
+Returns the status for a particular alert, specified by ID.
+
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/alerts/:alert_id/status`
+
+## Update an Alert
 
 >NOTE: This method requires the conditions hash. If conditions is not included in the payload, the alert conditions will be removed.
 
->Disable an alert:
+>To disable an alert:
 
 ```shell
 curl \
@@ -556,7 +401,7 @@ alert.active = "false"
 alert.save()
 ```
 
->Enable an alert:
+>To enable an alert:
 
 ```shell
 curl \
@@ -629,7 +474,11 @@ Not available
 
 Update the specified alert.
 
-### Headers
+#### HTTP Request
+
+`PUT https://metrics-api.librato.com/v1/alerts/:id`
+
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -641,7 +490,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -654,28 +503,22 @@ description<br>`optional` | A string describing this alert.
 active<br>`optional` | Boolean: identifies whether the alert is active (can be triggered). Defaults to true.
 rearm_seconds<br>`optional` | Specifies the minimum amount of time between sending alert notifications, in seconds. A notification will be sent once the alert is triggered, and then will not be sent again until the rearm timer has elapsed, even if more measurements are received that would trigger the alert. Required to be a multiple of 60, and when unset or null will default to 600 (10 minutes).
 
-### Alert Conditions & Attributes
+## Notification Services
 
-See details in the [alert overview](#alerts).
+Librato provides many [notification services](https://www.librato.com/docs/kb/alert/alerts-intro.html#notification-services) to alert your team by when an alert is triggered. At least one (but not lmiited to one) service must be tied to each alert.
 
-## Resolve an Alert
+### Associate a Service with an Alert
 
->Definition
+>Add the service identified by `ID 290` to the alert "my.alert.name" (ID `45`). When the alert is triggered, the service `290` will be notified.
 
-```
-POST https://metrics-api.librato.com/v1/alerts/:alert_id/clear
-```
-
->Example Request
-
->Resolve alert ID `120`:
+>Note: To get a list of created services, view the section on [Retrieving all services](#retrieve-all-services).
 
 ```shell
 curl \
-  -i \
   -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/alerts/120/clear'
+  -d 'service=290' \
+  -X POST \
+  'https://metrics-api.librato.com/v1/alerts/45/services'
 ```
 
 ```ruby
@@ -684,64 +527,50 @@ Not available
 
 ```python
 Not available
+alert = api.get_alert("my.alert.name")
+alert.add_service("290")
+alert.save()
 ```
 
 >Response Code
 
 ```
-204 No Content
+201 Created
 ```
 
-Clears the alert specified using the alert ID.
-
-## Delete Alert
-
->Definition
+>Headers
 
 ```
-DELETE https://metrics-api.librato.com/v1/alerts/:id
+Location: /v1/alerts/45/services/209
 ```
 
->Example Request
+Associates a single service with the alert identified by `:alert_id`.
 
->Delete the alert ID 123
+#### HTTP Request
 
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X DELETE \
-  'https://metrics-api.librato.com/v1/alerts/123'
-```
+`POST https://metrics-api.librato.com/v1/alerts/:id/services`
 
-```ruby
-Not available
-```
+#### Headers
 
-```python
-import librato
-api = librato.connect(<user>, <token>)
-api.delete_alert("alert_name")
-```
->Response Code
+This specifies the format of the data sent to the API.
 
-```
-204 No Content
-```
+For HTML (default):
 
-Delete the specified alert.
+`Content-Type: application/x-www-form-urlencoded`
 
+For JSON:
 
-## Remove Service from Alert
+`Content-Type: application/json`
 
+#### Parameters
 
->Definition
+This route accepts a single parameter `service` that should be set to the ID of the [service](#services) to associate with this alert.
 
-```
-DELETE https://metrics-api.librato.com/v1/alerts/:alert_id/services/:id
-```
+### Remove a Service from an Alert
 
->Example Request
+#### HTTP Request
+
+`DELETE https://metrics-api.librato.com/v1/alerts/:alert_id/services/:id`
 
 >Remove service 209 from alert 123. From then on when alert 123 is triggered, the service 209 will no longer be triggered.
 
@@ -768,3 +597,129 @@ Not available
 ```
 
 Remove the service identified by `:id` from the alert identified by `:alert_id`.
+
+
+## Resolve an Alert
+
+>Resolve alert ID `120`:
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X POST \
+  'https://metrics-api.librato.com/v1/alerts/120/clear'
+```
+
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
+>Response Code
+
+```
+204 No Content
+```
+
+Clears the alert specified using the alert `id`.
+
+#### HTTP Request
+
+`POST https://metrics-api.librato.com/v1/alerts/:alert_id/clear`
+
+## Delete Alert
+
+>Delete the alert `id` 123
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X DELETE \
+  'https://metrics-api.librato.com/v1/alerts/123'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+api.delete_alert("alert_name")
+```
+>Response Code
+
+```
+204 No Content
+```
+
+Delete an alert by specifying a unique `id` or `name`.
+
+#### HTTP Request
+
+`DELETE https://metrics-api.librato.com/v1/alerts/:id`
+
+## List all Alerts
+
+>List the status of all alerts:
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts/status'
+```
+
+```ruby
+Not available
+```
+
+```python
+Not available
+```
+
+>Response Body
+
+```json
+{
+    "cleared": [
+        {
+            "cleared_at": 1454108320,
+            "id": 127
+        }
+    ],
+    "firing": [
+        {
+            "id": 106,
+            "triggered_at": 1413328283
+        },
+        {
+            "id": 129,
+            "triggered_at": 1444934147
+        }
+    ]
+}
+```
+
+Returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
+
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/alerts`
+
+#### Pagination Parameters
+
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination5). Specific to alerts, the default value of the `orderby` pagination parameter is `updated_at`, and the permissible values of the `orderby` pagination parameter are: `updated_at`.
+
+#### Other Parameters
+
+Parameter | Definition
+--------- | ----------
+version | Optional. Can be set to `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified, v2 alerts will be returned.
+name | A search parameter that limits the results to metrics whose names contain a matching substring. Search is case-insensitive.
