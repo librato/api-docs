@@ -17,8 +17,8 @@ includes:
   - response-errors
   - metrics
   - metric-attributes
-  - measurements
   - pagination
+  - measurements
   - spaces
   - charts
   - annotations
