@@ -77,7 +77,7 @@ Attributes can be unset by excluding their key when updating an alert.
 
 >Create an alert named `production.web.frontend.response_time` with one condition which monitors the `metric web.nginx.response_time` and alerts whenever the value goes over 200.
 
->When the alert is triggered, the service identified by ID 849 (a campfire room in this case) will be notified.
+>When the alert is triggered, the service identified by ID 849 (a Slack channel in this case) will be notified.
 
 
 ```ruby
@@ -157,8 +157,8 @@ Location: /v1/alerts/123
   "services": [
     {
       "id": 849,
-      "title": "Notify Campfire Room",
-      "name": "campfire"
+      "title": "Notify Slack Channel",
+      "name": "slack"
     }
   ],
   "attributes": {
@@ -246,8 +246,8 @@ for a in alerts:
   "services": [
     {
       "id": 849,
-      "title": "Notify Campfire Room",
-      "name": "campfire"
+      "title": "Notify Slack Channel",
+      "name": "slack"
     }
   ],
   "attributes": {
@@ -310,8 +310,8 @@ for a in alerts:
       "services": [
         {
           "id": 849,
-          "title": "Notify Campfire Room",
-          "name": "campfire"
+          "title": "Notify Slack Channel",
+          "name": "slack"
         }
       ],
       "attributes": {
