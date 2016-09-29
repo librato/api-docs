@@ -6,9 +6,9 @@
 
 <h3 class="side example">Quick Start</h3>
 
->*This example covers submitting and retrieving measurements from a specific metric. View the [Metrics section](#metrics) for more information on metric measurements and metadata.*
+>This example covers submitting and retrieving measurements from a specific metric. View the [Metrics section](#metrics) for more information on metric measurements and metadata.
 
->Example Request: Submit a measurement for the gauge metric `cpu_temp`:
+>How to submit a measurement for the gauge metric `cpu_temp`:
 
 ```shell
 curl \
@@ -32,7 +32,7 @@ api = librato.connect(<user>, <token>)
 api.submit("cpu_temp", 75, source='us-west')
 ```
 
->Example Request: Retrieve the last 4 measurements from the metric `cpu_temp` at a resolution of 60 seconds. This will return measurement data along with metric's metadata.
+>How to retrieve the last 4 measurements from the metric `cpu_temp` at a resolution of 60 seconds. This will return measurement data along with metric's metadata.
 
 ```shell
 curl \

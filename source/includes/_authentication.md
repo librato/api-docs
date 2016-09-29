@@ -1,7 +1,5 @@
 # Authentication
 
->Example Request
-
 >A user with an email address `example@librato.com` and an API token of `75AFDB82` will use the following command:
 
 ```shell
