@@ -24,7 +24,6 @@ includes:
   - annotations
   - alerts
   - api-tokens
-  - chart-tokens
   - jobs
   - snapshots
   - services

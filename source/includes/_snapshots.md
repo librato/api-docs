@@ -1,10 +1,8 @@
 # Snapshots
 
-## Overview
-
 Snapshots provide the ability to capture a point-in-time image of a given chart as a PNG file to share with collaborators via email and/or chat applications such as Slack, Campfire, HipChat, and Flowdock.
 
-### Snapshot Properties
+#### Snapshot Properties
 
 Property | Definition
 -------- | ----------
@@ -15,72 +13,11 @@ duration | Time interval of the snapshot, in seconds.
 end_time | Time indicating the end of the interval.
 created_at | Time the snapshot was created.
 updated_at | Time the snapshot was updated.
-subject | The subject [chart](#retrieve-chart-by-id) of the snapshot.
-
-## Retrieve Specific Snapshot
-
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/snapshots/:id
-```
-
->Example Request
-
->Return the snapshot `1`.
-
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/snapshots/1'
-```
-
-```ruby
-Not available
-```
-
->Response Code
-
-```
-200 OK
-```
-
->Response Body
-
-```json
-{
-  "href": "https://metrics-api.librato.com/v1/snapshots/1",
-  "job_href": "https://metrics-api.librato.com/v1/jobs/123456",
-  "image_href": "http://snapshots.librato.com/chart/tuqlgn1i-71569.png",
-  "duration": 3600,
-  "end_time": "2016-02-20T01:18:46Z",
-  "created_at": "2016-02-20T01:18:46Z",
-  "updated_at": "2016-02-20T01:18:46Z",
-  "subject": {
-    "chart": {
-      "id": 1,
-      "sources": [
-        "*"
-      ],
-      "type": "stacked"
-    }
-  }
-}
-```
-
-Returns a specific snapshot.
+subject | The subject [chart](#retrieve-a-chart) of the snapshot.
 
 ## Create a Snapshot
 
->Definition
-
-```
-POST https://metrics-api.librato.com/v1/snapshots
-```
-
->Create a snapshot.
+>Create a snapshot of a stacked chart associated with the `id` of 1:
 
 ```shell
 curl \
@@ -129,7 +66,13 @@ Location: /v1/snapshots/:id
 }
 ```
 
-### Headers
+Create a new snapshot by providing the subject parameters (associated with the chart). The parameters of the `chart` array include `id`, `source`, and chart `type`.
+
+#### HTTP Request
+
+`POST https://metrics-api.librato.com/v1/snapshots`
+
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -141,18 +84,69 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------
-subject | The subject [chart](#retrieve-chart-by-id) of the snapshot, e.g., `{"chart":{"id": 1, "source": "*", "type": "stacked"}}`.
+subject | The subject [chart](#retrieve-a-chart) of the snapshot, e.g., `{"chart":{"id": 1, "source": "*", "type": "stacked"}}`.
 duration<br>`optional` | Time interval over which to take the snapshot, in seconds. Defaults to 3600 (1 hour).
 end_time<br>`optional` | Time indicating the end of the interval. Defaults to present.
 
-### Subject Properties
+#### Subject Parameters
 
-Property | Definition
--------- | ----------
+Parameter | Definition
+--------- | ----------
 id | Each chart has a unique numeric ID.
 source | Indicates the [source](#sources) of data for the chart. Wildcard `*` to include all sources.
-type | Indicates the type of chart. One of line, stacked or bignumber.
+type | Indicates the type of chart. One of `line`, `stacked` or `bignumber`.
+
+## Retrieve a Snapshot
+
+>Return the snapshot with the `id` 1.
+
+```shell
+curl \
+  -i \
+  -u <user>:<token> \
+  -X GET \
+  'https://metrics-api.librato.com/v1/snapshots/1'
+```
+
+```ruby
+Not available
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Body
+
+```json
+{
+  "href": "https://metrics-api.librato.com/v1/snapshots/1",
+  "job_href": "https://metrics-api.librato.com/v1/jobs/123456",
+  "image_href": "http://snapshots.librato.com/chart/tuqlgn1i-71569.png",
+  "duration": 3600,
+  "end_time": "2016-02-20T01:18:46Z",
+  "created_at": "2016-02-20T01:18:46Z",
+  "updated_at": "2016-02-20T01:18:46Z",
+  "subject": {
+    "chart": {
+      "id": 1,
+      "sources": [
+        "*"
+      ],
+      "type": "stacked"
+    }
+  }
+}
+```
+
+Returns a specific snapshot associated with an `id`.
+
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/snapshots/:id`
