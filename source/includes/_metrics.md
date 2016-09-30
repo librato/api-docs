@@ -16,7 +16,7 @@ Some common properties are supported across all types of metrics:
 
 Property | Definition
 -------- | ----------
-name | Each metric has a name that is unique to its class of metrics e.g. a gauge name must be unique among gauges. The name identifies a metric in subsequent API calls to store/query individual measurements and can be up to 255 characters in length. Valid characters for metric names are 'A-Za-z0-9.:-_'. The metric namespace is case insensitive.
+name | Each metric has a name that is unique to its class of metrics e.g. a gauge name must be unique among gauges. The name identifies a metric in subsequent API calls to store/query individual measurements and can be up to 255 characters in length. Valid characters for metric names are `A-Za-z0-9.:-_`. The metric namespace is case insensitive.
 period | The `period` of a metric is an integer value that describes (in seconds) the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics.
 description | The description of a metric is a string and may contain spaces. The description can be used to explain precisely what a metric is measuring, but is not required. This attribute is not currently exposed in the Librato UI.
 display_name | More descriptive name of the metric which will be used in views on the Metrics website. Allows more characters than the metric `name`, including spaces, parentheses, colons and more.
