@@ -74,7 +74,7 @@ The only permissible content type is JSON at the moment. All requests must inclu
 
 `Content-Type: application/json`
 
-### Measurement Parameters
+#### Measurement Parameters
 
 >**Top-Level Tags**
 
@@ -247,7 +247,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 GET /v1/measurements/foo?tags[region]=us-*&tags[hostname]=*prod&group_by=region&group_by_function=sum
 ```
 
-```
+```json
 {
   "series": [
     {
@@ -284,9 +284,9 @@ GET /v1/measurements/foo?tags[region]=us-*&tags[hostname]=*prod&group_by=region&
 }
 ```
 
->Lookup by tags matching region=us* and hostname=*prod, no grouping.
+>Lookup by tags matching `region=us*` and `hostname=*prod`, no grouping.
 
-```
+```json
 {
   "series": [
     {
@@ -344,23 +344,21 @@ end_time | Unix Time of where to end the search. This parameter is optional and 
 duration | How far back to look in time, measured in seconds. This parameter can be used in combination with endtime to set a starttime N seconds back in time. It is an error to set starttime, endtime and duration.
 resolution<br>`required` | Defines the resolution to return the data to in seconds. The returned data will be downsampled to this resolution and loaded from the appropriate underlying rollup resolution. An error will be returned if the requested resolution is not available during the requested time interval. The max value will be one week (604800 seconds).
 
-### Tag search parameters
+### Tag Search Parameters
 
->Example Using the *tags* Parameter
-
->All `prod*` hosts in US regions:
+>Using the `tags` parameter to retrieve all `prod*` hosts in US regions:
 
 ```
 tags[region]=us-*&tags[hostname]=prod
 ```
 
->All `prod*` hosts in either `us-east-1` OR `eu-west-1`:
+>How to retrieve all `prod*` hosts in either `us-east-1` OR `eu-west-1`:
 
 ```
 tags[region]=us-east-1&tags[region]=eu-west-1&tags[hostname]=prod*
 ```
 
->Example Using the *tag_search* Parameter
+>How to use the `tag_search` parameter:
 
 ```
 * region=us-east-1
@@ -377,7 +375,7 @@ tag_search | The `tag_search` parameter, which may NOT be specified with the tag
 
 ### Aggregation parameters
 
->Examples Using the *summary* Parameter
+>Here are some example on how to utilize the `summary` parameter:
 
 ```
 * SF:min => min
@@ -386,7 +384,7 @@ tag_search | The `tag_search` parameter, which may NOT be specified with the tag
 * SF:all others => sum
 ```
 
->If summary_function = all, the api will, instead of returning just one summarization, return multiple summarizations for each returned measure. The summaries returned are:
+>If `summary_function` = `all`, the api will, instead of returning just one summarization, return multiple summarizations for each returned measure. The summaries returned are:
 
 ```
 * value (mean)
@@ -437,19 +435,16 @@ Match all data streams that do not contain the particular tag name.
 You can combine the previous two approaches to return streams that just don’t have particular name/value pair.
 
 * `!host OR host=!db*prod`: Matches streams #4 and #5
-Form encoding
 
-To form encode the negation `!host` (streams that contain the `host` tag), we’ll use a format like:
+#### Form Encoding
 
-`tags[!host]=1`
-
-It is not possible to have `!host=<value>` in any more, so there shouldn’t be a concern that the 1 would be matched against a string.
+To form encode the negation `!host` (streams that contain the `host` tag), we’ll use a format `tags[!host]=1`. It is not possible to have `!host=<value>` in with this, so there shouldn’t be a concern that the 1 would be matched against a string.
 
 ### Measurement Pagination
 
->Pagination Example
+>Pagination Example:
 
-```
+```json
 {
   "series": [
 
@@ -463,9 +458,9 @@ It is not possible to have `!host=<value>` in any more, so there shouldn’t be 
 }
 ```
 
->If there are no more results.
+>If there are no more results:
 
-```
+```json
 {
   "series": [
 
