@@ -203,7 +203,7 @@ stddev_m2 | Represents the current mean value when aggregating samples using the
 
 #### Optional Parameters
 
-**NOTE**: The [optional parameters](#update-metric) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
+**NOTE**: The [optional parameters](#update-a-metric) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
 
 ### Tag Merging
 

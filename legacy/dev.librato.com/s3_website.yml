@@ -70,11 +70,11 @@ redirects:
   v1/sources: https://www.librato.com/docs/api/#sources
   v1/spaces: https://www.librato.com/docs/api/#spaces
   v1/users: https://www.librato.com/docs/api/#users
-  v1/get/metrics: https://www.librato.com/docs/api/#retrieve-metrics
-  v1/post/metrics: https://www.librato.com/docs/api/#submit-metrics
-  v1/put/metrics: https://www.librato.com/docs/api/#update-metric
-  v1/delete/metrics: https://www.librato.com/docs/api/#delete-metric
-  v1/put/metrics/:name: https://www.librato.com/docs/api/#update-metric-by-name
+  v1/get/metrics: https://www.librato.com/docs/api/#retrieve-a-metric
+  v1/post/metrics: https://www.librato.com/docs/api/#create-a-metric
+  v1/put/metrics: https://www.librato.com/docs/api/#update-a-metric
+  v1/delete/metrics: https://www.librato.com/docs/api/#delete-a-metric
+  v1/put/metrics/:name: https://www.librato.com/docs/api/#update-a-metric-by-name
   v1/get/annotations: https://www.librato.com/docs/api/#annotations
   v1/post/annotations/:name: https://www.librato.com/docs/api/#retrieve-annotations
   v1/put/annotations/:name: https://www.librato.com/docs/api/#update-attributes
@@ -115,7 +115,7 @@ redirects:
   v1/put/users/:id: https://www.librato.com/docs/api/#update-a-user
   v1/delete/users/:id: https://www.librato.com/docs/api/#delete-user
   v1/get/metrics/:name: https://www.librato.com/docs/api/#retrieve-metric-by-name
-  v1/delete/metrics/:name: https://www.librato.com/docs/api/#delete-metric-by-name
+  v1/delete/metrics/:name: https://www.librato.com/docs/api/#delete-a-metric-by-name
   v1/get/annotations/:name: https://www.librato.com/docs/api/#retrieve-annotations-by-name
   v1/get/annotations/:name/:id: https://www.librato.com/docs/api/#retrieve-annotation-event
   v1/put/annotations/:name/:id: https://www.librato.com/docs/api/#update-meta-data
