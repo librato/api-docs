@@ -57,7 +57,7 @@ GET https://metrics-api.librato.com/v1/instruments
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/instruments'
 ```
@@ -113,7 +113,7 @@ GET https://metrics-api.librato.com/v1/instruments/:id
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/instruments/123'
 ```
@@ -180,7 +180,7 @@ POST https://metrics-api.librato.com/v1/instruments
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=Server Temperature' \
   -d 'streams[0][metric]=server_temp' \
   -d 'streams[0][source]=app1' \
@@ -344,7 +344,7 @@ PUT https://metrics-api.librato.com/v1/instruments/:id
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'streams[0][metric]=server_temp' \
   -d 'streams[0][source]=app1' \
   -d 'streams[1][metric]=server_temp' \
@@ -475,7 +475,7 @@ DELETE https://metrics-api.librato.com/v1/instruments/:id
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/instruments/123'
 ```

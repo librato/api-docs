@@ -1,12 +1,10 @@
 # Jobs
 
-## Overview
-
 Some resources in the Librato API allow you to make requests which will take longer to complete than is reasonable for a single request-response cycle. These resources will respond with a job which you can use to follow progress and final state of the request.
 
 Requests which start jobs will respond with an HTTP status code of `202 Accepted`. They will also include the URI to query for job status as a `Location:` response header.
 
-### Job Properties
+#### Job Properties
 
 Jobs can be queried for their current state and other status information. They have the following properties:
 
@@ -18,22 +16,14 @@ progress<br>`optional` | a floating point number from `0.0-100.0` reflecting how
 output<br>`optional` | if the job results in output it will be available in this field.
 errors<br>`optional` | if the job results in any errors they will be available in this field.
 
-## Retrieve Job Information
+## Retrieve a Job
 
->Definition
-
-```
-GET https://metrics-api.librato.com/v1/jobs/:id
-```
-
->Example Request
-
->Check status for job `123456`:
+>Check status for job qith the `id` 123456:
 
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/jobs/123456'
 ```
@@ -42,11 +32,11 @@ curl \
 Not available
 ```
 
->Response Body Response Examples Response properties may vary depending on the state of the job. Some jobs may only report `id` and `state`, so you are encouraged to consider `state` authoritative rather than relying on the presence of other properties (`errors` or `progress` for example).
+>Response properties may vary depending on the state of the job. Some jobs may only report `id` and `state`, so you are encouraged to consider `state` authoritative rather than relying on the presence of other properties (`errors` or `progress` for example).
 
 >Job in progress:
 
-```
+```json
 {
   "id": 123456,
   "state": "working",
@@ -64,7 +54,7 @@ Not available
 }
 ```
 
->Queued job which has not started yet:
+>A queued job which has not started yet:
 
 ```json
 {
@@ -73,7 +63,7 @@ Not available
 }
 ```
 
->Job that has failed:
+>A job that has failed:
 
 ```json
 {
@@ -89,6 +79,10 @@ Not available
 
 Returns information for a specific job. All jobs will return their `id` and `state`. Some jobs may also return one or more [optional properties](#jobs).
 
-### About Jobs
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/jobs/:id`
+
+#### About Jobs
 
 Jobs are spawned by other resources in the Librato API when an operation will take longer to complete than is allowed by a single request-response cycle.

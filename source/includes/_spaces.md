@@ -1,31 +1,34 @@
 # Spaces
 
-## Overview
+Spaces contain a collection of charts that graph one or more metrics in real time. The API allows you to view
+details on Spaces associated with an account. The API allows you to create, modify, and delete Spaces by
+referencing the `name` or `id` of the Space.
 
-Spaces contain a collection of charts that graph one or more metrics in real time.
-
-### Space Properties
+#### Space Properties
 
 Property | Definition
 -------- | ----------
 id | Each space has a unique numeric ID
 name | Unique name for space
 
-## Retrieve All Spaces
+#### Pagination Parameters
 
->Definition
+The response is paginated, so the request supports our generic [Pagination Parameters](#pagination5). Specific to spaces, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter are: `name`.
 
-```
-GET https://metrics-api.librato.com/v1/spaces
-```
+Parameter | Definition
+--------- | ----------
+name | Search by name of the space.
 
->Retrieve all spaces.
+
+## Create a Space
+
+>Create a space with name CPUs:
 
 ```shell
 curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -d 'name=CPUs' \
+  -X POST \
   'https://metrics-api.librato.com/v1/spaces'
 ```
 
@@ -36,82 +39,63 @@ Not available
 ```python
 import librato
 api = librato.connect(<user>, <token>)
-spaces = api.list_spaces()
-for s in spaces:
-  print s.name
+space = api.create_space("CPUs")
+print("Created '%s'" % space.name)
 ```
 
->Return all spaces owned by the user, with name matching ops.
+>Using JSON
 
-```shell
-curl \
-  -i \
-  -u <user>:<token> \
-  -X GET \
-  'https://metrics-api.librato.com/v1/spaces?name=ops'
-```
-
-```ruby
-Not available
-```
-
-```python
-import librato
-api = librato.connect(<user>, <token>)
-spaces = api.list_spaces(name="ops")
-for s in spaces:
-  print(s.name)
+```json
+{
+  "name": "CPUs"
+}
 ```
 
 >Response Code
 
 ```
-200 OK
+201 Created
+```
+
+>Response Headers
+
+```
+Location: /v1/spaces/129
 ```
 
 >Response Body
 
 ```json
 {
-  "query": {
-    "found": 1,
-    "length": 1,
-    "offset": 0,
-    "total": 15
-  },
-  "spaces": [
-    {
-      "id": 4,
-      "name": "staging_ops"
-    }
-  ]
+  "id": 129,
+  "name": "CPUs"
 }
 ```
 
-Returns all spaces created by the user.
+#### HTTP Request
 
-### Pagination Parameters
+`POST https://metrics-api.librato.com/v1/spaces`
 
-The response is paginated, so the request supports our generic [Pagination Parameters](#pagination). Specific to spaces, the default value of the `orderby` pagination parameter is `name`, and the permissible values of the `orderby` pagination parameter are: `name`.
+#### Headers
 
-Parameter | Definition
---------- | ----------
-name | Search by name of the space.
+This specifies the format of the data sent to the API.
 
-## Retrieve Details of Space
+For HTML (default):
 
->Definition
+`Content-Type: application/x-www-form-urlencoded`
 
-```
-GET https://metrics-api.librato.com/v1/spaces/:id
-```
+For JSON:
+
+`Content-Type: application/json`
+
+## Retrieve a Space
 
 >Return the details of a Space with ID `129`:
 
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces/129'
 ```
@@ -158,95 +142,18 @@ print space_info.chart_ids
 
 Returns the details of a specific space.
 
-## Create a Space
+#### HTTP Request
 
->Definition
-
-```
-POST https://metrics-api.librato.com/v1/spaces
-```
-
->Example Request
-
->Create a space with name CPUs:
-
-```shell
-curl \
-  -u <user>:<token> \
-  -d 'name=CPUs' \
-  -X POST \
-  'https://metrics-api.librato.com/v1/spaces'
-```
-
-```ruby
-Not available
-```
-
-```python
-import librato
-api = librato.connect(<user>, <token>)
-space = api.create_space("CPUs")
-print("Created '%s'" % space.name)
-```
-
->Using JSON
-
-```json
-{
-  "name": "CPUs"
-}
-```
-
->Response Code
-
-```
-201 Created
-```
-
->Response Headers
-
-```
-Location: /v1/spaces/129
-```
-
->Response Body
-
-```json
-{
-  "id": 129,
-  "name": "CPUs"
-}
-```
-
-### Headers
-
-This specifies the format of the data sent to the API.
-
-For HTML (default):
-
-`Content-Type: application/x-www-form-urlencoded`
-
-For JSON:
-
-`Content-Type: application/json`
+`GET https://metrics-api.librato.com/v1/spaces/:id`
 
 
-
-## Modify a Space
-
->Definition
-
-```
-PUT https://metrics-api.librato.com/v1/spaces/:id
-```
-
->Example Request
+## Update a Space
 
 >Change the name of the space to MEMORY:
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=MEMORY' \
   -X PUT \
   'https://metrics-api.librato.com/v1/spaces/:id'
@@ -280,7 +187,11 @@ space.save()
 
 Modifies a space by changing its name.
 
-### Headers
+#### HTTP Request
+
+`PUT https://metrics-api.librato.com/v1/spaces/:id`
+
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -294,20 +205,12 @@ For JSON:
 
 ## Delete Space
 
->Definition
-
-```
-DELETE https://metrics-api.librato.com/v1/spaces/:id
-```
-
->Example Request
-
 >Delete the space with ID `129`:
 
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/spaces/129'
 ```
@@ -328,3 +231,84 @@ api.delete_space(129)
 ```
 
 Delete the space identified by :id.
+
+#### HTTP Request
+
+`DELETE https://metrics-api.librato.com/v1/spaces/:id`
+
+## List all Spaces
+
+#### HTTP Request
+
+`GET https://metrics-api.librato.com/v1/spaces`
+
+>Retrieve all spaces:
+
+```shell
+curl \
+  -i \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X GET \
+  'https://metrics-api.librato.com/v1/spaces'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+spaces = api.list_spaces()
+for s in spaces:
+  print s.name
+```
+
+>Return all spaces owned by the user, with name matching ops:
+
+```shell
+curl \
+  -i \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X GET \
+  'https://metrics-api.librato.com/v1/spaces?name=ops'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+spaces = api.list_spaces(name="ops")
+for s in spaces:
+  print(s.name)
+```
+
+>Response Code
+
+```
+200 OK
+```
+
+>Response Body
+
+```json
+{
+  "query": {
+    "found": 1,
+    "length": 1,
+    "offset": 0,
+    "total": 15
+  },
+  "spaces": [
+    {
+      "id": 4,
+      "name": "staging_ops"
+    }
+  ]
+}
+```
+
+Returns all spaces created by the user.

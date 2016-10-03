@@ -18,17 +18,16 @@ includes:
   - metrics
   - metric-attributes
   - pagination
+  - measurements
   - spaces
   - charts
   - annotations
   - alerts
   - api-tokens
-  - chart-tokens
   - jobs
   - snapshots
   - services
   - sources
-  - users
 
 search: true
 ---

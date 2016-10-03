@@ -395,7 +395,7 @@ html, body {
     @extend %header-font;
     -webkit-font-smoothing: antialiased;
     font-size: 20px;
-    margin-top: 4em;
+    margin-top: 20px;
     margin-bottom: 0;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
@@ -450,7 +450,7 @@ html, body {
       .prettyprint {
         display: block;
         float: right;
-        color: #939da3;
+        color: #5c6063;
         background: transparent;
         font-size: 12px;
         word-break: normal;
@@ -513,7 +513,6 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    @include text-shadow(0 1px 0 lighten($aside-notice-bg, 15%));
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
@@ -576,8 +575,14 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #a7c5d0;
-      text-decoration: underline;
+      color: #fff;
+      border-bottom: dashed 1px #ccc;
+      font-weight: 600;
+
+      &:hover{
+        color: #fff;
+        text-decoration: none;
+      }
     }
   }
 
@@ -588,7 +593,7 @@ html, body {
     border-radius: 3px;
     background-color: $code-bg;
     overflow: hidden;
-    padding: 10px;
+    padding: 20px;
   }
 
   blockquote {

@@ -42,7 +42,7 @@ GET https://metrics-api.librato.com/v1/users
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/users'
 ```
@@ -56,7 +56,7 @@ Not available
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/users?reference=67523'
 ```
@@ -124,7 +124,7 @@ GET https://metrics-api.librato.com/v1/users/:id
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/users/123'
 ```
@@ -172,7 +172,7 @@ POST https://metrics-api.librato.com/v1/users
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'email=foobar@baz.com&reference=5267&country=US' \
   -X POST \
   'https://metrics-api.librato.com/v1/users'
@@ -251,7 +251,7 @@ PUT https://metrics-api.librato.com/v1/users/:id
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'company=NewCompany' \
   -X PUT \
   'https://metrics-api.librato.com/v1/users/123'
@@ -265,7 +265,7 @@ Not available
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'password_reset=1' \
   -X PUT \
   'https://metrics-api.librato.com/v1/users/156'
@@ -343,7 +343,7 @@ DELETE https://metrics-api.librato.com/v1/users/:id
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/users/672'
 ```

@@ -26,7 +26,7 @@ $main-text: #333; // main content text color
 $nav-text: #444A4E;
 $nav-active-text: #0F8ECE;
 $nav-link: #0d81ab;
-$nav-link-hover: #e6b71c;
+$nav-link-hover: #3091d1;
 $lang-select-text: #F2F2F2; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
 $lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
@@ -70,7 +70,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 ////////////////////
 %default-font {
   font-family: "Proxima Nova", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 %header-font {

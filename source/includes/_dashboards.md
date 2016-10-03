@@ -29,7 +29,7 @@ GET https://metrics-api.librato.com/v1/dashboards
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/dashboards?name=ops'
 ```
@@ -88,7 +88,7 @@ GET https://metrics-api.librato.com/v1/dashboards/:id
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/dashboards/129'
 ```
@@ -138,7 +138,7 @@ POST https://metrics-api.librato.com/v1/dashboards
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=CPUs&instruments%5B%5D=4&instruments%5B%5D=87&instruments%5B%5D=9' \
   -X POST \
   'https://metrics-api.librato.com/v1/dashboards'
@@ -228,7 +228,7 @@ PUT https://metrics-api.librato.com/v1/dashboards/:id
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=CPUs&instruments%5B%5D=7&instruments%5B%5D=42&instruments%5B%5D=99' \
   -X PUT \
   'https://metrics-api.librato.com/v1/dashboards/:id'
@@ -292,7 +292,7 @@ DELETE https://metrics-api.librato.com/v1/dashboards/:id
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/dashboards/145'
 ```
