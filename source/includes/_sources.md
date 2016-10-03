@@ -75,7 +75,7 @@ Location: /v1/sources/foo.bar.com
 
 Creates or updates the source identified by `:name`. If the source name does not exist, the source will be created with the associated properties. If the source already exists, properties will be updated.
 
-Typically sources are created the first time a measurement for a given source is sent to the [collated POST route](#submit-metrics).
+Typically sources are created the first time a measurement for a given source is sent to the [collated POST route](#create-a-metric).
 
 #### HTTP Request
 
