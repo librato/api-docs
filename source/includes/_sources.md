@@ -20,7 +20,7 @@ display_name | Human readable name to use in place of the actual source name. Ma
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'display_name=web-frontend-0' \
   -X PUT \
   'https://metrics-api.librato.com/v1/sources/i-d32d61af'
@@ -42,7 +42,7 @@ Librato::Metrics.update_source "i-d32d61af", display_name: "web-frontend-0"
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'display_name=FooBar' \
   -X PUT \
   'https://metrics-api.librato.com/v1/sources/foo.bar.com'
@@ -108,7 +108,7 @@ display_name<br>`optional` | Human readable name to use in place of the actual s
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/sources/foo.bar.com'
 ```
@@ -147,7 +147,7 @@ Returns the current representation of the source identifed by name.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/sources'
 ```
@@ -163,7 +163,7 @@ Librato::Metrics.sources
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/sources?name=example'
 ```
