@@ -9,7 +9,7 @@ group/summary functions:
 
 ```shell
 curl \
--u <user>:<token> \
+-u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
 -d 'type=line' \
 -d 'name=Server Temperature' \
 -d 'streams[0][metric]=server_temp' \
@@ -175,7 +175,7 @@ period | An integer value of seconds that defines the period this stream reports
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
 ```
@@ -231,7 +231,7 @@ Returns a specific chart by its id and space id.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=Temperature' \
   -X PUT \
   'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
@@ -313,7 +313,7 @@ period | An integer value of seconds that defines the period this stream reports
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
 ```
@@ -349,7 +349,7 @@ Delete the specified chart.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces/129/charts'
 ```

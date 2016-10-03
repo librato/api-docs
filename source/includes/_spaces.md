@@ -26,7 +26,7 @@ name | Search by name of the space.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=CPUs' \
   -X POST \
   'https://metrics-api.librato.com/v1/spaces'
@@ -95,7 +95,7 @@ For JSON:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces/129'
 ```
@@ -153,7 +153,7 @@ Returns the details of a specific space.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=MEMORY' \
   -X PUT \
   'https://metrics-api.librato.com/v1/spaces/:id'
@@ -210,7 +210,7 @@ For JSON:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/spaces/129'
 ```
@@ -247,7 +247,7 @@ Delete the space identified by :id.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces'
 ```
@@ -269,7 +269,7 @@ for s in spaces:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/spaces?name=ops'
 ```

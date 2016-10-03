@@ -39,7 +39,7 @@ end_time | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_time) indicati
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'title=Deployed v56&source=foo3.bar.com&description=v56 - Fixed typo in page titles' \
   -X POST \
   'https://metrics-api.librato.com/v1/annotations/app-deploys'
@@ -65,7 +65,7 @@ api.post_annotation("app-deploys",
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'title=My Annotation&description=Joe deployed v29 to metrics&start_time=1234567890' \
   -X POST \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
@@ -92,7 +92,7 @@ api.post_annotation("app-deploys",
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'title=My Annotation&description=Joe deployed v29 to metrics&start_time=1234567890' \
   -d 'links[0][label]=Metrics Gem' \
   -d 'links[0][href]=https://github.com/librato/librato-metrics' \
@@ -183,7 +183,7 @@ end_time<br>`optional` | The [unix timestamp](http://en.wikipedia.org/wiki/Unix_
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
 ```
@@ -212,7 +212,7 @@ for source in stream.events:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/annotations/blog-posts?start_time=1234500000&end_time=1234600000&sources%5B%5D=db1.acme&sources%5B%5D=db2.acme'
 ```
@@ -325,7 +325,7 @@ sources | An array of source names to limit the search to. Can include source na
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/annotations/api-deploys/189'
 ```
@@ -384,7 +384,7 @@ Return annotation event details associated with given stream name.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'rel=github&label=Github Commit&href=https://github.com/acme/app/commits/01beaf' \
   -X POST \
   'https://metrics-api.librato.com/v1/annotations/app-deploys/198/links'
@@ -454,7 +454,7 @@ label<br>`optional` | A display label for the link.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'display_name=Deploys to API' \
   -X PUT \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
@@ -504,7 +504,7 @@ display_name | Name used to display the annotation stream.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'description=Deployed git SHA 601060a68ff2e' \
   -X PUT \
   'https://metrics-api.librato.com/v1/annotations/app-deploys/143'
@@ -562,7 +562,7 @@ links | An optional list of references to resources associated with the particul
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/annotations/api-deploys'
 ```
@@ -598,7 +598,7 @@ Delete an annotation stream. This will delete all annotation events associated w
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/annotations/app-deploys/123'
 ```
@@ -632,7 +632,7 @@ Delete an annotation event.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/annotations/app-deploys/189/links/github'
 ```
@@ -664,7 +664,7 @@ Delete a link from an annotation event.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/annotations'
 ```
@@ -687,7 +687,7 @@ for stream in api.list_annotation_streams():
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/annotations?name=api'
 ```

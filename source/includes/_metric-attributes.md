@@ -25,7 +25,7 @@ display_transform | A linear formula that is run on each measurement prior to vi
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'attributes[display_max]=150' \
   -X PUT \
   https://metrics-api.librato.com/v1/metrics/temperature
@@ -41,7 +41,7 @@ Librato::Metrics.update_metric :temperature, attributes: { display_max: '150' }
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'attributes[aggregate]=true' \
   -X PUT \
   https://metrics-api.librato.com/v1/metrics/speed

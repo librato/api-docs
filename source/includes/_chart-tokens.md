@@ -21,7 +21,7 @@ entity_id | The ID of the entity that the chart token refers to. This would eith
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/charts/irhjoz9f'
 ```
@@ -58,7 +58,7 @@ Returns a specific chart token.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'entity_type=instrument&entity_id=1848' \
   -X POST \
   'https://metrics-api.librato.com/v1/charts'
@@ -128,7 +128,7 @@ DELETE https://metrics-api.librato.com/v1/charts/:token
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/charts/conrhpsk'
 ```
@@ -152,7 +152,7 @@ Delete the specified chart token, revoking public access to the referenced entit
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/charts'
 ```

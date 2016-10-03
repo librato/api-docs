@@ -45,13 +45,13 @@ Internally all floating point values are stored in double-precision format. Howe
 
 ## Create a Metric
 
->Example of creating 3 new measurements: Two counter measurements (`conn_servers` and `write_fails`) and one gauge measurement (`cpu_temp`).
+>How to create 3 new measurements: Two counter measurements (`conn_servers` and `write_fails`) and one gauge measurement (`cpu_temp`).
 
 >The gauge measurement specifies an explicit `measure_time` and `source` that overrides the global ones while the counter measurements default to the global `measure_time` and `source`.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'measure_time=1234567950' \
   -d 'source=prod-us-west' \
   -d 'counters[0][name]=conn_servers' \
@@ -163,7 +163,7 @@ Each metric name is a hash to the measurement values.
 
 ### Multiple measurements with the same name
 
->This example will create two measurements for the gauge `login-delay`: one with the source `foo1.bar.com` and a second with `foo2.bar.com`:
+>How to create two measurements for the gauge `login-delay`: one with the source `foo1.bar.com` and a second with `foo2.bar.com`:
 
 ```json
 {
@@ -221,7 +221,7 @@ measurements of a specific metric you can specify a specific time range or limit
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics?name=request'
 ```
@@ -280,7 +280,7 @@ In order to retrieve **measurements** from a specific metric, include the `name`
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp'
 ```
@@ -324,7 +324,7 @@ print(metric.attributes)
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?count=4&resolution=60'
 ```
@@ -401,7 +401,7 @@ Returns information for a specific metric. If time interval search parameters ar
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?source=server*&count=4&resolution=60'
 ```
@@ -492,7 +492,7 @@ print(metric.measurements)
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?sources%5B%5D=server1.acme.com&sources%5B%5D=server2.acme.com&count=4&resolution=60'
 ```
@@ -596,7 +596,7 @@ group_by | When querying a gauge and specifying multiple sources with the `sourc
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics?compose=derive(s("collectd.cpu.*.idle","boatman*45"))&start_time=1432931007&resolution=60'
 ```
@@ -698,7 +698,7 @@ resolution | A resolution for the response as measured in seconds. If the origin
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.idle?resolution=60&start_time=1303252025'
 ```
@@ -750,7 +750,7 @@ name | A search parameter that limits the results to metrics whose names contain
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'names=cpu&names=servers&names=reqs&period=60&display_min=0' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics'
@@ -776,7 +776,7 @@ for name in ['cpu', 'servers', 'reqs']:
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'names=*.time&display_units_short=ms' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics'
@@ -832,7 +832,7 @@ For JSON:
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'display_name=Temperature in Celsius&attributes[display_min]=0' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics/temp'
@@ -866,7 +866,7 @@ for metric in api.list_metrics(name="temp"):
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'type=gauge&description=Length of app queue&display_name=num. elements' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics/queue_len'
@@ -956,7 +956,7 @@ composite<br>`optional` | The composite definition. Only used when type is compo
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'names%5B%5D=cpu&names%5B%5D=servers&names%5B%5D=reqs' \
   -X DELETE \
   'https://metrics-api.librato.com/v1/metrics'
@@ -978,7 +978,7 @@ api.delete(names=['cpu', 'servers', 'reqs'])
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'names=cpu*.90' \
   -X DELETE \
   'https://metrics-api.librato.com/v1/metrics'
@@ -1030,7 +1030,7 @@ A `202` will be issued when the metric set is large enough that it cannot be ope
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/metrics/app_requests'
 ```
@@ -1072,7 +1072,7 @@ If you have attempted to DELETE a metric but it is still in your metric list, en
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics'
 ```

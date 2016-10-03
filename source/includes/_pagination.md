@@ -8,7 +8,7 @@ Many of the resources accessible through the Metrics REST APIs can contain large
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   'https://metrics-api.librato.com/v1/metrics?offset=10&length=10'
 ```
 
@@ -77,7 +77,7 @@ sort<br>`optional` | The sort order in which the results should be ordered. Perm
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   https://metrics-api.librato.com/v1/metrics?name=api&offset=20&limit=10
 ```
 

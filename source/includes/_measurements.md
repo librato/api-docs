@@ -58,6 +58,34 @@ This method is preferred over sending precomputed standard deviation values beca
 
 ## Create a Measurement
 
+>How to create a new measurement `conn_servers` with the tag `region : "us-east-1"`:
+
+```shell
+curl \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -d '{
+    "tags": {
+      "region": "us-east-1"
+    },
+    "measurements": [
+      {
+        "name": "conn_servers",
+        "value": 65
+      }
+    ]
+  }' \
+  -X POST \
+  https://metrics-api.librato.com/v1/measurements
+```
+
+```ruby
+Not yet available
+```
+
+```python
+Not yet available
+```
+
 #### HTTP Request
 
 `POST https://metrics-api.librato.com/v1/measurements`

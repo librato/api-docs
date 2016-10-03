@@ -12,7 +12,7 @@
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'gauges[0][name]=cpu_temp' \
   -d 'gauges[0][value]=75' \
   -d 'gauges[0][source]=us-west' \
@@ -37,7 +37,7 @@ api.submit("cpu_temp", 75, source='us-west')
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/metrics/cpu_temp?count=4&resolution=60'
 ```

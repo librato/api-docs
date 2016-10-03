@@ -23,7 +23,7 @@ errors<br>`optional` | if the job results in any errors they will be available i
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/jobs/123456'
 ```

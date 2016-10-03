@@ -207,7 +207,7 @@ rearm_seconds<br>`optional` | Specifies the minimum amount of time between sendi
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/123'
 ```
@@ -263,7 +263,7 @@ for a in alerts:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts?name=production'
 ```
@@ -333,7 +333,7 @@ Return the details of an alert (or group of alerts) by providing the `id` or `na
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/120/status'
 ```
@@ -382,7 +382,7 @@ Returns the status for a particular alert, specified by ID.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"active": false, "name": "my.alert.name", "description": "Process went down", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}]}' \
@@ -405,7 +405,7 @@ alert.save()
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"active": true, "name": "my.alert.name", "description": "Process went down", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}]}' \
@@ -428,7 +428,7 @@ alert.save()
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"description": "A new description", "name": "my.alert.name", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}], "active": true}' \
@@ -451,7 +451,7 @@ alert.save()
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"attributes": {"runbook_url": "http://google.com"}, "name": "my.alert.name", "description": "A process went down.", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}], "active": true}' \
@@ -515,7 +515,7 @@ Librato provides many [notification services](https://www.librato.com/docs/kb/al
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'service=290' \
   -X POST \
   'https://metrics-api.librato.com/v1/alerts/45/services'
@@ -577,7 +577,7 @@ This route accepts a single parameter `service` that should be set to the ID of 
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/alerts/123/services/209'
 ```
@@ -606,7 +606,7 @@ Remove the service identified by `:id` from the alert identified by `:alert_id`.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X POST \
   'https://metrics-api.librato.com/v1/alerts/120/clear'
 ```
@@ -638,7 +638,7 @@ Clears the alert specified using the alert `id`.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/alerts/123'
 ```
@@ -671,7 +671,7 @@ Delete an alert by specifying a unique `id` or `name`.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/alerts/status'
 ```

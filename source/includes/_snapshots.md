@@ -21,7 +21,7 @@ subject | The subject [chart](#retrieve-a-chart) of the snapshot.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'subject[chart][id]=1&subject[chart][source]=*&subject[chart][type]=stacked' \
   -X POST \
   'https://metrics-api.librato.com/v1/snapshots'
@@ -107,7 +107,7 @@ type | Indicates the type of chart. One of `line`, `stacked` or `bignumber`.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/snapshots/1'
 ```

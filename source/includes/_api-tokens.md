@@ -24,7 +24,7 @@ role | The name of the role that encapsulates the permissions this token has. Mu
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=My New Token&role=admin' \
   -X POST \
   'https://metrics-api.librato.com/v1/api_tokens'
@@ -91,7 +91,7 @@ For JSON:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/api_tokens?name=*token*'
 ```
@@ -150,7 +150,7 @@ querying `?name=foo.bar` will return `foo.bar` and `foo.bar.bazzle`.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/api_tokens/28'
 ```
@@ -187,7 +187,7 @@ Returns the details for a specific API Token by providing the `id` of the token.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=New Token Name&active=false&role=admin' \
   -X PUT \
   'https://metrics-api.librato.com/v1/api_tokens/28'
@@ -246,7 +246,7 @@ For JSON:
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/api_tokens/28'
 ```
@@ -272,7 +272,7 @@ Delete the API Token identified by `:id`.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/api_tokens'
 ```

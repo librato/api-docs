@@ -26,7 +26,7 @@ The response is paginated, so the request supports our generic [Pagination Param
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'title=Notify Ops Room&type=campfire&settings%5Btoken%5D=1234567890ABCDEF&settings%5Broom%5D=Ops&settings%5Bsubdomain%5D=acme' \
   -X POST \
   'https://metrics-api.librato.com/v1/services'
@@ -100,7 +100,7 @@ settings | Hash of settings specific to the service type.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/services/156'
 ```
@@ -145,7 +145,7 @@ Returns the specific service associated to the provided service `id`.
 
 ```shell
 curl \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'title=Notify Ops Chatroom' \
   -X PUT \
   'https://metrics-api.librato.com/v1/services/145'
@@ -196,7 +196,7 @@ settings | Hash of settings specific to the service type.
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X DELETE \
   'https://metrics-api.librato.com/v1/services/145'
 ```
@@ -228,7 +228,7 @@ Delete the service referenced by `:id`. It will automatically be removed from an
 ```shell
 curl \
   -i \
-  -u <user>:<token> \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
   'https://metrics-api.librato.com/v1/services'
 ```
