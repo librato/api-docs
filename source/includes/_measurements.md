@@ -8,34 +8,6 @@ Measurements are associated with: a metric, one or more tag pairs, and a point i
 
 ### Measurement Properties
 
->The following psuedo code demonstrates how to compute the current mean (`stddev_m2`) over a set of samples:
-
-```
-class StandardDeviation {
-  long count = 0
-  double sum = 0.0
-  double stddev_m2 = 0.0
-
-  void add_sample(double x) {
-    double delta = x - mean()
-
-    count++
-    sum += x
-    stddev_m2 += delta (x - mean())
-  }
-
-  double mean() {
-    return count < 1 ? 0.0 : sum / count
-  }
-
-  void submit(client) {
-    client.send({"count": count,
-                 "sum": sum,
-                 "stddev_m2": sttdev_m2})
-  }
-}
-```
-
 The general properties of a measurement are described below. The [documentation on submitting measurements](#create-a-measurement) includes a full overview of all acceptable parameters.
 
 Property | Definition
