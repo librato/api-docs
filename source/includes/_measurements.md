@@ -18,15 +18,6 @@ value | The numeric value of a single measured sample.
 time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
 
-### Standard deviation
-
-There are two approaches to providing a standard deviation for sample sets:
-
-Use a custom standard deviation algorithm and submit the resulting standard deviation calculation with your sample set.
-
-Use the online algorithm to compute a running standard deviation and submit the current mean to Librato. When a request for the standard deviation of a metric series is requested (summary_function set to stddev) the API will calculate the resulting standard deviation. This algorithm is preferred over the sum of squares approach, the default in the legacy Librato metrics API, since it doesn't suffer from the cancellation problems that sum of squares does.
-
-This method is preferred over sending precomputed standard deviation values because samples that are downsampled or rolled up for historical retention can be aggregated to maintain an accurate standard deviation calculation over the period of the samples.
 
 ## Create a Measurement
 
