@@ -304,20 +304,19 @@ ul {
 
 .header {
   transition:height 2s;
-  padding-top:15px;
+  padding-top:10px;
   position:fixed;
   z-index:1200;
   width:100%;
   background:#262626;
   min-width:980px;
   top:0;
-  height: 100px;
+  height: 85px;
 }
 
 .header .logo {
-  width:190px;
-  height:59px;
-  margin-top:6px;
+  width:166px;
+  padding-top: 8px;
 }
 
 .header .navbar {
@@ -523,13 +522,16 @@ ul {
 
 }
 
+.lang-selector{
+   margin-top: -20px;
+}
 // This is the currently selected ToC entry
 .tocify-wrapper {
-  margin-top: 149px;
+  margin-top: 130px;
 }
 
 .content {
-  padding-top: 170px;
+  padding-top: 130px;
   //h1, h2 {
    // display:inline-block;
   //  padding-top: 100px;
