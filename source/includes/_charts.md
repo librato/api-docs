@@ -254,7 +254,26 @@ chart.save()
 >Response Code
 
 ```
-204 No Content
+200 OK
+```
+
+>Response Body
+
+```json
+{
+  "id": 1,
+  "name": "Temperature",
+  "type": "line",
+  "streams": [
+    {
+      "id": 1,
+      "metric": "temperature",
+      "type": "gauge",
+      "source": "*",
+      "group_function": "average"
+    }
+  ]
+}
 ```
 
 Updates attributes of a specific chart. In order to update the metrics associated with a chart you will need to view the example under [Create a Chart](#create-a-chart), which demonstrates overwriting an existing chart with new metrics.
