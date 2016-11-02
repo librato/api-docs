@@ -1,4 +1,4 @@
-# Measurements
+# Measurements `Beta`
 
 <aside class="notice">Note: Measurements are only available in the Tags Beta. Please <a href="mailto: support@librato.com" target="_top">contact Librato support</a> to join the beta.</aside>
 
