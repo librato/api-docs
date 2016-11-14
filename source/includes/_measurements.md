@@ -14,7 +14,7 @@ The general properties of a measurement are described below. The [documentation 
 Property | Definition
 -------- | ----------
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements.
-tags | A set of name=value tag pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.
 value | The numeric value of a single measured sample.
 time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
@@ -22,7 +22,7 @@ period | Define the period for the metric. This will be persisted for new metric
 
 ## Create a Measurement
 
->Create a new measurement `conn_servers` with the tag `region : "us-east-1"`:
+>Create a new measurement `AWS.EC2.DiskWriteBytes` with the tag `region : "us-east-1"`:
 
 ```shell
 curl \
@@ -34,7 +34,7 @@ curl \
     },
     "measurements": [
       {
-        "name": "conn_servers",
+        "name": "AWS.EC2.DiskWriteBytes",
         "value": 65
       }
     ]
@@ -73,7 +73,7 @@ The only permissible content type is JSON at the moment. All requests must inclu
 
 >The following payload demonstrates submitting tags at the top-level of the payload. This may be common for a collection agent that tags all metrics the same based on the identification of the collection host parameters.
 
->This will result in two data streams, `cpu` and `memory`. Both metrics will contain the tags `region=us-west` and `hostname=web-prod-3`.
+>This will result in two data streams, `cpu` and `memory`. Both metrics will contain the tags `region=us-west` and `name=web-prod-3`.
 
 ```shell
 curl \
@@ -82,7 +82,7 @@ curl \
   -d '{
     "tags": {
       "region": "us-west",
-      "hostname": "web-prod-3"
+      "name": "web-prod-3"
     },
     "measurements": [
       {
@@ -111,7 +111,7 @@ Not yet available
 
 >The following example payload demonstrates mixing top-level tags with per-measurement tags.
 
->This will result in the data streams, `cpu` and `memory`. The cpu metric strips the hostname tag from the data stream while the memory metric actually adds two additional tag names.
+>This will result in the data streams, `cpu` and `memory`. The cpu metric strips the name tag from the data stream while the memory metric actually adds two additional tag names.
 
 ```shell
 curl \
@@ -120,14 +120,14 @@ curl \
   -d '{
     "tags": {
       "region": "us-west",
-      "hostname": "web-prod-3"
+      "name": "web-prod-3"
     },
     "measurements": [
       {
         "name": "cpu",
         "value": 4.5,
         "tags": {
-          "hostname": null
+          "name": null
         }
       },
       {
@@ -214,7 +214,7 @@ In addition, the following parameters can be specified to further define the mea
 Parameter | Definition
 --------- | ----------
 time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
-tags | A set of name=value tag pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.<br><br>Tags are merged between the top-level tags and any per-measurement tags, see the section Tag Merging for details.<br><br>If no tag pairs are specified in the payload, a default tag pair of source=unassigned will be applied.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.<br><br>Tags are merged between the top-level tags and any per-measurement tags, see the section Tag Merging for details.<br><br>If no tag pairs are specified in the payload, a default tag pair of source=unassigned will be applied.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
 
 #### Summary fields
@@ -271,7 +271,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 
 >**Retrieve Measurements by Matching Tags**
 
->How to retrieve the measurement `conn_servers` with the tags matching `region=us*` and `hostname=prod`:
+>How to retrieve the measurement `AWS.EC2.DiskWriteBytes` with the tags matching `region=us*` and `name=prod`:
 
 >Note: When using cURL you will need to utilize URL encoding for the tag brackets (`%5B` and `%5D`)
 
@@ -279,7 +279,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bhostname%5D=prod'
+  'https://metrics-api.librato.com/v1/measurements/AWS.EC2.DiskWriteBytes?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod'
 ```
 
 ```ruby
@@ -297,7 +297,7 @@ Not yet available
   "series":[
     {
       "tags":{
-         "hostname":"prod",
+         "name":"prod",
          "region":"us-east"
       },
       "measurements":[
@@ -317,7 +317,7 @@ Not yet available
     },
     {
       "tags":{
-         "hostname":"prod",
+         "name":"prod",
          "region":"us-west"
       },
       "measurements":[
@@ -329,17 +329,17 @@ Not yet available
     }
   ],
   "resolution":60,
-  "name":"conn_servers"
+  "name":"AWS.EC2.DiskWriteBytes"
 }
 ```
 
->How to retrieve the measurements `conn_servers` with the tags matching `region=us-east` OR `region=us-west` AND `hostname=prod` (also group by region):
+>How to retrieve the measurements `AWS.EC2.DiskWriteBytes` with the tags matching `region=us-east` OR `region=us-west` AND `name=prod` (also group by region):
 
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bhostname%5D=prod&group_by=region&group_by_function=sum'
+  'https://metrics-api.librato.com/v1/measurements/AWS.EC2.DiskWriteBytes?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod&group_by=region&group_by_function=sum'
 ```
 
 ```ruby
@@ -387,7 +387,7 @@ Not yet available
     }
   ],
   "resolution":60,
-  "name":"conn_servers"
+  "name":"AWS.EC2.DiskWriteBytes"
 }
 ```
 
@@ -419,7 +419,7 @@ Not yet available
   "series":[
    {
      "tags":{
-       "hostname":"prod",
+       "name":"prod",
        "region":"us-east",
        "db":"db-prod-1"
      },
