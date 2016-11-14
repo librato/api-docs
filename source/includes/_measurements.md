@@ -22,7 +22,7 @@ period | Define the period for the metric. This will be persisted for new metric
 
 ## Create a Measurement
 
->Create a new measurement `conn_servers` with the tag `region : "us-east-1"`:
+>Create a new measurement `AWS.EC2.DiskWriteBytes` with the tag `region : "us-east-1"`:
 
 ```shell
 curl \
@@ -34,7 +34,7 @@ curl \
     },
     "measurements": [
       {
-        "name": "conn_servers",
+        "name": "AWS.EC2.DiskWriteBytes",
         "value": 65
       }
     ]
@@ -271,7 +271,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 
 >**Retrieve Measurements by Matching Tags**
 
->How to retrieve the measurement `conn_servers` with the tags matching `region=us*` and `name=prod`:
+>How to retrieve the measurement `AWS.EC2.DiskWriteBytes` with the tags matching `region=us*` and `name=prod`:
 
 >Note: When using cURL you will need to utilize URL encoding for the tag brackets (`%5B` and `%5D`)
 
@@ -279,7 +279,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod'
+  'https://metrics-api.librato.com/v1/measurements/AWS.EC2.DiskWriteBytes?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod'
 ```
 
 ```ruby
@@ -329,17 +329,17 @@ Not yet available
     }
   ],
   "resolution":60,
-  "name":"conn_servers"
+  "name":"AWS.EC2.DiskWriteBytes"
 }
 ```
 
->How to retrieve the measurements `conn_servers` with the tags matching `region=us-east` OR `region=us-west` AND `name=prod` (also group by region):
+>How to retrieve the measurements `AWS.EC2.DiskWriteBytes` with the tags matching `region=us-east` OR `region=us-west` AND `name=prod` (also group by region):
 
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod&group_by=region&group_by_function=sum'
+  'https://metrics-api.librato.com/v1/measurements/AWS.EC2.DiskWriteBytes?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod&group_by=region&group_by_function=sum'
 ```
 
 ```ruby
@@ -387,7 +387,7 @@ Not yet available
     }
   ],
   "resolution":60,
-  "name":"conn_servers"
+  "name":"AWS.EC2.DiskWriteBytes"
 }
 ```
 
