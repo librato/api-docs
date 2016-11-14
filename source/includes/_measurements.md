@@ -73,7 +73,7 @@ The only permissible content type is JSON at the moment. All requests must inclu
 
 >The following payload demonstrates submitting tags at the top-level of the payload. This may be common for a collection agent that tags all metrics the same based on the identification of the collection host parameters.
 
->This will result in two data streams, `cpu` and `memory`. Both metrics will contain the tags `region=us-west` and `hostname=web-prod-3`.
+>This will result in two data streams, `cpu` and `memory`. Both metrics will contain the tags `region=us-west` and `name=web-prod-3`.
 
 ```shell
 curl \
@@ -82,7 +82,7 @@ curl \
   -d '{
     "tags": {
       "region": "us-west",
-      "hostname": "web-prod-3"
+      "name": "web-prod-3"
     },
     "measurements": [
       {
@@ -111,7 +111,7 @@ Not yet available
 
 >The following example payload demonstrates mixing top-level tags with per-measurement tags.
 
->This will result in the data streams, `cpu` and `memory`. The cpu metric strips the hostname tag from the data stream while the memory metric actually adds two additional tag names.
+>This will result in the data streams, `cpu` and `memory`. The cpu metric strips the name tag from the data stream while the memory metric actually adds two additional tag names.
 
 ```shell
 curl \
@@ -120,14 +120,14 @@ curl \
   -d '{
     "tags": {
       "region": "us-west",
-      "hostname": "web-prod-3"
+      "name": "web-prod-3"
     },
     "measurements": [
       {
         "name": "cpu",
         "value": 4.5,
         "tags": {
-          "hostname": null
+          "name": null
         }
       },
       {
@@ -271,7 +271,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 
 >**Retrieve Measurements by Matching Tags**
 
->How to retrieve the measurement `conn_servers` with the tags matching `region=us*` and `hostname=prod`:
+>How to retrieve the measurement `conn_servers` with the tags matching `region=us*` and `name=prod`:
 
 >Note: When using cURL you will need to utilize URL encoding for the tag brackets (`%5B` and `%5D`)
 
@@ -279,7 +279,7 @@ If the base-10 exponent of any floating point value is smaller than `1 x 10^-130
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bhostname%5D=prod'
+  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod'
 ```
 
 ```ruby
@@ -297,7 +297,7 @@ Not yet available
   "series":[
     {
       "tags":{
-         "hostname":"prod",
+         "name":"prod",
          "region":"us-east"
       },
       "measurements":[
@@ -317,7 +317,7 @@ Not yet available
     },
     {
       "tags":{
-         "hostname":"prod",
+         "name":"prod",
          "region":"us-west"
       },
       "measurements":[
@@ -333,13 +333,13 @@ Not yet available
 }
 ```
 
->How to retrieve the measurements `conn_servers` with the tags matching `region=us-east` OR `region=us-west` AND `hostname=prod` (also group by region):
+>How to retrieve the measurements `conn_servers` with the tags matching `region=us-east` OR `region=us-west` AND `name=prod` (also group by region):
 
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bhostname%5D=prod&group_by=region&group_by_function=sum'
+  'https://metrics-api.librato.com/v1/measurements/conn_servers?resolution=60&duration=86400&tags%5Bregion%5D=us-*&tags%5Bname%5D=prod&group_by=region&group_by_function=sum'
 ```
 
 ```ruby
@@ -419,7 +419,7 @@ Not yet available
   "series":[
    {
      "tags":{
-       "hostname":"prod",
+       "name":"prod",
        "region":"us-east",
        "db":"db-prod-1"
      },
