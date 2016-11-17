@@ -516,6 +516,18 @@ ul {
   > h3 {
     clear: both;
   }
+
+  // prevent anchored side headings from being obscured by language selector
+  h3.side {
+    padding-top: 20px;
+    &.example {
+      margin-top: 20px;
+    }
+  }
+  h1#introduction {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 }
 
 .header .navbar-default .navbar-nav {
