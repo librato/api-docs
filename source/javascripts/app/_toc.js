@@ -72,12 +72,19 @@
     });
 
     // inject anchor divs for h3 headings, since they're excuded from TOC
+    var $headings = $('h1, h2, h3');
     $('h3').each(function(){
       var $h3 = $(this),
           id = $h3.prop('id'),
-          $anchor = $('<div name="' + id + '" data-unique="' + id + '"/>'),
-          $parent = $h3.prevAll('h1, h2').first();
-      $parent.length && $anchor.attr('data-unique-parent', $parent.prop('id'));
+          $anchor = $('<div></div>'),
+          $idDupes = $headings.filter("[id='" + id + "']"),
+          $parent = $h3.prevAll('h1, h2').first().prev('div[data-unique]');
+      if($idDupes.length > 1) {
+        id += '-' + $idDupes.index($h3);
+        $h3.find('a.anchorjs-link').attr('href', '#' + id);
+      }
+      $anchor.attr({ name: id, 'data-unique': id });
+      $parent.length && $anchor.attr('data-unique-parent', $parent.attr('data-unique'));
       $anchor.insertBefore($h3);
     });
   }
