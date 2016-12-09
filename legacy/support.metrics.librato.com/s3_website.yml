@@ -111,7 +111,7 @@ redirects:
   knowledgebase/articles/195366: https://www.librato.com/docs/kb/collect/integrations/cloudwatch.html
   knowledgebase/articles/197595: https://www.librato.com/docs/kb/faq/non_profit.html
   knowledgebase/articles/206792: https://www.librato.com/docs/kb/faq/fix_ssl_errors.html
-  knowledgebase/articles/213775: https://www.librato.com/docs/kb/manipulate/ssa.html
+  knowledgebase/articles/213775: https://www.librato.com/docs/kb/data_processing/ssa.html
   knowledgebase/articles/215845: https://www.librato.com/docs/kb/faq/count_events.html
   knowledgebase/articles/217194: https://www.librato.com/docs/kb/faq/dynamic_source_via_api.html
   knowledgebase/articles/217414: https://www.librato.com/docs/kb/alert/service_integrations/flowdock.html
@@ -126,10 +126,10 @@ redirects:
   knowledgebase/articles/330102: https://www.librato.com/docs/kb/collect/integrations/cloudwatch.html#can-i-import-data-from-multiple-cloudwatch-accounts
   knowledgebase/articles/332379: https://www.librato.com/docs/kb/alert/alerts-intro.html
   knowledgebase/articles/334530: https://www.librato.com/docs/kb/faq/historic_metrics.html
-  knowledgebase/articles/337431: https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html
+  knowledgebase/articles/337431: https://www.librato.com/docs/kb/data_processing/composite_metrics/specification.html
   knowledgebase/articles/348997: https://www.librato.com/docs/kb/faq/lastpass_bug-collabs.html
-  knowledgebase/articles/354670: https://www.librato.com/docs/kb/manipulate/composite_metrics/tutorial.html
-  knowledgebase/articles/354671: https://www.librato.com/docs/kb/manipulate/composite_metrics/index.html
+  knowledgebase/articles/354670: https://www.librato.com/docs/kb/data_processing/composite_metrics/tutorial.html
+  knowledgebase/articles/354671: https://www.librato.com/docs/kb/data_processing/composite_metrics/index.html
   knowledgebase/articles/402040: https://www.librato.com/docs/kb/faq/statuspage.html
   knowledgebase/articles/402217: https://www.librato.com/docs/kb/alert/service_integrations/slack.html
   knowledgebase/articles/404267: https://www.librato.com/docs/kb/collect/integrations/collectd-faq.html
@@ -163,7 +163,7 @@ redirects:
   knowledgebase/topics/10323: https://www.librato.com/docs/kb/librato/getting_started.html
   knowledgebase/topics/7068: https://www.librato.com/docs/kb/collect/index.html
   knowledgebase/topics/5363: https://www.librato.com/docs/kb/visualize/index.html
-  knowledgebase/topics/51770: https://www.librato.com/docs/kb/manipulate/composite_metrics/index.html
+  knowledgebase/topics/51770: https://www.librato.com/docs/kb/data_processing/composite_metrics/index.html
   knowledgebase/topics/5594: https://www.librato.com/docs/kb/alert/index.html
   knowledgebase/topics/7745: https://www.librato.com/docs/kb/librato/account_management/index.html
   knowledgebase/topics/4808: https://www.librato.com/docs/kb/collect/integrations/index.html
