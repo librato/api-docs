@@ -49,22 +49,55 @@ Internally all floating point values are stored in double-precision format. Howe
 
 >The gauge measurement specifies an explicit `measure_time` and `source` that overrides the global ones while the counter measurements default to the global `measure_time` and `source`.
 
+>JSON
+
+```shell
+curl -H "Content-Type: application/json" \
+     -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+     -d $'
+     {
+       "measure_time": 1481637660,
+       "source": "my.app",
+       "gauges": [
+         {
+           "name": "my.metric",
+           "value": 42
+         },
+         {
+           "name": "my.other.metric",
+           "value": 43
+         },
+         {
+           "name": "cpu",
+           "value": 88.4,
+           "source": "my.machine",
+           "measure_time": 1481637540
+         }
+       ]
+     }' \
+    -X POST \
+    https://metrics-api.librato.com/v1/metrics
+```
+
+>Form Encoded
+
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'measure_time=1234567950' \
-  -d 'source=prod-us-west' \
-  -d 'counters[0][name]=conn_servers' \
-  -d 'counters[0][value]=5' \
-  -d 'counters[1][name]=write_fails' \
-  -d 'counters[1][value]=3' \
-  -d 'gauges[0][name]=cpu_temp' \
-  -d 'gauges[0][value]=88.4' \
-  -d 'gauges[0][source]=prod-us-east' \
-  -d 'gauges[0][measure_time]=1234567949' \
+  -d 'measure_time=1481637660' \
+  -d 'source=my.app' \
+  -d 'gauges[0][name]=my.metric' \
+  -d 'gauges[0][value]=42' \
+  -d 'gauges[1][name]=my.other.metric' \
+  -d 'gauges[1][value]=43' \
+  -d 'gauges[2][name]=cpu' \
+  -d 'gauges[2][value]=88.4' \
+  -d 'gauges[2][source]=my.machine' \
+  -d 'gauges[2][measure_time]=1481637540' \
   -X POST \
   https://metrics-api.librato.com/v1/metrics
 ```
+
 
 ```ruby
 require "librato/metrics"
