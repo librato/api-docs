@@ -22,7 +22,7 @@ period | Define the period for the metric. This will be persisted for new metric
 
 ## Create a Measurement
 
->Create a new measurement `AWS.EC2.DiskWriteBytes` with the tag `region : "us-east-1"`:
+>Create a new measurement `my.custom.metric` with the tag `region: "us-east-1", az: "a"`
 
 ```shell
 curl \
@@ -31,10 +31,11 @@ curl \
   -d '{
     "tags": {
       "region": "us-east-1"
+      "az": "a"
     },
     "measurements": [
       {
-        "name": "AWS.EC2.DiskWriteBytes",
+        "name": "my.custom.metric",
         "value": 65
       }
     ]
@@ -109,9 +110,7 @@ Not yet available
 
 >**Embedded Measurement Tags**
 
->The following example payload demonstrates mixing top-level tags with per-measurement tags.
-
->This will result in the data streams, `cpu` and `memory`. The cpu metric strips the name tag from the data stream while the memory metric actually adds two additional tag names.
+>You can mix top-level tags with per-measurement tags. In the following example, the `cpu` metric strips the `name` tag out, while the `memory` metric adds two additional tag names.
 
 ```shell
 curl \
@@ -132,10 +131,9 @@ curl \
       },
       {
         "name": "memory",
-        "sum": 34.5,
-        "count": 5,
+        "value": 34.5,
         "tags": {
-          "az": "g",
+          "az": "e",
           "db": "db-prod-1"
         }
       }
@@ -155,7 +153,7 @@ Not yet available
 
 >**Full Measurement Sample**
 
->How to submit a single measurement that contains a full summary statistics fields. This includes embedded tag names and the metric attribute (which specifies not to enable [SSA](/docs/kb/data_processing/ssa.html)) that is saved when the initial metric (cpu) is created.
+>Submit a single measurement that contains a full summary statistics fields. This includes embedded tag names and the metric attribute (which specifies not to enable [SSA](/docs/kb/data_processing/ssa.html)) that is saved when the initial metric (cpu) is created.
 
 ```shell
 curl \
