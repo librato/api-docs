@@ -18,7 +18,6 @@ includes:
   - metrics
   - metric-attributes
   - pagination
-  - measurements
   - spaces
   - charts
   - annotations

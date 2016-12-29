@@ -10,7 +10,6 @@ Property | Definition
 -------- | ----------
 id | Each space has a unique numeric ID
 name | Unique name for space
-tags | Boolean: Enable space for Tags. <small>_Only available in the Tags Beta._</small>
 
 #### Pagination Parameters
 
