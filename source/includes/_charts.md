@@ -4,25 +4,25 @@ A charts graphs one or more metrics in real time. In order to create a chart you
 
 ## Create a Chart
 
->Create a line chart with various metric streams including their source(s) and
-group/summary functions:
+>Create a line chart with various metric streams including their tags(s) and group/summary functions:
 
 ```shell
 curl \
 -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
--d 'type=line' \
--d 'name=Server Temperature' \
--d 'streams[0][metric]=server_temp' \
--d 'streams[0][source]=app1' \
--d 'streams[1][metric]=environmental_temp' \
--d 'streams[1][source]=*' \
--d 'streams[1][group_function]=breakout' \
--d 'streams[1][summary_function]=average' \
--d 'streams[2][metric]=server_temp' \
--d 'streams[2][source]=%' \
--d 'streams[2][group_function]=average' \
+-H "Content-Type: application/json" \
+-d '{
+  "type": "line",
+  "name": "ELB Test",
+  "streams": [
+    {
+      "metric": "conn_servers",
+      "tags_filter": "custom",
+      "tags": [{"name": "region", "values": ["us-east-1"]}]
+    }
+  ]
+}' \
 -X POST \
-'https://metrics-api.librato.com/v1/spaces/:id/charts'
+'https://metrics-api.librato.com/v1/spaces/:space_id/charts'
 ```
 
 ```ruby
@@ -60,27 +60,26 @@ Location: /v1/spaces/123
 
 ```json
 {
-  "id": 123,
-  "name": "Server Temperature",
+  "id": 123456,
+  "name": "ELB Test",
   "type": "line",
   "streams": [
     {
-      "metric": "server_temp",
-      "source": "app1",
-      "type": "gauge"
-    },
-    {
-      "metric": "environmental_temp",
-      "source": "*",
+      "id": 27002342,
+      "metric": "conn_servers",
       "type": "gauge",
-      "group_function": "average"
-    },
-    {
-      "metric": "server_temp",
-      "source": "%",
-      "type": "gauge"
+      "tags": [
+        {
+          "name": "region",
+          "values": [
+            "us-east-1"
+          ]
+        }
+      ],
+      "tags_filter": "custom"
     }
-  ]
+  ],
+  "thresholds": null
 }
 ```
 
@@ -142,7 +141,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 name | Title of the chart when it is displayed.
-streams | An array of hashes describing the metrics and sources to use for data in the chart.
+streams | An array of hashes describing the metrics and tags to use for data in the chart.
 type | Indicates the type of chart. Must be one of line, stacked, or bignumber (default to line)
 min | The minimum display value of the chart's Y-axis
 max | The maximum display value of the chart's Y-axis
@@ -154,7 +153,7 @@ related_space | The ID of another space to which this chart is related
 Parameter | Definition
 --------- | ----------
 metric | Name of metric
-source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
+tags | Name of tag or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
 group_function | How to process the results when multiple sources will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all sources. If the function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
@@ -202,19 +201,26 @@ for s in chart.streams:
 
 ```json
 {
-  "id": 6637,
+  "id": 3700969,
   "name": "CPU Usage",
   "type": "line",
   "streams": [
     {
-      "id": 386291,
-      "metric": "collectd.cpu.0.cpu.user",
-      "type": "counter",
-      "source": "*",
-      "group_function": "average",
-      "summary_function": "derivative"
+      "id": 27003258,
+      "metric": "librato.cpu.percent.idle",
+      "type": "gauge",
+      "tags": [
+        {
+          "name": "region",
+          "values": [
+            "us-east-1"
+          ]
+        }
+      ],
+      "tags_filter": "custom"
     }
-  ]
+  ],
+  "thresholds": null
 }
 ```
 
@@ -231,10 +237,14 @@ Returns a specific chart by its id and space id.
 
 ```shell
 curl \
-  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'name=Temperature' \
-  -X PUT \
-  'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
+-u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+-H "Content-Type: application/json" \
+-d '{
+  "type": "line",
+  "name": "Temperature"
+}' \
+-X PUT \
+'https://metrics-api.librato.com/v1/spaces/:space_id/charts/:chart_id'
 ```
 
 ```ruby
@@ -261,18 +271,26 @@ chart.save()
 
 ```json
 {
-  "id": 1,
+  "id": 3700969,
   "name": "Temperature",
   "type": "line",
   "streams": [
     {
-      "id": 1,
-      "metric": "temperature",
+      "id": 27003258,
+      "metric": "collectd.cpu.0.cpu.user",
       "type": "gauge",
-      "source": "*",
-      "group_function": "average"
+      "tags": [
+        {
+          "name": "region",
+          "values": [
+            "us-east-1"
+          ]
+        }
+      ],
+      "tags_filter": "custom"
     }
-  ]
+  ],
+  "thresholds": null
 }
 ```
 
