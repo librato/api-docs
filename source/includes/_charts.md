@@ -12,12 +12,15 @@ curl \
 -H "Content-Type: application/json" \
 -d '{
   "type": "line",
-  "name": "ELB Test",
+  "name": "CPU Usage",
   "streams": [
     {
-      "metric": "conn_servers",
-      "tags_filter": "custom",
-      "tags": [{"name": "region", "values": ["us-east-1"]}]
+      "metric": "librato.cpu.percent.idle",
+      "tags": [{"name": "environment", "values": ["*"]}]
+    },
+    {
+      "metric": "librato.cpu.percent.user",
+      "tags": [{"name": "environment", "values": ["prod"]}]
     }
   ]
 }' \
@@ -60,23 +63,35 @@ Location: /v1/spaces/123
 
 ```json
 {
-  "id": 123456,
-  "name": "ELB Test",
+  "id": 1234567,
+  "name": "CPU Usage",
   "type": "line",
   "streams": [
     {
-      "id": 27002342,
-      "metric": "conn_servers",
+      "id": 27032885,
+      "metric": "librato.cpu.percent.idle",
       "type": "gauge",
       "tags": [
         {
-          "name": "region",
+          "name": "environment",
           "values": [
-            "us-east-1"
+            "*"
           ]
         }
-      ],
-      "tags_filter": "custom"
+      ]
+    },
+    {
+      "id": 27032886,
+      "metric": "librato.cpu.percent.user",
+      "type": "gauge",
+      "tags": [
+        {
+          "name": "environment",
+          "values": [
+            "prod"
+          ]
+        }
+      ]
     }
   ],
   "thresholds": null
@@ -217,7 +232,6 @@ for s in chart.streams:
           ]
         }
       ],
-      "tags_filter": "custom"
     }
   ],
   "thresholds": null
@@ -287,7 +301,6 @@ chart.save()
           ]
         }
       ],
-      "tags_filter": "custom"
     }
   ],
   "thresholds": null
@@ -417,34 +430,38 @@ for c in charts:
 ```json
 [
   {
-    "id": 6637,
+    "id": 1234567,
     "name": "CPU Usage",
     "type": "line",
     "streams": [
       {
-        "id": 386291,
-        "metric": "collectd.cpu.0.cpu.user",
-        "type": "counter",
-        "source": "*",
-        "group_function": "average",
-        "summary_function": "derivative"
-      }
-    ]
-  },
-  {
-    "id": 6638,
-    "name": "Free Memory",
-    "type": "line",
-    "streams": [
-      {
-        "id": 386292,
-        "metric": "collectd.memory.memory.free",
+        "id": 27035309,
+        "metric": "librato.cpu.percent.idle",
         "type": "gauge",
-        "source": "*",
-        "group_function": "average",
-        "summary_function": "average"
+        "tags": [
+          {
+            "name": "environment",
+            "values": [
+              "*"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 27035310,
+        "metric": "librato.cpu.percent.user",
+        "type": "gauge",
+        "tags": [
+          {
+            "name": "environment",
+            "values": [
+              "prod"
+            ]
+          }
+        ]
       }
-    ]
+    ],
+    "thresholds": null
   }
 ]
 ```
