@@ -251,7 +251,7 @@ Tag names must match the regular expression `/\A[-.:_\w]+\z/{1,64}`. Tag names a
 
 Tag values must match the regular expression `/\A[-.:_\w]+\z/{1, 256}`. Tag values are always converted to lower case.
 
-Data streams have a default limit of **10** tag names per measurement.
+Data streams have a default limit of **50** tag names per measurement.
 
 Accounts have a default limit of **100** unique tag names.
 
