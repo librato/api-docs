@@ -287,7 +287,7 @@ html, body {
   }
 
   .lang-selector {
-    top: 150px;
+    top: $header-height + 20px;
     position: fixed;
     z-index: 50;
     height: 50px;
