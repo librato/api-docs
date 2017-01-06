@@ -27,7 +27,6 @@ includes:
   - jobs
   - snapshots
   - services
-  - sources
 
 search: true
 ---
