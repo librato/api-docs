@@ -5,6 +5,10 @@ Build Status: [![Circle CI](https://circleci.com/gh/librato/api-docs/tree/master
 This is our API Docs site. It runs on Slate which is very easy to edit. The pages are hosted at
 https://www.librato.com/docs/api
 
+Note for Legacy branch: This branch is an archive of API documentation up until 12/20/2016. After making changes, run
+`./deploy.sh` locally to automatically generate and deploy the static site to Github Pages (hosted on the gh-pages
+branch).
+
 ### About This Project
 
 [Slate](https://github.com/tripit/slate) is a project designed to provide single page API documentation using [Middleman](https://github.com/middleman/middleman).
