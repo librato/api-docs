@@ -104,11 +104,18 @@ Location: /v1/spaces/123
 
 ```shell
 curl \
-  -u  $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'type=line' \
-  -d 'streams[0][composite]=divide([sum(s("memory_total","prod.web*")),sum(s("memory_used","prod.web*"))])' \
-  -X PUT \
-  'https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id'
+-u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+-H "Content-Type: application/json" \
+-d '{
+  "type": "line",
+  "streams": [
+    {
+      "composite": "divide([sum(s(\"librato.cpu.percent.idle\",{\"environment\":\"*\"})),sum(s(\"librato.cpu.percent.user\",{\"environment\":\"*\"}))])"
+    }
+  ]
+}' \
+-X PUT \
+'https://metrics-api.librato.com/v1/spaces/:space_id/charts/:chart_id'
 ```
 
 ```ruby
@@ -127,10 +134,22 @@ chart.new_stream(composite='divide([
 chart.save()
 ```
 
->Response Code
+>Response Body
 
-```
-204 No Content
+```json
+{
+   "id":1234567,
+   "name":"CPU Usage",
+   "type":"line",
+   "streams":[
+      {
+         "id":27037351,
+         "composite":"divide([sum(s(\"librato.cpu.percent.idle\",{\"environment\":\"*\"})),sum(s(\"librato.cpu.percent.user\",{\"environment\":\"*\"}))])",
+         "type":"composite"
+      }
+   ],
+   "thresholds":null
+}
 ```
 
 You can create a new chart with specified metrics or update an existing chart with new metrics to override the chart's existing metrics.
