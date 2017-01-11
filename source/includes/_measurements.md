@@ -531,3 +531,87 @@ The response payload will have a top-level member called **links** that will con
 
 Future iterations may add different components to the links list, so the consumer should check for the **next** entry specifically.
 
+### Composite Metric Queries
+
+>Execute a composite query to derive the idle collectd CPU time for a given host:
+
+```shell
+curl \
+  -i \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X GET \
+  'https://metrics-api.librato.com/v1/metrics?compose=derive(s("collectd.cpu.*.idle","boatman*45"))&start_time=1432931007&resolution=60'
+```
+
+```ruby
+require "librato/metrics"
+Librato::Metrics.authenticate <user>, <token>
+Librato::Metrics.get_composite 'derive(s("collectd.cpu.*.idle","boatman*45"))', start_time: Time.now.to_i - 60*60, resolution: 60
+```
+
+```python
+import librato
+api = librato.connect(<user>, <token>)
+compose = 'derive(s("collectd.cpu.*.idle", "boatman*45", {period: "60"}))'
+import time
+start_time = 1432931007
+resp = api.get_composite(compose, start_time=start_time)
+resp['measurements'][0]['series']
+```
+
+>Response (the result of the `derive()` function over the idle CPU time):
+
+```json
+{
+  "compose": "derive(s(\"collectd.cpu.*.idle\",\"boatman*19\"))",
+  "measurements": [
+    {
+      "metric": {
+        "attributes": {
+          "aggregate": false,
+          "created_by_ua": "Collectd-Librato.py/0.0.8 (Linux; x86_64) Python-Urllib2/2.7",
+          "display_max": null,
+          "display_min": null,
+          "display_stacked": true,
+          "display_transform": null,
+          "display_units_long": "Units",
+          "gap_detection": true
+        },
+        "description": null,
+        "display_name": null,
+        "name": "collectd.cpu.0.cpu.idle",
+        "period": 60,
+        "type": "counter"
+      },
+      "period": 60,
+      "query": {
+        "metric": "collectd.cpu.*.idle",
+        "source": "boatman*19"
+      },
+      "series": [
+        {
+          "measure_time": 1395802200,
+          "value": 5831.0
+        },
+        {
+          "measure_time": 1395802620,
+          "value": 5748.0
+        }
+      ],
+      "source": {
+        "display_name": null,
+        "name": "boatman-stg_19"
+      }
+    }
+  ],
+  "resolution": 60
+}
+```
+
+This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
+
+Parameter | Definition
+--------- | ----------
+compose | A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters.
+
+**NOTE**: `start_time` and `resolution` are required. The `end_time` parameter is optional. The `count` parameter is currently ignored. When specified, the response is a composite metric query response.

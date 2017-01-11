@@ -15,10 +15,10 @@ includes:
   - introduction
   - authentication
   - response-errors
+  - measurements
   - metrics
   - metric-attributes
   - pagination
-  - measurements
   - spaces
   - charts
   - annotations
