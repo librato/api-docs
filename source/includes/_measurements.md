@@ -573,7 +573,6 @@ resp['measurements'][0]['series']
           "display_max": null,
           "display_min": null,
           "display_stacked": true,
-          "display_transform": null,
           "display_units_long": "Units",
           "gap_detection": true
         },

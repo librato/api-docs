@@ -49,7 +49,6 @@ print(metric.attributes)
     "display_max": null,
     "display_min": 0,
     "display_stacked": true,
-    "display_transform": null,
     "display_units_long": "Fahrenheit",
     "display_units_short": "°F"
   }
@@ -118,7 +117,6 @@ print(metric.measurements)
     "display_max": null,
     "display_min": 0,
     "display_stacked": true,
-    "display_transform": null,
     "display_units_long": "Fahrenheit",
     "display_units_short": "°F"
   }
@@ -506,7 +504,6 @@ api.list_metrics()
         "display_max": null,
         "display_min": 0,
         "display_stacked": true,
-        "display_transform": null,
         "display_units_long": "Requests",
         "display_units_short": "reqs"
       }
@@ -522,7 +519,6 @@ api.list_metrics()
         "display_max": null,
         "display_min": 0,
         "display_stacked": true,
-        "display_transform": null,
         "display_units_long": "Fahrenheit",
         "display_units_short": "°F"
       }
@@ -579,7 +575,6 @@ api.list_metrics(name="request")
         "display_max": null,
         "display_min": 0,
         "display_stacked": true,
-        "display_transform": null,
         "display_units_long": "Requests",
         "display_units_short": "reqs"
       }
