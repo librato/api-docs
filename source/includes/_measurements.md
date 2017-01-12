@@ -1,7 +1,5 @@
 # Measurements
 
-<aside class="notice">Note: Measurements are only available in the Tags Beta. Please <a href="mailto: support@librato.com" target="_top">contact Librato support</a> to join the beta.</aside>
-
 Measurements represent the individual time-series samples sent to the Librato service. They are associated with a metric, one or more tag pairs, and a point in time.
 
 Each measurement has a value that represents an observation at one point in time. The value of a measurement will typically vary between some minimum or maximum value (ex. CPU usage moving from 0% to 100%).
