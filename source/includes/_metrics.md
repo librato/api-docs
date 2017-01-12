@@ -248,8 +248,7 @@ for metric in api.list_metrics(name="temp"):
 204 No Content
 ```
 
-
->Create a gauge metric named `queue_len` (this assumes the metric does not exist):
+>Create a metric named `queue_len` (this assumes the metric does not exist):
 
 ```shell
 curl \
@@ -306,7 +305,7 @@ Updates or creates the metric identified by `name`. If the metric already exists
 
 If the metric name does not exist, then the metric will be created with the associated properties. Normally metrics are created the first time a measurement is sent to the [collated POST route](#create-a-metric), after which their properties can be updated with this route. However, sometimes it is useful to set the metric properties before the metric has received any measurements so this will create the metric if it does not exist.
 
-Creating Persisted Composite Metrics
+### Creating Persisted Composite Metrics
 
 With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
