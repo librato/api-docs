@@ -307,6 +307,43 @@ If the metric name does not exist, then the metric will be created with the asso
 
 ### Creating Persisted Composite Metrics
 
+>Create a persisted composite named `librato.cpu.percent.used` matching the tags `environment:prod` and `servive:api`:
+
+```shell
+curl \
+-u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+-H "Content-Type: application/json" \
+-d '{
+  "type": "composite",
+  "name": "librato.cpu.percent.used",
+  "composite": "s(\"librato.cpu.percent.user\", {\"environment\" : \"prod\", \"service\": \"api\"})"
+}' \
+-X POST \
+'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.used'
+```
+
+```ruby
+Not yet available
+```
+
+```python
+Not yet available
+```
+
+> Response Body
+
+```
+{
+  "name": "librato.cpu.percent.used",
+  "display_name": null,
+  "type": "composite",
+  "description": null,
+  "period": null,
+  "source_lag": null,
+  "composite": "s(\"librato.cpu.percent.user\", {\"environment\" : \"prod\", \"service\": \"api\"})"
+}
+```
+
 With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
 #### Headers
