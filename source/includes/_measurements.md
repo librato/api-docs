@@ -43,7 +43,6 @@ curl \
 ```
 
 ```ruby
-
 require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
@@ -56,7 +55,6 @@ queue.add "my.custom.metric" {
   } 
 }
 queue.submit
-
 ```
 
 ```python
