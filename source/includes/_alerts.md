@@ -28,7 +28,7 @@ We currently support three alert condition types:
 
 Condition | Definition
 --------- | ----------
-above | Condition is met when the stream (metric/tag pair) goes above the specified threshold.
+above | Condition is met when the stream goes above the specified threshold.
 absent | Condition is met when the stream does not send a measurement for duration seconds.
 below | Condition is met when the stream goes below the specified threshold.
 
@@ -305,12 +305,12 @@ for a in alerts:
     "runbook_url": "http://myco.com/runbooks/response_time"
   },
   "active":true,
-   "created_at":1484588756,
-   "updated_at":1484588756,
-   "version":2,
-   "rearm_seconds":600,
-   "rearm_per_signal":false,
-   "md":true
+  "created_at":1484588756,
+  "updated_at":1484588756,
+  "version":2,
+  "rearm_seconds":600,
+  "rearm_per_signal":false,
+  "md":true
 }
 ```
 
