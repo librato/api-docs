@@ -28,7 +28,7 @@ We currently support three alert condition types:
 
 Condition | Definition
 --------- | ----------
-above | Condition is met when the stream (metric/tag pair) goes above the specified threshold.
+above | Condition is met when the stream goes above the specified threshold.
 absent | Condition is met when the stream does not send a measurement for duration seconds.
 below | Condition is met when the stream goes below the specified threshold.
 
