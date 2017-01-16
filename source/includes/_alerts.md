@@ -28,7 +28,7 @@ We currently support three alert condition types:
 
 Condition | Definition
 --------- | ----------
-above | Condition is met when the stream (metric/source pair) goes above the specified threshold.
+above | Condition is met when the stream (metric/tag pair) goes above the specified threshold.
 absent | Condition is met when the stream does not send a measurement for duration seconds.
 below | Condition is met when the stream goes below the specified threshold.
 
@@ -38,7 +38,7 @@ Property | Definition
 -------- | ----------
 type | One of above, absent, or below.
 metric_name | The name of the metric this alert condition applies to.
-source<br>`optional` | A source expression which identifies which sources for the given metric to monitor. If not specified all sources will be monitored. Wildcards can be used here (e.g. prod-* will include all sources that begin with prod-).
+tags<br>`optional` | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream. Wildcards can be used here (e.g. prod-* will include all tags that begin with prod-). Data Streams matching the specified tag set can be grouped with the property `"grouped":true`. If left false each data stream matching the tag set will be evaluated individually.
 detect_reset | *boolean*: If the summary_function is "derivative", this toggles the method used to calculate the delta from the previous sample. When set to "false" (default), the delta is calculated as simple subtraction of current - previous. <br><br>If "true" only increasing (positive) values will be reported. Any time the current value is less than the previous it is considered a reset of the counter and a derivative of zero is reported. This field is ignored for any setting of summary_function other than "derivative".
 
 Additional properties for the 'above' alert condition type:
@@ -47,13 +47,13 @@ Property | Definition
 -------------- | ----------
 threshold | float: measurements over this number will fire the alert.
 summary_function<br>`optional` | string: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property summary_function](#instruments) for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
-duration | *integer*: Number of seconds that data for the specified metric/source combination must be above the threshold for before the condition is met. All data points within the given duration must be above the threshold to meet this condition. This avoids a single spike from triggering the condition. <br><br>If unset, a single sample above the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
+duration | *integer*: Number of seconds that data for the specified metric/tag combination must be above the threshold for before the condition is met. All data points within the given duration must be above the threshold to meet this condition. This avoids a single spike from triggering the condition. <br><br>If unset, a single sample above the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
 
 Additional properties for the 'absent' alert condition type:
 
 Alert Property | Definition
 -------------- | ----------
-duration | *integer*: How many seconds data for the specified metric/source combination must not be missing before the condition is met. This will only trigger for a given metric/source combination after a measurement has been seen at least once. Must be >= 60 seconds and <= 3600 seconds. (Required)
+duration | *integer*: How many seconds data for the specified metric/tag combination must not be missing before the condition is met. This will only trigger for a given metric/tag combination after a measurement has been seen at least once. Must be >= 60 seconds and <= 3600 seconds. (Required)
 
 Additional properties for the 'below' alert condition type:
 
@@ -61,7 +61,7 @@ Alert Property | Definition
 -------------- | ----------
 threshold | *float*: measurements below this number will fire the alert. (Required)
 summary_function | *string*: Indicates which statistic of an aggregated measurement to alert on. <br><br>For gauge metrics will default to "average", which is also the "value" of non-complex or un-aggregated measurements. If set, must be one of: [min, max, average, sum, count, derivative]. See [Instrument Stream Property](instruments) `summary_function` for more details. <br><br>For counter metrics will default to "derivative", which is the delta between the most recent measurement and the one before it. If set, must be one of: [derivative, absolute_value].
-duration | *integer*: Number of seconds that data for the specified metric/source combination must be below the threshold for before the condition is met. All data points within the given duration must be below the threshold to meet this condition. This avoids a single drop from triggering the condition. <br><br>If unset, a single sample below the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
+duration | *integer*: Number of seconds that data for the specified metric/tag combination must be below the threshold for before the condition is met. All data points within the given duration must be below the threshold to meet this condition. This avoids a single drop from triggering the condition. <br><br>If unset, a single sample below the threshold will trigger the condition. The tracking duration begins with samples received after the alert condition is created or updated. Must be >= 60 seconds and <= 3600 seconds.
 
 #### Alert Attributes
 
@@ -75,10 +75,46 @@ Attributes can be unset by excluding their key when updating an alert.
 
 ## Create an Alert
 
->Create an alert named `production.web.frontend.response_time` with one condition which monitors the `metric web.nginx.response_time` and alerts whenever the value goes over 200.
+>Create an alert named `production.web.frontend.response_time` with one condition which monitors the metric `web.nginx.response_time` and alerts whenever the value goes over 200.
 
 >When the alert is triggered, the service identified by ID 849 (a Slack channel in this case) will be notified.
 
+```shell
+curl \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+   "name":"production.web.frontend.response_time",
+   "description":"Web Response Time",
+   "conditions":[
+      {
+         "type":"above",
+         "metric_name":"web.nginx.response_time",
+         "threshold":200,
+         "summary_function":"max",
+         "tags":[
+            {
+               "name":"tag_name",
+               "grouped":false,
+               "values":[
+                  "tag_value"
+               ]
+            }
+         ]
+      }
+   ],
+   "services":[
+      849
+   ],
+   "attributes": {
+        "runbook_url": "http://myco.com/runbooks/response_time"
+   },
+   "active":true,
+   "md":true
+}' \
+"https://metrics-api.librato.com/v1/alerts"
+```
 
 ```ruby
 Not available
@@ -107,28 +143,6 @@ alert = api.create_alert(
         "duration":300}])
 ```
 
->JSON Request used to create alert:
-
-```json
-{
-  "name": "production.web.frontend.response_time",
-  "conditions": [
-    {
-      "type": "above",
-      "threshold": 200,
-      "metric_name": "web.nginx.response_time"
-    }
-  ],
-  "services": [
-    849
-  ],
-  "attributes": {
-    "runbook_url": "http://myco.com/runbooks/response_time"
-  },
-  "version": 2
-}
-```
-
 >Response Code
 
 ```
@@ -145,27 +159,48 @@ Location: /v1/alerts/123
 
 ```json
 {
-  "id": 123,
-  "name": "production.web.frontend.response_time",
-  "conditions": [
-    {
-      "type": "above",
-      "threshold": 200,
-      "metric_name": "web.nginx.response_time"
-    }
-  ],
-  "services": [
-    {
-      "id": 849,
-      "title": "Notify Slack Channel",
-      "name": "slack"
-    }
-  ],
-  "attributes": {
-    "runbook_url": "http://myco.com/runbooks/response_time"
-  },
-  "active": true,
-  "version": 2
+   "id":1234567,
+   "name":"production.web.frontend.response_time",
+   "description":"Web Response Time",
+   "conditions":[
+      {
+         "id":19376030,
+         "type":"above",
+         "metric_name":"web.nginx.response_time",
+         "source":null,
+         "threshold":200.0,
+         "summary_function":"max",
+         "tags":[
+            {
+               "name":"tag_name",
+               "grouped":false,
+               "values":[
+                  "tag_value"
+               ]
+            }
+         ]
+      }
+   ],
+   "services":[
+      {
+         "id":17584,
+         "type":"slack",
+         "settings":{
+            "url":"https://hooks.slack.com/services/ABCDEFG/A1B2C3/asdfg1234"
+         },
+         "title":"librato-services"
+      }
+   ],
+   "attributes":{
+      "runbook_url":"http://myco.com/runbooks/response_time"
+   },
+   "active":true,
+   "created_at":1484594787,
+   "updated_at":1484594787,
+   "version":2,
+   "rearm_seconds":600,
+   "rearm_per_signal":false,
+   "md":true
 }
 ```
 
@@ -236,25 +271,46 @@ for a in alerts:
 {
   "id": 123,
   "name": "production.web.frontend.response_time",
-  "conditions": [
-    {
-      "type": "above",
-      "threshold": 200,
-      "metric_name": "web.nginx.response_time"
-    }
-  ],
-  "services": [
-    {
-      "id": 849,
-      "title": "Notify Slack Channel",
-      "name": "slack"
-    }
-  ],
+  "description":"Web Response Time",
+  "conditions":[
+      {
+         "id":19375969,
+         "type":"above",
+         "metric_name":"web.nginx.response_time",
+         "source":null,
+         "threshold":200.0,
+         "summary_function":"average",
+         "tags":[
+            {
+               "name":"environment",
+               "grouped":false,
+               "values":[
+                  "production"
+               ]
+            }
+         ]
+      }
+   ],
+  "services":[
+      {
+         "id":17584,
+         "type":"slack",
+         "settings":{
+            "url":"https://hooks.slack.com/services/XYZABC/a1b2c3/asdf"
+         },
+         "title":"librato-services"
+      }
+   ],
   "attributes": {
     "runbook_url": "http://myco.com/runbooks/response_time"
   },
-  "active": true,
-  "version": 2
+  "active":true,
+   "created_at":1484588756,
+   "updated_at":1484588756,
+   "version":2,
+   "rearm_seconds":600,
+   "rearm_per_signal":false,
+   "md":true
 }
 ```
 
@@ -300,25 +356,46 @@ for a in alerts:
     {
       "id": 123,
       "name": "production.web.frontend.response_time",
-      "conditions": [
+      "description":"Web Response Time",
+      "conditions":[
+            {
+               "id":19375969,
+               "type":"above",
+               "metric_name":"librato.cpu.percent.interrupt",
+               "source":null,
+               "threshold":200.0,
+               "summary_function":"average",
+               "tags":[
+                  {
+                     "name":"name",
+                     "grouped":false,
+                     "values":[
+                        "value"
+                     ]
+                  }
+               ]
+            }
+         ],
+      "services":[
         {
-          "type": "above",
-          "threshold": 200,
-          "metric_name": "web.nginx.response_time"
+           "id":17584,
+           "type":"slack",
+           "settings":{
+              "url":"https://hooks.slack.com/services/XYZABC/a1b2c3/asdf"
+           },
+           "title":"librato-services"
         }
-      ],
-      "services": [
-        {
-          "id": 849,
-          "title": "Notify Slack Channel",
-          "name": "slack"
-        }
-      ],
+     ],
       "attributes": {
         "runbook_url": "http://myco.com/runbooks/response_time"
       },
-      "active": true,
-      "version": 2
+      "active":true,
+       "created_at":1484588756,
+       "updated_at":1484588756,
+       "version":2,
+       "rearm_seconds":600,
+       "rearm_per_signal":false,
+       "md":true
     }
   ]
 }
@@ -385,7 +462,30 @@ curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
-  -d '{"active": false, "name": "my.alert.name", "description": "Process went down", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}]}' \
+  -d '{
+   "id":6553597,
+   "name":"my.alert.name",
+   "description":"High CPU Load",
+   "conditions":[
+          {
+            "id":19375969,
+            "type":"above",
+            "metric_name":"my.alert.name",
+            "threshold":90,
+            "summary_function":"average",
+            "tags":[
+              {
+               "name":"my.environment",
+               "grouped":false,
+               "values":[
+                  "production"
+            ]
+          }
+        ]
+      }
+    ],
+    "active":false
+  }' \
 "https://metrics-api.librato.com/v1/alerts/123"
 ```
 
@@ -408,7 +508,30 @@ curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
-  -d '{"active": true, "name": "my.alert.name", "description": "Process went down", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}]}' \
+  -d '{
+   "id":6553597,
+   "name":"my.alert.name",
+   "description":"High CPU Load",
+   "conditions":[
+          {
+            "id":19375969,
+            "type":"above",
+            "metric_name":"my.alert.name",
+            "threshold":90,
+            "summary_function":"average",
+            "tags":[
+              {
+               "name":"my.environment",
+               "grouped":false,
+               "values":[
+                  "production"
+            ]
+          }
+        ]
+      }
+    ],
+    "active":true
+  }' \
 "https://metrics-api.librato.com/v1/alerts/123"
 ```
 
@@ -431,7 +554,30 @@ curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
-  -d '{"description": "A new description", "name": "my.alert.name", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}], "active": true}' \
+  -d '{
+   "id":6553597,
+   "name":"my.alert.name",
+   "description":"A new description",
+   "conditions":[
+          {
+            "id":19375969,
+            "type":"above",
+            "metric_name":"my.alert.name",
+            "threshold":90,
+            "summary_function":"average",
+            "tags":[
+              {
+               "name":"my.environment",
+               "grouped":false,
+               "values":[
+                  "production"
+            ]
+          }
+        ]
+      }
+    ],
+    "active":true
+  }' \
 "https://metrics-api.librato.com/v1/alerts/123"
 ```
 
@@ -454,7 +600,33 @@ curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X PUT \
   -H "Content-Type: application/json" \
-  -d '{"attributes": {"runbook_url": "http://google.com"}, "name": "my.alert.name", "description": "A process went down.", "conditions": [{"type": "absent", "metric_name": "service.alive", "source": "*", "duration": 900}], "active": true}' \
+  -d '{
+   "id":6553597,
+   "name":"my.alert.name",
+   "description":"A new description",
+   "conditions":[
+          {
+            "id":19375969,
+            "type":"above",
+            "metric_name":"my.alert.name",
+            "threshold":90,
+            "summary_function":"average",
+            "tags":[
+              {
+               "name":"my.environment",
+               "grouped":false,
+               "values":[
+                  "production"
+            ]
+          }
+        ]
+      }
+    ],
+    "attributes": {
+        "runbook_url": "http://myco.com/runbooks/response_time"
+   },
+    "active":true
+  }' \
 "https://metrics-api.librato.com/v1/alerts/123"
 ```
 

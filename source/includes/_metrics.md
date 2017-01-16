@@ -307,7 +307,7 @@ If the metric name does not exist, then the metric will be created with the asso
 
 ### Creating Persisted Composite Metrics
 
->Create a persisted composite named `librato.cpu.percent.used` matching the tags `environment:prod` and `servive:api`:
+>Create a persisted composite named `librato.cpu.percent.used` matching the tags `environment:prod` and `service:api`:
 
 ```shell
 curl \
