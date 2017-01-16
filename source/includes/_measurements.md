@@ -509,7 +509,7 @@ query = {
   tags_search: "region=us-east* and db=*prod*"
 }
 
-measurements = Librato::Metrics.get_series memory:, query
+measurements = Librato::Metrics.get_series :memory, query
 ```
 
 ```python
