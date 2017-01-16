@@ -22,7 +22,15 @@ subject | The subject [chart](#retrieve-a-chart) of the snapshot.
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'subject[chart][id]=1&subject[chart][source]=*&subject[chart][type]=stacked' \
+  -d '{
+    "subject": {
+    "chart": {
+      "id": 1,
+      "tags": [{"name": "environment", "values": ["*"]}],
+      "type": "stacked"
+    }
+  }
+  ' \
   -X POST \
   'https://metrics-api.librato.com/v1/snapshots'
 ```
