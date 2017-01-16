@@ -43,7 +43,18 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new
+queue.add "my.custom.metric" { 
+  value: 65, 
+  tags: { 
+    region: 'us-east-1', 
+    az: 'a' 
+  } 
+}
+queue.submit
 ```
 
 ```python
@@ -99,7 +110,19 @@ https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new(
+  tags: { 
+    region: 'us-west', 
+    name: 'web-prod-3'
+  }
+)
+queue.add cpu: 4.5
+queue.add memory: 10.5
+
+queue.submit
 ```
 
 ```python
@@ -142,7 +165,30 @@ https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new(
+  tags: { 
+    region: 'us-west', 
+    name: 'web-prod-3'
+  }
+)
+queue.add cpu: { 
+  value: 4.5, 
+  tags: { 
+    name: null 
+  } 
+}
+queue.add memory: { 
+  value: 34.5, 
+  tags: { 
+    az: "e", 
+    db: "db-prod-1"
+  } 
+}
+
+queue.submit
 ```
 
 ```python
@@ -187,7 +233,33 @@ https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-Not yet available
+
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new
+queue.add cpu: { 
+  time: 1421530163,
+  period: 60,
+  sum: 35,
+  count: 3,
+  min: 4.5,
+  max: 6.7,
+  last: 2.5,
+  stddev: 1.34,
+  attributes: {
+    aggregate: false
+  },
+  tags: { 
+    region: "us-east-1", 
+    az: "b",
+    role: "kafka",
+    environment: "prod",
+    instance: "3" 
+  } 
+}
+
+queue.submit
 ```
 
 ```python
@@ -279,7 +351,20 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  resolution: 60,
+  duration: 86400,
+  tags: {
+    region: "us*", 
+    name: "prod*"
+  }
+}
+
+measurements = Librato::Metrics.get_series "AWS.EC2.DiskWriteBytes", query
+
 ```
 
 ```python
@@ -339,7 +424,21 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  resolution: 60,
+  duration: 86400,
+  group_by: "region",
+  group_by_function: "sum",
+    tags: {
+    region: "us*", 
+    name: "prod*"
+  }
+}
+
+measurements = Librato::Metrics.get_series "AWS.EC2.DiskWriteBytes", query
 ```
 
 ```python
@@ -401,7 +500,16 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  resolution: 60,
+  duration: 86400,
+  tags_search: "region=us-east* and db=*prod*"
+}
+
+measurements = Librato::Metrics.get_series :memory, query
 ```
 
 ```python
