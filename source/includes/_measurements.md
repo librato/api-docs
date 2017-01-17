@@ -719,7 +719,7 @@ curl \
   -i \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/measurements?compose=derive%28s%28%22librato.disk.disk_ops.read%22%2C+%7B%22host%22%3A%22prod-1%22%29%2C+%7Bdetect_reset%3A+%22true%22%7D%29&start_time=1484678910&resolution=60'
+  'https://metrics-api.librato.com/v1/measurements?compose=derive%28s%28%22librato.disk.disk_ops.read%22%2C+%7B%22host%22%3A%22ip-192-168-15-18.ec2.internal%22%29%2C+%7Bdetect_reset%3A+%22true%22%7D%29&start_time=1484678910&resolution=60'
 ```
 
 ```ruby
@@ -727,7 +727,7 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 query = {
-  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"prod-1\"}), {detect_reset: \"true\"})", 
+  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})", 
   resolution: 60, 
   start_time: 1484678910
 }
@@ -743,56 +743,47 @@ resp = api.get_tagged(
   "", 
   start_time=1484678910, 
   resolution=60,
-  compose="derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"prod-1\"}), {detect_reset: \"true\"})"
+  compose="derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})"
 )
 ```
 
->Response (the result of the `derive()` function over the idle CPU time):
+>Response (the result of the `derive()` function over the read disk ops):
 
 ```json
-{
-  "compose": "derive(s(\"collectd.cpu.*.idle\",\"boatman*19\"))",
-  "measurements": [
-    {
-      "metric": {
-        "attributes": {
-          "aggregate": false,
-          "created_by_ua": "Collectd-Librato.py/0.0.8 (Linux; x86_64) Python-Urllib2/2.7",
-          "display_max": null,
-          "display_min": null,
-          "display_stacked": true,
-          "display_units_long": "Units",
-          "gap_detection": true
-        },
-        "description": null,
-        "display_name": null,
-        "name": "collectd.cpu.0.cpu.idle",
-        "period": 60,
-        "type": "counter"
+[
+   {
+      "tags":{
+         "disk":"disk0",
+         "host":"ip-192-168-15-18.ec2.internal"
       },
-      "period": 60,
-      "query": {
-        "metric": "collectd.cpu.*.idle",
-        "source": "boatman*19"
-      },
-      "series": [
-        {
-          "measure_time": 1395802200,
-          "value": 5831.0
-        },
-        {
-          "measure_time": 1395802620,
-          "value": 5748.0
-        }
+      "measurements":[
+         {
+            "time":1484687040,
+            "value":430.0
+         },
+         {
+            "time":1484687100,
+            "value":738.0
+         },
+         {
+            "time":1484687160,
+            "value":111.0
+         }
       ],
-      "source": {
-        "display_name": null,
-        "name": "boatman-stg_19"
-      }
-    }
-  ],
-  "resolution": 60
-}
+      "metric":{
+         "name":"librato.disk.disk_ops.read",
+         "type":"gauge",
+         "attributes":{
+            "display_units_long":"Operations",
+            "display_min":0,
+            "created_by_ua":"Librato Agent Integration",
+            "display_units_short":"ops"
+         },
+         "period":60
+      },
+      "period":60
+   }
+]
 ```
 
 This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
