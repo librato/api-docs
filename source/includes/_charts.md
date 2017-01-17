@@ -372,7 +372,7 @@ units_short | Unit value string to use as the tooltip label.
 units_long | String value to set as they Y-axis label. All streams that share the same units_long value will be plotted on the same Y-axis.
 min | Theoretical minimum Y-axis value.
 max | Theoretical maximum Y-axis value.
-transform_function | Linear formula to run on each measurement prior to visualization.
+transform_function | A linear formula that is run on each measurement prior to visualization. Useful for translating between different units (e.g. Fahrenheit -> Celsius) or scales (e.g. Microseconds -> Milliseconds). The formula may only contain: numeric characters, whitespace, parentheses, the letter x, and approved mathematical operators (’+’, ’-’, ’’, ’/’). The regular expression used is `/^[\dxp()+-\/ ]+$/`. The formula is run on each measurement by substituting x with a given measurement’s value and p (if present) with the number of seconds in the period the measurement covers. **DO NOT MULTIPLY x BY ITSELF** (e.g. x*x). Nonlinear functions will not apply correctly against the automatically generated aggregate values and produce false data.
 period | An integer value of seconds that defines the period this stream reports at. This aids in the display of the stream and allows the period to be used in stream display transforms.
 
 ## Delete a Chart
