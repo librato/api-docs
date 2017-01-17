@@ -39,7 +39,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 space = api.create_space("CPUs")
 print("Created '%s'" % space.name)
 ```
@@ -107,9 +107,9 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 space_info = api.get_space(129)
-print space_info.chart_ids
+print space_info.name
 ```
 
 >Response Code
@@ -166,7 +166,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 space = api.find_space('CPUs')
 space.name = "MEMORY"
 space.save()
@@ -222,7 +222,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 api.delete_space(129)
 ```
 >Response Code
@@ -259,7 +259,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 spaces = api.list_spaces()
 for s in spaces:
   print s.name
@@ -281,7 +281,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 spaces = api.list_spaces(name="ops")
 for s in spaces:
   print(s.name)
