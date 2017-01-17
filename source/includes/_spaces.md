@@ -10,6 +10,8 @@ Property | Definition
 -------- | ----------
 id | Each space has a unique numeric ID
 name | Unique name for space
+tags | Boolean: Enable space for Tags. Set this to `false`
+if working with sources on the legacy version.
 
 #### Pagination Parameters
 
@@ -28,6 +30,7 @@ name | Search by name of the space.
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=CPUs' \
+  -d 'tags=false' \
   -X POST \
   'https://metrics-api.librato.com/v1/spaces'
 ```
