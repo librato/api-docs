@@ -133,9 +133,9 @@ related_space | The ID of another space to which this chart is related
 Parameter | Definition
 --------- | ----------
 metric | Name of metric
-tags | Name of tag or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
-composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
-group_function | How to process the results when multiple sources will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all sources. If the function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. The value field will also accept specific wildcard entries. For example `us-west-*-app` will match `us-west-21-app` but not `us-west-12-db`. Use % to specify a dynamic tag that will be provided after the space has loaded, or in the URL. The full set of unique tag pairs defines a single data stream.
+composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, tag or group_function.
+group_function | How to process the results when multiple streams will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all tags. If the function is breakout, a separate line will be drawn for the values in the highest tag cardinality. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 color | Sets a color to use when rendering the stream. Must be a seven character string that represents the hex code of the color e.g. #52D74C.
@@ -349,7 +349,7 @@ For JSON:
 Parameter | Definition
 --------- | ----------
 name | Title of the chart when it is displayed.
-streams | An array of hashes describing the metrics and sources to use for data in the chart.
+streams | An array of hashes describing the metrics and tags to use for data in the chart.
 type | Indicates the type of chart. Must be one of line or stacked (default to line)
 min | The minimum display value of the chart's Y-axis
 max | The maximum display value of the chart's Y-axis
@@ -361,9 +361,9 @@ related_space | The ID of another space to which this chart is related
 Property | Definition
 -------- | ----------
 metric | Name of metric
-source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
-composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
-group_function | How to process the results when multiple sources will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all sources. If the function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. The value field will also accept specific wildcard entries. For example `us-west-*-app` will match `us-west-21-app` but not `us-west-12-db`. Use % to specify a dynamic tag that will be provided after the space has loaded, or in the URL. The full set of unique tag pairs defines a single data stream.
+composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, tag or group_function.
+group_function | How to process the results when multiple streams will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all tags. If the function is breakout, a separate line will be drawn for the values in the highest tag cardinality. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 color | Sets a color to use when rendering the stream. Must be a seven character string that represents the hex code of the color e.g. #52D74C.
