@@ -8,7 +8,7 @@
 
 >This example covers submitting and retrieving measurements from a specific metric. View the [Metrics section](#metrics) for more information on metric measurements and metadata.
 
-> Submit a measurement for the gauge metric `my.custom.metric`:
+> Submit a measurement for the metric `my.custom.metric`:
 
 >JSON
 
