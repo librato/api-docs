@@ -54,28 +54,38 @@ api = librato.connect('email', 'token')
 api.submit("my.custom.metric", 65, tags={'region': 'us-east-1', 'az': 'a'})
 ```
 
->Retrieve the last 5 measurements from the metric `cpu` at a resolution of 60 seconds. This will return measurement data along with metric metadata.
+>Retrieve the last 5 minutes worth of measurements from the metric `my.custom.metric` at a resolution of 60 seconds. This will return measurement data along with metric metadata.
 
 ```shell
 curl \
   -i \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/metrics/cpu?count=5&resolution=60'
+  'https://metrics-api.librato.com/v1/measurements/my.custom.metric?duration=300&resolution=60'
 ```
 
 ```ruby
 require "librato/metrics"
 Librato::Metrics.authenticate ENV['LIBRATO_USERNAME'], ENV['LIBRATO_TOKEN']
-metric = Librato::Metrics.get_metric :cpu, count: 5, resolution: 60
-puts metric["measurements"]
+query = {
+  duration: 300,
+  resolution: 60
+}
+metric = Librato::Metrics.get_series "my.custom.metric", query
+puts metric[0]["measurements"]
 ```
 
 ```python
 import librato
+
 api = librato.connect('user', 'token')
-metric = api.get("cpu", count=5, resolution=60)
-print(metric.measurements)
+
+metric = api.get_tagged(
+  "librato.load.load.shortterm", 
+  resolution=60, 
+  duration=300
+)
+print(metric['series'])
 ```
 
 Welcome to the official reference for the Librato
