@@ -81,7 +81,7 @@ import librato
 api = librato.connect('user', 'token')
 
 metric = api.get_tagged(
-  "librato.load.load.shortterm", 
+  "my.custom.metrics", 
   resolution=60, 
   duration=300
 )
