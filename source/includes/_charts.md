@@ -34,17 +34,22 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 space = api.get_space(123)
-chart = api.create_chart(
-    'Server Temperature',
-    space,
-    type='line',
-    streams=[
-        {'metric': 'server_temp', 'source': 'app1'},
-        {'metric': 'environmental_temp', 'source': '*',
-        'group_function': 'average'},
-        {'metric': 'server_temp', 'source': '%'}])
+linechart = api.create_chart(
+  'cities MD line chart',
+  space,
+  streams=[
+    {
+      "metric": "librato.cpu.percent.idle",
+      "tags": [{"name": "environment", "values": ["*"]}]
+    },
+    {
+      "metric": "librato.cpu.percent.user",
+      "tags": [{"name": "environment", "values": ["prod"]}]
+    }
+  ]
+)
 ```
 
 >Response Code
@@ -165,10 +170,10 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('user', 'token')
 chart = api.get_chart(chart_id, space_id)
 for s in chart.streams:
-  print(s.metric, s.source, s.group_function, s.summary_function)
+  print(s.metric, s.tags, s.group_function, s.summary_function)
 ```
 
 >Response Code
@@ -232,7 +237,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('user', 'token')
 space = api.get_space(123)
 charts = space.chart_ids
 chart = api.get_chart(charts[0], space.id)
@@ -298,13 +303,12 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('user', 'token')
 space = api.get_space(123)
 charts = space.chart_ids
 chart = api.get_chart(charts[0], space.id)
-chart.new_stream(composite='divide([
-  sum(s("memory_total","prod.web*")),
-  sum(s("memory_used","prod.web*"))])')
+chart.new_stream(composite="divide([sum(s(\"librato.cpu.percent.idle\",{\"environment\":\"*\"})),"
+"sum(s(\"librato.cpu.percent.user\",{\"environment\":\"*\"}))])")
 chart.save()
 ```
 
@@ -393,7 +397,7 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('user', 'token')
 space = api.get_space(123)
 charts = space.chart_ids
 chart = api.get_chart(charts[0], space_id)
@@ -429,13 +433,13 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('user', 'token')
 space = api.get_space(129)
 charts = space.chart_ids
 for c in charts:
    i = api.get_chart(c, space.id)
    for s in i.streams:
-       print(s.id, s.metric, s.source, s.group_function, s.summary_function)
+       print(s.id, s.tags, s.source, s.group_function, s.summary_function)
 ```
 
 >Response Code
