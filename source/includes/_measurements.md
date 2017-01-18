@@ -58,7 +58,10 @@ queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+api.submit("my.custom.metric", 65, tags={'region': 'us-east-1', 'az': 'a'})
 ```
 
 #### HTTP Request
@@ -126,7 +129,13 @@ queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+q = api.new_queue(tags={'region': 'us-west', 'name': 'web-prod-3'})
+q.add('cpu', 4.5, tags={})
+q.add('memory', 10.5, tags={})
+q.submit()
 ```
 
 >**Embedded Measurement Tags**
@@ -147,7 +156,7 @@ curl \
         "name": "cpu",
         "value": 4.5,
         "tags": {
-          "name": null
+          "name": "web-prod-1"
         }
       },
       {
@@ -177,7 +186,7 @@ queue = Librato::Metrics::Queue.new(
 queue.add cpu: { 
   value: 4.5, 
   tags: { 
-    name: null 
+    name: "web-prod-1" 
   } 
 }
 queue.add memory: { 
@@ -192,7 +201,13 @@ queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+q = api.new_queue(tags={'region': 'us-west', 'name': 'web-prod-3'})
+q.add('cpu', 4.5, tags={'name': 'web-prod-1'})
+q.add('memory', 34.5, tags={'az': 'e', 'db': 'db-prod-1'})
+q.submit()
 ```
 
 >**Full Measurement Sample**
@@ -263,7 +278,32 @@ queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+#must set the value attribute to None
+api.submit(
+  "my.custom.metric",
+  None,
+  period=60,
+  sum=35,
+  count=3,
+  min=4.5,
+  max=6.7,
+  last=2.5,
+  stddev=1.34,
+  attributes= {
+    'aggregate': False
+  },
+  time= 1484613483,
+  tags={
+    'region': 'us-east-1', 
+    'role': 'kafka', 
+    'environment': 'prod', 
+    'instance': '3', 
+    'az': 'b'
+  }
+)
 ```
 
 #### Individual Sample Parameters
@@ -364,11 +404,21 @@ query = {
 }
 
 measurements = Librato::Metrics.get_series "AWS.EC2.DiskWriteBytes", query
-
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "AWS.EC2.DiskWriteBytes", 
+  duration=86400, 
+  resolution=60, 
+  tags={
+    'region': 'us*',
+    'name': 'prod*'
+  }
+)
 ```
 
 >Response:
@@ -442,7 +492,20 @@ measurements = Librato::Metrics.get_series "AWS.EC2.DiskWriteBytes", query
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "AWS.EC2.DiskWriteBytes", 
+  duration=86400, 
+  resolution=60,
+  group_by="region",
+  group_by_function="sum",
+  tags={
+    'region': 'us*',
+    'name': 'prod*'
+  }
+)
 ```
 
 >Response:
@@ -513,7 +576,15 @@ measurements = Librato::Metrics.get_series :memory, query
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "AWS.EC2.DiskWriteBytes", 
+  duration=86400, 
+  resolution=60,
+  tag_search="region=us-east* and db=*prod*"
+)
 ```
 
 >Response:
@@ -639,78 +710,80 @@ Future iterations may add different components to the links list, so the consume
 
 ### Composite Metric Queries
 
->Execute a composite query to derive the idle collectd CPU time for a given host:
+>Execute a composite query to derive the the read disk OPs time for a given host:
 
 ```shell
+#cURL requres url encoding of GET query params
+
 curl \
   -i \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/metrics?compose=derive(s("collectd.cpu.*.idle","boatman*45"))&start_time=1432931007&resolution=60'
+  'https://metrics-api.librato.com/v1/measurements?compose=derive%28s%28%22librato.disk.disk_ops.read%22%2C+%7B%22host%22%3A%22ip-192-168-15-18.ec2.internal%22%29%2C+%7Bdetect_reset%3A+%22true%22%7D%29&start_time=1484678910&resolution=60'
 ```
 
 ```ruby
-require "librato/metrics"
-Librato::Metrics.authenticate <user>, <token>
-Librato::Metrics.get_composite 'derive(s("collectd.cpu.*.idle","boatman*45"))', start_time: Time.now.to_i - 60*60, resolution: 60
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})", 
+  resolution: 60, 
+  start_time: 1484678910
+}
+
+measurements = Librato::Metrics.get_series "", query
 ```
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
-compose = 'derive(s("collectd.cpu.*.idle", "boatman*45", {period: "60"}))'
-import time
-start_time = 1432931007
-resp = api.get_composite(compose, start_time=start_time)
-resp['measurements'][0]['series']
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "", 
+  start_time=1484678910, 
+  resolution=60,
+  compose="derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})"
+)
 ```
 
->Response (the result of the `derive()` function over the idle CPU time):
+>Response (the result of the `derive()` function over the read disk ops):
 
 ```json
-{
-  "compose": "derive(s(\"collectd.cpu.*.idle\",\"boatman*19\"))",
-  "measurements": [
-    {
-      "metric": {
-        "attributes": {
-          "aggregate": false,
-          "created_by_ua": "Collectd-Librato.py/0.0.8 (Linux; x86_64) Python-Urllib2/2.7",
-          "display_max": null,
-          "display_min": null,
-          "display_stacked": true,
-          "display_units_long": "Units",
-          "gap_detection": true
-        },
-        "description": null,
-        "display_name": null,
-        "name": "collectd.cpu.0.cpu.idle",
-        "period": 60,
-        "type": "counter"
+[
+   {
+      "tags":{
+         "disk":"disk0",
+         "host":"ip-192-168-15-18.ec2.internal"
       },
-      "period": 60,
-      "query": {
-        "metric": "collectd.cpu.*.idle",
-        "source": "boatman*19"
-      },
-      "series": [
-        {
-          "measure_time": 1395802200,
-          "value": 5831.0
-        },
-        {
-          "measure_time": 1395802620,
-          "value": 5748.0
-        }
+      "measurements":[
+         {
+            "time":1484687040,
+            "value":430.0
+         },
+         {
+            "time":1484687100,
+            "value":738.0
+         },
+         {
+            "time":1484687160,
+            "value":111.0
+         }
       ],
-      "source": {
-        "display_name": null,
-        "name": "boatman-stg_19"
-      }
-    }
-  ],
-  "resolution": 60
-}
+      "metric":{
+         "name":"librato.disk.disk_ops.read",
+         "type":"gauge",
+         "attributes":{
+            "display_units_long":"Operations",
+            "display_min":0,
+            "created_by_ua":"Librato Agent Integration",
+            "display_units_short":"ops"
+         },
+         "period":60
+      },
+      "period":60
+   }
+]
 ```
 
 This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
