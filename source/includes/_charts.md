@@ -34,17 +34,22 @@ Not available
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('email', 'token')
 space = api.get_space(123)
-chart = api.create_chart(
-    'Server Temperature',
-    space,
-    type='line',
-    streams=[
-        {'metric': 'server_temp', 'source': 'app1'},
-        {'metric': 'environmental_temp', 'source': '*',
-        'group_function': 'average'},
-        {'metric': 'server_temp', 'source': '%'}])
+linechart = api.create_chart(
+  'cities MD line chart',
+  space,
+  streams=[
+    {
+      "metric": "librato.cpu.percent.idle",
+      "tags": [{"name": "environment", "values": ["*"]}]
+    },
+    {
+      "metric": "librato.cpu.percent.user",
+      "tags": [{"name": "environment", "values": ["prod"]}]
+    }
+  ]
+)
 ```
 
 >Response Code
