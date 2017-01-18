@@ -8,49 +8,50 @@
 
 >This example covers submitting and retrieving measurements from a specific metric. View the [Metrics section](#metrics) for more information on metric measurements and metadata.
 
-> Submit a measurement for the gauge metric `cpu`:
+> Submit a measurement for the gauge metric `my.custom.metric`:
 
 >JSON
 
 ```shell
-curl -H "Content-Type: application/json" \
-     -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-     -d $'
-     {
-       "gauges": [
-         {
-           "name": "cpu",
-           "value": 75,
-           "source": "my.machine"
-         }
-       ]
-     }' \
-    -X POST \
-    https://metrics-api.librato.com/v1/metrics
-```
-
->Form Encoded
-
-```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'gauges[0][name]=cpu' \
-  -d 'gauges[0][value]=75' \
-  -d 'gauges[0][source]=my.machine' \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tags": {
+      "region": "us-east-1"
+      "az": "a"
+    },
+    "measurements": [
+      {
+        "name": "my.custom.metric",
+        "value": 65
+      }
+    ]
+  }' \
   -X POST \
-  https://metrics-api.librato.com/v1/metrics
+  https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-require "librato/metrics"
-Librato::Metrics.authenticate ENV['LIBRATO_USERNAME'], ENV['LIBRATO_TOKEN']
-Librato::Metrics.submit cpu: {source: 'my.machine', value: 75}
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new
+queue.add "my.custom.metric" { 
+  value: 65, 
+  tags: { 
+    region: 'us-east-1', 
+    az: 'a' 
+  } 
+}
+queue.submit
 ```
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
-api.submit("cpu", 75, source='my.machine')
+api = librato.connect('email', 'token')
+
+api.submit("my.custom.metric", 65, tags={'region': 'us-east-1', 'az': 'a'})
 ```
 
 >Retrieve the last 5 measurements from the metric `cpu` at a resolution of 60 seconds. This will return measurement data along with metric metadata.
@@ -72,7 +73,7 @@ puts metric["measurements"]
 
 ```python
 import librato
-api = librato.connect(<user>, <token>)
+api = librato.connect('user', 'token')
 metric = api.get("cpu", count=5, resolution=60)
 print(metric.measurements)
 ```
