@@ -47,12 +47,12 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new
-queue.add "my.custom.metric" { 
-  value: 65, 
-  tags: { 
-    region: 'us-east-1', 
-    az: 'a' 
-  } 
+queue.add "my.custom.metric" {
+  value: 65,
+  tags: {
+    region: 'us-east-1',
+    az: 'a'
+  }
 }
 queue.submit
 ```
@@ -117,8 +117,8 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new(
-  tags: { 
-    region: 'us-west', 
+  tags: {
+    region: 'us-west',
     name: 'web-prod-3'
   }
 )
@@ -178,23 +178,23 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new(
-  tags: { 
-    region: 'us-west', 
+  tags: {
+    region: 'us-west',
     name: 'web-prod-3'
   }
 )
-queue.add cpu: { 
-  value: 4.5, 
-  tags: { 
-    name: "web-prod-1" 
-  } 
+queue.add cpu: {
+  value: 4.5,
+  tags: {
+    name: "web-prod-1"
+  }
 }
-queue.add memory: { 
-  value: 34.5, 
-  tags: { 
-    az: "e", 
+queue.add memory: {
+  value: 34.5,
+  tags: {
+    az: "e",
     db: "db-prod-1"
-  } 
+  }
 }
 
 queue.submit
@@ -253,7 +253,7 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new
-queue.add cpu: { 
+queue.add cpu: {
   time: 1421530163,
   period: 60,
   sum: 35,
@@ -265,13 +265,13 @@ queue.add cpu: {
   attributes: {
     aggregate: false
   },
-  tags: { 
-    region: "us-east-1", 
+  tags: {
+    region: "us-east-1",
     az: "b",
     role: "kafka",
     environment: "prod",
-    instance: "3" 
-  } 
+    instance: "3"
+  }
 }
 
 queue.submit
@@ -297,10 +297,10 @@ api.submit(
   },
   time= 1484613483,
   tags={
-    'region': 'us-east-1', 
-    'role': 'kafka', 
-    'environment': 'prod', 
-    'instance': '3', 
+    'region': 'us-east-1',
+    'role': 'kafka',
+    'environment': 'prod',
+    'instance': '3',
     'az': 'b'
   }
 )
@@ -363,10 +363,6 @@ Tag values must match the regular expression `/\A[-.:_\w]+\z/{1, 256}`. Tag valu
 
 Data streams have a default limit of **10** tag names per measurement.
 
-Accounts have a default limit of **100** unique tag names.
-
-Metrics have a maximum permitted cardinality for tag values. This maximum will be enforced as both a create rate limit and total cardinality limit.
-
 #### Float Restrictions
 
 Internally all floating point values are stored in double-precision format. However, Librato places the following restrictions on very large or very small floating point exponents:
@@ -398,7 +394,7 @@ query = {
   resolution: 60,
   duration: 86400,
   tags: {
-    region: "us*", 
+    region: "us*",
     name: "prod*"
   }
 }
@@ -411,9 +407,9 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "AWS.EC2.DiskWriteBytes", 
-  duration=86400, 
-  resolution=60, 
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
+  resolution=60,
   tags={
     'region': 'us*',
     'name': 'prod*'
@@ -483,7 +479,7 @@ query = {
   group_by: "region",
   group_by_function: "sum",
     tags: {
-    region: "us*", 
+    region: "us*",
     name: "prod*"
   }
 }
@@ -496,8 +492,8 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "AWS.EC2.DiskWriteBytes", 
-  duration=86400, 
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
   resolution=60,
   group_by="region",
   group_by_function="sum",
@@ -580,8 +576,8 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "AWS.EC2.DiskWriteBytes", 
-  duration=86400, 
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
   resolution=60,
   tag_search="region=us-east* and db=*prod*"
 )
@@ -727,8 +723,8 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 query = {
-  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})", 
-  resolution: 60, 
+  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})",
+  resolution: 60,
   start_time: 1484678910
 }
 
@@ -740,8 +736,8 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "", 
-  start_time=1484678910, 
+  "",
+  start_time=1484678910,
   resolution=60,
   compose="derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})"
 )
