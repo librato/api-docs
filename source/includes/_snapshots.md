@@ -95,6 +95,7 @@ For JSON:
 
 Parameter | Definition
 --------- | ----------
+subject | The subject [chart](#retrieve-a-chart) of the snapshot, e.g., `{"chart":{"id": 1, "source": "*", "type": "stacked"}}`.
 duration<br>`optional` | Time interval over which to take the snapshot, in seconds. Defaults to 3600 (1 hour).
 end_time<br>`optional` | Time indicating the end of the interval. Defaults to present.
 
