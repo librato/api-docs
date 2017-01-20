@@ -1,9 +1,5 @@
 # Snapshots
 
-<aside class="notice">
-Tag support for Snapshots is not yet available. Taking a snapshot of a chart will still retrieve the streams with a specified tag set, and if using dynamic tags will display an aggregated stream for each metric.
-</aside>
-
 Snapshots provide the ability to capture a point-in-time image of a given chart as a PNG file to share with collaborators via email and/or chat applications such as Slack, Campfire, HipChat, and Flowdock.
 
 #### Snapshot Properties
