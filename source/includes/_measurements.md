@@ -14,7 +14,7 @@ Property | Definition
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements.
 tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.
 value | The numeric value of a single measured sample.
-time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
+time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple hosts to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
 
 
@@ -47,12 +47,12 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new
-queue.add "my.custom.metric" { 
-  value: 65, 
-  tags: { 
-    region: 'us-east-1', 
-    az: 'a' 
-  } 
+queue.add "my.custom.metric" {
+  value: 65,
+  tags: {
+    region: 'us-east-1',
+    az: 'a'
+  }
 }
 queue.submit
 ```
@@ -117,8 +117,8 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new(
-  tags: { 
-    region: 'us-west', 
+  tags: {
+    region: 'us-west',
     name: 'web-prod-3'
   }
 )
@@ -178,23 +178,23 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new(
-  tags: { 
-    region: 'us-west', 
+  tags: {
+    region: 'us-west',
     name: 'web-prod-3'
   }
 )
-queue.add cpu: { 
-  value: 4.5, 
-  tags: { 
-    name: "web-prod-1" 
-  } 
+queue.add cpu: {
+  value: 4.5,
+  tags: {
+    name: "web-prod-1"
+  }
 }
-queue.add memory: { 
-  value: 34.5, 
-  tags: { 
-    az: "e", 
+queue.add memory: {
+  value: 34.5,
+  tags: {
+    az: "e",
     db: "db-prod-1"
-  } 
+  }
 }
 
 queue.submit
@@ -253,7 +253,7 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 queue = Librato::Metrics::Queue.new
-queue.add cpu: { 
+queue.add cpu: {
   time: 1421530163,
   period: 60,
   sum: 35,
@@ -265,13 +265,13 @@ queue.add cpu: {
   attributes: {
     aggregate: false
   },
-  tags: { 
-    region: "us-east-1", 
+  tags: {
+    region: "us-east-1",
     az: "b",
     role: "kafka",
     environment: "prod",
-    instance: "3" 
-  } 
+    instance: "3"
+  }
 }
 
 queue.submit
@@ -297,10 +297,10 @@ api.submit(
   },
   time= 1484613483,
   tags={
-    'region': 'us-east-1', 
-    'role': 'kafka', 
-    'environment': 'prod', 
-    'instance': '3', 
+    'region': 'us-east-1',
+    'role': 'kafka',
+    'environment': 'prod',
+    'instance': '3',
     'az': 'b'
   }
 )
@@ -322,7 +322,7 @@ In addition, the following parameters can be specified to further define the mea
 
 Parameter | Definition
 --------- | ----------
-time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
+time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple hosts to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
 
 #### Summary fields
@@ -398,7 +398,7 @@ query = {
   resolution: 60,
   duration: 86400,
   tags: {
-    region: "us*", 
+    region: "us*",
     name: "prod*"
   }
 }
@@ -411,9 +411,9 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "AWS.EC2.DiskWriteBytes", 
-  duration=86400, 
-  resolution=60, 
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
+  resolution=60,
   tags={
     'region': 'us*',
     'name': 'prod*'
@@ -483,7 +483,7 @@ query = {
   group_by: "region",
   group_by_function: "sum",
     tags: {
-    region: "us*", 
+    region: "us*",
     name: "prod*"
   }
 }
@@ -496,8 +496,8 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "AWS.EC2.DiskWriteBytes", 
-  duration=86400, 
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
   resolution=60,
   group_by="region",
   group_by_function="sum",
@@ -580,8 +580,8 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "AWS.EC2.DiskWriteBytes", 
-  duration=86400, 
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
   resolution=60,
   tag_search="region=us-east* and db=*prod*"
 )
@@ -620,7 +620,7 @@ This route returns streams of measurements for a given metric. The streams retur
 
 #### HTTP Response
 
-In the response payload the top-level `measurements` key is replaced with the `series` keyword, similar to composite responses. The series are no longer keyed by source name, instead series is an array of measurement objects. Each measurement object contains either the grouping tag name/value or a set of tag/value pairs (depends if they use the `group_by` option).
+In the response payload the top-level `measurements` key is replaced with the `series` keyword, similar to composite responses. The series are keyed by an array of measurement objects. Each measurement object contains either the grouping tag name/value or a set of tag/value pairs (depends if they use the `group_by` option).
 
 Measurements are flattened to a single pair. The time is the Unix Time of the sample, which will be floored to the requested resolution. The value is based on the combination of the aggregation performed using the `summary_function` and `group_by` function parameters.
 
@@ -727,8 +727,8 @@ require 'librato/metrics'
 Librato::Metrics.authenticate 'email', 'api_key'
 
 query = {
-  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})", 
-  resolution: 60, 
+  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})",
+  resolution: 60,
   start_time: 1484678910
 }
 
@@ -740,8 +740,8 @@ import librato
 api = librato.connect('email', 'token')
 
 resp = api.get_tagged(
-  "", 
-  start_time=1484678910, 
+  "",
+  start_time=1484678910,
   resolution=60,
   compose="derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})"
 )
