@@ -1,5 +1,9 @@
 # Snapshots
 
+<aside class="notice">
+Tag support for Snapshots is not yet available. Taking a snapshot of a chart will still retrieve the streams with a specified tag set, and if using dynamic tags will display an aggregated stream for each metric.
+</aside>
+
 Snapshots provide the ability to capture a point-in-time image of a given chart as a PNG file to share with collaborators via email and/or chat applications such as Slack, Campfire, HipChat, and Flowdock.
 
 #### Snapshot Properties
@@ -26,7 +30,6 @@ curl \
     "subject": {
     "chart": {
       "id": 1,
-      "tags": [{"name": "environment", "values": ["*"]}],
       "type": "stacked"
     }
   }
@@ -74,7 +77,7 @@ Location: /v1/snapshots/:id
 }
 ```
 
-Create a new snapshot by providing the subject parameters (associated with the chart). The parameters of the `chart` array include `id`, `source`, and chart `type`.
+Create a new snapshot by providing the subject parameters (associated with the chart). The parameters of the `chart` array include `id` and chart `type`.
 
 #### HTTP Request
 
@@ -96,7 +99,6 @@ For JSON:
 
 Parameter | Definition
 --------- | ----------
-subject | The subject [chart](#retrieve-a-chart) of the snapshot, e.g., `{"chart":{"id": 1, "source": "*", "type": "stacked"}}`.
 duration<br>`optional` | Time interval over which to take the snapshot, in seconds. Defaults to 3600 (1 hour).
 end_time<br>`optional` | Time indicating the end of the interval. Defaults to present.
 
@@ -105,7 +107,6 @@ end_time<br>`optional` | Time indicating the end of the interval. Defaults to pr
 Parameter | Definition
 --------- | ----------
 id | Each chart has a unique numeric ID.
-source | Indicates the [source](#sources) of data for the chart. Wildcard `*` to include all sources.
 type | Indicates the type of chart. One of `line`, `stacked` or `bignumber`.
 
 ## Retrieve a Snapshot
