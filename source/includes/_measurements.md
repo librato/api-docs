@@ -363,10 +363,6 @@ Tag values must match the regular expression `/\A[-.:_\w]+\z/{1, 256}`. Tag valu
 
 Data streams have a default limit of **10** tag names per measurement.
 
-Accounts have a default limit of **100** unique tag names.
-
-Metrics have a maximum permitted cardinality for tag values. This maximum will be enforced as both a create rate limit and total cardinality limit.
-
 #### Float Restrictions
 
 Internally all floating point values are stored in double-precision format. However, Librato places the following restrictions on very large or very small floating point exponents:
