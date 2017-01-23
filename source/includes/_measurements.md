@@ -361,15 +361,13 @@ Tag names must match the regular expression `/\A[-.:_\w]+\z/{1,64}`. Tag names a
 
 Tag values must match the regular expression `/\A[-.:_\w]+\z/{1, 256}`. Tag values are always converted to lower case.
 
-Data streams have a default limit of **10** tag names per measurement.
-
 #### Float Restrictions
 
 Internally all floating point values are stored in double-precision format. However, Librato places the following restrictions on very large or very small floating point exponents:
 
-If the base-10 exponent of any floating point value is larger than `1 x 10^126`, the request will be aborted with a 400 status error code.
+* If the base-10 exponent of any floating point value is larger than `1 x 10^126`, the request will be aborted with a 400 status error code.
 
-If the base-10 exponent of any floating point value is smaller than `1 x 10^-130`, the value will be truncated to zero (`0.0`).
+* If the base-10 exponent of any floating point value is smaller than `1 x 10^-130`, the value will be truncated to zero (`0.0`).
 
 ## Retrieve a Measurement
 
