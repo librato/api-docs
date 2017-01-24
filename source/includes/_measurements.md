@@ -28,7 +28,7 @@ curl \
   -H "Content-Type: application/json" \
   -d '{
     "tags": {
-      "region": "us-east-1"
+      "region": "us-east-1",
       "az": "a"
     },
     "measurements": [
@@ -360,6 +360,10 @@ Metric names must be 255 or fewer characters, and may only consist of `A-Za-z0-9
 Tag names must match the regular expression `/\A[-.:_\w]+\z/{1,64}`. Tag names are always converted to lower case.
 
 Tag values must match the regular expression `/\A[-.:_\w]+\z/{1, 256}`. Tag values are always converted to lower case.
+
+Data streams have a default limit of **50** tag names per measurement.
+
+Metrics have a maximum permitted cardinality for tag values. This maximum will be enforced as both a create rate limit and total cardinality limit.
 
 #### Float Restrictions
 

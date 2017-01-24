@@ -22,7 +22,7 @@ Instrument streams have the following properties. Many of the stream properties 
 Property | Definition
 -------- | ----------
 metric | Name of metric
-source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
+source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example`us-west-*-app` will match `us-west-21-app` but not `us-west-12-db`. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
 group_function | How to process the results when multiple sources will be returned. Value must be one of average, sum, breakout. If average or sum, a single line will be drawn representing the average or sum (respectively) of all sources. If the group_function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
@@ -310,7 +310,7 @@ attributes | The attributes hash configures specific components of an instrument
 Property | Definition
 -------- | ----------
 metric | Name of metric
-source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
+source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example `us-west-*-app` will match `us-west-21-app` but not `us-west-12-db`. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
 group_function | How to process the results when multiple sources will be returned. Value must be one of average, sum, breakout. If average or sum, a single line will be drawn representing the average or sum (respectively) of all sources. If the group_function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
@@ -447,7 +447,7 @@ attributes | The attributes hash configures specific components of an instrument
 Property | Definition
 -------- | ----------
 metric | Name of metric
-source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example us-west-\-app* will match us-west-21-app but not us-west-12-db. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
+source | Name of source or * to include all sources. This field will also accept specific wildcard entries. For example `us-west-*-app` will match `us-west-21-app` but not `us-west-12-db`. Use % to specify a dynamic source that will be provided after the instrument or dashboard has loaded, or in the URL.
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, source or group_function.
 group_function | How to process the results when multiple sources will be returned. Value must be one of average, sum, breakout. If average or sum, a single line will be drawn representing the average or sum (respectively) of all sources. If the group_function is breakout, a separate line will be drawn for each source. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
