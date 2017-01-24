@@ -1,7 +1,5 @@
 # Measurements
 
-<aside class="notice">Note: Measurements are only available in the Tags Beta. Please <a href="mailto: support@librato.com" target="_top">contact Librato support</a> to join the beta.</aside>
-
 Measurements represent the individual time-series samples sent to the Librato service. They are associated with a metric, one or more tag pairs, and a point in time.
 
 Each measurement has a value that represents an observation at one point in time. The value of a measurement will typically vary between some minimum or maximum value (ex. CPU usage moving from 0% to 100%).
@@ -16,7 +14,7 @@ Property | Definition
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements.
 tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.
 value | The numeric value of a single measured sample.
-time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
+time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple hosts to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
 
 
@@ -45,11 +43,25 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new
+queue.add "my.custom.metric" {
+  value: 65,
+  tags: {
+    region: 'us-east-1',
+    az: 'a'
+  }
+}
+queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+api.submit("my.custom.metric", 65, tags={'region': 'us-east-1', 'az': 'a'})
 ```
 
 #### HTTP Request
@@ -72,7 +84,7 @@ The only permissible content type is JSON at the moment. All requests must inclu
 
 >**Top-Level Tags**
 
->The following payload demonstrates submitting tags at the top-level of the payload. This may be common for a collection agent that tags all metrics the same based on the identification of the collection host parameters.
+>The following payload demonstrates submitting tags at the top-level of the payload. This may be common for a collection agent that tags all metrics the same based on the identification of the collection host parameters.  If you add any tags to the measurement, those tags will replace the top-level tags.
 
 >This will result in two data streams, `cpu` and `memory`. Both metrics will contain the tags `region=us-west` and `name=web-prod-3`.
 
@@ -101,11 +113,29 @@ https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new(
+  tags: {
+    region: 'us-west',
+    name: 'web-prod-3'
+  }
+)
+queue.add cpu: 4.5
+queue.add memory: 10.5
+
+queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+q = api.new_queue(tags={'region': 'us-west', 'name': 'web-prod-3'})
+q.add('cpu', 4.5)
+q.add('memory', 10.5)
+q.submit()
 ```
 
 >**Embedded Measurement Tags**
@@ -126,7 +156,7 @@ curl \
         "name": "cpu",
         "value": 4.5,
         "tags": {
-          "name": null
+          "name": "web-prod-1"
         }
       },
       {
@@ -144,11 +174,40 @@ https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new(
+  tags: {
+    region: 'us-west',
+    name: 'web-prod-3'
+  }
+)
+queue.add cpu: {
+  value: 4.5,
+  tags: {
+    name: "web-prod-1"
+  }
+}
+queue.add memory: {
+  value: 34.5,
+  tags: {
+    az: "e",
+    db: "db-prod-1"
+  }
+}
+
+queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+q = api.new_queue(tags={'region': 'us-west', 'name': 'web-prod-3'})
+q.add('cpu', 4.5, tags={'name': 'web-prod-1'})
+q.add('memory', 34.5, tags={'az': 'e', 'db': 'db-prod-1'})
+q.submit()
 ```
 
 >**Full Measurement Sample**
@@ -189,11 +248,62 @@ https://metrics-api.librato.com/v1/measurements
 ```
 
 ```ruby
-Not yet available
+
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+queue = Librato::Metrics::Queue.new
+queue.add cpu: {
+  time: 1421530163,
+  period: 60,
+  sum: 35,
+  count: 3,
+  min: 4.5,
+  max: 6.7,
+  last: 2.5,
+  stddev: 1.34,
+  attributes: {
+    aggregate: false
+  },
+  tags: {
+    region: "us-east-1",
+    az: "b",
+    role: "kafka",
+    environment: "prod",
+    instance: "3"
+  }
+}
+
+queue.submit
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+#must set the value attribute to None
+api.submit(
+  "my.custom.metric",
+  None,
+  period=60,
+  sum=35,
+  count=3,
+  min=4.5,
+  max=6.7,
+  last=2.5,
+  stddev=1.34,
+  attributes= {
+    'aggregate': False
+  },
+  time= 1484613483,
+  tags={
+    'region': 'us-east-1',
+    'role': 'kafka',
+    'environment': 'prod',
+    'instance': '3',
+    'az': 'b'
+  }
+)
 ```
 
 #### Individual Sample Parameters
@@ -204,6 +314,7 @@ Parameter | Definition
 --------- | ----------
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-_'. The metric namespace is case insensitive.
 value | The numeric value of a single measured sample.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.<br><br>Tags are merged between the top-level tags and any per-measurement tags, see the section Tag Merging for details.
 
 #### Global or per-sample parameters
 
@@ -211,8 +322,7 @@ In addition, the following parameters can be specified to further define the mea
 
 Parameter | Definition
 --------- | ----------
-time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple sources to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
-tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.<br><br>Tags are merged between the top-level tags and any per-measurement tags, see the section Tag Merging for details.<br><br>If no tag pairs are specified in the payload, a default tag pair of source=unassigned will be applied.
+time | Unix Time (epoch seconds). This defines the time that a measurement is recorded at. It is useful when sending measurements from multiple hosts to align them on a given time boundary, eg. time=floor(Time.now, 60) to align samples on a 60 second tick.
 period | Define the period for the metric. This will be persisted for new metrics and used as the metric period for metrics marked for Service-Side Aggregation.
 
 #### Summary fields
@@ -253,17 +363,15 @@ Tag values must match the regular expression `/\A[-.:_\w]+\z/{1, 256}`. Tag valu
 
 Data streams have a default limit of **50** tag names per measurement.
 
-Accounts have a default limit of **100** unique tag names.
-
 Metrics have a maximum permitted cardinality for tag values. This maximum will be enforced as both a create rate limit and total cardinality limit.
 
 #### Float Restrictions
 
 Internally all floating point values are stored in double-precision format. However, Librato places the following restrictions on very large or very small floating point exponents:
 
-If the base-10 exponent of any floating point value is larger than `1 x 10^126`, the request will be aborted with a 400 status error code.
+* If the base-10 exponent of any floating point value is larger than `1 x 10^126`, the request will be aborted with a 400 status error code.
 
-If the base-10 exponent of any floating point value is smaller than `1 x 10^-130`, the value will be truncated to zero (`0.0`).
+* If the base-10 exponent of any floating point value is smaller than `1 x 10^-130`, the value will be truncated to zero (`0.0`).
 
 ## Retrieve a Measurement
 
@@ -281,11 +389,34 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  resolution: 60,
+  duration: 86400,
+  tags: {
+    region: "us*",
+    name: "prod*"
+  }
+}
+
+measurements = Librato::Metrics.get_series "AWS.EC2.DiskWriteBytes", query
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
+  resolution=60,
+  tags={
+    'region': 'us*',
+    'name': 'prod*'
+  }
+)
 ```
 
 >Response:
@@ -341,11 +472,38 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  resolution: 60,
+  duration: 86400,
+  group_by: "region",
+  group_by_function: "sum",
+    tags: {
+    region: "us*",
+    name: "prod*"
+  }
+}
+
+measurements = Librato::Metrics.get_series "AWS.EC2.DiskWriteBytes", query
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
+  resolution=60,
+  group_by="region",
+  group_by_function="sum",
+  tags={
+    'region': 'us*',
+    'name': 'prod*'
+  }
+)
 ```
 
 >Response:
@@ -403,11 +561,28 @@ curl \
 ```
 
 ```ruby
-Not yet available
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  resolution: 60,
+  duration: 86400,
+  tags_search: "region=us-east* and db=*prod*"
+}
+
+measurements = Librato::Metrics.get_series :memory, query
 ```
 
 ```python
-Not yet available
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "AWS.EC2.DiskWriteBytes",
+  duration=86400,
+  resolution=60,
+  tag_search="region=us-east* and db=*prod*"
+)
 ```
 
 >Response:
@@ -443,7 +618,7 @@ This route returns streams of measurements for a given metric. The streams retur
 
 #### HTTP Response
 
-In the response payload the top-level `measurements` key is replaced with the `series` keyword, similar to composite responses. The series are no longer keyed by source name, instead series is an array of measurement objects. Each measurement object contains either the grouping tag name/value or a set of tag/value pairs (depends if they use the `group_by` option).
+In the response payload the top-level `measurements` key is replaced with the `series` keyword, similar to composite responses. The series are keyed by an array of measurement objects. Each measurement object contains either the grouping tag name/value or a set of tag/value pairs (depends if they use the `group_by` option).
 
 Measurements are flattened to a single pair. The time is the Unix Time of the sample, which will be floored to the requested resolution. The value is based on the combination of the aggregation performed using the `summary_function` and `group_by` function parameters.
 
@@ -531,3 +706,88 @@ The response payload will have a top-level member called **links** that will con
 
 Future iterations may add different components to the links list, so the consumer should check for the **next** entry specifically.
 
+### Composite Metric Queries
+
+>Execute a composite query to derive the the read disk OPs time for a given host:
+
+```shell
+#cURL requres url encoding of GET query params
+
+curl \
+  -i \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X GET \
+  'https://metrics-api.librato.com/v1/measurements?compose=derive%28s%28%22librato.disk.disk_ops.read%22%2C+%7B%22host%22%3A%22ip-192-168-15-18.ec2.internal%22%29%2C+%7Bdetect_reset%3A+%22true%22%7D%29&start_time=1484678910&resolution=60'
+```
+
+```ruby
+require 'librato/metrics'
+Librato::Metrics.authenticate 'email', 'api_key'
+
+query = {
+  compose: "derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})",
+  resolution: 60,
+  start_time: 1484678910
+}
+
+measurements = Librato::Metrics.get_series "", query
+```
+
+```python
+import librato
+api = librato.connect('email', 'token')
+
+resp = api.get_tagged(
+  "",
+  start_time=1484678910,
+  resolution=60,
+  compose="derive(s(\"librato.disk.disk_ops.read\", {\"host\": \"ip-192-168-15-18.ec2.internal\"}), {detect_reset: \"true\"})"
+)
+```
+
+>Response (the result of the `derive()` function over the read disk ops):
+
+```json
+[
+   {
+      "tags":{
+         "disk":"disk0",
+         "host":"ip-192-168-15-18.ec2.internal"
+      },
+      "measurements":[
+         {
+            "time":1484687040,
+            "value":430.0
+         },
+         {
+            "time":1484687100,
+            "value":738.0
+         },
+         {
+            "time":1484687160,
+            "value":111.0
+         }
+      ],
+      "metric":{
+         "name":"librato.disk.disk_ops.read",
+         "type":"gauge",
+         "attributes":{
+            "display_units_long":"Operations",
+            "display_min":0,
+            "created_by_ua":"Librato Agent Integration",
+            "display_units_short":"ops"
+         },
+         "period":60
+      },
+      "period":60
+   }
+]
+```
+
+This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
+
+Parameter | Definition
+--------- | ----------
+compose | A composite metric query string to execute. If this parameter is specified it must be accompanied by [time interval](#time-intervals) parameters.
+
+**NOTE**: `start_time` and `resolution` are required. The `end_time` parameter is optional. The `count` parameter is currently ignored. When specified, the response is a composite metric query response.

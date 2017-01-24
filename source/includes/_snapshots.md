@@ -17,12 +17,20 @@ subject | The subject [chart](#retrieve-a-chart) of the snapshot.
 
 ## Create a Snapshot
 
->Create a snapshot of a stacked chart associated with the `id` of 1:
+>Create a snapshot of a stacked chart with the `id` of 1, and streams matching the tag set `environment:prod*`:
 
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'subject[chart][id]=1&subject[chart][source]=*&subject[chart][type]=stacked' \
+  -d '{
+    "subject": {
+    "chart": {
+      "id": 1,
+      "tags": [{"name": "environment", "values": ["prod*"]}],
+      "type": "stacked"
+    }
+  }
+  ' \
   -X POST \
   'https://metrics-api.librato.com/v1/snapshots'
 ```
@@ -66,7 +74,7 @@ Location: /v1/snapshots/:id
 }
 ```
 
-Create a new snapshot by providing the subject parameters (associated with the chart). The parameters of the `chart` array include `id`, `source`, and chart `type`.
+Create a new snapshot by providing the subject parameters (associated with the chart). The parameters of the `chart` array include `id` and chart `type`.
 
 #### HTTP Request
 
@@ -97,8 +105,8 @@ end_time<br>`optional` | Time indicating the end of the interval. Defaults to pr
 Parameter | Definition
 --------- | ----------
 id | Each chart has a unique numeric ID.
-source | Indicates the [source](#sources) of data for the chart. Wildcard `*` to include all sources.
 type | Indicates the type of chart. One of `line`, `stacked` or `bignumber`.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. The full set of unique tag pairs defines a single data stream. Wildcards can be used here (e.g. prod-* will include all tags that begin with prod-).
 
 ## Retrieve a Snapshot
 

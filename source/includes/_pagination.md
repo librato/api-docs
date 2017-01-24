@@ -48,7 +48,6 @@ for m in api.list_metrics():
       "display_units_short": "mS",
       "display_min": 0,
       "created_by_ua": "librato-metrics/0.7.4",
-      "display_transform": "x/p",
       "display_stacked": false,
       "gap_detection": false,
       "aggregate": true
@@ -117,7 +116,6 @@ for m in api.list_metrics():
       "display_units_short": "mS",
       "display_min": 0,
       "created_by_ua": "librato-metrics/0.7.4",
-      "display_transform": "x/p",
       "display_stacked": false,
       "gap_detection": false,
       "aggregate": true
