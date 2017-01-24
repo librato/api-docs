@@ -84,7 +84,7 @@ The only permissible content type is JSON at the moment. All requests must inclu
 
 >**Top-Level Tags**
 
->The following payload demonstrates submitting tags at the top-level of the payload. This may be common for a collection agent that tags all metrics the same based on the identification of the collection host parameters.
+>The following payload demonstrates submitting tags at the top-level of the payload. This may be common for a collection agent that tags all metrics the same based on the identification of the collection host parameters.  If you add any tags to the measurement, those tags will replace the top-level tags.
 
 >This will result in two data streams, `cpu` and `memory`. Both metrics will contain the tags `region=us-west` and `name=web-prod-3`.
 
@@ -133,8 +133,8 @@ import librato
 api = librato.connect('email', 'token')
 
 q = api.new_queue(tags={'region': 'us-west', 'name': 'web-prod-3'})
-q.add('cpu', 4.5, tags={})
-q.add('memory', 10.5, tags={})
+q.add('cpu', 4.5)
+q.add('memory', 10.5)
 q.submit()
 ```
 
