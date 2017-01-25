@@ -140,7 +140,7 @@ q.submit()
 
 >**Embedded Measurement Tags**
 
->You can mix top-level tags with per-measurement tags. In the following example, the `cpu` metric strips the `name` tag out, while the `memory` metric adds two additional tag names.
+>You can mix top-level tags with per-measurement tags. In the following example, the `cpu` metric strips the `name` tag out, while the `memory` metric will replace the top-level tags with two different tag names.
 
 ```shell
 curl \
