@@ -4,7 +4,7 @@ When submitting a measurement to Librato, in addition to specifying the metric n
 
 For example, you can specify the server instances in a cluster (source name => hostname) or sensors in a grid (source name => MAC address).
 
-For more information on sources and how they can be leveraged, check out [this knowledge base article](https://www.librato.com/docs/kb/faq/whats_a_source.html).
+For more information on sources and how they can be leveraged, check out [this knowledge base article](https://kb-docs-archive.librato.com/faq/whats_a_source.html).
 
 #### Source Properties
 
