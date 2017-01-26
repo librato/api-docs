@@ -140,7 +140,7 @@ q.submit()
 
 >**Embedded Measurement Tags**
 
->Embedded tags will override top-level tags. In the following example, the `cpu` metric replaces the `name` tag, while the `memory` metric will ignore the top-level tags and use the embedded tag set.
+>Embedded tags will override top-level tags. In the following example, the `cpu` metric and the `memory` metric will ignore the top-level tags and use the embedded tag set.
 
 ```shell
 curl \
