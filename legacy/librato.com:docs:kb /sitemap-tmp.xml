@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://www.librato.com/</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/product</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/customers</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/pricing</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/web-server-monitoring/apache</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/cloudwatch</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/server-monitoring</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/bigpanda.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/campfire.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/agent/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/cherrypy</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/collectd/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/django</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/email.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/server-monitoring/docker</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/flask</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/gunicorn</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/HAProxy</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/heroku</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/hipchat.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/server-monitoring/librato-agent</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/database-monitoring/memcached</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/database-monitoring/mongodb</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/neptune.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/web-server-monitoring/nginx</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/web-server-monitoring/nginx-plus</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/opsgenie.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/pagerduty.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/rails</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/database-monitoring/redis</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/flowdock.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/slack.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/collection_agents/stastd.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/victorops.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/webhook.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/zapier.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/zookeeper</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/about</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/jobs</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/home</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/terms</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/website-terms</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/privacy</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/security</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/product/turn-key-solutions</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/product/collection-agents</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/api/</loc>
+  <lastmod>2017-01-05T23:06:45+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/product/data-processing</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/product/visual-insights</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/product/product-alerts</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/customers/ganglia-alternative-slack</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/customers/monitoring-solution-moz</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/customers/monitoring-heroku-stitch-fix</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/account_questions/pricing.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html?highlight=retention</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/index.html</loc>
+  <lastmod>2017-01-12T21:33:07+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/web-server-monitoring</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/apache.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring/varnish</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/alerts-intro.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/aws_sns.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/alert/service_integrations/new_integration.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/snapshots.html</loc>
+  <lastmod>2017-01-12T21:33:07+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/cloudwatch/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/appharbor-addon.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/cherrypy.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/django.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/docker.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/elasticsearch.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/engineyard.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/flask.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/gunicorn.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/haproxy.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/heroku-addon.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/heroku_integration.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/jvm.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/memcached.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/mongodb.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/mysql.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/nginx.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/nginx_plus.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/os-nexus.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/papertrail.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/postgresql.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/rails.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/redis.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/segment.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/statuspage.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/varnish.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/zookeeper.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/collection_agents/index.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/language_bindings/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/agent/agent-faq.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/agent/agent-metrics.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/dynamic_source.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/application-monitoring</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/collectd/collectd-faq.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/cloudwatch/cloudwatch_elastic_beanstalk.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/database-monitoring</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/collection_agents/heka.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/collection_agents/fluentd.html</loc>
+  <lastmod>2017-01-12T21:33:05+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/vulnerability</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/collectd</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/appharbor</loc>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/integrations/segment.html?highlight=segment</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/ssa.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/tokens.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/account_questions/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/account_questions/invoice_statements.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/account_questions/non_profit.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/account_questions/retain_data_for_more_than_a_year.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/best_practices/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/errors/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/glossary/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/tips/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/spaces.html</loc>
+  <lastmod>2017-01-12T21:33:07+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/charts.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/big_number.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/metrics.html</loc>
+  <lastmod>2017-01-12T21:33:07+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/annotations.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/embedding.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/change_metric_color.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/display_transform.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/gauge_aggregation.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/lots_of_sources.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/metric_v_data-stream.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/moving_charts.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/related_spaces.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/sdk.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/shared_spaces.html</loc>
+  <lastmod>2017-01-12T21:33:07+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/visualize/faq/stacked_graph.html</loc>
+  <lastmod>2017-01-12T21:33:07+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/getting_started.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/legacy-ui.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tutorial.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/specification.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/collect/language_bindings/php_example.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/live_chat.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/statuspage.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/give_feedback.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/glossary/whats_a_source.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/enumerable/timeshift.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/usage.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/profile.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/account_settings.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/preferences.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/plans_billing.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/librato/account_management/collaborators.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/count_events.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/delete_a_source.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/delete_measurement.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/dynamic_source_via_api.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/gap_detection.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/historic_metrics.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/librato_on_mobile.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/app_questions/y-axis.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/best_practices/naming_convention_metrics_sources.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/errors/cw_throttling.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/errors/fix_ssl_errors.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/errors/lastpass_bug-collabs.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/errors/rate_limiting.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/glossary/whats_a_counter.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/glossary/whats_a_gauge.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/glossary/whats_a_metric.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/glossary/whats_an_instrument.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/tips/pull_data_via_api.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/tips/rotate_dashboards.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/tips/test_librato.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/faq/tips/user_agent.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/genfun/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/enumerable/index.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/absolute_value.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/derive.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/divide.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/fill.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/filter.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/integrate.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/last_fill.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/max.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/mean.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/min.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/moving_average.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/multiply.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/rate.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/scale.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/subtract.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/sum.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/window.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/zero_fill.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/enumerable/group_by.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+<url>
+  <loc>https://www.librato.com/docs/kb/data_processing/composite_metrics/enumerable/map.html</loc>
+  <lastmod>2017-01-12T21:33:06+00:00</lastmod>
+</url>
+</urlset>
