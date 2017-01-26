@@ -142,7 +142,7 @@ tags | A set of key/value pairs that describe the particular data stream. Tags b
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, tag or group_function.
 group_function | How to process the results when multiple streams will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all tags. If the function is breakout, a separate line will be drawn for the values in the highest tag cardinality. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
-downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
+downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution/#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 color | Sets a color to use when rendering the stream. Must be a seven character string that represents the hex code of the color e.g. #52D74C.
 name | A display name to use for the stream when generating the tooltip.
 units_short | Unit value string to use as the tooltip label.
@@ -369,7 +369,7 @@ tags | A set of key/value pairs that describe the particular data stream. Tags b
 composite | A composite metric query string to execute when this stream is displayed. This can not be specified with a metric, tag or group_function.
 group_function | How to process the results when multiple streams will be returned. Value must be one of: average, sum, min, max, breakout. If average, sum, min, or max, a single line will be drawn representing the function applied over all tags. If the function is breakout, a separate line will be drawn for the values in the highest tag cardinality. If this property is not supplied, the behavior will default to average.
 summary_function | When visualizing complex measurements or a rolled-up measurement, this allows you to choose which statistic to use. If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
-downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution.html#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
+downsample_function | This allows you to choose which statistic to use during [roll-ups](https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution/#roll-ups) (for composite metrics only). If unset, defaults to "average". Valid options are one of: [max, min, average, sum, count].
 color | Sets a color to use when rendering the stream. Must be a seven character string that represents the hex code of the color e.g. #52D74C.
 name | A display name to use for the stream when generating the tooltip.
 units_short | Unit value string to use as the tooltip label.

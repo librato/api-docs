@@ -212,7 +212,7 @@ q.submit()
 
 >**Full Measurement Sample**
 
->Submit a single measurement that contains a full summary statistics fields. This includes embedded tag names and the metric attribute (which specifies not to enable [SSA](/docs/kb/data_processing/ssa.html)) that is saved when the initial metric (cpu) is created.
+>Submit a single measurement that contains a full summary statistics fields. This includes embedded tag names and the metric attribute (which specifies not to enable [SSA](/docs/kb/data_processing/ssa/)) that is saved when the initial metric (cpu) is created.
 
 ```shell
 curl \
@@ -784,7 +784,7 @@ resp = api.get_tagged(
 ]
 ```
 
-This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
+This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification/) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
 
 Parameter | Definition
 --------- | ----------

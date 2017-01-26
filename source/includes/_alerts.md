@@ -677,7 +677,7 @@ rearm_seconds<br>`optional` | Specifies the minimum amount of time between sendi
 
 ## Notification Services
 
-Librato provides many [notification services](https://www.librato.com/docs/kb/alert/alerts-intro.html#notification-services) to alert your team by when an alert is triggered. At least one (but not lmiited to one) service must be tied to each alert.
+Librato provides many [notification services](https://www.librato.com/docs/kb/alert/alerts-intro/#notification-services) to alert your team by when an alert is triggered. At least one (but not lmiited to one) service must be tied to each alert.
 
 ### Associate a Service with an Alert
 
