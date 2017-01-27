@@ -563,4 +563,16 @@ ul {
   height: 40px;
   color: #fff;
   padding: 10px;
+  font-weight: 300;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.flash-notice a{
+  color: #fff;
+  text-decoration: underline;
+}
+
+.flash-notice a:hover{
+  text-decoration: none;
 }
