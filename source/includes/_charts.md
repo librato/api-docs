@@ -293,7 +293,7 @@ curl \
     }
   ]
 }' \
--X PUT \
+-X POST \
 'https://metrics-api.librato.com/v1/spaces/:space_id/charts/:chart_id'
 ```
 
