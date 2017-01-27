@@ -557,3 +557,22 @@ ul {
 .intercom-launcher .intercom-launcher-hovercard {
   display: none !important;
 }
+
+.flash-info {
+  background-color: #4199ba;
+  height: 40px;
+  color: #fff;
+  padding: 10px;
+  font-weight: 300;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.flash-info a{
+  color: #fff;
+  text-decoration: underline;
+}
+
+.flash-info a:hover{
+  text-decoration: none;
+}

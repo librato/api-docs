@@ -344,7 +344,7 @@ Not yet available
 }
 ```
 
-With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
+With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification/). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
 #### Headers
 
