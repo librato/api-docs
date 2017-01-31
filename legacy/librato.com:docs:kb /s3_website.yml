@@ -1,29 +1,29 @@
-s3_id: <%= ENV['S3_ID'] %>
-s3_secret: <%= ENV['S3_SECRET'] %>
+s3_id: xx
+s3_secret: xx
 s3_bucket: librato-kb
 
 # Below are examples of all the available configurations.
 # See README for more detailed info on each of them.
 
-# site: path-to-your-website
+site: _build
 
 # index_document: index.html
 error_document: error_files/error.html
 
-# max_age:
-#   "assets/*": 6000
-#   "*": 300
+max_age:
+   "_images/*": 6000
+   "*": 300
 
-# gzip:
-#   - .html
-#   - .css
-#   - .md
+gzip:
+  - .html
+  - .css
+  - .md
 # gzip_zopfli: true
 
 # See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for valid endpoints
 # s3_endpoint: ap-northeast-1
 
-ignore_on_server: _DELETE_NOTHING_ON_THE_S3_BUCKET_
+# ignore_on_server: _DELETE_NOTHING_ON_THE_S3_BUCKET_
 
 # exclude_from_upload:
 #   - those_folders_of_stuff
@@ -53,8 +53,8 @@ ignore_on_server: _DELETE_NOTHING_ON_THE_S3_BUCKET_
 redirects:
   alert/service_integrations/bigpanda.html: https://www.librato.com/docs/kb/alert/service_integrations/bigpanda/
   alert/service_integrations/campfire.html: https://www.librato.com/docs/kb/alert/service_integrations/campfire/
-  collect/integrations/agent/index.html: https://www.librato.com/docs/kb/collect/integrations/agent/index/
-  collect/integrations/collectd/index.html: https://www.librato.com/docs/kb/collect/integrations/collectd/index/
+  collect/integrations/agent/index.html: https://www.librato.com/docs/kb/collect/integrations/agent/
+  collect/integrations/collectd/index.html: https://www.librato.com/docs/kb/collect/integrations/collectd/
   alert/service_integrations/email.html: https://www.librato.com/docs/kb/alert/service_integrations/email/
   alert/service_integrations/hipchat.html: https://www.librato.com/docs/kb/alert/service_integrations/hipchat/
   alert/service_integrations/neptune.html: https://www.librato.com/docs/kb/alert/service_integrations/neptune/
@@ -67,21 +67,24 @@ redirects:
   alert/service_integrations/webhook.html: https://www.librato.com/docs/kb/alert/service_integrations/webhook/
   alert/service_integrations/zapier.html: https://www.librato.com/docs/kb/alert/service_integrations/zapier/
   faq/account_questions/pricing.html: https://www.librato.com/docs/kb/faq/account_questions/pricing/
-  visualize/faq/rollups_retention_resolution.html: ?highlight=retentionhttps://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution/?highlight=retention
-  librato/index.html: https://www.librato.com/docs/kb/librato/index/
-  collect/index.html: https://www.librato.com/docs/kb/collect/index/
-  data_processing/index.html: https://www.librato.com/docs/kb/data_processing/index/
-  visualize/index.html: https://www.librato.com/docs/kb/visualize/index/
-  alert/index.html: https://www.librato.com/docs/kb/alert/index/
-  faq/index.html: https://www.librato.com/docs/kb/faq/index/
+  librato/index.html: https://www.librato.com/docs/kb/librato/
+  collect/index.html: https://www.librato.com/docs/kb/collect/
+  collect/: https://www.librato.com/docs/kb/collect/
+  data_processing/index.html: https://www.librato.com/docs/kb/data_processing/
+  data_processing/: https://www.librato.com/docs/kb/data_processing/
+  visualize/index.html: https://www.librato.com/docs/kb/visualize/
+  visualize/: https://www.librato.com/docs/kb/visualize/
+  alert/index.html: https://www.librato.com/docs/kb/alert/
+  faq/index.html: https://www.librato.com/docs/kb/faq/
+  collect/index/: https://www.librato.com/docs/kb/collect/
   collect/integrations/apache.html: https://www.librato.com/docs/kb/collect/integrations/apache/
   alert/alerts-intro.html: https://www.librato.com/docs/kb/alert/alerts-intro/
-  alert/service_integrations/index.html: https://www.librato.com/docs/kb/alert/service_integrations/index/
+  alert/service_integrations/index.html: https://www.librato.com/docs/kb/alert/service_integrations/
   alert/service_integrations/aws_sns.html: https://www.librato.com/docs/kb/alert/service_integrations/aws_sns/
   alert/service_integrations/new_integration.html: https://www.librato.com/docs/kb/alert/service_integrations/new_integration/
   visualize/faq/snapshots.html: https://www.librato.com/docs/kb/visualize/faq/snapshots/
-  collect/integrations/index.html: https://www.librato.com/docs/kb/collect/integrations/index/
-  collect/integrations/cloudwatch/index.html: https://www.librato.com/docs/kb/collect/integrations/cloudwatch/index/
+  collect/integrations/index.html: https://www.librato.com/docs/kb/collect/integrations/
+  collect/integrations/cloudwatch/index.html: https://www.librato.com/docs/kb/collect/integrations/cloudwatch//
   collect/integrations/appharbor-addon.html: https://www.librato.com/docs/kb/collect/integrations/appharbor-addon/
   collect/integrations/cherrypy.html: https://www.librato.com/docs/kb/collect/integrations/cherrypy/
   collect/integrations/django.html: https://www.librato.com/docs/kb/collect/integrations/django/
@@ -108,8 +111,8 @@ redirects:
   collect/integrations/statuspage.html: https://www.librato.com/docs/kb/collect/integrations/statuspage/
   collect/integrations/varnish.html: https://www.librato.com/docs/kb/collect/integrations/varnish/
   collect/integrations/zookeeper.html: https://www.librato.com/docs/kb/collect/integrations/zookeeper/
-  collect/collection_agents/index.html: https://www.librato.com/docs/kb/collect/collection_agents/index/
-  collect/language_bindings/index.html: https://www.librato.com/docs/kb/collect/language_bindings/index/
+  collect/collection_agents/index.html: https://www.librato.com/docs/kb/collect/collection_agents/
+  collect/language_bindings/index.html: https://www.librato.com/docs/kb/collect/language_bindings/
   collect/integrations/agent/agent-faq.html: https://www.librato.com/docs/kb/collect/integrations/agent/agent-faq/
   collect/integrations/agent/agent-metrics.html: https://www.librato.com/docs/kb/collect/integrations/agent/agent-metrics/
   visualize/faq/dynamic_source.html: https://www.librato.com/docs/kb/visualize/faq/dynamic_source/
@@ -117,26 +120,26 @@ redirects:
   collect/integrations/cloudwatch/cloudwatch_elastic_beanstalk.html: https://www.librato.com/docs/kb/collect/integrations/cloudwatch/cloudwatch_elastic_beanstalk/
   collect/collection_agents/heka.html: https://www.librato.com/docs/kb/collect/collection_agents/heka/
   collect/collection_agents/fluentd.html: https://www.librato.com/docs/kb/collect/collection_agents/fluentd/
-  collect/integrations/segment.html: ?highlight=segmenthttps://www.librato.com/docs/kb/collect/integrations/segment/?highlight=segment
+  collect/integrations/segment.html: https://www.librato.com/docs/kb/collect/integrations/segment/?highlight=segment
   data_processing/ssa.html: https://www.librato.com/docs/kb/data_processing/ssa/
   visualize/faq/rollups_retention_resolution.html: https://www.librato.com/docs/kb/visualize/faq/rollups_retention_resolution/
   librato/account_management/tokens.html: https://www.librato.com/docs/kb/librato/account_management/tokens/
-  faq/app_questions/index.html: https://www.librato.com/docs/kb/faq/app_questions/index/
-  faq/account_questions/index.html: https://www.librato.com/docs/kb/faq/account_questions/index/
+  faq/app_questions/index.html: https://www.librato.com/docs/kb/faq/app_questions/
+  faq/account_questions/index.html: https://www.librato.com/docs/kb/faq/account_questions/
   faq/account_questions/invoice_statements.html: https://www.librato.com/docs/kb/faq/account_questions/invoice_statements/
   faq/account_questions/non_profit.html: https://www.librato.com/docs/kb/faq/account_questions/non_profit/
   faq/account_questions/retain_data_for_more_than_a_year.html: https://www.librato.com/docs/kb/faq/account_questions/retain_data_for_more_than_a_year/
-  faq/best_practices/index.html: https://www.librato.com/docs/kb/faq/best_practices/index/
-  faq/errors/index.html: https://www.librato.com/docs/kb/faq/errors/index/
-  faq/glossary/index.html: https://www.librato.com/docs/kb/faq/glossary/index/
-  faq/tips/index.html: https://www.librato.com/docs/kb/faq/tips/index/
+  faq/best_practices/index.html: https://www.librato.com/docs/kb/faq/best_practices/
+  faq/errors/index.html: https://www.librato.com/docs/kb/faq/errors/
+  faq/glossary/index.html: https://www.librato.com/docs/kb/faq/glossary/
+  faq/tips/index.html: https://www.librato.com/docs/kb/faq/tips/
   visualize/spaces.html: https://www.librato.com/docs/kb/visualize/spaces/
   visualize/charts.html: https://www.librato.com/docs/kb/visualize/charts/
   visualize/big_number.html: https://www.librato.com/docs/kb/visualize/big_number/
   visualize/metrics.html: https://www.librato.com/docs/kb/visualize/metrics/
   visualize/annotations.html: https://www.librato.com/docs/kb/visualize/annotations/
   visualize/embedding.html: https://www.librato.com/docs/kb/visualize/embedding/
-  visualize/faq/index.html: https://www.librato.com/docs/kb/visualize/faq/index/
+  visualize/faq/index.html: https://www.librato.com/docs/kb/visualize/faq/
   visualize/faq/change_metric_color.html: https://www.librato.com/docs/kb/visualize/faq/change_metric_color/
   visualize/faq/display_transform.html: https://www.librato.com/docs/kb/visualize/faq/display_transform/
   visualize/faq/gauge_aggregation.html: https://www.librato.com/docs/kb/visualize/faq/gauge_aggregation/
@@ -148,9 +151,9 @@ redirects:
   visualize/faq/shared_spaces.html: https://www.librato.com/docs/kb/visualize/faq/shared_spaces/
   visualize/faq/stacked_graph.html: https://www.librato.com/docs/kb/visualize/faq/stacked_graph/
   librato/getting_started.html: https://www.librato.com/docs/kb/librato/getting_started/
-  librato/account_management/index.html: https://www.librato.com/docs/kb/librato/account_management/index/
+  librato/account_management/index.html: https://www.librato.com/docs/kb/librato/account_management/
   librato/legacy-ui.html: https://www.librato.com/docs/kb/librato/legacy-ui/
-  data_processing/composite_metrics/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/index/
+  data_processing/composite_metrics/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/
   data_processing/composite_metrics/tutorial.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/tutorial/
   data_processing/composite_metrics/specification.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/specification/
   collect/language_bindings/php_example.html: https://www.librato.com/docs/kb/collect/language_bindings/php_example/
@@ -186,9 +189,9 @@ redirects:
   faq/tips/rotate_dashboards.html: https://www.librato.com/docs/kb/faq/tips/rotate_dashboards/
   faq/tips/test_librato.html: https://www.librato.com/docs/kb/faq/tips/test_librato/
   faq/tips/user_agent.html: https://www.librato.com/docs/kb/faq/tips/user_agent/
-  data_processing/composite_metrics/genfun/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/genfun/index/
-  data_processing/composite_metrics/tranfun/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/index/
-  data_processing/composite_metrics/enumerable/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/enumerable/index/
+  data_processing/composite_metrics/genfun/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/genfun/
+  data_processing/composite_metrics/tranfun/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/
+  data_processing/composite_metrics/enumerable/index.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/enumerable//
   data_processing/composite_metrics/tranfun/absolute_value.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/absolute_value/
   data_processing/composite_metrics/tranfun/derive.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/derive/
   data_processing/composite_metrics/tranfun/divide.html: https://www.librato.com/docs/kb/data_processing/composite_metrics/tranfun/divide/
