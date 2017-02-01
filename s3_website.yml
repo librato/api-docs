@@ -11,8 +11,8 @@ site: build
 # error_document: error.html
 
 max_age:
-   "fonts/*": 6000
-   "images/*": 6000
+   "fonts/*": 604800
+   "images/*": 604800
    "*": 6000
 
 gzip:
