@@ -13,7 +13,7 @@ site: build
 max_age:
    "fonts/*": 6000
    "images/*": 6000
-   "*": 300
+   "*": 6000
 
 gzip:
  - .html
@@ -21,7 +21,7 @@ gzip:
  - .md
  - .js
  - .svg
-# gzip_zopfli: true
+gzip_zopfli: true
 
 # See http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for valid endpoints
 # s3_endpoint: ap-northeast-1
