@@ -10,9 +10,10 @@ site: build
 # index_document: index.html
 # error_document: error.html
 
-# max_age:
-#   "assets/*": 6000
-#   "*": 300
+max_age:
+   "fonts/*": 6000
+   "images/*": 6000
+   "*": 300
 
 gzip:
  - .html
