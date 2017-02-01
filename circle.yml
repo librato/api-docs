@@ -12,7 +12,8 @@ deployment:
       - bundle install
       - bundle exec middleman build
       - bundle exec DEPLOYMENT_TARGET=production s3_website push
-  branch: legacy
+  legacy:
+    branch: legacy
     commands:
       - bundle install
       - bundle exec middleman build
