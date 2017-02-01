@@ -9,9 +9,10 @@ deployment:
   s3website:
     branch: feature/s3_deploy
     commands:
+      - export DEPLOYMENT_TARGET=production
       - bundle install
       - bundle exec middleman build
-      - DEPLOYMENT_TARGET=production s3_website --push
+      - DEPLOYMENT_TARGET=production bundle exec s3_website push
   legacy:
     branch: legacy
     commands:
