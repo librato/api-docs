@@ -11,7 +11,12 @@ deployment:
     commands:
       - bundle install
       - bundle exec middleman build
-      - bundle exec s3_website push --force
+      - bundle exec DEPLOYMENT_TARGET=production s3_website push
+  branch: legacy
+    commands:
+      - bundle install
+      - bundle exec middleman build
+      - bundle exec DEPLOYMENT_TARGET=legacy s3_website push
   production:
     branch: master
     commands:
