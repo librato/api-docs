@@ -369,8 +369,8 @@ value> pairs is a new unique stream and is billed as such. The
 full cardinality of a metric is the permutation of all possible
 values of tags over the billing period. For example, if you have
 two tags on your measurements and the first tag has 20 possible
-values and the second tag has 30 possible values, then your full
-tag cardinality is 20 * 30 => 600 data streams. This would be
+values and the second tag has 30 possible values, then your potential
+tag cardinality could be 20 * 30 => 600 data streams. This would be
 billed as 600 individual streams over the billing duration of one
 hour.
 
