@@ -363,7 +363,21 @@ Tag values must match the regular expression `/\A[-.:_\w ]+\z/{1,255}`. Tag valu
 
 Data streams have a default limit of **50** tag names per measurement.
 
-Metrics have a maximum permitted cardinality for tag values. This maximum will be enforced as both a create rate limit and total cardinality limit.
+Users should be mindful of the maximum cardinality of their full
+tag set over all measurements. Each unique set of <tag name, tag
+value> pairs is a new unique stream and is billed as such. The
+full cardinality of a metric is the permutation of all possible
+values of tags over the billing period. For example, if you have
+two tags on your measurements and the first tag has 20 possible
+values and the second tag has 30 possible values, then your potential
+tag cardinality could be 20 * 30 => 600 data streams. This would be
+billed as 600 individual streams over the billing duration of one
+hour.
+
+If you plan to have a tag cardinality over 40,000 unique tag
+sets per hour, please let us know ahead of time at support@librato.com. To
+prevent accidental cardinality explosions our API may
+automatically reject metrics with a cardinality exceeding this.
 
 #### Float Restrictions
 
