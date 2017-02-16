@@ -798,7 +798,7 @@ resp = api.get_tagged(
 ]
 ```
 
-This route will also execute a [composite metric query](https://www.librato.com/docs/kb/manipulate/composite_metrics/specification/) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
+This route will also execute a [composite metric query](https://www.librato.com/docs/kb/data_processing/composite_specification/) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
 
 Parameter | Definition
 --------- | ----------
