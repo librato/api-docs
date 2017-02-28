@@ -343,9 +343,9 @@ stddev_m2 | Represents the current mean value when aggregating samples using the
 
 **NOTE**: The [optional parameters](#update-a-metric) listed in the metrics PUT operation can be used with POST operations, but they will be ignored if the metric already exists. To update existing metrics, please use the PUT operation.
 
-### Tag Merging
+### Overriding Top-Level Tags
 
-A given payload can mix tag definitions at the top-level tags parameter or tags can be specified per measurement (and eventually event). A tag with the same name in the measurement block will override any value set at the top-level. Any tag defined at the top-level, but not included in the measurement tag block will be merged with the measurement tags. To unset or clear a tag at the top-level, the tag name can be set to the JSON "null" value in the measurement block.
+Measurements with embedded tags (specified per measurement) will override and prevent any top-level tags from being recorded for the specific measurement. In order to merge both top-level and embedded tags, all tags will need to be embedded with the measurement.
 
 ### Rate Limiting
 
