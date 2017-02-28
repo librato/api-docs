@@ -345,7 +345,7 @@ stddev_m2 | Represents the current mean value when aggregating samples using the
 
 ### Overriding Top-Level Tags
 
-Measurements with embedded tags (specified per measurement) will override and prevent any top-level tags from being recorded for the specific measurement. In order to include both top-level tags and embedded tags, all tags will need to be embedded with the measurement.
+Measurements with embedded tags (specified per measurement) will override and prevent any top-level tags from being recorded for the specific measurement. In order to merge both top-level and embedded tags, all tags will need to be embedded with the measurement.
 
 ### Rate Limiting
 
