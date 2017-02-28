@@ -18,7 +18,7 @@ curl \
   -H "Content-Type: application/json" \
   -d '{
     "tags": {
-      "region": "us-east-1"
+      "region": "us-east-1",
       "az": "a"
     },
     "measurements": [
