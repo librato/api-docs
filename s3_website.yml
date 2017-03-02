@@ -2,6 +2,7 @@ s3_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
 s3_secret: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 s3_bucket: <%= ENV['DEPLOYMENT_TARGET'] == 'production' ? 'librato-api' : 'api-docs-archive.librato.com' %>
 
+cloudfront_distribution_id: <%= ENV['DEPLOYMENT_TARGET'] == 'production' ? 'E265AN0KH1XMRG' : 'E2COGDWQYRVDXJ' %>
 
 # Below are examples of all the available configurations.
 # See README for more detailed info on each of them.
@@ -39,13 +40,13 @@ gzip_zopfli: true
 
 # cloudfront_distribution_id: your-dist-id
 
-# cloudfront_distribution_config:
-#   default_cache_behavior:
-#     min_TTL: <%= 60 * 60 * 24 %>
-#   aliases:
-#     quantity: 1
-#     items:
-#       CNAME: your.website.com
+cloudfront_distribution_config:
+  default_cache_behavior:
+     min_ttl: <%= 60 * 60 * 24 %>
+  aliases:
+    quantity: 1
+    items:
+      - api-docs.librato.com
 
 # cloudfront_invalidate_root: true
 
