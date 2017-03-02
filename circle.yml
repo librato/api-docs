@@ -6,8 +6,13 @@ test:
     - bundle exec middleman build
 
 deployment:
+  legacy:
+    branch: legacy
+    commands:
+      - bundle install 
+      - DEPLOYMENT_TARGET=legacy bundle exec s3_website push
   production:
     branch: master
     commands:
-      - sudo pip install awscli
-      - aws s3 cp build/ s3://librato-api/ --recursive
+      - bundle install 
+      - DEPLOYMENT_TARGET=production bundle exec s3_website push

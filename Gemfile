@@ -11,3 +11,5 @@ gem 'redcarpet', '~> 3.3.2'
 
 gem 'rake', '~> 10.4.2'
 gem 'oj', '~> 2.14.0'
+
+gem 's3_website', '~> 3.0'
