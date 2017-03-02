@@ -11,3 +11,7 @@ deployment:
     commands:
       - sudo pip install awscli
       - aws s3 cp build/ s3://librato-api/ --recursive
+  staging:
+    branch: legacy
+    commands:
+      - ./deploy.sh
