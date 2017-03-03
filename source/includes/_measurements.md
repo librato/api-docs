@@ -595,7 +595,7 @@ resp = api.get_tagged(
   "AWS.EC2.DiskWriteBytes",
   duration=86400,
   resolution=60,
-  tag_search="region=us-east* and db=*prod*"
+  tags_search="region=us-east* and db=*prod*"
 )
 ```
 
@@ -656,7 +656,7 @@ The returned data streams can be filtered on the set of tags included on the ori
 Property | Definition
 -------- | ----------
 tags | A map of tag search patterns that limit the returned set of streams by simple wildcard patterns against tag values. Only streams matching the provided tag name/values are returned. Tags can be searched by AND, OR, and NOT conditions on their tag values. Specifying the same tag name multiple times with different values is an OR. Specifying different tag names performs an AND and prefixing a tag value search pattern with "!" negates the match.<br><br>A negation requires that the particular tag name is set on the data stream. It will not match streams that do not have the particular tag name set. See section below for how negation is handled.<br><br>Only tag values can be wildcard matches, tag names must be fully specified. It is not possible to perform wildcard matches against tag names.
-tags_search | The `tag_search` parameter, which may NOT be specified with the tags parameter, defines a complex search query over a set of tags. It is provided to allow a more complex query pattern over the set of tag values than the tags parameter can provide. The grammar should be properly form-encoded to escape fields not appropriate for URL query parameters.
+tags_search | The `tags_search` parameter, which may NOT be specified with the tags parameter, defines a complex search query over a set of tags. It is provided to allow a more complex query pattern over the set of tag values than the tags parameter can provide. The grammar should be properly form-encoded to escape fields not appropriate for URL query parameters.
 
 #### Tag Negation
 
