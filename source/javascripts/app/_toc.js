@@ -51,7 +51,7 @@
   // scroll the current hash's matching anchor into view
   global.scrollToHash = function() {
     setTimeout(function() {
-      var hash = window.location.hash.slice(1) || hash,
+      var hash = window.location.hash.slice(1) || '',
           $anchor = hash && $("div[data-unique='" + hash + "']");
       $anchor.length && scrollToAnchor($anchor);
     }, 0);
