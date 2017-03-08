@@ -103,6 +103,61 @@ Location: /v1/spaces/123
 }
 ```
 
+>Create a Big Number chart with a threshold of > 90:
+
+```shell
+curl \
+-u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+-H "Content-Type: application/json" \
+-d '{
+  "type": "bignumber",
+  "name": "CPU Usage",
+  "streams": [
+    {
+      "metric": "librato.cpu.percent.user",
+      "tags": [{"name": "environment", "values": ["prod"]}]
+    }
+  ],
+  "thresholds":[
+    {
+      "operator":">",
+      "value":90,
+      "type":"red"
+    }
+  ]
+}' \
+-X POST \
+'https://metrics-api.librato.com/v1/spaces/:space_id/charts'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+api = librato.connect('email', 'token')
+space = api.get_space(123)
+linechart = api.create_chart(
+  'CPU Usage',
+  space,
+  type='bignumber',
+  streams=[
+    {
+      "metric": "librato.cpu.percent.user",
+      "tags": [{"name": "environment", "values": ["prod"]}]
+    }
+  ],
+  thresholds=[
+    {
+      "operator": ">",
+      "value": 90,
+      "type": "red"
+    }
+  ]
+)
+```
+
 When creating a new chart you can specify any metrics to include.
 
 #### HTTP Request
@@ -127,11 +182,12 @@ Parameter | Definition
 --------- | ----------
 name | Title of the chart when it is displayed.
 streams | An array of hashes describing the metrics and tags to use for data in the chart.
-type | Indicates the type of chart. Must be one of line, stacked, or bignumber (default to line)
+type | Indicates the type of chart. Must be one of `line`, `stacked`, or `bignumber` (default to line)
 min | The minimum display value of the chart's Y-axis
 max | The maximum display value of the chart's Y-axis
 label | The Y-axis label
 related_space | The ID of another space to which this chart is related
+thresholds | required when creating a BigNumber chart. When creating a threshold you will need to provide the `operator` (>, <, or =), the `value` to trigger the threshold, and the `type` (red or yellow) which specifies the color for the BigNumber chart to display when the criteria is met.
 
 ### Stream Properties
 
@@ -354,11 +410,12 @@ Parameter | Definition
 --------- | ----------
 name | Title of the chart when it is displayed.
 streams | An array of hashes describing the metrics and tags to use for data in the chart.
-type | Indicates the type of chart. Must be one of line or stacked (default to line)
+type | Indicates the type of chart. Must be one of `line`, `stacked`, or `bignumber` (default to line)
 min | The minimum display value of the chart's Y-axis
 max | The maximum display value of the chart's Y-axis
 label | The Y-axis label
 related_space | The ID of another space to which this chart is related
+thresholds | required when creating a BigNumber chart. When creating a threshold you will need to provide the `operator` (>, <, or =), the `value` to trigger the threshold, and the `type` (red or yellow) which specifies the color for the BigNumber chart to display when the criteria is met.
 
 ### Stream Properties
 
