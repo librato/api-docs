@@ -889,9 +889,9 @@ for alert in api.list_alerts():
           "id": 1153,
           "type": "mail",
           "settings": {
-            "addresses": "me@domain.com"
+            "addresses": "foo@domain.com,bar@domain.com"
           },
-          "title": "My email"
+          "title": "Ops Team"
         }
       ],
       "attributes": {},
