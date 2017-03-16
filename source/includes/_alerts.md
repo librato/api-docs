@@ -698,7 +698,7 @@ Not available
 ```
 
 ```python
-Not available
+import librato
 alert = api.get_alert("my.alert.name")
 alert.add_service("290")
 alert.save()
@@ -838,6 +838,78 @@ Delete an alert by specifying a unique `id` or `name`.
 
 ## List all Alerts
 
+>List all alerts:
+
+```shell
+curl \
+  -i \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+for alert in api.list_alerts():
+    print(alert.name)
+```
+
+>Response Body
+
+```json
+{
+  "query": {
+    "offset": 0,
+    "length": 2,
+    "found": 2,
+    "total": 7
+  },
+  "alerts": [
+    {
+      "id": 1400310,
+      "name": "CPU.utilization",
+      "description": null,
+      "conditions": [
+        {
+          "id": 1016,
+          "type": "above",
+          "metric_name": "AWS.EC2.CPUUtilization",
+          "source": "*prod*",
+          "threshold": 90,
+          "duration": 300,
+          "summary_function": "max"
+        }
+      ],
+      "services": [
+        {
+          "id": 1153,
+          "type": "mail",
+          "settings": {
+            "addresses": "foo@domain.com,bar@domain.com"
+          },
+          "title": "Ops Team"
+        }
+      ],
+      "attributes": {},
+      "active": true,
+      "created_at": 1394745670,
+      "updated_at": 1394745670,
+      "version": 2,
+      "rearm_seconds": 600,
+      "rearm_per_signal": false,
+      "md": false
+    },
+    {
+    // 1 more alert...
+    }
+  ]
+}
+```
+
 >List the status of all alerts:
 
 ```shell
@@ -877,9 +949,10 @@ Not available
         }
     ]
 }
+
 ```
 
-Returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
+Returns a list of alerts. Adding the `status` parameter returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
 
 #### HTTP Request
 
