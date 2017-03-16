@@ -904,38 +904,7 @@ for alert in api.list_alerts():
       "md": false
     },
     {
-      "id": 6491895,
-      "name": "nginx-connection-drops",
-      "description": "Over 1% of connections dropped",
-      "conditions": [
-        {
-          "id": 14546308,
-          "type": "above",
-          "metric_name": "librato.nginx.connections.pct-dropped",
-          "source": "*",
-          "threshold": 1,
-          "duration": 60,
-          "summary_function": "max"
-        }
-      ],
-      "services": [
-        {
-          "id": 36784,
-          "type": "mail",
-          "settings": {
-            "addresses": "mine@domain.com"
-          },
-          "title": "Librato account owner"
-        }
-      ],
-      "attributes": null,
-      "active": false,
-      "created_at": 1476914829,
-      "updated_at": 1476914829,
-      "version": 2,
-      "rearm_seconds": 600,
-      "rearm_per_signal": false,
-      "md": false
+    // 1 more alert...
     }
   ]
 }
