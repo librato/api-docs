@@ -698,7 +698,7 @@ Not available
 ```
 
 ```python
-Not available
+import librato
 alert = api.get_alert("my.alert.name")
 alert.add_service("290")
 alert.save()
@@ -838,6 +838,109 @@ Delete an alert by specifying a unique `id` or `name`.
 
 ## List all Alerts
 
+>List all alerts:
+
+```shell
+curl \
+  -i \
+  -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+  -X GET \
+  'https://metrics-api.librato.com/v1/alerts'
+```
+
+```ruby
+Not available
+```
+
+```python
+import librato
+for alert in api.list_alerts():
+    print(alert.name)
+```
+
+>Response Body
+
+```json
+{
+  "query": {
+    "offset": 0,
+    "length": 2,
+    "found": 2,
+    "total": 7
+  },
+  "alerts": [
+    {
+      "id": 1400310,
+      "name": "CPU.utilization",
+      "description": null,
+      "conditions": [
+        {
+          "id": 1016,
+          "type": "above",
+          "metric_name": "AWS.EC2.CPUUtilization",
+          "source": "*prod*",
+          "threshold": 90,
+          "duration": 300,
+          "summary_function": "max"
+        }
+      ],
+      "services": [
+        {
+          "id": 1153,
+          "type": "mail",
+          "settings": {
+            "addresses": "me@domain.com"
+          },
+          "title": "My email"
+        }
+      ],
+      "attributes": {},
+      "active": true,
+      "created_at": 1394745670,
+      "updated_at": 1394745670,
+      "version": 2,
+      "rearm_seconds": 600,
+      "rearm_per_signal": false,
+      "md": false
+    },
+    {
+      "id": 6491895,
+      "name": "nginx-connection-drops",
+      "description": "Over 1% of connections dropped",
+      "conditions": [
+        {
+          "id": 14546308,
+          "type": "above",
+          "metric_name": "librato.nginx.connections.pct-dropped",
+          "source": "*",
+          "threshold": 1,
+          "duration": 60,
+          "summary_function": "max"
+        }
+      ],
+      "services": [
+        {
+          "id": 36784,
+          "type": "mail",
+          "settings": {
+            "addresses": "mine@domain.com"
+          },
+          "title": "Librato account owner"
+        }
+      ],
+      "attributes": null,
+      "active": false,
+      "created_at": 1476914829,
+      "updated_at": 1476914829,
+      "version": 2,
+      "rearm_seconds": 600,
+      "rearm_per_signal": false,
+      "md": false
+    }
+  ]
+}
+```
+
 >List the status of all alerts:
 
 ```shell
@@ -877,9 +980,10 @@ Not available
         }
     ]
 }
+
 ```
 
-Returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
+Returns a list of alerts. Adding the `status` parameter returns a list of alert ids, grouped by those belonging to alerts which are in a triggered state and by those that have recently cleared.
 
 #### HTTP Request
 
