@@ -140,7 +140,7 @@ Returns information for a specific metric.
 ```shell
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
-  -d 'names=cpu&names=servers&names=reqs&period=60&display_min=0' \
+  -d 'names%5B%5D=cpu&names%5B%5D=servers&names%5B%5D=reqs&period=60&display_min=0' \
   -X PUT \
   'https://metrics-api.librato.com/v1/metrics'
 ```
