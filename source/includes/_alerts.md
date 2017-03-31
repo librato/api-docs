@@ -722,4 +722,4 @@ The response is paginated, so the request supports our generic [Pagination Param
 Parameter | Definition
 --------- | ----------
 version | Optional. Can be set to `1` or `2` and dictates whether to return v1 (deprecated) or v2 alerts. If unspecified, v2 alerts will be returned.
-name | A search parameter that limits the results to metrics whose names contain a matching substring. Search is case-insensitive.
+name | A search parameter that limits the results to alert names matching the substring. Search is case-insensitive.
