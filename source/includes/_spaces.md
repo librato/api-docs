@@ -29,6 +29,7 @@ name | Search by name of the space.
 curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d 'name=CPUs' \
+  -d 'tags=true' \
   -X POST \
   'https://metrics-api.librato.com/v1/spaces'
 ```
@@ -40,7 +41,7 @@ Not available
 ```python
 import librato
 api = librato.connect('email', 'token')
-space = api.create_space("CPUs")
+space = api.create_space("CPUs", tags="True")
 print("Created '%s'" % space.name)
 ```
 
