@@ -552,7 +552,7 @@ Parameter | Definition
 --------- | ----------
 title | Short description of annotation event.
 description | Long description of annotation event.
-end_time | Sets an end time for annotation events that occurred over a duration.
+end_time | Unix timestamp that sets an end time for annotation events that occurred over a duration.
 links | An optional list of references to resources associated with the particular annotation. For example, these links could point to a build page in a CI system or a changeset description of an SCM. Each link has a tag that defines the link\'s relationship to the annotation.
 
 ## Delete an Annotation
