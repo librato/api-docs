@@ -24,10 +24,11 @@ curl \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -d '{
     "subject": {
-    "chart": {
-      "id": 1,
-      "tags": [{"name": "environment", "values": ["prod*"]}],
-      "type": "stacked"
+      "chart": {
+        "id": 1,
+        "tags": [{"name": "environment", "values": ["prod*"]}],
+        "type": "stacked"
+      }
     }
   }
   ' \
