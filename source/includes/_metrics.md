@@ -4,7 +4,29 @@ Metrics represent the individual time-series sent to the Librato service. Each m
 
 ## Create a Metric
 
-Metrics are created by creating a measurement for the first time. See [Create a Measurement](#create-a-measurement).
+>Create a metric named `librato.cpu.percent.used` matching the tags `environment:prod` and `service:api`:
+
+```shell
+curl \
+-u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
+-H "Content-Type: application/json" \
+-d '{
+  "type": "gauge",
+  "name": "librato.cpu.percent.used",
+  "period": 60,
+  "attributes": {
+    "summarize_function": "sum"
+  },
+  "tags": {
+    "environment": "prod",
+    "service": "api"
+  }
+}' \
+-X PUT \
+'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.used'
+```
+
+Metrics are also automatically created by POSTing a measurement for the first time. See [Create a Measurement](#create-a-measurement).
 
 ### Creating Persisted Composite Metrics
 
@@ -19,7 +41,7 @@ curl \
   "name": "librato.cpu.percent.used",
   "composite": "s(\"librato.cpu.percent.user\", {\"environment\" : \"prod\", \"service\": \"api\"})"
 }' \
--X POST \
+-X PUT \
 'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.used'
 ```
 
