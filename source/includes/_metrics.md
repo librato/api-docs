@@ -25,8 +25,8 @@ curl \
 -X PUT \
 'https://metrics-api.librato.com/v1/metrics/librato.cpu.percent.used'
 ```
-
-Metrics are also automatically created by POSTing a measurement for the first time. See [Create a Measurement](#create-a-measurement).
+Metrics can be created without submitting a measurement value using a PUT to the `/metrics` endpoint. 
+Metrics are automatically created by POSTing a measurement for the first time. See [Create a Measurement](#create-a-measurement).
 
 ### Creating Persisted Composite Metrics
 
