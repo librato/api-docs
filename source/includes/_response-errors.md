@@ -8,6 +8,7 @@ Error Code | Meaning | Definition
 ---------- | ------- | ----------
 200 | OK | The request was processed successfully and the information is returned in the body in the desired format. This code gets returned after GET requests or PUT requests (if the PUT resulted in data being generated and returned). In case of a search (e.g. for metrics) without search results, a 200 still gets returned.
 201 | Created | The request was processed successfully. The resource was created and the `Location` variable in the header points to the resource. This code gets returned after POST requests only.
+202 | Accepted | The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.
 204 | No Content | The request was processed successfully. Since this code gets returned after PUT or DELETE requests only, there is no need for returning information in the response body.
 400 | Bad Request | The request could not be parsed or the parameters were not valid. The request should be modified before resubmitting.
 401 | Unauthorized | Challenges the user to provide authentication credentials.
