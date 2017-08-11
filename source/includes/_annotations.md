@@ -380,6 +380,10 @@ Return annotation event details associated with given stream name.
 
 ## Update an Annotation
 
+### Add link to annotation event
+
+Add a link to a specific annotation event.
+
 >Add a link to github to the annotation event 198 in the *app-deploys* stream:
 
 ```shell
@@ -421,10 +425,6 @@ Location: /v1/annotations/app-deploys/198/links/github
   "href": "https://github.com/acme/app/commits/01beaf"
 }
 ```
-
-### Add link to annotation event
-
-Add a link to a specific annotation event.
 
 #### HTTP Request
 
