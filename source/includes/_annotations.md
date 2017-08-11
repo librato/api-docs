@@ -422,6 +422,8 @@ Location: /v1/annotations/app-deploys/198/links/github
 }
 ```
 
+### Add link to annotation event
+
 Add a link to a specific annotation event.
 
 #### HTTP Request
