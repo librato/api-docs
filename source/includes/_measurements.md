@@ -314,11 +314,11 @@ Parameter | Definition
 --------- | ----------
 name | The unique identifying name of the property being tracked. The metric name is used both to create new measurements and query existing measurements. Must be 255 or fewer characters, and may only consist of 'A-Za-z0-9.:-_'. The metric namespace is case insensitive.
 value | The numeric value of a single measured sample.
-tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.<br><br>Tags are merged between the top-level tags and any per-measurement tags, see the section Tag Merging for details.
+tags | A set of key/value pairs that describe the particular data stream. Tags behave as extra dimensions that data streams can be filtered and aggregated along. Examples include the region a server is located in, the size of a cloud instance or the country a user registers from. The full set of unique tag pairs defines a single data stream.<br><br>If per-measurement tags are specified, top-level tags will not be included for that specific measurement.
 
 #### Global or per-sample parameters
 
-In addition, the following parameters can be specified to further define the measurement sample. They may be set at the individual measurement level or at the top-level. The top-level value is used unless the same parameter is set at an individual measurement.
+In addition, the following parameters can be specified to further define the measurement sample. They may be set at the individual measurement level or at the top-level. Top-level tags are only applied to a measurement if no individual tags are included. Top-level and individual tags are never merged for a measurement.
 
 Parameter | Definition
 --------- | ----------
