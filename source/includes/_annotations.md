@@ -185,7 +185,7 @@ curl \
   -i \
   -u $LIBRATO_USERNAME:$LIBRATO_TOKEN \
   -X GET \
-  'https://metrics-api.librato.com/v1/annotations/api-deploys'
+  'https://metrics-api.librato.com/v1/annotations/api-deploys?start_time=1507050000'
 ```
 
 ```ruby
