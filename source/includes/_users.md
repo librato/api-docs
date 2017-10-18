@@ -214,7 +214,7 @@ Location: /v1/users/123
 
 Create a new Librato user account.
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -296,7 +296,7 @@ Not available
 }
 ```
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

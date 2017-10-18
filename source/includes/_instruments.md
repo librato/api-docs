@@ -285,7 +285,7 @@ Location: /v1/instruments/123
 }
 ```
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -422,7 +422,7 @@ Not available
 ** NOT APPLICABLE **
 ```
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

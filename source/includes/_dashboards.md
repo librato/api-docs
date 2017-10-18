@@ -202,7 +202,7 @@ Location: /v1/dashboards/129
 }
 ```
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -265,7 +265,7 @@ Not available
 
 Modify a dashboard, such as changing the name, or adding, deleting or reordering instruments.
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
