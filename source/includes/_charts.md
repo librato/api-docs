@@ -164,7 +164,7 @@ When creating a new chart you can specify any metrics to include.
 
 `POST https://metrics-api.librato.com/v1/spaces/:id/charts`
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 
@@ -176,7 +176,7 @@ For JSON:
 
 `Content-Type: application/json`
 
-### Parameters
+#### Parameters
 
 Parameter | Definition
 --------- | ----------
@@ -189,7 +189,7 @@ label | The Y-axis label
 related_space | The ID of another space to which this chart is related
 thresholds | required when creating a BigNumber chart. When creating a threshold you will need to provide the `operator` (>, <, or =), the `value` to trigger the threshold, and the `type` (red or yellow) which specifies the color for the BigNumber chart to display when the criteria is met.
 
-### Stream Properties
+#### Stream Properties
 
 Parameter | Definition
 --------- | ----------
@@ -392,7 +392,7 @@ Updates attributes of a specific chart. In order to update the metrics associate
 
 `PUT https://metrics-api.librato.com/v1/spaces/:id/charts/:chart_id`
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

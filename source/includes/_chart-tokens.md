@@ -96,7 +96,7 @@ Creates a new chart token.
 
 `POST https://metrics-api.librato.com/v1/charts`
 
-### Headers
+#### Headers
 
 This specifies the format of the data sent to the API.
 

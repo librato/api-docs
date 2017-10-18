@@ -2,6 +2,17 @@
 
 Metrics represent the individual time-series sent to the Librato service. Each measurement sent to Librato is associated with a Metric.
 
+#### Metric Properties
+
+Parameter | Definition
+--------- | ----------
+type | Type of metric to create (gauge, counter, or composite).
+display_name<br>`optional` | Name which will be used for the metric when viewing the Metrics website.
+description<br>`optional` | Text that can be used to explain precisely what the gauge is measuring.
+period<br>`optional` | Number of seconds that is the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics. For gauge metrics that have service-side aggregation enabled, this option will define the period that aggregation occurs on.
+attributes<br>`optional` | The attributes hash configures specific components of a metric's visualization. A list of metric attributes can be found in the [Metric Attributes table](#attributes).
+composite<br>`optional` | The composite definition. Only used when type is composite.
+
 ## Create a Metric
 
 >Create a metric named `librato.cpu.percent.used` matching the tags `environment:prod` and `service:api`:
@@ -15,7 +26,8 @@ curl \
   "name": "librato.cpu.percent.used",
   "period": 60,
   "attributes": {
-    "summarize_function": "sum"
+    "summarize_function": "sum",
+    "color": "#FFFFFF"
   },
   "tags": {
     "environment": "prod",
@@ -27,6 +39,25 @@ curl \
 ```
 Metrics can be created without submitting a measurement value using a PUT to the `/metrics` endpoint.
 Metrics are automatically created by POSTing a measurement for the first time. See [Create a Measurement](#create-a-measurement).
+
+#### HTTP Request
+
+`POST https://metrics-api.librato.com/v1/metrics/:name`
+
+With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/data_processing/composite_specification/). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
+
+#### Headers
+
+This specifies the format of the data sent to the API.
+
+For HTML (default):
+
+`Content-Type: application/x-www-form-urlencoded`
+
+For JSON:
+
+`Content-Type: application/json`
+
 
 ### Creating Persisted Composite Metrics
 
@@ -66,12 +97,6 @@ Not yet available
   "composite": "s(\"librato.cpu.percent.user\", {\"environment\" : \"prod\", \"service\": \"api\"})"
 }
 ```
-
-#### HTTP Request
-
-`POST https://metrics-api.librato.com/v1/metrics/:name`
-
-With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/data_processing/composite_specification/). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
 ## Retrieve a Metric
 
