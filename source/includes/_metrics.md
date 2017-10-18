@@ -44,8 +44,6 @@ Metrics are automatically created by POSTing a measurement for the first time. S
 
 `POST https://metrics-api.librato.com/v1/metrics/:name`
 
-With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/data_processing/composite_specification/). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
-
 #### Headers
 
 This specifies the format of the data sent to the API.
@@ -97,6 +95,12 @@ Not yet available
   "composite": "s(\"librato.cpu.percent.user\", {\"environment\" : \"prod\", \"service\": \"api\"})"
 }
 ```
+
+#### HTTP Request
+
+`POST https://metrics-api.librato.com/v1/metrics/:name`
+
+With this route you can also create and update persisted [composite metrics](https://www.librato.com/docs/kb/data_processing/composite_specification/). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
 ## Retrieve a Metric
 
