@@ -42,7 +42,7 @@ Metrics are automatically created by POSTing a measurement for the first time. S
 
 #### HTTP Request
 
-`POST https://metrics-api.librato.com/v1/metrics/:name`
+`PUT https://metrics-api.librato.com/v1/metrics/:name`
 
 #### Headers
 
