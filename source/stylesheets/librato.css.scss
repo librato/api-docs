@@ -575,3 +575,13 @@ ul {
 .flash-info a:hover{
   text-decoration: none;
 }
+
+.tocify-wrapper .footer {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+
+  a{
+    color: #444A4E;
+  }
+}
