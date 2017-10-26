@@ -20,7 +20,7 @@ curl \
     },
     {
       "metric": "librato.cpu.percent.user",
-      "tags": [{"name": "environment", "values": ["prod"]}]
+      "tags": [{"name": "environment", "dynamic": True}]
     }
   ]
 }' \
@@ -46,7 +46,7 @@ linechart = api.create_chart(
     },
     {
       "metric": "librato.cpu.percent.user",
-      "tags": [{"name": "environment", "values": ["prod"]}]
+      "tags": [{"name": "environment", "dynamic": True}]
     }
   ]
 )
