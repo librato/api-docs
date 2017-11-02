@@ -336,8 +336,8 @@ sum | If count was set, sum must be set to the summation of the individual measu
 max | If count was set, max can be used to report the largest individual measurement amongst the averaged set.
 min | If count was set, min can be used to report the smallest individual measurement amongst the averaged set.
 last | Represents the last value seen in the interval. Useful when tracking derivatives over points in time.
-stddev | Represents the standard deviation of the sample set. If the measurement represents an aggregation of multiple samples, standard deviation can be calculated and included with the sample. Standard deviations are averaged when downsampling multiple samples over time.
-stddev_m2 | Represents the current mean value when aggregating samples using the [alternative standard deviation method](#standard-deviation). The current mean value allows an accurate standard deviation calculation when aggregating multiple samples over time. Only one of stddev and stddev_m2 may be set.
+stddev | Represents the population standard deviation of the sample set. If the measurement represents an aggregation of multiple samples, standard deviation can be calculated and included with the sample. Standard deviations are averaged when downsampling multiple samples over time.
+stddev_m2 | Represents the current mean value when aggregating samples using the [sample standard deviation](https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation). The current mean value allows an accurate standard deviation calculation when aggregating multiple samples over time. Only one of stddev and stddev_m2 may be set.
 
 #### Optional Parameters
 
