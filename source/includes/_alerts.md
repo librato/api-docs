@@ -137,7 +137,7 @@ alert = api.create_alert(
     attributes={"runbook_url":"http://mydomain.com/wiki/whattodo"},
     conditions=[
         {"metric_name":'web.nginx.response_time',
-        "condition_type":'above',
+        "type":'above',
         "threshold":200,
         "summary_function":'max',
         "duration":300}])
