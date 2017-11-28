@@ -6,7 +6,7 @@ Metrics represent the individual time-series sent to the Librato service. Each m
 
 Parameter | Definition
 --------- | ----------
-type | Type of metric to create (gauge, counter, or composite).
+type | Type of metric to create (gauge or composite).
 display_name<br>`optional` | Name which will be used for the metric when viewing the Metrics website.
 description<br>`optional` | Text that can be used to explain precisely what the gauge is measuring.
 period<br>`optional` | Number of seconds that is the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics. For gauge metrics that have service-side aggregation enabled, this option will define the period that aggregation occurs on.
@@ -349,7 +349,7 @@ Create Parameters
 
 Parameter | Definition
 --------- | ----------
-type | Type of metric to create (gauge, counter, or composite).
+type | Type of metric to create (gauge, or composite).
 display_name<br>`optional` | Name which will be used for the metric when viewing the Metrics website.
 description<br>`optional` | Text that can be used to explain precisely what the gauge is measuring.
 period<br>`optional` | Number of seconds that is the standard reporting period of the metric. Setting the period enables Metrics to detect abnormal interruptions in reporting and aids in analytics. For gauge metrics that have service-side aggregation enabled, this option will define the period that aggregation occurs on.
@@ -521,7 +521,7 @@ api.list_metrics()
       "display_name": "app_requests",
       "description": "HTTP requests serviced by the app per-minute",
       "period": 60,
-      "type": "counter",
+      "type": "gauge",
       "attributes": {
         "created_by_ua": "librato-metrics/0.7.4 (ruby; 1.9.3p194; x86_64-linux) direct-faraday/0.8.4",
         "display_max": null,
@@ -592,7 +592,7 @@ api.list_metrics(name="request")
       "display_name": "app_requests",
       "description": "HTTP requests serviced by the app per-minute",
       "period": 60,
-      "type": "counter",
+      "type": "gauge",
       "attributes": {
         "created_by_ua": "librato-metrics/0.7.4 (ruby; 1.9.3p194; x86_64-linux) direct-faraday/0.8.4",
         "display_max": null,

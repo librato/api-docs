@@ -209,4 +209,4 @@ The response is paginated, so the request supports our generic [Pagination Param
 
 Parameter | Definition
 --------- | ----------
-token | A search parameter that limits the results to counters whose names contain a matching substring. The search is not case-sensitive.
+token | A search parameter that limits the results to names containing a matching substring. The search is not case-sensitive.
