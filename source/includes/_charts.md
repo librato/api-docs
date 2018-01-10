@@ -257,7 +257,7 @@ for s in chart.streams:
             "us-east-1"
           ]
         }
-      ],
+      ]
     }
   ],
   "thresholds": null
@@ -326,7 +326,7 @@ chart.save()
             "us-east-1"
           ]
         }
-      ],
+      ]
     }
   ],
   "thresholds": null
