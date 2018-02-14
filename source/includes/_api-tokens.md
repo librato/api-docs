@@ -136,8 +136,7 @@ curl \
 ```
 
 Returns the details for API Tokens that match a name. Supports wildcards,
-e.g. `? name=*token*`. Omitting a wild card will automatically add them, so
-querying `?name=foo.bar` will return `foo.bar` and `foo.bar.bazzle`.
+e.g. `? name=*token*`.
 
 #### HTTP Request
 
