@@ -22,7 +22,7 @@ jobs:
           command: sudo apt-get update
       - run: 
           name: install java
-          command: sudo apt-get install -yq openjdk-7-jdk
+          command: sudo apt-get install -yq openjdk-7-jdk nodejs
 
       # Download and cache dependencies
       - restore_cache:
