@@ -693,7 +693,7 @@ resp['measurements'][0]['series']
 }
 ```
 
-This route will also execute a [composite metric query](https://kb-docs-archive.librato.com/manipulate/composite_metrics/specification.html) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
+This route will also execute a [composite metric query](http://kb-docs-archive.librato.com/data_processing/composite_metrics/specification/) string when the following parameter is specified. Metric pagination is not performed when executing a composite metric query.
 
 Parameter | Definition
 --------- | ----------
@@ -948,7 +948,7 @@ If the metric name does not exist, then the metric will be created with the asso
 
 Creating Persisted Composite Metrics
 
-With this route you can also create and update persisted [composite metrics](https://kb-docs-archive.librato.com/manipulate/composite_metrics/specification.html). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
+With this route you can also create and update persisted [composite metrics](http://kb-docs-archive.librato.com/data_processing/composite_metrics/specification/). This allows you to save and use a composite definition as if it was a normal metric. To create a persisted composite set the `type` to composite and provide a composite definition in the `composite` parameter. A named metric will be created that can be used on instruments or alerts, similar to how you would use a regular metric.
 
 #### Headers
 
