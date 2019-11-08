@@ -2,7 +2,12 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.1
+
+orbs:
+  awscli: circleci/aws-cli@0.1.16
+  assume-role: drift/assume-role@0.1.0
+
 jobs:
   test:
     docker:
@@ -44,6 +49,12 @@ jobs:
       - run:
           name: build the site 
           command: bundle exec middleman build           
+
+      - awscli/install
+
+      - assume-role/assume-role:
+          account: S3_BUCKET_AWS_ACCOUNT_ID
+          role_name: iam_role_tier_circleci_cloudfront
 
       - deploy:
           name: Deploy to S3 if tests pass and branch is Master
