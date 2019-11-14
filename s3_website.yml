@@ -1,5 +1,3 @@
-s3_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-s3_secret: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 s3_bucket: <%= ENV['DEPLOYMENT_TARGET'] == 'production' ? 'librato-api' : 'api-docs-archive.librato.com' %>
 
 cloudfront_distribution_id: <%= ENV['DEPLOYMENT_TARGET'] == 'production' ? 'E265AN0KH1XMRG' : 'E2COGDWQYRVDXJ' %>
