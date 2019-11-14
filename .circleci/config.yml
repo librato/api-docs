@@ -59,12 +59,12 @@ jobs:
       - deploy:
           name: Deploy to S3 if tests pass and branch is Master
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            # if [ "${CIRCLE_BRANCH}" == "master" ]; then
               bundle exec s3_website install
               java -cp $(bundle show s3_website)/*.jar s3.website.Push
-            else
-              echo "Not master branch so not deploying"
-            fi
+            # else
+            #   echo "Not master branch so not deploying"
+            # fi
 workflows:
  version: 2
  test:
