@@ -44,7 +44,7 @@ cloudfront_distribution_config:
   aliases:
     quantity: 1
     items:
-      - api-docs.librato.com
+      - api-docs-archive.librato.com
 
 # cloudfront_invalidate_root: true
 
