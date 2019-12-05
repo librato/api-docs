@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '~> 2.3' 
+ruby '2.3.8' 
 
 # Middleman
 gem 'middleman', '~>3.3.3'
@@ -13,4 +13,5 @@ gem 'redcarpet', '~> 3.3.2'
 gem 'rake', '~> 10.4.2'
 gem 'oj', '~> 2.14.0'
 
+# Deployment
 gem 's3_website'
