@@ -331,13 +331,12 @@ Measurements can contain a single floating point value or they can support sampl
 
 Parameter | Definition
 --------- | ----------
-count | Indicates the request corresponds to a multi-sample measurement. This is useful if measurements are taken very frequently in a closed loop and the metric value is only periodically reported. If count is set, then sum must also be set in order to calculate an average value for the recorded metric measurement. Additionally min, max, and stddev/stddev_m2 may also be set when count is set. The value parameter should not be set if count is set.
+count | Indicates the request corresponds to a multi-sample measurement. This is useful if measurements are taken very frequently in a closed loop and the metric value is only periodically reported. If count is set, then sum must also be set in order to calculate an average value for the recorded metric measurement. Additionally min, max, and stddev may also be set when count is set. The value parameter should not be set if count is set.
 sum | If count was set, sum must be set to the summation of the individual measurements. The combination of count and sum are used to calculate an average value for the recorded metric measurement.
 max | If count was set, max can be used to report the largest individual measurement amongst the averaged set.
 min | If count was set, min can be used to report the smallest individual measurement amongst the averaged set.
 last | Represents the last value seen in the interval. Useful when tracking derivatives over points in time.
 stddev | Represents the population standard deviation of the sample set. If the measurement represents an aggregation of multiple samples, standard deviation can be calculated and included with each measurement. Standard deviations are averaged together when aggregating multiple measurements over time.
-stddev_m2 | Represents the current mean value when aggregating samples using the [sample standard deviation](https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_deviation) method. This allows an accurate standard deviation calculation when aggregating multiple measurements over time. Only one of stddev and stddev_m2 may be set.
 
 #### Optional Parameters
 
