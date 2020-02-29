@@ -10,7 +10,7 @@ gem "middleman-livereload", "~> 3.4.3"
 gem 'rouge', '~> 1.9.0'
 gem 'redcarpet', '~> 3.3.2'
 
-gem 'rake', '~> 10.4.2'
+gem 'rake', '~> 12.3.3'
 gem 'oj', '~> 2.14.0'
 
 # Deployment
