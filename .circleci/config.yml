@@ -22,51 +22,51 @@ jobs:
 
     steps:
       - checkout
-      - run: 
+      - run:
           name: update
           command: sudo apt-get update
-      - run: 
+      - run:
           name: install java
           command: sudo apt-get install -yq openjdk-7-jdk nodejs
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      # - restore_cache:
+      #     keys:
+      #     - v1-dependencies-{{ checksum "Gemfile.lock" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - v1-dependencies-
 
-      - run:
-          name: install dependencies
-          command: |
-           bundle install
+      # - run:
+      #     name: install dependencies
+      #     command: |
+      #      bundle install
 
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      # - save_cache:
+      #     paths:
+      #       - ./vendor/bundle
+      #     key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run:
-          name: build the site 
-          command: bundle exec middleman build           
+      # - run:
+      #     name: build the site
+      #     command: bundle exec middleman build
 
-      - awscli/install
+      # - awscli/install
 
-      - assume-role/assume-role:
-          account: S3_BUCKET_AWS_ACCOUNT_ID
-          role_name: iam_role_tier_circleci_cloudfront
+      # - assume-role/assume-role:
+      #     account: S3_BUCKET_AWS_ACCOUNT_ID
+      #     role_name: iam_role_tier_circleci_cloudfront
 
-      - deploy:
-          environment:
-            DEPLOYMENT_TARGET: production 
-          name: Deploy to S3 if tests pass and branch is Master
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              bundle exec s3_website install
-              java -cp $(bundle show s3_website)/*.jar s3.website.Push
-            else
-              echo "Not master branch so not deploying"
-            fi
+      # - deploy:
+      #     environment:
+      #       DEPLOYMENT_TARGET: production
+      #     name: Deploy to S3 if tests pass and branch is Master
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
+      #         bundle exec s3_website install
+      #         java -cp $(bundle show s3_website)/*.jar s3.website.Push
+      #       else
+      #         echo "Not master branch so not deploying"
+      #       fi
 workflows:
  version: 2
  test:
