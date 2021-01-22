@@ -23,6 +23,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: update apt keys
+          command: sudo apt-key update
+      - run:
           name: update
           command: sudo apt-get update
       - run:
