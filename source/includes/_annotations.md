@@ -308,7 +308,7 @@ Return a list of annotations associated with given stream name.
 
 #### Annotation Search Parameters
 
-If optional [time interval search parameters](#time-intervals) are specified, the response includes the set of annotation events with start times that are covered by the time interval. Annotation events are always returned in order by their start times.
+Either `count` or `start_timestamp` are required search parameters. If `count` is specified, the response includes a set of the last `count` number of annotation events. If [time interval search parameters](#time-intervals) are specified, the response includes the set of annotation events with start times that are covered by the time interval. Annotation events are always returned in order by their start times.
 
 Annotation events are grouped by their originating source name if one was specified when the annotation event was created. All annotation events that were created without an explicit source name are listed with the source name `unassigned`.
 
